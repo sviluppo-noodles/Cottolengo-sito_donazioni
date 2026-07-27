@@ -1,0 +1,1876 @@
+/* ==========================================================
+   Donazioni Cottolengo — SISTEMA DI DESIGN
+   ----------------------------------------------------------
+   Un solo posto dove si decide: tipografia, colore, spazio,
+   raggi, profondità. Tutte le sezioni sotto usano SOLO i token
+   dichiarati qui — se un valore non è un token, è un errore.
+   Palette: azzurro #009FE3 (il colore del logo) · blu #003B57
+   ========================================================== */
+
+/* ---------- Caratteri: Poppins nei titoli, Open Sans nel testo ----------
+   File self-hosted in assets/fonts/ (woff2, subset "latin": copre tutto
+   l'italiano, accenti ed € compresi). Nessuna chiamata a Google Fonts.
+   · Poppins  → istanze statiche 600 / 700 / 800 (solo i pesi che usiamo)
+   · Open Sans→ font VARIABILE: un unico file copre i pesi da 300 a 800
+   font-display: swap → il testo si legge subito col fallback, niente
+   lampo di testo invisibile.
+   In WordPress: stessi quattro file, wp_enqueue_style nel tema. */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/poppins-600-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/poppins-700-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../assets/fonts/poppins-800-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300 800;              /* variabile: un file, tutti i pesi */
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('../assets/fonts/opensans-variable-latin.woff2') format('woff2-variations');
+}
+
+:root {
+  /* ---------- Caratteri ---------- */
+  --f-display: 'Poppins', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+  --f-testo: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* ---------- Colore: marca ---------- */
+  --azzurro: #009FE3;              /* key color, dal logo: fondi e superfici piene */
+  --azzurro-scuro: #007AB8;        /* hover dei fondi azzurri */
+  --blu-notte: #003B57;            /* titoli e struttura (11,9:1 su bianco) */
+  --azzurro-chiaro: #C9ECFC;
+  --azzurro-chiarissimo: #EDF7FD;  /* fondo delle sezioni chiare */
+  --giallo-accento: #FFC845;       /* accento unico: evidenza e focus */
+  --verde-ok: #1E9E6A;
+  /* Gradiente delle fasce piene: azzurro del logo → azzurro scuro.
+     Scelta del cliente: l'azzurro #009FE3 è il colore principale e resta su
+     titoli, navbar, bottoni e footer anche dove il contrasto col bianco
+     (3,0:1) non raggiunge il minimo WCAG di 4,5:1. */
+  --grad-marca: linear-gradient(90deg, var(--azzurro) 0%, var(--azzurro-scuro) 100%);
+  --bianco: #ffffff;
+
+  /* ---------- Colore: inchiostri (grigi virati sull'azzurro, non neutri) ---------- */
+  --ink: #10242E;                  /* testo forte (16:1) */
+  --grigio-testo: #3D5560;         /* testo corrente (7,8:1) */
+  --ink-tenue: #5A7482;            /* metadati e note (4,9:1) */
+  --bordo: rgba(0, 59, 87, 0.13);  /* hairline: divisori e bordi card */
+  --bordo-forte: rgba(0, 59, 87, 0.22);
+
+  /* ---------- Tipografia: ruoli, non misure sparse ----------
+     Il corpo del testo resta grande (19px): il pubblico è over 50 e
+     non si rimpicciolisce per ragioni estetiche. La gerarchia si
+     costruisce ALZANDO i titoli, non abbassando il testo. */
+  --t-hero:  clamp(2.4rem, 5vw, 3.9rem);
+  --t-h2:    clamp(1.9rem, 3.4vw, 2.6rem);
+  --t-h3:    1.375rem;
+  --t-lead:  1.3125rem;            /* 21px — intro di sezione, sottotitoli */
+  --t-body:  1.1875rem;            /* 19px — testo corrente */
+  --t-small: 1.0625rem;            /* 17px — testo secondario nelle card */
+  --t-micro: 0.875rem;             /* 14px — note, conteggi */
+  --t-nano:  0.78rem;              /* 12,5px — pillole, tag */
+
+  /* ---------- Spazio: scala a base 4 ---------- */
+  --s-1: 0.25rem;  --s-2: 0.5rem;  --s-3: 0.75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;   --s-6: 2rem;    --s-7: 3rem;     --s-8: 4rem;
+  --s-sezione: clamp(4rem, 7vw, 7rem);   /* respiro verticale di ogni sezione */
+
+  /* ---------- Raggi: tre valori, non sette ---------- */
+  --r-1: 6px;                      /* input, tag, elementi piccoli */
+  --r-2: 14px;                     /* card, pannelli, moduli */
+  --r-pill: 999px;                 /* bottoni e pillole: identità del sito */
+  --raggio: var(--r-1);            /* alias storici, usati nelle sezioni */
+  --raggio-grande: var(--r-2);
+
+  /* ---------- Profondità: tre livelli, sempre con offset + sfocatura ----------
+     Nessun alone colorato: l'ombra descrive una luce dall'alto, non un neon. */
+  --e-1: 0 1px 2px rgba(0, 59, 87, 0.06), 0 2px 8px rgba(0, 59, 87, 0.06);
+  --e-2: 0 2px 4px rgba(0, 59, 87, 0.06), 0 8px 24px rgba(0, 59, 87, 0.10);
+  --e-3: 0 4px 10px rgba(0, 59, 87, 0.08), 0 20px 48px rgba(0, 59, 87, 0.14);
+  --ombra: var(--e-3);             /* alias storici */
+  --ombra-leggera: var(--e-2);
+
+  /* ---------- Movimento ---------- */
+  --transizione: 0.18s ease;
+  --ease-uscita: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--f-testo);
+  font-size: var(--t-body);
+  line-height: 1.65;
+  color: var(--grigio-testo);
+  background: var(--bianco);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(1200px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+/* ---------- Titoli ----------
+   Poppins, blu notte: la struttura della pagina è scura e leggibile.
+   L'azzurro resta un ACCENTO (hero, link, superfici), non il colore
+   di ogni titolo: è ciò che prima appiattiva la gerarchia. */
+h1, h2, h3, h4 {
+  font-family: var(--f-display);
+  color: var(--azzurro);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;              /* titoli su più righe: righe di lunghezza simile */
+}
+h1, h2 { line-height: 1.05; }
+h1 { font-size: var(--t-hero); font-weight: 800; }
+h2 { font-size: var(--t-h2);   font-weight: 800; }
+h3 { font-size: var(--t-h3);   font-weight: 700; letter-spacing: -0.01em; }
+h4 { font-size: 1.125rem;      font-weight: 600; letter-spacing: 0; }
+
+h1 em { font-style: normal; color: var(--azzurro); }
+
+/* Il grassetto enfatizza col PESO e non col colore: un colore fisso qui
+   diventava inchiostro scuro su fondi scuri (IBAN nel footer, slide Natale). */
+strong, b { font-weight: 700; }
+
+a { color: var(--azzurro); }
+
+/* La voce del marchio non è solo nei titoli: Poppins governa anche
+   etichette, comandi, numeri e pillole. Open Sans resta il carattere di
+   TUTTO ciò che si legge come testo. Regola unica: si decide qui. */
+.nav__link, .modi__tab, .world-card__title, .proj-card__title, .proj-all__title,
+.field-label, .freq__toggle label, .amounts__grid label, .amounts__tag,
+.amounts__custom-field, .amounts__custom-field input, .select-wrap select,
+.numbers__value, .legend-row__num, .who-card__stat strong,
+.cpm5__claim, .cpm5__cf-label, .cpm5__cf-num, .cpm-slide__tag, .cpm-slide__title,
+.partners__logo, .partners__title, .footer h3, .pill, .badge,
+.proj-filters__label, .proj-filters__reset, .proj-filters__badge, .proj-count {
+  font-family: var(--f-display);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: var(--s-8);
+}
+
+.section-intro {
+  font-size: var(--t-lead);
+  color: var(--grigio-testo);
+  max-width: 58ch;                 /* misura di lettura confortevole */
+  margin: var(--s-4) auto 0;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+/* Link "salta al contenuto" per accessibilità */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--blu-notte);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  z-index: 999;
+  border-radius: 0 0 var(--r-1) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Focus ben visibile */
+a:focus-visible, button:focus-visible, input:focus-visible, label:focus-visible,
+select:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--giallo-accento);
+  outline-offset: 2px;
+}
+
+/* ============ BOTTONI ============
+   Un solo impianto: stessa altezza, stesso raggio, stessa profondità.
+   Le varianti cambiano SOLO il ruolo di colore. L'etichetta è in
+   Poppins: la voce del marchio vive sui comandi. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  font-family: var(--f-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--r-pill);
+  padding: 0.8rem 1.75rem;
+  min-height: 52px;                 /* area di tocco generosa */
+  box-shadow: var(--e-1);
+  transition: transform var(--transizione), box-shadow var(--transizione),
+              background var(--transizione), color var(--transizione);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: var(--e-2); }
+.btn:active { transform: translateY(0); box-shadow: var(--e-1); }
+
+/* primario: azzurro pieno */
+.btn--dona {
+  width: 100%;
+  background: var(--azzurro);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.95rem 1.8rem;
+  min-height: 58px;
+}
+.btn--dona:hover { background: var(--azzurro-scuro); }
+
+/* su fondo azzurro: bottone bianco */
+.btn--header {
+  background: var(--bianco);
+  color: var(--azzurro-scuro);
+  font-weight: 700;
+}
+.btn--header:hover { background: var(--azzurro-chiarissimo); }
+
+.icon-heart { flex: none; }
+
+/* ============ HEADER ============ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--grad-marca);
+  box-shadow: var(--e-2);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 0.7rem;
+}
+
+.header__logo { height: 52px; width: auto; }
+
+.nav { margin-left: auto; }
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 0.6rem 0.95rem;
+  border-radius: var(--raggio);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transizione);
+}
+.nav__link:hover { background: rgba(255, 255, 255, 0.16); }
+
+/* Dropdown "Come donare" */
+.nav__item--dropdown { position: relative; }
+
+.nav__dropdown {
+  position: absolute;
+  top: 100%;                 /* a filo con il bordo inferiore della navbar */
+  left: 0;
+  min-width: 250px;
+  background: #fff;
+  border-radius: 0 0 var(--raggio) var(--raggio);   /* smusso solo in basso */
+  box-shadow: var(--ombra-leggera);
+  list-style: none;
+  padding: 0.5rem;
+  display: none;
+  z-index: 50;
+}
+.nav__item--dropdown.open .nav__dropdown { display: block; }
+.nav__item--dropdown.open .nav__caret { transform: rotate(180deg); }
+.nav__caret { transition: transform var(--transizione); }
+
+.nav__dropdown a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--r-1);
+}
+.nav__dropdown a:hover { background: var(--azzurro-chiarissimo); color: var(--azzurro-scuro); }
+
+/* Hamburger (solo mobile) */
+.header__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+.header__burger span {
+  width: 26px; height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: var(--transizione);
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  background: var(--azzurro-chiarissimo);
+  padding-block: 2rem 0;     /* compatta: aiuta i contenuti a stare nel fold */
+  overflow: hidden;          /* taglia l'eccedenza laterale della foto (niente scroll orizzontale) */
+  /* nav + banner + hero = 100% dell'altezza schermo (--fold-h impostato via JS).
+     min-height (non height) → su schermi bassi la hero cresce e NON taglia mai la card. */
+  /* il min() mette un tetto: su monitor molto alti la hero non diventa
+     una distesa vuota con la card sperduta al centro */
+  min-height: min(var(--fold-h, calc(100vh - 220px)), 960px);
+  display: flex;
+  align-items: stretch;      /* hero__main riempie tutta l'altezza → la foto (bottom:0) resta a filo dei numeri */
+}
+
+/* ===== Banner campagne (carosello 5x1000 + stagionali) =====
+   Fascia a tutta larghezza attaccata alla navbar: nessun raggio/ombra/margine.
+   Il contenuto interno di ogni slide resta entro le dimensioni del body grazie al
+   padding-inline calcolato sulla stessa larghezza del .container (max 1200px). */
+.cpm-banner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+}
+.cpm-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+/* allinea il contenuto delle slide al body: gutter minimo 1.25rem, poi centrato a 1200px */
+.cpm-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  padding: 1.7rem max(1.25rem, calc((100% - 1200px) / 2));
+  min-height: 168px;
+  color: #fff;
+}
+.cpm-slide--natale  { background: linear-gradient(90deg, var(--blu-notte) 0%, #002637 100%); }
+
+/* slide 5x1000 in 3 sezioni (immagine | testo+codice | bottone) */
+.cpm-slide--5x1000 { background: #fff; color: var(--blu-notte); padding: 0 max(1.25rem, calc((100% - 1200px) / 2)); gap: 0; align-items: stretch; }
+.cpm5__sec { flex: 1 1 0; display: flex; align-items: center; min-width: 0; }
+.cpm5__img { padding: 0; }
+.cpm5__img img { width: 100%; height: 100%; object-fit: contain; object-position: left center; display: block; }
+.cpm5__info { flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.7rem; padding: 1rem 1.4rem 1rem 3rem; }
+.cpm5__claim {
+  color: var(--azzurro);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  line-height: 1.12;
+}
+.cpm5__cf { display: flex; align-items: center; gap: 0.7rem; }
+.cpm5__cf-label {
+  color: var(--ink-tenue);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  line-height: 1.05;
+}
+.cpm5__cf-num {
+  color: var(--blu-notte);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+  letter-spacing: 0.03em;
+}
+.cpm5__action { justify-content: center; }
+.cpm-slide--5x1000 .btn--copy {
+  background: var(--azzurro);
+  color: #fff;
+}
+.cpm-slide--5x1000 .btn--copy:hover { background: var(--azzurro-scuro); }
+.cpm-slide--ocra    { background: var(--grad-marca); }
+
+.cpm-slide__text { display: flex; flex-direction: column; gap: 0.35rem; }
+.cpm-slide__tag {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--raggio);
+}
+.cpm-slide__title { color: #fff; font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.15; }
+.cpm-slide__sub { font-size: 1rem; opacity: 0.92; }
+
+.cpm-slide__action { display: flex; align-items: center; gap: 1rem; flex: none; }
+
+/* controlli del carosello */
+.cpm-banner__controls {
+  position: absolute;
+  right: max(1.4rem, calc((100% - 1200px) / 2 + 1.4rem));
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 3;
+}
+.cpm-dots { display: flex; align-items: center; gap: 0.45rem; }
+.cpm-dot {
+  width: 11px; height: 11px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+.cpm-dot[aria-selected="true"] { width: 28px; background: #fff; }
+.cpm-pause {
+  display: grid;
+  place-items: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+.cpm-pause:hover { background: rgba(255, 255, 255, 0.25); }
+
+.btn--copy {
+  background: #fff;
+  color: var(--blu-notte);
+  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  min-height: 46px;
+  white-space: nowrap;
+}
+.btn--copy:hover { background: var(--azzurro-chiarissimo); }
+
+/* ===== Riga principale: testo (sx) + card (dx), foto sotto al testo =====
+   Due righe: il testo occupa quella che gli serve, la foto TUTTO ciò che
+   resta fino al fondo della hero. Prima la foto era in position:absolute con
+   l'altezza legata a --fold-h: su finestre alte diventava più grande del suo
+   spazio e finiva SOPRA al paragrafo. In griglia non può più succedere. */
+.hero__main {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2.6fr);  /* testo ~43% · card ~57% (leggermente più stretta) */
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "testo card"
+    "foto  card";
+  gap: 0 2.5rem;
+  padding-bottom: 0;
+}
+
+.hero__text { grid-area: testo; }
+/* align-self: start, non center: così il bordo alto della card e la prima riga
+   del titolo stanno SEMPRE alla stessa quota, a qualunque altezza di finestra.
+   Con "center" coincidevano solo per caso a certe altezze. */
+.dona-card  { grid-area: card; align-self: start; }
+
+/* Foto scontornata: a filo col margine inferiore della hero (= inizio dei numeri).
+   object-fit: contain + object-position: bottom → resta appoggiata in basso e si
+   rimpicciolisce da sola quando il testo sopra è più lungo. */
+/* La foto è ORIZZONTALE (1472×982): con object-fit: contain il vincolo è la
+   larghezza della colonna, non l'altezza. Per farla più grande esce a sinistra
+   fino al bordo dello schermo — il margine negativo vale esattamente il gutter
+   del .container — e l'eccedenza la taglia l'overflow:hidden della hero.
+   Resta sempre sotto al testo: l'altezza è quella della riga che le avanza. */
+.hero__bg-photo {
+  --sbordo: max(1.25rem, (100vw - 1200px) / 2);
+  grid-area: foto;
+  z-index: 0;
+  align-self: end;
+  width: calc(100% + var(--sbordo));
+  max-width: none;                 /* scavalca img { max-width: 100% } globale */
+  margin-left: calc(-1 * var(--sbordo));
+  height: 100%;
+  min-height: 0;
+  margin-top: var(--s-3);
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero__text, .dona-card { position: relative; z-index: 1; }
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+}
+.hero h1 { font-size: var(--t-hero); }
+.hero__sub {
+  font-size: 1.3rem;
+  color: var(--grigio-testo);
+  margin-top: 1.3rem;
+  max-width: 42ch;
+}
+
+.select-wrap { position: relative; }
+.select-wrap select {
+  width: 100%;
+  font: inherit;
+  font-family: var(--f-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--blu-notte);
+  background: #fff;
+  border: 2px solid var(--azzurro-chiaro);
+  border-radius: var(--raggio);
+  padding: 0.75rem 3rem 0.75rem 1.1rem;
+  min-height: 50px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.select-wrap select:hover { border-color: var(--azzurro); }
+.select-wrap select:focus-visible {
+  outline: 3px solid var(--giallo-accento);
+  outline-offset: 2px;
+  border-color: var(--azzurro);
+}
+.select-wrap__caret {
+  position: absolute;
+  right: 1rem; top: 50%;
+  transform: translateY(-50%);
+  color: var(--azzurro-scuro);
+  pointer-events: none;
+}
+
+/* ---- Card donazione ---- */
+.dona-card {
+  background: #fff;
+  border-radius: var(--raggio-grande);
+  overflow: hidden;
+  border: 1px solid rgba(0, 159, 227, 0.22);
+  scroll-margin-top: 110px;
+}
+
+.dona-card__head {
+  background: var(--grad-marca);
+  color: #fff;
+  padding: 1.35rem 2.4rem;
+}
+.dona-card__head h2 { color: #fff; font-size: 1.75rem; }
+.dona-card__head p { opacity: 0.95; margin-top: 0.25rem; }
+
+.dona-card__body { padding: 1.7rem 2.4rem 1.9rem; }
+
+fieldset { border: none; }
+
+.field-label {
+  font-weight: 700;
+  color: var(--blu-notte);
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* Frequenza: una volta / ogni mese */
+.freq { margin-bottom: 1.4rem; }
+
+.freq__toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--azzurro-chiarissimo);
+  border-radius: var(--raggio-grande);
+  padding: 5px;
+  gap: 5px;
+}
+.freq__toggle input { position: absolute; opacity: 0; }
+.freq__toggle label {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: var(--raggio);
+  cursor: pointer;
+  color: var(--grigio-testo);
+  transition: var(--transizione);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 50px;
+}
+.freq__toggle input:checked + label {
+  background: #fff;
+  color: var(--azzurro-scuro);
+  box-shadow: var(--e-1);
+}
+.freq__toggle input:focus-visible + label {
+  outline: 3px solid var(--giallo-accento);
+  outline-offset: 2px;
+}
+
+.badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--giallo-accento);
+  color: var(--blu-notte);
+  border-radius: var(--raggio);
+  padding: 0.1rem 0.6rem;
+}
+
+/* Importi */
+.amounts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+.amounts__grid input { position: absolute; opacity: 0; }
+.amounts__grid label {
+  position: relative;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: 2px solid var(--azzurro-chiaro);
+  color: var(--blu-notte);
+  border-radius: var(--raggio);
+  padding: 0.7rem 0.2rem;
+  cursor: pointer;
+  transition: var(--transizione);
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.amounts__grid label:hover { border-color: var(--azzurro); }
+.amounts__grid input:checked + label {
+  background: var(--azzurro);
+  border-color: var(--azzurro);
+  color: #fff;
+}
+.amounts__grid input:focus-visible + label {
+  outline: 3px solid var(--giallo-accento);
+  outline-offset: 2px;
+}
+
+.amounts__tag {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--giallo-accento);
+  color: var(--blu-notte);
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border-radius: var(--raggio);
+  padding: 0.05rem 0.55rem;
+}
+
+.amounts__custom {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.amounts__custom > label { font-weight: 600; color: var(--grigio-testo); font-size: 1.02rem; }
+
+.amounts__custom-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid var(--azzurro-chiaro);
+  border-radius: var(--raggio);
+  padding: 0.35rem 0.9rem;
+  font-weight: 700;
+  color: var(--blu-notte);
+}
+.amounts__custom-field:focus-within { border-color: var(--azzurro); }
+.amounts__custom-field input {
+  border: none;
+  outline: none;
+  width: 90px;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--blu-notte);
+}
+/* niente frecce sui number input */
+.amounts__custom-field input::-webkit-outer-spin-button,
+.amounts__custom-field input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.amounts__custom-field input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+
+/* Riga d'impatto: "con 35€ offri 7 pasti" */
+.impact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--azzurro-chiarissimo);
+  border-radius: var(--raggio);
+  padding: 0.85rem 1.1rem;
+  margin: 1.3rem 0;
+  font-size: 1.08rem;
+  color: var(--blu-notte);
+}
+.impact .icon-heart { color: var(--azzurro); margin-top: 3px; }
+
+.dona-card__fiscal {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--grigio-testo);
+  text-align: center;
+}
+
+/* ============ NUMERI ============ */
+.numbers {
+  background: var(--grad-marca);
+  color: #fff;
+  padding-block: 2.8rem;        /* banda ~dimezzata rispetto ai 5.5rem originali */
+  text-align: center;
+  scroll-margin-top: 90px;
+}
+
+.numbers__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.numbers__item { display: flex; flex-direction: column; gap: 0.4rem; }
+.numbers__value {
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);   /* numeri leggermente scalati */
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.numbers__label { font-size: 1.05rem; font-weight: 600; opacity: 1; max-width: 22ch; margin-inline: auto; line-height: 1.3; }
+
+/* ============ DOVE VA LA TUA DONAZIONE ============ */
+.where {
+  position: relative;
+  overflow: hidden;              /* contiene il pennello, niente scroll orizzontale */
+  padding-block: var(--s-sezione);
+  scroll-margin-top: 90px;
+}
+
+.where__layout {
+  position: relative;         /* riferimento per il pennello */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1060px;
+  margin-inline: auto;
+}
+
+/* pennello (decorativo): il suo margine destro combacia col margine sinistro del grafico,
+   così su schermi piccoli l'immagine scivola verso sinistra (tagliata) invece di finire
+   sotto al grafico. Il braccio esce dal lato sinistro; il taglio è gestito da .where overflow:hidden. */
+.where__brush {
+  position: absolute;
+  right: 100%;                /* bordo destro della foto = bordo sinistro del grafico */
+  top: 50%;
+  width: clamp(340px, 42vw, 760px);
+  height: auto;
+  transform: translate(-40px, -50%);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 1s cubic-bezier(.22,.61,.36,1), opacity 0.9s ease;
+}
+.where.is-visible .where__brush { transform: translate(0, -50%); opacity: 1; }
+
+.donut {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.donut__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.donut__track { fill: none; stroke: var(--azzurro-chiarissimo); stroke-width: 69; }
+/* segmenti come archi di cerchio: --len = lunghezza d'arco (impostata inline nell'HTML),
+   915 ≥ circonferenza, così il tratteggio non si ripete */
+.donut__seg { fill: none; stroke-width: 69; stroke-dasharray: var(--len) 915; }
+.donut__seg--1 { stroke: var(--azzurro); }
+.donut__seg--2 { stroke: var(--blu-notte); }
+.donut__seg--3 { stroke: var(--giallo-accento); }
+/* prima dell'ingresso in vista la ciambella non è disegnata; all'arrivo di
+   .is-visible i tre archi si tracciano in sequenza (velocità di rotazione costante) */
+.where:not(.is-visible) .donut__seg { stroke-dasharray: 0 915; }
+.where.is-visible .donut__seg--1 { animation: donut-draw 1s linear both; }
+.where.is-visible .donut__seg--2 { animation: donut-draw 0.12s linear 1s both; }
+.where.is-visible .donut__seg--3 { animation: donut-draw 0.08s linear 1.12s both; }
+
+@keyframes donut-draw {
+  from { stroke-dasharray: 0 915; }
+  to { stroke-dasharray: var(--len) 915; }
+}
+
+/* Legenda: le percentuali accompagnano la ciambella (niente barre ripetute) */
+.where__legend {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.legend-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+.legend-row__num {
+  font-size: 4.4rem;
+  font-weight: 800;
+  line-height: 1;
+  min-width: 168px;
+}
+.legend-row__num--1 { color: var(--azzurro); }
+.legend-row__num--2 { color: var(--blu-notte); }
+.legend-row__num--3 { color: var(--giallo-accento); }
+
+.legend-row__text strong { font-family: var(--f-display); color: var(--azzurro); font-size: 1.25rem; display: block; }
+.legend-row__text p { color: var(--grigio-testo); font-size: 1.05rem; margin-top: 0.2rem; }
+
+/* note metodologiche: misura di lettura contenuta, non tutta la larghezza */
+.where__note, .who__note {
+  margin: var(--s-8) auto 0;
+  max-width: 74ch;
+  font-size: var(--t-micro);
+  color: var(--ink-tenue);
+  text-align: center;
+}
+
+/* ============ CHI AIUTI ============ */
+.who {
+  background: var(--azzurro-chiarissimo);
+  padding-block: var(--s-sezione);
+  scroll-margin-top: 90px;
+}
+
+.who__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.who-card {
+  background: #fff;
+  border-radius: var(--raggio-grande);
+  padding: 2.6rem 1.8rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* icona a matrice di punti (SVG disegnate in Illustrator).
+   Tecnica CSS mask: la forma arriva dal file SVG, il colore lo decide il CSS
+   via background-color. Per aggiornare un'icona basta sostituire il file in
+   assets/svg/: nessuna modifica al CSS.
+   Serve un server HTTP (come già per la mappa): con file:// le mask non caricano. */
+.dot-mask {
+  display: block;
+  background-color: var(--azzurro);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+/* un'icona = un file SVG in assets/svg/ usato come maschera */
+.icona-anziani     { -webkit-mask-image: url("../assets/svg/Anziani_soli.svg"); mask-image: url("../assets/svg/Anziani_soli.svg"); }
+.icona-disabilita  { -webkit-mask-image: url("../assets/svg/Disabilit%C3%A0.svg"); mask-image: url("../assets/svg/Disabilit%C3%A0.svg"); }
+.icona-famiglie    { -webkit-mask-image: url("../assets/svg/Persone.svg"); mask-image: url("../assets/svg/Persone.svg"); }
+.icona-casa        { -webkit-mask-image: url("../assets/svg/Casa.svg"); mask-image: url("../assets/svg/Casa.svg"); }
+.icona-cuore       { -webkit-mask-image: url("../assets/svg/Cuore.svg"); mask-image: url("../assets/svg/Cuore.svg"); }
+.who-card__icon {
+  width: min(152px, 64%);   /* -20% rispetto a 190px / 80% */
+  height: 112px;            /* -20% rispetto a 140px */
+  margin: 0 auto 1.6rem;
+}
+
+.who-card h3 { font-size: 1.45rem; margin-bottom: 0.7rem; }
+.who-card p { color: var(--grigio-testo); font-size: 1.05rem; }
+
+/* riga-dato in fondo alla card */
+.who-card__stat {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1.5px solid var(--azzurro-chiarissimo);
+  color: var(--azzurro-scuro) !important;
+  font-size: 1rem !important;
+  line-height: 1.4;
+}
+.who-card__stat strong { font-size: 1.35rem; font-weight: 800; }
+.who-card p:not(.who-card__stat) { margin-bottom: 1.1rem; }
+
+/* Pulsante stondato "Esplora progetti": piena larghezza della card, sempre su una riga,
+   stessa altezza (52px) dei CTA "apri progetto" (.btn--modi). */
+.btn--esplora {
+  margin-top: 1.2rem;
+  align-self: stretch;        /* usa tutta la larghezza della card */
+  white-space: nowrap;        /* mai su due righe */
+  font-size: 1.02rem;
+  padding-inline: 1rem;
+  background: var(--azzurro);
+  color: #fff;
+}
+.btn--esplora:hover { background: var(--azzurro-scuro); }
+.btn--esplora span[aria-hidden] { transition: transform var(--transizione); }
+.btn--esplora:hover span[aria-hidden] { transform: translateX(3px); }
+
+
+
+/* ============ MODI PER DONARE ============ */
+/* sezione su fondo bianco (come "Progetti da sostenere" sotto): elenco voci e
+   pannello vivono in un UNICO modulo con bordo e ombra condivisi. */
+.modi {
+  background: #fff;
+  padding-block: var(--s-sezione);
+  scroll-margin-top: 90px;
+}
+.world .section-intro { margin-bottom: 4rem; }
+
+/* ---- Un solo oggetto, non due elementi che galleggiano ----
+   Elenco delle voci su fondo azzurrino a sinistra, contenuto su bianco a destra,
+   dentro la stessa cornice con un solo raggio e una sola ombra. La voce attiva
+   diventa bianca: è così che si "attacca" al pannello, senza barrette colorate. */
+.modi__tabs {
+  display: grid;
+  grid-template-columns: minmax(230px, 290px) minmax(0, 1fr);
+  align-items: stretch;
+  background: var(--bianco);
+  border: 1px solid var(--bordo);
+  border-radius: var(--r-2);
+  overflow: hidden;
+}
+
+/* Colonna laterale: il titolo della sezione e l'elenco delle voci sono
+   un blocco unico. Il titolo dentro il modulo evita di lasciarlo galleggiare
+   sopra e accorcia la distanza fra le voci. */
+.modi__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-5) var(--s-4);
+  background: var(--azzurro-chiarissimo);
+  border-right: 1px solid var(--bordo);
+}
+.modi__side h2 {
+  font-size: clamp(1.6rem, 2.2vw, 2.05rem);
+  padding-inline: 0.35rem;
+}
+
+.modi__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);                 /* distanza fissa fra le voci, non elastica */
+}
+
+.modi__tab {
+  position: relative;
+  flex: none;                      /* niente stiramento: le voci hanno l'altezza del loro contenuto */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  text-align: left;
+  padding: 1.2rem 0.9rem;         /* righe generose: riempiono la colonna, comode da colpire */
+  border: none;
+  border-radius: var(--r-1);
+  background: none;
+  color: var(--blu-notte);
+  cursor: pointer;
+  transition: background var(--transizione), color var(--transizione),
+              box-shadow var(--transizione);
+}
+
+/* la riga che dice cosa chiede al donatore: è l'informazione che fa scegliere */
+.modi__tab-chiede {
+  font-family: var(--f-testo);
+  font-size: var(--t-nano);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-tenue);
+  transition: color var(--transizione);
+}
+.modi__tab-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* hairline a metà dello spazio fra due voci: separa senza chiudere le righe
+   in un bordo, così lo sfondo bianco della voce attiva resta libero */
+.modi__tab:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: calc(-1 * var(--s-2) - 0.5px);
+  height: 1px;
+  background: var(--bordo);
+}
+
+.modi__tab:hover { background: rgba(255, 255, 255, 0.72); color: var(--azzurro-scuro); }
+.modi__tab.is-active {
+  background: var(--bianco);
+  color: var(--azzurro);
+  box-shadow: var(--e-1);
+}
+.modi__tab.is-active .modi__tab-chiede { color: var(--azzurro-scuro); }
+
+/* ---- Pannello: foto in alto, testo e azione sotto ----
+   L'immagine assorbe l'altezza che avanza, così cambiando voce il modulo non
+   sobbalza: la sua altezza la decide l'elenco, non la lunghezza del testo. */
+.modi__panels { position: relative; display: grid; }
+
+.modi__panel[hidden] { display: none; }
+.modi__panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  animation: modi-fade 0.42s var(--ease-uscita) both;
+}
+
+@keyframes modi-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Formato FISSO della fascia immagine. Senza questo l'altezza del modulo la
+   decideva il rapporto naturale di ogni foto: passando da una voce all'altra
+   il blocco cambiava di 180px. Con un formato dichiarato tutte le voci hanno
+   lo stesso ingombro e la foto si adatta col ritaglio. */
+.modi__media { overflow: hidden; aspect-ratio: 7 / 3; }
+.modi__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modi__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-6) var(--s-6);
+  min-height: 11.5rem;             /* regge anche la voce con il recapito in più: nessun sobbalzo */
+}
+.modi__text h3 { font-size: clamp(1.4rem, 2vw, 1.85rem); color: var(--azzurro); }
+.modi__text p {
+  color: var(--grigio-testo);
+  font-size: var(--t-small);
+  margin-top: var(--s-2);
+  max-width: 54ch;
+}
+/* recapito diretto (sostegno a distanza): secondario, non compete col pulsante */
+.modi__contatto { font-size: var(--t-micro) !important; color: var(--ink-tenue) !important; }
+.modi__contatto a { color: var(--azzurro-scuro); font-weight: 600; }
+
+.btn--modi {
+  flex: none;
+  background: var(--azzurro);
+  color: #fff;
+}
+.btn--modi:hover { background: var(--azzurro-scuro); }
+.btn--modi span[aria-hidden] { font-size: 1.2rem; transition: transform var(--transizione); }
+.btn--modi:hover span[aria-hidden] { transform: translateX(3px); }
+
+/* ============ PROGETTI DA SOSTENERE (carosello dei progetti in evidenza) ============
+   Finestra sull'archivio: le card sono le stesse di progetti.html (.proj-card,
+   definita in fondo al file), qui disposte in un carosello orizzontale.
+   Le frecce stanno ai margini esterni della fila di card; il pulsante
+   "Vedi tutti i progetti" è centrato sotto il carosello. */
+.evid {
+  background: #fff;
+  padding-block: var(--s-sezione);
+  scroll-margin-top: 90px;
+}
+.evid h2 { text-align: center; }
+.evid .section-intro { margin-bottom: 3rem; }
+
+/* la riga: freccia · pista · freccia.
+   Il contenitore è più largo di .container (1200 + le due frecce), così le card
+   restano allineate al resto della pagina e le frecce cadono nel margine. */
+.evid-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: min(1320px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.evid-nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(0, 59, 87, 0.14);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--azzurro-scuro);
+  cursor: pointer;
+  box-shadow: var(--ombra-leggera);
+  transition: background var(--transizione), color var(--transizione),
+              border-color var(--transizione), transform var(--transizione);
+}
+.evid-nav:hover {
+  background: var(--azzurro);
+  border-color: var(--azzurro);
+  color: #fff;
+}
+.evid-nav:active { transform: scale(0.94); }
+.evid-nav[hidden] { display: none; }
+
+/* pista scorrevole: swipe nativo su touch, scroll-snap per fermarsi sulle card */
+.evid-track {
+  --per-view: 3;
+  --evid-gap: 1.75rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  list-style: none;
+  display: flex;
+  gap: var(--evid-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* overflow-x: auto rende "auto" anche l'asse Y: senza spazio interno l'ombra
+     della card sollevata in hover viene tagliata sopra e sotto. Il padding la
+     contiene, i margini negativi restituiscono il ritmo verticale. */
+  padding: 1.25rem 0 3.5rem;
+  margin-block: -1.25rem -2.25rem;
+  scrollbar-width: none;          /* la barra nativa è sostituita dalle frecce */
+  -ms-overflow-style: none;
+}
+.evid-track::-webkit-scrollbar { display: none; }
+.evid-track:focus-visible { outline: 3px solid var(--giallo-accento); outline-offset: 4px; }
+
+.evid-item {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--evid-gap)) / var(--per-view));
+  scroll-snap-align: start;
+  display: flex;
+}
+.evid-item > .proj-card { width: 100%; }
+
+.evid__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+  padding-inline: 1.25rem;   /* il pulsante non arriva mai a filo schermo su mobile */
+}
+
+/* azzurro come tutti i bottoni, ma con bordo e non pieno: sopra ci sono i
+   "Dona ora" pieni e i due gesti non devono somigliarsi. */
+.btn--vedi-tutti {
+  background: var(--bianco);
+  color: var(--azzurro-scuro);
+  border: 2px solid var(--azzurro);
+  box-shadow: none;
+}
+.btn--vedi-tutti:hover { background: var(--azzurro); color: #fff; }
+.btn--vedi-tutti span[aria-hidden] { transition: transform var(--transizione); }
+.btn--vedi-tutti:hover span[aria-hidden] { transform: translateX(3px); }
+
+/* ============ PROGETTI NEL MONDO (mappa interattiva) ============ */
+.world { padding-block: var(--s-sezione); scroll-margin-top: 90px; }
+
+/* layout full-bleed: esce dal limite del body per guadagnare spazio,
+   centrato simmetricamente nel viewport */
+.world__layout {
+  width: min(1640px, 90vw);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(280px, 0.85fr);
+  gap: 2.6rem;
+  align-items: center;
+}
+
+/* ---- Mappa a pallini: grigi = disattivi (cls-1), azzurri = aree progetto (cls-2).
+   I colori arrivano dallo <style> interno dell'SVG; qui solo highlight e cursore. ---- */
+.world__map { position: relative; }
+.world__svg { width: 100%; height: auto; display: block; }
+/* la terra "spenta" è grigia (fill sul gruppo dentro l'SVG); qui gestiamo solo le regioni accese.
+   Le regioni attive ricevono .is-live dal JS in base alla config in js/mappa-regioni.js */
+.world__svg path { transition: fill 0.2s ease; }
+.world__svg .is-live { fill: var(--azzurro); }
+/* in hover su un'area/scheda: le altre regioni accese si slavano... */
+.world__svg.is-dimmed .is-live { fill: #a8d8f2; }
+/* ...tranne quella puntata, che resta azzurra e spicca */
+.world__svg.is-dimmed .is-live.is-active { fill: var(--azzurro); }
+/* sensore di hover invisibile sopra ogni regione (i pallini hanno spazi vuoti) */
+.world__hit { fill: transparent; cursor: pointer; }
+.world__hit:focus-visible { outline: 3px solid var(--giallo-accento); }
+
+/* ---- Colonna destra: titolo + schede ---- */
+.world__side { display: flex; flex-direction: column; }
+.world__head { margin-bottom: 1.6rem; }
+.world__head h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); }
+.world__head .section-intro { text-align: left; margin: 0.7rem 0 0; font-size: 1.15rem; }
+
+/* ---- Voci-selettore: stesso aspetto dei tab di "Tanti modi per fare del bene":
+   titolo + paragrafo, righe divise da linee sottili ed eleganti, accento a sinistra. ---- */
+.world__cards { list-style: none; display: flex; flex-direction: column; }
+.world-card {
+  display: block;
+  position: relative;
+  background: none;
+  text-decoration: none;
+  color: var(--blu-notte);
+  border: none;
+  border-top: 1px solid rgba(0, 59, 87, 0.13);   /* linea sottile ed elegante tra le voci */
+  border-left: 3px solid transparent;            /* barra accento a sinistra (a riposo invisibile) */
+  border-radius: 0;
+  transition: color var(--transizione), border-color var(--transizione);
+}
+.world__cards li:first-child .world-card { border-top: none; }
+.world-card__body {
+  padding: 0.9rem 1.1rem;
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(.34, 1.3, .5, 1);
+}
+.world-card__title { font-size: 1.3rem; font-weight: 700; color: var(--blu-notte); transition: color var(--transizione); }
+.world-card__text { color: var(--grigio-testo); font-size: 1rem; margin-top: 0.2rem; }
+/* lineetta d'accento a sinistra: nasce dal basso verso l'alto (trim path via scaleY) */
+.world-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--azzurro);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.4s ease;
+}
+.world-card:hover::before,
+.world-card.is-active::before { transform: scaleY(1); }
+.world-card:hover .world-card__title,
+.world-card.is-active .world-card__title { color: var(--azzurro); }
+/* stesso effetto dei tab "Modi": testo che scala e scivola a destra col comparire della lineetta */
+.world-card:hover .world-card__body,
+.world-card.is-active .world-card__body { transform: translateX(6px) scale(1.05); }
+
+/* ============ TESTIMONIANZA ============ */
+.quote {
+  background: var(--azzurro-chiarissimo);
+  padding-block: var(--s-sezione);
+  text-align: center;
+  overflow: hidden;            /* contiene il full-bleed, niente scroll orizzontale */
+}
+
+/* carosello testimonianze — a tutta larghezza schermo, così i box laterali non vengono tagliati */
+.quote-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: 0.5rem;
+}
+.quote-track { display: flex; align-items: stretch; transition: transform 0.6s ease; }
+.quote-slide {
+  flex: 0 0 40%;              /* slide più strette: le inattive restano vicine alla centrale (solo ±1 visibile) */
+  margin: 0;
+  padding: 0 1.4rem 3.2rem;   /* spazio sotto per i controlli */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.18;              /* slide laterali super sfumate */
+  transition: opacity 0.5s ease;
+}
+.quote-slide.is-current { opacity: 1; }  /* slide attiva piena */
+/* citazioni grandi e leggere (peso 300 "editoriale", caricato dal link Google Fonts) */
+.quote-slide p {
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-weight: 300;
+  color: var(--blu-notte);
+  max-width: 30ch;
+  margin-inline: auto;
+  line-height: 1.4;
+}
+.quote-slide cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  color: var(--grigio-testo);
+  font-size: 1.1rem;
+}
+.quote-slide cite em { font-style: italic; opacity: 0.7; }
+
+/* controlli carosello */
+.quote-carousel__controls {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+}
+.quote-dots { display: flex; align-items: center; gap: 0.45rem; }
+.quote-dot {
+  width: 11px; height: 11px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 59, 87, 0.25);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+.quote-dot[aria-selected="true"] { width: 28px; background: var(--azzurro-scuro); }
+.quote-pause {
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 59, 87, 0.4);
+  background: transparent;
+  color: var(--azzurro-scuro);
+  cursor: pointer;
+}
+.quote-pause:hover { background: rgba(0, 59, 87, 0.08); }
+.quote__more {
+  /* inline-flex + min-height: area di tocco da 44px anche su telefono */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding-inline: 0.25rem;
+  margin-top: 1.6rem;
+  font-weight: 700;
+  color: var(--azzurro-scuro);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.quote__more:hover { text-decoration: underline; }
+
+/* ============ LOGHI PARTNER (marquee a scorrimento infinito) ============ */
+.partners {
+  padding-block: 4rem;
+  background: #fff;
+  overflow: hidden;
+}
+.partners__title {
+  text-align: center;
+  color: var(--grigio-testo);
+  font-weight: 300;            /* light */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  margin-bottom: 2.2rem;
+}
+/* viewport che nasconde la parte fuori campo; le due liste identiche scorrono in loop */
+.partners__viewport {
+  display: flex;
+  width: max-content;
+  animation: partners-scroll 32s linear infinite;
+}
+.partners:hover .partners__viewport { animation-play-state: paused; }
+
+.partners__track {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+  list-style: none;
+  flex: none;
+}
+/* box placeholder: sostituire con <img> dei loghi reali */
+.partners__logo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 120px;                /* quadrati, non rettangoli */
+  border-radius: var(--raggio-grande);
+  background: var(--azzurro-chiarissimo);
+  color: var(--azzurro-scuro);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter var(--transizione), opacity var(--transizione);
+}
+.partners__logo:hover { filter: grayscale(0); opacity: 1; }
+
+@keyframes partners-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }   /* metà = una copia intera della lista */
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--azzurro);            /* key color Cottolengo */
+  color: #fff;
+  padding-block: 3.5rem 0;
+  scroll-margin-top: 90px;
+}
+.footer a { color: #fff; }
+.footer h3 { color: #fff; font-size: 1.15rem; margin-bottom: 0.9rem; }
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.footer__logo { height: 56px; width: auto; margin-bottom: 1rem; }
+.footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer address { font-style: normal; line-height: 1.8; }
+.footer__col p { font-size: 1rem; line-height: 1.7; }
+
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding-block: 1.4rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ============ BARRA DONA MOBILE ============ */
+.sticky-dona {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 -2px 4px rgba(0, 59, 87, 0.05), 0 -12px 32px rgba(0, 59, 87, 0.14);
+  z-index: 90;
+  transform: translateY(110%);
+  transition: transform 0.25s ease;
+}
+.sticky-dona.visible { transform: translateY(0); }
+.sticky-dona .btn--dona { font-size: 1.15rem; padding: 0.8rem; min-height: 50px; }
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 1020px) {
+  .hero { padding-block: 2.5rem 0; }
+  .quote-slide { flex-basis: 58%; }   /* tablet */
+  /* mobile: banner 5x1000 in alto, poi donazioni -> testo -> foto in flusso */
+  .hero__main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    padding-bottom: 0;             /* la foto resta a filo della sezione numeri */
+  }
+  .dona-card    { order: 1; }
+  .hero__text   { order: 2; }
+  .hero__bg-photo {
+    position: static;
+    order: 3;
+    width: 100%;
+    height: auto;                  /* annulla lo scaling in altezza del desktop */
+    max-width: 480px;
+    margin: 0.5rem auto 0;         /* centrata rispetto al body */
+    transform: none;
+    left: auto;
+    bottom: auto;
+  }
+  .cpm-slide { flex-direction: column; align-items: flex-start; text-align: left; padding: 1.4rem 1.6rem 2.4rem; }
+  /* 5x1000: le 3 sezioni si incolonnano e si centrano */
+  .cpm-slide--5x1000 { padding: 1.4rem 1.6rem 2rem; gap: 1.2rem; align-items: center; }
+  .cpm5__sec { flex: none; width: 100%; }
+  .cpm5__img img { height: auto; object-position: center; max-width: 320px; margin: 0 auto; }
+  .cpm5__info { align-items: center; text-align: center; padding: 0; }
+  .cpm5__claim { font-size: 1.25rem; }
+  .cpm-banner__controls { bottom: 0.8rem; right: 1rem; }
+  .where__layout { grid-template-columns: 1fr; gap: 4rem; justify-items: center; }
+  .where__legend { width: 100%; max-width: 640px; }
+  .where__brush { display: none; }   /* su layout impilato il pennello darebbe fastidio */
+  .who__grid { grid-template-columns: repeat(2, 1fr); }
+  .evid-track { --per-view: 2; --evid-gap: 1.4rem; }
+  .modi__tabs { grid-template-columns: minmax(210px, 250px) minmax(0, 1fr); }
+  /* mappa: layout impilato (mappa sopra, titolo + schede sotto) */
+  .world__layout { grid-template-columns: 1fr; gap: 2rem; width: 92vw; margin-inline: auto; }
+  .world__head { text-align: center; }
+  .world__head .section-intro { text-align: center; }
+  .world__cards { display: flex; flex-direction: column; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .numbers__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 1.125rem; }
+
+  /* menu mobile */
+  .header__burger { display: flex; margin-left: auto; }
+  .btn--header { display: none; }
+  .nav {
+    position: fixed;
+    inset: 68px 0 auto 0;
+    background: var(--azzurro-scuro);
+    padding: 1rem 1.2rem 1.5rem;
+    transform: translateY(-130%);
+    transition: transform 0.25s ease;
+    box-shadow: 0 16px 30px rgba(0,59,87,0.3);
+    margin-left: 0;
+  }
+  .nav.open { transform: translateY(0); }
+  .nav__list { flex-direction: column; align-items: stretch; gap: 0.2rem; }
+  .nav__link { width: 100%; font-size: 1.2rem; padding: 0.9rem 1rem; }
+  .nav__dropdown {
+    position: static;
+    box-shadow: none;
+    background: rgba(255,255,255,0.1);
+    margin-top: 0.2rem;
+  }
+  .nav__dropdown a { color: #fff; font-size: 1.05rem; }
+  .nav__dropdown a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  .hero { padding-block: 2rem 0; }
+  .dona-card__head { padding: 1.4rem 1.6rem; }
+  .dona-card__body { padding: 1.6rem 1.6rem 1.8rem; }
+  .cpm-slide__sub { display: none; }
+  .quote-slide { flex-basis: 86%; padding-inline: 0.8rem; }  /* peek più sottile su mobile */
+  /* Su telefono l'elenco diventa una riga di chip che scorre: stesso modello
+     mentale del desktop (una voce selezionata alla volta), nessun cambio di
+     paradigma a metà strada. */
+  /* minmax(0, 1fr) e non 1fr: "1fr" vale minmax(auto, 1fr) e la larghezza
+     minima delle chip in fila faceva sfondare la traccia oltre lo schermo. */
+  .modi__tabs { grid-template-columns: minmax(0, 1fr); }
+  .modi__side {
+    min-width: 0;
+    gap: var(--s-3);
+    padding: var(--s-4) 0 0;
+    border-right: none;
+    border-bottom: 1px solid var(--bordo);
+  }
+  .modi__side h2 { text-align: center; padding-inline: var(--s-4); }
+  .modi__nav {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--s-2);
+    padding: 0 var(--s-3) var(--s-3);
+    min-width: 0;                    /* serve perché lo scroller non allarghi il genitore */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .modi__nav::-webkit-scrollbar { display: none; }
+  .modi__tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    border: 1px solid var(--bordo);
+    border-radius: var(--r-pill);
+    background: var(--bianco);
+    padding: 0.6rem 1.1rem;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .modi__tab-chiede { display: none; }   /* nella chip resta la sola etichetta */
+  .modi__tab:not(:last-child)::after { display: none; }   /* fra le chip non serve la linea */
+  .modi__tab.is-active {
+    background: var(--azzurro);
+    border-color: var(--azzurro);
+    color: #fff;
+  }
+  .modi__media { aspect-ratio: 3 / 2; }
+  .modi__media img { height: 100%; }
+  .modi__panel { grid-template-rows: auto auto; }
+  .modi__content { min-height: 0; }
+  .modi__content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s-4);
+    padding: var(--s-5) var(--s-4) var(--s-5);
+    min-height: 0;
+  }
+  .btn--modi { width: 100%; }
+  .amounts__grid { grid-template-columns: repeat(2, 1fr); }
+  .who__grid { grid-template-columns: 1fr; }
+  /* carosello su mobile: una card e mezza in vista (invita allo swipe),
+     frecce nascoste perché il gesto naturale è già lo scorrimento del dito */
+  .evid-carousel { width: min(1320px, 100% - 1.5rem); gap: 0; }
+  .evid-nav { display: none; }
+  .evid-track { --per-view: 1.15; --evid-gap: 1rem; padding-inline: 0.5rem; }
+  .evid__footer { margin-top: 1.5rem; }
+  .btn--vedi-tutti { width: min(100%, 420px); }
+  .donut { width: 280px; height: 280px; }
+  .legend-row__num { font-size: 3.3rem; min-width: 120px; }
+  .section-head { margin-bottom: 2.8rem; }
+  .sticky-dona { display: block; }
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .world__cards { gap: 0; }
+}
+
+/* Riduzione animazioni per chi la richiede */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  /* ciambella mostrata già disegnata, senza animazione */
+  .where:not(.is-visible) .donut__seg { stroke-dasharray: var(--len) 915; }
+}
+
+/* ==========================================================
+   PAGINA PROGETTI
+   ========================================================== */
+/* ----- Card progetto (base) -----
+   CONDIVISA: usata dalla griglia di progetti.html e dal carosello
+   "Progetti da sostenere" della home. Modificarla cambia entrambi. */
+.proj-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(0, 59, 87, 0.08);
+  border-radius: var(--r-2);
+  overflow: hidden;
+  box-shadow: var(--e-1);
+  transition: transform var(--transizione), box-shadow var(--transizione);
+}
+.proj-card:hover { transform: translateY(-6px); box-shadow: var(--e-3); }
+
+/* immagine con proporzione fissa: tutte le copertine sono coerenti tra loro */
+.proj-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--azzurro-chiaro);
+}
+.proj-card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.proj-card:hover .proj-card__media img { transform: scale(1.05); }
+
+/* etichetta "in evidenza": pillola gialla di accento */
+.proj-card__flag {
+  position: absolute;
+  top: 0.9rem; left: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  background: var(--giallo-accento);
+  color: var(--blu-notte);
+  font-weight: 800;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  box-shadow: var(--e-1);
+}
+
+.proj-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.4rem 1.4rem 1.5rem;
+  gap: 0.75rem;
+}
+.proj-card__tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.proj-card__title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--blu-notte);
+}
+/* copy troncato a 3 righe: le card mantengono altezze coerenti nella griglia */
+.proj-card__copy {
+  color: var(--grigio-testo);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* CTA azzurro a tutta larghezza, ancorato in fondo alla card */
+.proj-card__cta {
+  margin-top: auto;
+  align-self: stretch;
+  justify-content: center;
+  font-size: 1.05rem;
+  min-height: 50px;
+  padding: 0.7rem 1.4rem;
+  background: var(--azzurro);
+  color: #fff;
+}
+.proj-card__cta:hover { background: var(--azzurro-scuro); }
+.proj-card__cta span[aria-hidden] { font-size: 1.15rem; transition: transform var(--transizione); }
+.proj-card__cta:hover span[aria-hidden] { transform: translateX(3px); }
+
+/* card "in evidenza": nessun outline, solo la pillola gialla a segnalarla */
+
+/* ----- Pillole tassonomie ----- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--t-micro);
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  line-height: 1.2;
+}
+.pill__icon { flex: none; }
+.pill--area { background: var(--azzurro-chiaro); color: var(--blu-notte); }
+.pill--cat  { background: #fff; color: var(--azzurro-scuro); border: 1px solid var(--azzurro-chiaro); }
+
+/* ----- Sezione "Tutti i progetti" (lista unica, titolo sul fondo azzurrino) ----- */
+.proj-all {
+  background: var(--azzurro-chiarissimo);
+  padding-block: 3rem 5rem;
+  scroll-margin-top: 90px;
+}
+.proj-all__title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2rem; text-align: center; }
+
+/* barra filtri: ricerca a tutta larghezza, poi 3 filtri uguali, poi "Azzera" */
+.proj-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.proj-filters__search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff;
+  border: 2px solid var(--azzurro-chiaro);
+  border-radius: var(--raggio);
+  padding: 0 1rem;
+  color: var(--azzurro-scuro);
+  transition: border-color var(--transizione), background var(--transizione);
+}
+.proj-filters__search:focus-within { border-color: var(--azzurro); }
+.proj-filters__search input {
+  flex: 1;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--ink);
+  padding: 0.75rem 0;
+}
+.proj-filters__search input:focus-visible { outline: none; }
+
+/* riga filtri: i 2 select + il pulsante "Azzera" sulla stessa linea (anche su mobile) */
+.proj-filters__row {
+  display: flex;
+  align-items: flex-end;   /* il pulsante si allinea al box dei select, non alle label */
+  gap: 0.8rem;
+}
+.proj-filters__field { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.proj-filters__label { font-weight: 700; color: var(--blu-notte); font-size: 0.95rem; }
+
+/* stato attivo: box del filtro ben visibile in key color */
+.proj-filters__field.is-active .select-wrap select,
+.proj-filters__search.is-active {
+  border-color: var(--azzurro);
+  background: var(--azzurro-chiarissimo);
+  color: var(--azzurro-scuro);
+  font-weight: 700;
+}
+.proj-filters__search.is-active { box-shadow: inset 0 0 0 1px var(--azzurro); }
+
+.proj-filters__reset {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: none;
+  border: 2px solid var(--azzurro);
+  color: var(--azzurro-scuro);
+  font: inherit;
+  font-family: var(--f-display);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.7rem 1.3rem;
+  min-height: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transizione), color var(--transizione);
+}
+.proj-filters__reset-icon { flex: none; }
+.proj-filters__reset:hover { background: var(--azzurro-chiarissimo); }
+/* quando ci sono filtri attivi il pulsante diventa pieno e mostra il badge col numero */
+.proj-filters__reset.has-active { background: var(--azzurro); color: #fff; }
+.proj-filters__reset.has-active:hover { background: var(--azzurro-scuro); }
+.proj-filters__badge[hidden] { display: none; }
+.proj-filters__badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--azzurro-scuro);
+  font-size: 0.85rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.proj-count { color: var(--grigio-testo); font-size: 0.95rem; margin-bottom: 1.2rem; }
+
+/* griglia: massimo 3 colonne, con ampio respiro tra le card */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.proj-empty { text-align: center; color: var(--grigio-testo); padding: 2rem 0; }
+.proj-empty__reset {
+  background: none; border: none; color: var(--azzurro-scuro);
+  font: inherit; font-weight: 700; text-decoration: underline; cursor: pointer;
+}
+
+/* 2 colonne su schermi medi */
+@media (max-width: 980px) {
+  .proj-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+}
+
+@media (max-width: 720px) {
+  .proj-all { padding-block: 2.5rem 3.5rem; }
+  /* su mobile "Azzera" resta sulla stessa riga dei filtri, in versione compatta (solo icona) */
+  .proj-filters__reset { padding: 0.7rem; min-width: 50px; justify-content: center; }
+  .proj-filters__reset-text { display: none; }
+}
+
+/* 1 colonna sui telefoni più stretti */
+@media (max-width: 620px) {
+  .proj-grid { grid-template-columns: 1fr; }
+}

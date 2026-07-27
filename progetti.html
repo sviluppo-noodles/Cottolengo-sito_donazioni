@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I progetti — Donazioni Cottolengo</title>
+  <meta name="description" content="Esplora i progetti del Cottolengo in Italia e nel mondo. Filtra per area geografica, categoria di persone aiutate e anno.">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
+  <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/opensans-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=18">
+</head>
+<body>
+
+<a class="skip-link" href="#all-projects">Vai a tutti i progetti</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
+      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="header__logo">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <ul class="nav__list">
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-donare">
+            Come donare
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav__dropdown" id="menu-donare">
+            <li><a href="index.html#dona">Donazione libera</a></li>
+            <li><a href="index.html#come-donare">5×1000</a></li>
+            <li><a href="index.html#come-donare">Testamento solidale</a></li>
+            <li><a href="index.html#come-donare">Dona in memoria</a></li>
+            <li><a href="index.html#come-donare">Volontariato</a></li>
+          </ul>
+        </li>
+        <li><a href="progetti.html" class="nav__link" aria-current="page">I progetti</a></li>
+        <li><a href="index.html#contatti" class="nav__link">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html#dona" class="btn btn--header">
+      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
+      Dona ora
+    </a>
+
+    <button class="header__burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="projects">
+
+  <!-- ===== TUTTI I PROGETTI (lista unica, sempre visibile, su fondo azzurrino) =====
+       Il titolo è direttamente sul fondo azzurrino; i progetti "in evidenza" restano in cima. -->
+  <section class="proj-all" id="all-projects" aria-labelledby="proj-title">
+    <div class="container">
+      <h1 id="proj-title" class="proj-all__title">I nostri progetti</h1>
+
+      <!-- Barra filtri: ricerca + chi aiuti + area geografica + azzera -->
+      <form class="proj-filters" role="search" aria-label="Filtra i progetti" onsubmit="return false">
+        <div class="proj-filters__search">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="f-search" placeholder="Cerca un progetto…" aria-label="Cerca un progetto">
+        </div>
+        <div class="proj-filters__row">
+          <label class="proj-filters__field">
+            <span class="proj-filters__label">Chi aiuti</span>
+            <div class="select-wrap">
+              <select id="f-cat"><option value="">Tutte le categorie</option></select>
+              <svg class="select-wrap__caret" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </label>
+          <label class="proj-filters__field">
+            <span class="proj-filters__label">Area geografica</span>
+            <div class="select-wrap">
+              <select id="f-area"><option value="">Tutte le aree</option></select>
+              <svg class="select-wrap__caret" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </label>
+          <button class="proj-filters__reset" id="f-reset" type="button" aria-label="Azzera filtri">
+            <svg class="proj-filters__reset-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 4v4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="proj-filters__reset-text">Azzera filtri</span>
+            <span class="proj-filters__badge" id="active-count" hidden>0</span>
+          </button>
+        </div>
+      </form>
+
+      <p class="proj-count" id="proj-count" aria-live="polite"></p>
+
+      <div class="proj-grid" id="proj-grid"><!-- generati via JS --></div>
+      <p class="proj-empty" id="proj-empty" hidden>Nessun progetto corrisponde ai filtri selezionati. <button type="button" class="proj-empty__reset" id="f-reset-2">Azzera i filtri</button></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contatti">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand">
+      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="footer__logo">
+      <p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1832.</p>
+    </div>
+    <div class="footer__col">
+      <h3>Contatti</h3>
+      <address>
+        Ufficio Progetti e Raccolta Fondi<br>
+        Via Cottolengo, 14 — 10152 Torino<br>
+        <a href="tel:+390115225658">011 522 5658</a><br>
+        <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>
+      </address>
+    </div>
+    <div class="footer__col">
+      <h3>Dona con bonifico</h3>
+      <p>
+        Fondazione Cottolengo Solidale<br>
+        Ente del Terzo Settore<br>
+        IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>
+        Cod. Fiscale: 97905980013<br>
+        C/C postale n. 1072743170
+      </p>
+    </div>
+    <div class="footer__col">
+      <h3>Link utili</h3>
+      <!-- Voci placeholder: verranno concordate in futuro -->
+      <ul>
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">Dolor sit amet</a></li>
+        <li><a href="#">Consectetur elit</a></li>
+        <li><a href="#">Sed do eiusmod</a></li>
+        <li><a href="#">Tempor incididunt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p>
+  </div>
+</footer>
+
+<script src="js/progetti-dati.js"></script><!-- dati progetti condivisi con index.html -->
+<script src="js/progetti.js"></script>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donazioni Cottolengo — Fare bene fa bene al cuore</title>
+  <meta name="description" content="Sostieni la Piccola Casa della Divina Provvidenza. Con la tua donazione doni pasti, cura e famiglia a chi ne ha più bisogno.">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
+  <!-- i due caratteri che servono già al primo schermo: precaricati per non far
+       ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
+  <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/opensans-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=18">
+</head>
+<body>
+
+<a class="skip-link" href="#dona">Vai al modulo di donazione</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="#top" class="header__logo-link" aria-label="Donazioni Cottolengo — torna all'inizio">
+      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="header__logo">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <ul class="nav__list">
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-donare">
+            Come donare
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav__dropdown" id="menu-donare">
+            <li><a href="#dona">Donazione libera</a></li>
+            <li><a href="#come-donare">5×1000</a></li>
+            <li><a href="#come-donare">Testamento solidale</a></li>
+            <li><a href="#come-donare">Dona in memoria</a></li>
+            <li><a href="#come-donare">Volontariato</a></li>
+          </ul>
+        </li>
+        <li><a href="progetti.html" class="nav__link">I progetti</a></li>
+        <li><a href="#contatti" class="nav__link">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <a href="#dona" class="btn btn--header">
+      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
+      Dona ora
+    </a>
+
+    <button class="header__burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== Banner campagne 5x1000 + stagionali: fascia a tutta larghezza attaccata alla navbar ===== -->
+<div class="cpm-banner" id="cpm-banner" aria-roledescription="carosello" aria-label="Campagne in evidenza">
+      <div class="cpm-track" id="cpm-track">
+
+        <!-- Slide 1 · 5x1000 (3 sezioni: immagine | testo+codice | bottone) -->
+        <article class="cpm-slide cpm-slide--5x1000" id="cinquepermille" aria-roledescription="slide" aria-label="1 di 3: 5 per mille">
+          <div class="cpm5__sec cpm5__img">
+            <img src="assets/img/bannertest2.jpg" alt="5 per mille">
+          </div>
+          <div class="cpm5__sec cpm5__info">
+            <p class="cpm5__claim">Tocca con mano,<br>dona con fiducia.</p>
+            <p class="cpm5__cf">
+              <span class="cpm5__cf-label">Codice<br>fiscale</span>
+              <span class="cpm5__cf-num">97656390016</span>
+            </p>
+          </div>
+          <div class="cpm5__sec cpm5__action">
+            <button class="btn btn--copy" type="button" data-copy="97656390016">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 012-2h10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              <span class="btn__label">Copia codice fiscale</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Slide 2 · esempio stagionale (Natale) -->
+        <article class="cpm-slide cpm-slide--natale" aria-roledescription="slide" aria-label="2 di 3: speciale Natale">
+          <div class="cpm-slide__text">
+            <span class="cpm-slide__tag">Speciale Natale</span>
+            <h2 class="cpm-slide__title">Regala un <strong>Natale di speranza</strong> a chi è solo</h2>
+            <p class="cpm-slide__sub">Questo spazio cambia con le campagne della stagione.</p>
+          </div>
+          <div class="cpm-slide__action">
+            <a class="btn btn--copy" href="#dona">Dona ora <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Slide 3 · esempio campagna -->
+        <article class="cpm-slide cpm-slide--ocra" aria-roledescription="slide" aria-label="3 di 3: dona un pasto">
+          <div class="cpm-slide__text">
+            <span class="cpm-slide__tag">Campagna</span>
+            <h2 class="cpm-slide__title">Un <strong>pasto caldo</strong> per chi non ha nulla</h2>
+            <p class="cpm-slide__sub">97.000 pasti completi ogni anno. Aggiungi il tuo.</p>
+          </div>
+          <div class="cpm-slide__action">
+            <a class="btn btn--copy" href="#dona">Dona un pasto <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="cpm-banner__controls">
+        <div class="cpm-dots" id="cpm-dots" role="tablist" aria-label="Scegli la campagna"></div>
+        <button class="cpm-pause" id="cpm-pause" type="button" aria-label="Metti in pausa lo scorrimento automatico">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <!-- ===== Riga principale: testo (sx) + card (dx), foto sullo sfondo ===== -->
+  <div class="container hero__main">
+
+    <img class="hero__bg-photo" src="assets/img/bambina.png" alt="" aria-hidden="true">
+
+    <div class="hero__text">
+      <h1 id="hero-title">Fare bene fa bene al cuore.</h1>
+      <p class="hero__sub">
+        Ogni giorno il Cottolengo accoglie anziani soli, persone con disabilità,
+        bambini e famiglie in difficoltà. <strong>Bastano pochi euro per fare molto.</strong>
+      </p>
+    </div>
+
+    <!-- ---- Modulo donazione ---- -->
+    <div class="dona-card" id="dona" aria-labelledby="dona-title">
+      <div class="dona-card__head">
+        <h2 id="dona-title">Dona alle opere di carità del Cottolengo</h2>
+      </div>
+
+      <div class="dona-card__body">
+        <fieldset class="freq">
+          <legend class="field-label">Ogni quanto vuoi donare?</legend>
+          <div class="freq__toggle" role="group">
+            <input type="radio" name="freq" id="freq-una" value="singola" checked>
+            <label for="freq-una">Una volta sola</label>
+            <input type="radio" name="freq" id="freq-mese" value="mensile">
+            <label for="freq-mese">Ogni mese <span class="badge">aiuta di più ❤</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="amounts">
+          <legend class="field-label">Quanto vuoi donare?</legend>
+          <div class="amounts__grid">
+            <input type="radio" name="importo" id="amt-20" value="20">
+            <label for="amt-20">20&nbsp;€</label>
+            <input type="radio" name="importo" id="amt-35" value="35" checked>
+            <label for="amt-35">35&nbsp;€<span class="amounts__tag">il più scelto</span></label>
+            <input type="radio" name="importo" id="amt-50" value="50">
+            <label for="amt-50">50&nbsp;€</label>
+            <input type="radio" name="importo" id="amt-100" value="100">
+            <label for="amt-100">100&nbsp;€</label>
+          </div>
+          <div class="amounts__custom">
+            <label for="amt-custom">Oppure scrivi tu una cifra:</label>
+            <div class="amounts__custom-field">
+              <input type="number" id="amt-custom" inputmode="numeric" min="1" max="100000" placeholder="Es. 75">
+              <span aria-hidden="true">€</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <p class="impact" id="impact-line" aria-live="polite">
+          <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+          <span id="impact-text">Con <strong>35&nbsp;€</strong> offri <strong>7 pasti caldi</strong> a chi non ha nulla.</span>
+        </p>
+
+        <a href="https://dona.cottolengo.org/" class="btn btn--dona" id="dona-cta">
+          Dona 35&nbsp;€ adesso
+        </a>
+
+        <p class="dona-card__fiscal" id="fiscal-line">
+          La tua donazione è <strong>detraibile al 30%</strong>:
+          35&nbsp;€ te ne costano davvero solo <strong>24,50&nbsp;€</strong>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ NUMERI / IMPATTO ============ -->
+<section class="numbers" id="missione" aria-label="I numeri dell'Opera, ogni anno">
+  <div class="container">
+    <div class="numbers__grid">
+      <div class="numbers__item">
+        <span class="numbers__value" data-count="97000">0</span>
+        <span class="numbers__label">pasti caldi serviti a persone in difficoltà</span>
+      </div>
+      <div class="numbers__item">
+        <span class="numbers__value" data-count="1832" data-plain="true">0</span>
+        <span class="numbers__label">l'anno in cui tutto è cominciato, a Torino</span>
+      </div>
+      <div class="numbers__item">
+        <span class="numbers__value" data-count="4">0</span>
+        <span class="numbers__label">continenti in cui siamo presenti con case e missioni</span>
+      </div>
+      <div class="numbers__item">
+        <span class="numbers__value" data-count="5">0</span>
+        <span class="numbers__label">ambiti di cura: anziani, disabilità, minori, salute, povertà</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COME FARE DEL BENE ============ -->
+<section class="modi" id="come-donare" aria-labelledby="modi-title">
+  <div class="container">
+    <!-- Modulo a tab. Il titolo della sezione vive DENTRO la colonna laterale,
+         insieme all'elenco: un solo blocco invece di un titolo che galleggia sopra.
+         Ogni voce dichiara PRIMA cosa chiede al donatore (una firma, ogni mese,
+         una volta, per il futuro, il tuo tempo) e poi il nome: è l'informazione
+         che serve per scegliere.
+         Il JS (js/main.js → initModiTabs) legge tutti i .modi__tab e il loro
+         aria-controls: per aggiungere una sesta voce basta duplicare tab + pannello. -->
+    <div class="modi__tabs">
+      <div class="modi__side">
+        <h2 id="modi-title">Come fare del bene</h2>
+        <div class="modi__nav" role="tablist" aria-label="Modi per fare del bene" aria-orientation="vertical">
+        <button class="modi__tab is-active" role="tab" id="tab-5x1000" aria-controls="panel-5x1000" aria-selected="true">
+          <span class="modi__tab-chiede">Una firma, zero euro</span>
+          <span class="modi__tab-label">5×1000</span>
+        </button>
+        <button class="modi__tab" role="tab" id="tab-sostegno" aria-controls="panel-sostegno" aria-selected="false" tabindex="-1">
+          <span class="modi__tab-chiede">Ogni mese</span>
+          <span class="modi__tab-label">Sostegno a distanza</span>
+        </button>
+        <button class="modi__tab" role="tab" id="tab-memoria" aria-controls="panel-memoria" aria-selected="false" tabindex="-1">
+          <span class="modi__tab-chiede">Una volta sola</span>
+          <span class="modi__tab-label">Dona in memoria</span>
+        </button>
+        <button class="modi__tab" role="tab" id="tab-testamento" aria-controls="panel-testamento" aria-selected="false" tabindex="-1">
+          <span class="modi__tab-chiede">Per il futuro</span>
+          <span class="modi__tab-label">Testamento solidale</span>
+        </button>
+        <button class="modi__tab" role="tab" id="tab-volontariato" aria-controls="panel-volontariato" aria-selected="false" tabindex="-1">
+          <span class="modi__tab-chiede">Il tuo tempo</span>
+          <span class="modi__tab-label">Volontariato</span>
+        </button>
+        </div>
+      </div>
+
+      <!-- Pannelli: foto, testo descrittivo e azione -->
+      <div class="modi__panels">
+        <div class="modi__panel is-active" role="tabpanel" id="panel-5x1000" aria-labelledby="tab-5x1000" tabindex="0">
+          <div class="modi__media">
+            <img src="assets/img/lamore-si-fa-casa.jpg" alt="L'amore si fa casa: la comunità del Cottolengo" loading="lazy">
+          </div>
+          <div class="modi__content">
+            <div class="modi__text">
+              <h3>5×1000 — non ti costa nulla</h3>
+              <p>Una firma nella dichiarazione dei redditi vale cure e accoglienza per tanti. Non ti costa un euro.</p>
+            </div>
+            <a class="btn btn--modi" href="#cinquepermille">Come firmare <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="modi__panel" role="tabpanel" id="panel-sostegno" aria-labelledby="tab-sostegno" tabindex="0" hidden>
+          <div class="modi__media">
+            <img src="assets/img/Adozioni-a-distanza-con-Cottolengo.jpg" alt="Bambine e bambini sostenuti con il sostegno a distanza" loading="lazy">
+          </div>
+          <div class="modi__content">
+            <div class="modi__text">
+              <h3>Sostegno a distanza</h3>
+              <p>Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.</p>
+              <!-- Il cliente chiede di togliere il form e di dare il contatto diretto -->
+              <p class="modi__contatto">Oppure chiama <a href="tel:+393488989163">348 8989163</a> — Sr Mary Soshiyat</p>
+            </div>
+            <a class="btn btn--modi" href="mailto:adozioni@cottolengo.org">Scrivi per aderire <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="modi__panel" role="tabpanel" id="panel-memoria" aria-labelledby="tab-memoria" tabindex="0" hidden>
+          <div class="modi__media">
+            <img src="assets/img/adotta-un-nonno-a-Tachina.jpg" alt="Il sorriso di un anziano accolto in una casa del Cottolengo" loading="lazy">
+          </div>
+          <div class="modi__content">
+            <div class="modi__text">
+              <h3>Dona in memoria</h3>
+              <p>Ricorda una persona cara con un gesto d'amore che continua a vivere.</p>
+            </div>
+            <a class="btn btn--modi" href="https://dona.cottolengo.org/in-memoria/">Come fare <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="modi__panel" role="tabpanel" id="panel-testamento" aria-labelledby="tab-testamento" tabindex="0" hidden>
+          <div class="modi__media">
+            <img src="assets/img/lasciti.jpg" alt="Un nonno con il nipotino sulle spalle" loading="lazy">
+          </div>
+          <div class="modi__content">
+            <div class="modi__text">
+              <h3>Testamento solidale</h3>
+              <p>Il loro futuro è la tua eredità più grande. Un lascito, anche piccolo, resta per sempre.</p>
+            </div>
+            <a class="btn btn--modi" href="https://donazioni.cottolengo.org/donazioni-cottolengo/dona/testamento-solidale/">Scopri di più <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="modi__panel" role="tabpanel" id="panel-volontariato" aria-labelledby="tab-volontariato" tabindex="0" hidden>
+          <div class="modi__media">
+            <img src="assets/img/Adotta-un-ospite-con-Cottolengo.jpg" alt="Volontari e ospiti insieme al Cottolengo" loading="lazy">
+          </div>
+          <div class="modi__content">
+            <div class="modi__text">
+              <h3>Volontariato</h3>
+              <p>Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.</p>
+            </div>
+            <a class="btn btn--modi" href="#contatti">Diventa volontario <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGETTI DA SOSTENERE (finestra sui progetti in evidenza) ============
+     Le card sono generate da js/main.js leggendo i progetti con flag "In evidenza"
+     in js/progetti-dati.js: sono le stesse card della pagina Progetti.
+     In WordPress: WP_Query sul CPT con meta_query sul campo ACF "in evidenza". -->
+<section class="evid" id="progetti-evidenza" aria-labelledby="evid-title">
+  <div class="container">
+    <h2 id="evid-title">Progetti da sostenere</h2>
+    <p class="section-intro">I progetti in evidenza, scelti tra tutti quelli attivi. Scegli quello che senti più tuo.</p>
+  </div>
+
+  <div class="evid-carousel">
+    <button class="evid-nav" id="evid-prev" type="button" aria-label="Mostra i progetti precedenti">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <ul class="evid-track" id="evid-track" tabindex="0" aria-label="Progetti in evidenza"><!-- generate via JS --></ul>
+
+    <button class="evid-nav" id="evid-next" type="button" aria-label="Mostra i progetti successivi">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="evid__footer">
+    <a class="btn btn--vedi-tutti" href="progetti.html">Vedi tutti i progetti <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- ============ CHI AIUTI ============ -->
+<section class="who" id="chi-aiuti" aria-labelledby="who-title">
+  <div class="container">
+    <header class="section-head">
+      <h2 id="who-title">Chi aiuti con il tuo gesto</h2>
+      <p class="section-intro">Dietro ogni donazione c'è un volto. Questi sono i nostri ospiti, la nostra famiglia.</p>
+    </header>
+
+    <!-- Le icone .dot-mask sono placeholder: verranno sostituite dal cliente con icone custom in stile logo COT. -->
+    <div class="who__grid">
+      <article class="who-card">
+        <span class="who-card__icon dot-mask icona-anziani" aria-hidden="true"></span>
+        <h3>Anziani fragili</h3>
+        <p>Accolti e curati nelle nostre case quando non hanno più nessuno, in Italia e nel mondo.</p>
+        <p class="who-card__stat">Oltre <strong>2.000</strong> anziani accolti ogni anno<!-- dato placeholder --></p>
+        <a class="btn btn--esplora" href="progetti.html?chi_aiuti=anziani-fragili">Esplora progetti <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="who-card">
+        <span class="who-card__icon dot-mask icona-disabilita" aria-hidden="true"></span>
+        <h3>Persone con disabilità</h3>
+        <p>Assistenza, riabilitazione e una vera famiglia, ogni giorno della vita.</p>
+        <p class="who-card__stat">Più di <strong>1.000</strong> persone seguite ogni giorno<!-- dato placeholder --></p>
+        <a class="btn btn--esplora" href="progetti.html?chi_aiuti=persone-con-disabilita">Esplora progetti <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="who-card">
+        <span class="who-card__icon dot-mask icona-famiglie" aria-hidden="true"></span>
+        <h3>Educazione e famiglie</h3>
+        <p>Sostegno a distanza, scuola e aiuto alle mamme e alle famiglie in difficoltà.</p>
+        <p class="who-card__stat">Oltre <strong>500</strong> bambini sostenuti a distanza<!-- dato placeholder --></p>
+        <a class="btn btn--esplora" href="progetti.html?chi_aiuti=educazione-e-famiglie">Esplora progetti <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="who-card">
+        <span class="who-card__icon dot-mask icona-casa" aria-hidden="true"></span>
+        <h3>Cure sanitarie</h3>
+        <p>Cure mediche, riabilitazione e assistenza per chi non potrebbe permettersele.</p>
+        <p class="who-card__stat"><strong>97.000</strong> pasti caldi serviti ogni anno<!-- dato placeholder --></p>
+        <a class="btn btn--esplora" href="progetti.html?chi_aiuti=cure-sanitarie">Esplora progetti <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+
+    <p class="who__note">Numeri indicativi a scopo di esempio: da sostituire con i dati reali dell'Opera. I link "Esplora progetti" puntano all'archivio unico dei progetti con il filtro "chi aiuti" già applicato (da collegare in fase WordPress).</p>
+  </div>
+</section>
+
+<!-- ============ PROGETTI NEL MONDO (mappa interattiva) ============ -->
+<section class="world" id="progetti" aria-labelledby="world-title">
+  <div class="world__layout">
+
+    <div class="world__map" id="world-map" data-map-src="assets/svg/mappadot.web.svg">
+      <!-- Mappa a pallini: file esterno assets/svg/mappadot.web.svg, iniettato inline a
+           runtime (in produzione WordPress: include lato server nel template).
+           Sorgente Illustrator: assets/svg/mappadot.svg → tools/build-mappa.py
+           Regioni accese: js/mappa-regioni.js -->
+    </div>
+
+    <div class="world__side">
+      <header class="world__head">
+        <h2 id="world-title">I nostri progetti nel mondo</h2>
+        <p class="section-intro">Dalla Piccola Casa di Torino l'aiuto arriva in 4 continenti.
+        Esplora dalla mappa o dalle schede qui a lato.</p>
+      </header>
+      <!-- schede orizzontali, generate via JS -->
+      <ul class="world__cards" id="world-cards" aria-label="Aree dei progetti"></ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOVE VA LA TUA DONAZIONE (grafico a torta) ============ -->
+<section class="where" id="trasparenza" aria-labelledby="where-title">
+  <div class="container">
+    <header class="section-head">
+      <h2 id="where-title">Dove va la tua donazione</h2>
+      <p class="section-intro">Vogliamo che tu sappia sempre come viene usato il tuo aiuto.<br>
+      Ecco come vengono impiegati i fondi raccolti.<sup>*</sup></p>
+    </header>
+
+    <div class="where__layout">
+      <img class="where__brush" src="assets/img/pennello.png" alt="" aria-hidden="true">
+      <div class="donut" role="img" aria-label="Grafico a torta: 84% ai progetti di assistenza, 10% al funzionamento delle case, 6% alla raccolta fondi">
+        <!-- ciambella SVG: si disegna progressivamente quando la sezione entra in vista
+             (circonferenza r=145.5 → 914.2; i segmenti sono frazioni di essa via --len) -->
+        <svg class="donut__svg" viewBox="0 0 360 360" aria-hidden="true">
+          <circle class="donut__track" cx="180" cy="180" r="145.5"/>
+          <circle class="donut__seg donut__seg--1" cx="180" cy="180" r="145.5" style="--len: 767.9" transform="rotate(-90 180 180)"/>
+          <circle class="donut__seg donut__seg--2" cx="180" cy="180" r="145.5" style="--len: 91.4" transform="rotate(212.4 180 180)"/>
+          <circle class="donut__seg donut__seg--3" cx="180" cy="180" r="145.5" style="--len: 54.9" transform="rotate(248.4 180 180)"/>
+        </svg>
+      </div>
+
+      <ul class="where__legend">
+        <li class="legend-row">
+          <span class="legend-row__num legend-row__num--1">84%</span>
+          <div class="legend-row__text">
+            <strong>Assistenza e progetti di carità</strong>
+            <p>Pasti, cure mediche, accoglienza e missioni in 4 continenti.</p>
+          </div>
+        </li>
+        <li class="legend-row">
+          <span class="legend-row__num legend-row__num--2">10%</span>
+          <div class="legend-row__text">
+            <strong>Funzionamento delle case</strong>
+            <p>Le strutture che ogni giorno tengono le porte aperte.</p>
+          </div>
+        </li>
+        <li class="legend-row">
+          <span class="legend-row__num legend-row__num--3">6%</span>
+          <div class="legend-row__text">
+            <strong>Raccolta fondi e comunicazione</strong>
+            <p>Per far conoscere i progetti e trovare nuovi amici.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <p class="where__note"><sup>*</sup> Dati indicativi a scopo di esempio: da sostituire con i valori del bilancio sociale.</p>
+  </div>
+</section>
+
+<!-- ============ LOGHI PARTNER (carosello a scorrimento infinito) ============ -->
+<section class="partners" aria-label="I nostri partner">
+  <div class="container">
+    <p class="partners__title">Con il sostegno e la collaborazione di</p>
+  </div>
+  <!-- Marquee CSS: la lista dei loghi è duplicata (aria-hidden) per lo scorrimento continuo senza stacchi.
+       I loghi sono placeholder: sostituire i box .partners__logo con i loghi reali dei partner. -->
+  <div class="partners__viewport">
+    <ul class="partners__track" role="list">
+      <li class="partners__logo">Partner 1</li>
+      <li class="partners__logo">Partner 2</li>
+      <li class="partners__logo">Partner 3</li>
+      <li class="partners__logo">Partner 4</li>
+      <li class="partners__logo">Partner 5</li>
+      <li class="partners__logo">Partner 6</li>
+      <li class="partners__logo">Partner 7</li>
+      <li class="partners__logo">Partner 8</li>
+    </ul>
+    <ul class="partners__track" role="list" aria-hidden="true">
+      <li class="partners__logo">Partner 1</li>
+      <li class="partners__logo">Partner 2</li>
+      <li class="partners__logo">Partner 3</li>
+      <li class="partners__logo">Partner 4</li>
+      <li class="partners__logo">Partner 5</li>
+      <li class="partners__logo">Partner 6</li>
+      <li class="partners__logo">Partner 7</li>
+      <li class="partners__logo">Partner 8</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIANZE (carosello auto-scorrevole) ============ -->
+<section class="quote" aria-label="Testimonianze">
+  <div class="container">
+    <div class="quote-carousel" id="quote-carousel" aria-roledescription="carosello" aria-label="Testimonianze">
+      <div class="quote-track" id="quote-track">
+
+        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="1 di 4">
+          <p>«Qui non sono mai stato un numero. Sono stato, da subito, uno di famiglia.»</p>
+          <cite>— Un ospite della Piccola Casa, Torino <em>(testo placeholder)</em></cite>
+        </blockquote>
+
+        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="2 di 4">
+          <p>«Ho trovato una casa quando pensavo di non averne più una. Grazie a chi sostiene tutto questo.»</p>
+          <cite>— Maria, ospite della casa di riposo <em>(testo placeholder)</em></cite>
+        </blockquote>
+
+        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="3 di 4">
+          <p>«Con una piccola donazione mensile so di dare un pasto caldo a chi non ha nulla. È poco per me, tanto per loro.»</p>
+          <cite>— Giulia, donatrice da 3 anni <em>(testo placeholder)</em></cite>
+        </blockquote>
+
+        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="4 di 4">
+          <p>«Da volontario ho visto con i miei occhi dove va l'aiuto: in cura, ascolto e dignità per ogni persona.»</p>
+          <cite>— Paolo, volontario cottolenghino <em>(testo placeholder)</em></cite>
+        </blockquote>
+
+      </div>
+
+      <div class="quote-carousel__controls">
+        <div class="quote-dots" id="quote-dots" role="tablist" aria-label="Scegli la testimonianza"></div>
+        <button class="quote-pause" id="quote-pause" type="button" aria-label="Metti in pausa lo scorrimento automatico">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <a class="quote__more" href="https://donazioni.cottolengo.org/testimonianze/">Leggi tutte le testimonianze <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contatti">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand">
+      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="footer__logo">
+      <p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1832.</p>
+    </div>
+    <div class="footer__col">
+      <h3>Contatti</h3>
+      <address>
+        Ufficio Progetti e Raccolta Fondi<br>
+        Via Cottolengo, 14 — 10152 Torino<br>
+        <a href="tel:+390115225658">011 522 5658</a><br>
+        <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>
+      </address>
+    </div>
+    <div class="footer__col">
+      <h3>Dona con bonifico</h3>
+      <p>
+        Fondazione Cottolengo Solidale<br>
+        Ente del Terzo Settore<br>
+        IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>
+        Cod. Fiscale: 97905980013<br>
+        C/C postale n. 1072743170
+      </p>
+    </div>
+    <div class="footer__col">
+      <h3>Link utili</h3>
+      <!-- Voci placeholder: verranno concordate in futuro -->
+      <ul>
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">Dolor sit amet</a></li>
+        <li><a href="#">Consectetur elit</a></li>
+        <li><a href="#">Sed do eiusmod</a></li>
+        <li><a href="#">Tempor incididunt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p>
+  </div>
+</footer>
+
+<!-- Barra "Dona ora" fissa su mobile -->
+<div class="sticky-dona" id="sticky-dona" aria-hidden="true">
+  <a href="#dona" class="btn btn--dona">
+    <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+    Dona ora
+  </a>
+</div>
+
+<script src="js/mappa-regioni.js"></script>
+<script src="js/progetti-dati.js"></script><!-- dati progetti condivisi con progetti.html -->
+<script src="js/main.js"></script>
+</body>
+</html>
