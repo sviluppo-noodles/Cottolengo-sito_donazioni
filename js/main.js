@@ -96,7 +96,7 @@ burger.addEventListener('click', () => {
 
 // chiudi il menu quando si sceglie una voce
 nav.addEventListener('click', e => {
-  if (e.target.tagName === 'A') {
+  if (e.target.closest('a')) {
     nav.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
   }

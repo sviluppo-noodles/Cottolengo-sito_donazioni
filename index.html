@@ -10,7 +10,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/opensans-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/style.css?v=19">
 </head>
 <body>
 
@@ -30,13 +30,38 @@
             Come donare
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <ul class="nav__dropdown" id="menu-donare">
-            <li><a href="#dona">Donazione libera</a></li>
-            <li><a href="#come-donare">5×1000</a></li>
-            <li><a href="#come-donare">Testamento solidale</a></li>
-            <li><a href="#come-donare">Dona in memoria</a></li>
-            <li><a href="#come-donare">Volontariato</a></li>
-          </ul>
+          <!-- Menu a comparsa a tutta larghezza dell'header: elenco delle voci a
+               sinistra, descrizione della voce puntata a destra. Serve a rendere
+               autoesplicative le voci, che da sole non dicono cosa comportano.
+
+               La descrizione sta in data-desc su ogni voce: è l'unica fonte, il JS
+               la mostra a destra su desktop e sotto la voce su telefono. Chi cura i
+               contenuti la modifica lì, senza toccare CSS o JS.
+
+               Gli href #modo-<voce> aprono la scheda corrispondente nella sezione
+               "Come fare del bene" (js/nav.js), così il click mantiene la promessa
+               fatta dalla descrizione. -->
+          <div class="nav__mega" id="menu-donare">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce is-current" href="#dona"
+                       data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
+                <li><a class="nav__mega__voce" href="#modo-sostegno"
+                       data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
+                <li><a class="nav__mega__voce" href="#modo-5x1000"
+                       data-desc="Una firma nella dichiarazione dei redditi vale cure e accoglienza per tanti. Non ti costa un euro.">5×1000</a></li>
+                <li><a class="nav__mega__voce" href="#modo-memoria"
+                       data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
+                <li><a class="nav__mega__voce" href="#modo-testamento"
+                       data-desc="Il loro futuro è la tua eredità più grande. Un lascito, anche piccolo, resta per sempre.">Testamento solidale</a></li>
+                <li><a class="nav__mega__voce" href="#modo-volontariato"
+                       data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" id="nav-mega-desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
+              </div>
+            </div>
+          </div>
         </li>
         <li><a href="progetti.html" class="nav__link">I progetti</a></li>
         <li><a href="#contatti" class="nav__link">Contatti</a></li>
@@ -599,5 +624,6 @@
 <script src="js/mappa-regioni.js"></script>
 <script src="js/progetti-dati.js"></script><!-- dati progetti condivisi con progetti.html -->
 <script src="js/main.js"></script>
+<script src="js/nav.js"></script><!-- dopo main.js: apre le schede via click sul tab -->
 </body>
 </html>

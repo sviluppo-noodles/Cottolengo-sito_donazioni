@@ -313,35 +313,104 @@ select:focus-visible, [tabindex]:focus-visible {
 .nav__link[aria-current="page"]::after,
 .nav__item--dropdown.open .nav__link::after { transform: scaleX(1); }
 
-/* Dropdown "Come donare" */
-.nav__item--dropdown { position: relative; }
-
-.nav__dropdown {
-  position: absolute;
-  top: 100%;                 /* a filo con il bordo inferiore della navbar */
-  left: 0;
-  min-width: 250px;
-  background: #fff;
-  border-radius: 0 0 var(--raggio) var(--raggio);   /* smusso solo in basso */
-  box-shadow: var(--ombra-leggera);
-  list-style: none;
-  padding: 0.5rem;
-  display: none;
-  z-index: 50;
-}
-.nav__item--dropdown.open .nav__dropdown { display: block; }
+/* ============ MENU A COMPARSA "Come donare" ============
+   Pannello largo quanto l'header, non quanto la voce: il riferimento per il
+   posizionamento è .header, che è già sticky (quindi posizionato). Per questo
+   .nav__item--dropdown NON deve essere position: relative, altrimenti il
+   pannello si ancorerebbe alla singola voce.
+   Dentro, due colonne inscritte nella larghezza del body (.container):
+   elenco a sinistra, descrizione della voce puntata a destra. */
 .nav__item--dropdown.open .nav__caret { transform: rotate(180deg); }
 .nav__caret { transition: transform var(--transizione); }
 
-.nav__dropdown a {
-  display: block;
-  padding: 0.7rem 1rem;
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: var(--r-1);
+.nav__mega {
+  position: absolute;
+  top: 100%;                       /* a filo col bordo inferiore della navbar */
+  left: 0;
+  right: 0;
+  height: 24rem;                   /* altezza FISSA: un elenco più corto resta
+                                      solo meno pieno, il pannello non salta */
+  background: var(--azzurro);
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 20px 44px rgba(0, 59, 87, 0.26);
+  z-index: 60;
+  /* visibility invece di display: si può animare e tiene le voci fuori dal
+     percorso di tabulazione quando il pannello è chiuso */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.22s ease, transform 0.24s var(--ease-uscita),
+              visibility 0.22s;
 }
-.nav__dropdown a:hover { background: var(--azzurro-chiarissimo); color: var(--azzurro-scuro); }
+.nav__item--dropdown.open .nav__mega {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.nav__mega__inner {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--s-7);
+  padding-block: var(--s-6);
+}
+
+.nav__mega__voci {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav__mega__voce {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--r-1);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--f-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: background var(--transizione);
+}
+/* freccia sulla voce puntata: dice che il click porta da qualche parte */
+.nav__mega__voce::after {
+  content: "→";
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transizione), transform var(--transizione);
+}
+.nav__mega__voce:hover,
+.nav__mega__voce:focus-visible,
+.nav__mega__voce.is-current { background: rgba(255, 255, 255, 0.18); }
+.nav__mega__voce.is-current::after { opacity: 1; transform: none; }
+
+/* la descrizione sotto la voce serve solo su telefono, dove non c'è la
+   colonna di destra: il JS la scrive leggendo lo stesso data-desc */
+.nav__mega__voce-desc { display: none; }
+
+/* colonna destra: separata da una hairline, non da un bordo pesante */
+.nav__mega__testo {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+  padding-left: var(--s-7);
+  padding-top: 0.7rem;
+}
+/* La descrizione è l'unico contenuto di una colonna larga: sta a lei riempirla.
+   Corpo grande e misura corta, così sono le parole a occupare lo spazio. */
+.nav__mega__desc {
+  color: #fff;
+  font-size: clamp(1.25rem, 1.7vw, 1.7rem);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  max-width: 30ch;
+  text-wrap: pretty;
+}
 
 /* Hamburger (solo mobile) */
 .header__burger {
@@ -1592,18 +1661,57 @@ fieldset { border: none; }
     transition: transform 0.25s ease;
     box-shadow: 0 16px 30px rgba(0,59,87,0.3);
     margin-left: 0;
+    /* Con il menu "Come donare" aperto le voci + descrizioni superano l'altezza
+       dello schermo: senza questo, "Contatti" resta fuori e irraggiungibile
+       perché il pannello è fixed e non scorre. dvh tiene conto della barra
+       dinamica dei browser mobili; vh è il ripiego. */
+    max-height: calc(100vh - 68px);
+    max-height: calc(100dvh - 68px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav.open { transform: translateY(0); }
   .nav__list { flex-direction: column; align-items: stretch; gap: 0.2rem; }
   .nav__link { width: 100%; font-size: 1.2rem; padding: 0.9rem 1rem; }
-  .nav__dropdown {
+  /* Su telefono il pannello non ha spazio per due colonne: diventa un elenco
+     impilato dentro il menu, e la descrizione scende sotto ogni voce — così
+     l'informazione che rende autoesplicative le voci non si perde. */
+  .nav__mega {
     position: static;
+    height: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-top: none;
     box-shadow: none;
-    background: rgba(255,255,255,0.1);
+    border-radius: var(--r-1);
     margin-top: 0.2rem;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
   }
-  .nav__dropdown a { color: #fff; font-size: 1.05rem; }
-  .nav__dropdown a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .nav__item--dropdown.open .nav__mega { display: block; }
+  .nav__mega__inner {
+    width: auto;
+    display: block;
+    height: auto;
+    padding: 0.35rem;
+  }
+  .nav__mega__voce {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    font-size: 1.05rem;
+  }
+  .nav__mega__voce::after { display: none; }
+  .nav__mega__voce-desc {
+    display: block;
+    font-family: var(--f-testo);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.82);
+  }
+  .nav__mega__testo { display: none; }
 
   .hero { padding-block: var(--s-7) 0; }   /* stesso stacco dal banner, ridotto per lo schermo piccolo */
   .dona-card__head { padding: 1.4rem 1.6rem; }

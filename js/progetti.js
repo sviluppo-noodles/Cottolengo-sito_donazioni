@@ -115,7 +115,9 @@
       burger.setAttribute('aria-label', aperto ? 'Chiudi il menu' : 'Apri il menu');
     });
     nav.addEventListener('click', e => {
-      if (e.target.tagName === 'A') {
+      // closest('a') e non e.target.tagName: nel menu a comparsa il click può
+      // cadere sullo <span> della descrizione dentro il link
+      if (e.target.closest('a')) {
         nav.classList.remove('open');
         burger.setAttribute('aria-expanded', 'false');
       }
