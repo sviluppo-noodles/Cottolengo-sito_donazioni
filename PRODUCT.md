@@ -81,7 +81,7 @@ La leva non è l'urgenza dell'emergenza ma la **continuità quotidiana della cur
 **Dati reali, già verificati e da preservare**
 
 - Fondazione Cottolengo Solidale ETS — IBAN `IT42 W030 4801 00000000 0097137`, Cod. Fiscale `97905980013`, C/C postale `1072743170`.
-- Codice fiscale per il 5×1000: `97656390016`.
+- Codice fiscale per il 5×1000: **`97905980013`** — lo stesso della Fondazione Cottolengo Solidale ETS. Corretto dal cliente il 2026-07-28: il prototipo riportava `97656390016`, che non è il codice da usare. Lo conferma la creatività ufficiale della campagna (`assets/img/COT_Adv 5x1000_200x140.jpg`), che stampa `97905980013`.
 - Ufficio Progetti e Raccolta Fondi — Via Cottolengo 14, 10152 Torino · 011 522 5658 · `infodonazioni@cottolengo.org`.
 - Sostegno a distanza — `adozioni@cottolengo.org` · 348 8989163 (Sr Mary Soshiyat).
 - Copy e immagini dei progetti ripresi dalle schede reali di `donazioni.cottolengo.org` (`js/progetti.js`).

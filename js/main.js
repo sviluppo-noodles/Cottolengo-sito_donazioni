@@ -251,6 +251,7 @@ document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, 
   const track = document.getElementById('cpm-track');
   const dotsWrap = document.getElementById('cpm-dots');
   const pauseBtn = document.getElementById('cpm-pause');
+  const banner = document.getElementById('cpm-banner');
   if (!track) return;
 
   const slides = Array.from(track.children);
@@ -278,6 +279,8 @@ document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, 
     indice = (i + slides.length) % slides.length;
     track.style.transform = `translateX(-${indice * 100}%)`;
     dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === indice)));
+    // slide su fondo chiaro: i controlli bianchi diventerebbero invisibili
+    banner.classList.toggle('is-chiara', slides[indice].classList.contains('cpm-slide--chiara'));
   }
 
   function avanti() { vaiA(indice + 1); }
@@ -299,7 +302,6 @@ document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, 
   }
 
   // pausa quando il mouse è sopra o c'è focus da tastiera
-  const banner = document.getElementById('cpm-banner');
   banner.addEventListener('mouseenter', stop);
   banner.addEventListener('mouseleave', () => { if (!inPausa) avvia(); });
   banner.addEventListener('focusin', stop);

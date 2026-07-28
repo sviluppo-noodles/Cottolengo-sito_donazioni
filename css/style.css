@@ -282,18 +282,36 @@ select:focus-visible, [tabindex]:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  position: relative;
   color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.08rem;
-  padding: 0.6rem 0.95rem;
-  border-radius: var(--raggio);
+  padding: 0.6rem 0.95rem 0.75rem;
   background: none;
   border: none;
   cursor: pointer;
-  transition: background var(--transizione);
 }
-.nav__link:hover { background: rgba(255, 255, 255, 0.16); }
+
+/* Linea che si apre dal centro sotto la voce. Vale SOLO per le voci di primo
+   livello: quelle dentro la tendina hanno il loro stato (.nav__dropdown a).
+   scaleX su un elemento già presente = animazione fluida, nessun reflow. */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.95rem;
+  bottom: 0;
+  height: 5px;
+  border-radius: 3px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.28s var(--ease-uscita);
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after,
+.nav__link[aria-current="page"]::after,
+.nav__item--dropdown.open .nav__link::after { transform: scaleX(1); }
 
 /* Dropdown "Come donare" */
 .nav__item--dropdown { position: relative; }
@@ -346,7 +364,7 @@ select:focus-visible, [tabindex]:focus-visible {
 .hero {
   position: relative;
   background: var(--azzurro-chiarissimo);
-  padding-block: 2rem 0;     /* compatta: aiuta i contenuti a stare nel fold */
+  padding-block: var(--s-8) 0;   /* stacco dal banner; titolo e card scendono insieme */
   overflow: hidden;          /* taglia l'eccedenza laterale della foto (niente scroll orizzontale) */
   /* nav + banner + hero = 100% dell'altezza schermo (--fold-h impostato via JS).
      min-height (non height) → su schermi bassi la hero cresce e NON taglia mai la card. */
@@ -468,6 +486,17 @@ select:focus-visible, [tabindex]:focus-visible {
   cursor: pointer;
 }
 .cpm-pause:hover { background: rgba(255, 255, 255, 0.25); }
+
+/* Slide su fondo chiaro (es. 5×1000): i controlli sono bianchi e sparirebbero.
+   Il JS mette .is-chiara sul banner quando la slide attiva ha .cpm-slide--chiara. */
+.cpm-banner.is-chiara .cpm-dot { background: rgba(0, 59, 87, 0.3); }
+.cpm-banner.is-chiara .cpm-dot[aria-selected="true"] { background: var(--azzurro-scuro); }
+.cpm-banner.is-chiara .cpm-pause {
+  border-color: rgba(0, 59, 87, 0.35);
+  background: rgba(0, 59, 87, 0.06);
+  color: var(--azzurro-scuro);
+}
+.cpm-banner.is-chiara .cpm-pause:hover { background: rgba(0, 59, 87, 0.14); }
 
 .btn--copy {
   background: #fff;
@@ -1054,12 +1083,17 @@ fieldset { border: none; }
 }
 
 .modi__tab:hover { background: rgba(255, 255, 255, 0.72); color: var(--azzurro-scuro); }
+/* Voce scelta: azzurra piena con testo bianco — si stacca dalle altre
+   molto più di quanto facesse il bianco su fondo azzurrino. */
 .modi__tab.is-active {
-  background: var(--bianco);
-  color: var(--azzurro);
+  background: var(--azzurro);
+  color: #fff;
   box-shadow: var(--e-1);
 }
-.modi__tab.is-active .modi__tab-chiede { color: var(--azzurro-scuro); }
+.modi__tab.is-active .modi__tab-chiede { color: rgba(255, 255, 255, 0.85); }
+/* la hairline sotto la voce attiva sparisce: il blocco pieno separa già */
+.modi__tab.is-active::after,
+.modi__tab.is-active + .modi__tab::before { opacity: 0; }
 
 /* ---- Pannello: foto in alto, testo e azione sotto ----
    L'immagine assorbe l'altezza che avanza, così cambiando voce il modulo non
@@ -1106,7 +1140,14 @@ fieldset { border: none; }
 }
 /* recapito diretto (sostegno a distanza): secondario, non compete col pulsante */
 .modi__contatto { font-size: var(--t-micro) !important; color: var(--ink-tenue) !important; }
-.modi__contatto a { color: var(--azzurro-scuro); font-weight: 600; }
+/* padding + margine negativo di pari valore: l'area toccabile del numero
+   arriva a 44px senza spostare di un pixel il testo attorno */
+.modi__contatto a {
+  color: var(--azzurro-scuro);
+  font-weight: 600;
+  padding: 0.8rem 0.25rem;
+  margin: -0.8rem -0.25rem;
+}
 
 .btn--modi {
   flex: none;
@@ -1127,6 +1168,12 @@ fieldset { border: none; }
   padding-block: var(--s-sezione);
   scroll-margin-top: 90px;
 }
+
+/* "Come fare del bene" e "Progetti da sostenere" sono due sezioni bianche una
+   sotto l'altra: senza un cambio di fondo che le separi, sommare i due respiri
+   verticali produceva un vuoto doppio (200px). Qui il respiro è condiviso. */
+.modi { padding-bottom: calc(var(--s-sezione) * 0.5); }
+.evid { padding-top: calc(var(--s-sezione) * 0.5); }
 .evid h2 { text-align: center; }
 .evid .section-intro { margin-bottom: 3rem; }
 
@@ -1485,7 +1532,7 @@ fieldset { border: none; }
    RESPONSIVE
    ========================================================== */
 @media (max-width: 1020px) {
-  .hero { padding-block: 2.5rem 0; }
+  .hero { padding-block: var(--s-7) 0; }
   .quote-slide { flex-basis: 58%; }   /* tablet */
   /* mobile: banner 5x1000 in alto, poi donazioni -> testo -> foto in flusso */
   .hero__main {
@@ -1558,7 +1605,7 @@ fieldset { border: none; }
   .nav__dropdown a { color: #fff; font-size: 1.05rem; }
   .nav__dropdown a:hover { background: rgba(255,255,255,0.15); color: #fff; }
 
-  .hero { padding-block: 2rem 0; }
+  .hero { padding-block: var(--s-7) 0; }   /* stesso stacco dal banner, ridotto per lo schermo piccolo */
   .dona-card__head { padding: 1.4rem 1.6rem; }
   .dona-card__body { padding: 1.6rem 1.6rem 1.8rem; }
   .cpm-slide__sub { display: none; }

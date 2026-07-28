@@ -61,7 +61,9 @@
       <div class="cpm-track" id="cpm-track">
 
         <!-- Slide 1 · 5x1000 (3 sezioni: immagine | testo+codice | bottone) -->
-        <article class="cpm-slide cpm-slide--5x1000" id="cinquepermille" aria-roledescription="slide" aria-label="1 di 3: 5 per mille">
+        <!-- cpm-slide--chiara: slide su fondo chiaro. Il JS la riconosce e scurisce
+             i controlli del carosello, che altrimenti sono bianchi su bianco. -->
+        <article class="cpm-slide cpm-slide--5x1000 cpm-slide--chiara" id="cinquepermille" aria-roledescription="slide" aria-label="1 di 3: 5 per mille">
           <div class="cpm5__sec cpm5__img">
             <img src="assets/img/bannertest2.jpg" alt="5 per mille">
           </div>
@@ -69,11 +71,11 @@
             <p class="cpm5__claim">Tocca con mano,<br>dona con fiducia.</p>
             <p class="cpm5__cf">
               <span class="cpm5__cf-label">Codice<br>fiscale</span>
-              <span class="cpm5__cf-num">97656390016</span>
+              <span class="cpm5__cf-num">97905980013</span>
             </p>
           </div>
           <div class="cpm5__sec cpm5__action">
-            <button class="btn btn--copy" type="button" data-copy="97656390016">
+            <button class="btn btn--copy" type="button" data-copy="97905980013">
               <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 012-2h10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
               <span class="btn__label">Copia codice fiscale</span>
             </button>
@@ -225,13 +227,13 @@
       <div class="modi__side">
         <h2 id="modi-title">Come fare del bene</h2>
         <div class="modi__nav" role="tablist" aria-label="Modi per fare del bene" aria-orientation="vertical">
-        <button class="modi__tab is-active" role="tab" id="tab-5x1000" aria-controls="panel-5x1000" aria-selected="true">
-          <span class="modi__tab-chiede">Una firma, zero euro</span>
-          <span class="modi__tab-label">5×1000</span>
-        </button>
-        <button class="modi__tab" role="tab" id="tab-sostegno" aria-controls="panel-sostegno" aria-selected="false" tabindex="-1">
+        <button class="modi__tab is-active" role="tab" id="tab-sostegno" aria-controls="panel-sostegno" aria-selected="true">
           <span class="modi__tab-chiede">Ogni mese</span>
           <span class="modi__tab-label">Sostegno a distanza</span>
+        </button>
+        <button class="modi__tab" role="tab" id="tab-5x1000" aria-controls="panel-5x1000" aria-selected="false" tabindex="-1">
+          <span class="modi__tab-chiede">Una firma, zero euro</span>
+          <span class="modi__tab-label">5×1000</span>
         </button>
         <button class="modi__tab" role="tab" id="tab-memoria" aria-controls="panel-memoria" aria-selected="false" tabindex="-1">
           <span class="modi__tab-chiede">Una volta sola</span>
@@ -250,20 +252,7 @@
 
       <!-- Pannelli: foto, testo descrittivo e azione -->
       <div class="modi__panels">
-        <div class="modi__panel is-active" role="tabpanel" id="panel-5x1000" aria-labelledby="tab-5x1000" tabindex="0">
-          <div class="modi__media">
-            <img src="assets/img/lamore-si-fa-casa.jpg" alt="L'amore si fa casa: la comunità del Cottolengo" loading="lazy">
-          </div>
-          <div class="modi__content">
-            <div class="modi__text">
-              <h3>5×1000 — non ti costa nulla</h3>
-              <p>Una firma nella dichiarazione dei redditi vale cure e accoglienza per tanti. Non ti costa un euro.</p>
-            </div>
-            <a class="btn btn--modi" href="#cinquepermille">Come firmare <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-
-        <div class="modi__panel" role="tabpanel" id="panel-sostegno" aria-labelledby="tab-sostegno" tabindex="0" hidden>
+        <div class="modi__panel is-active" role="tabpanel" id="panel-sostegno" aria-labelledby="tab-sostegno" tabindex="0">
           <div class="modi__media">
             <img src="assets/img/Adozioni-a-distanza-con-Cottolengo.jpg" alt="Bambine e bambini sostenuti con il sostegno a distanza" loading="lazy">
           </div>
@@ -275,6 +264,19 @@
               <p class="modi__contatto">Oppure chiama <a href="tel:+393488989163">348 8989163</a> — Sr Mary Soshiyat</p>
             </div>
             <a class="btn btn--modi" href="mailto:adozioni@cottolengo.org">Scrivi per aderire <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="modi__panel" role="tabpanel" id="panel-5x1000" aria-labelledby="tab-5x1000" tabindex="0" hidden>
+          <div class="modi__media">
+            <img src="assets/img/COT_Adv%205x1000_200x140.jpg" alt="Campagna 5 per mille del Cottolengo" loading="lazy">
+          </div>
+          <div class="modi__content">
+            <div class="modi__text">
+              <h3>5×1000 — non ti costa nulla</h3>
+              <p>Una firma nella dichiarazione dei redditi vale cure e accoglienza per tanti. Non ti costa un euro.</p>
+            </div>
+            <a class="btn btn--modi" href="#cinquepermille">Come firmare <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
