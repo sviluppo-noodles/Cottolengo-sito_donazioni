@@ -383,10 +383,9 @@
       <p class="section-intro">Dietro ogni donazione c'è un volto. Questi sono i nostri ospiti, la nostra famiglia.</p>
     </header>
 
-    <!-- Le icone .dot-mask sono placeholder: verranno sostituite dal cliente con icone custom in stile logo COT. -->
     <div class="who__grid">
       <article class="who-card">
-        <span class="who-card__icon dot-mask icona-anziani" aria-hidden="true"></span>
+        <img class="who-card__icon" src="assets/svg/Anziani_soli.svg" alt="" aria-hidden="true">
         <h3>Anziani fragili</h3>
         <p>Accolti e curati nelle nostre case quando non hanno più nessuno, in Italia e nel mondo.</p>
         <p class="who-card__stat">Oltre <strong>2.000</strong> anziani accolti ogni anno<!-- dato placeholder --></p>
@@ -394,7 +393,7 @@
       </article>
 
       <article class="who-card">
-        <span class="who-card__icon dot-mask icona-disabilita" aria-hidden="true"></span>
+        <img class="who-card__icon" src="assets/svg/Disabilit%C3%A0.svg" alt="" aria-hidden="true">
         <h3>Persone con disabilità</h3>
         <p>Assistenza, riabilitazione e una vera famiglia, ogni giorno della vita.</p>
         <p class="who-card__stat">Più di <strong>1.000</strong> persone seguite ogni giorno<!-- dato placeholder --></p>
@@ -402,7 +401,7 @@
       </article>
 
       <article class="who-card">
-        <span class="who-card__icon dot-mask icona-famiglie" aria-hidden="true"></span>
+        <img class="who-card__icon" src="assets/svg/Persone.svg" alt="" aria-hidden="true">
         <h3>Educazione e famiglie</h3>
         <p>Sostegno a distanza, scuola e aiuto alle mamme e alle famiglie in difficoltà.</p>
         <p class="who-card__stat">Oltre <strong>500</strong> bambini sostenuti a distanza<!-- dato placeholder --></p>
@@ -410,7 +409,7 @@
       </article>
 
       <article class="who-card">
-        <span class="who-card__icon dot-mask icona-casa" aria-hidden="true"></span>
+        <img class="who-card__icon" src="assets/svg/Casa.svg" alt="" aria-hidden="true">
         <h3>Cure sanitarie</h3>
         <p>Cure mediche, riabilitazione e assistenza per chi non potrebbe permettersele.</p>
         <p class="who-card__stat"><strong>97.000</strong> pasti caldi serviti ogni anno<!-- dato placeholder --></p>
@@ -427,10 +426,11 @@
   <div class="world__layout">
 
     <div class="world__map" id="world-map" data-map-src="assets/svg/mappadot.web.svg">
-      <!-- Mappa a pallini: file esterno assets/svg/mappadot.web.svg, iniettato inline a
-           runtime (in produzione WordPress: include lato server nel template).
+      <!-- L'immagine garantisce la visualizzazione anche aprendo index.html con file://.
+           Su HTTP il JS la sostituisce con lo stesso SVG inline e interattivo.
            Sorgente Illustrator: assets/svg/mappadot.svg → tools/build-mappa.py
            Regioni accese: js/mappa-regioni.js -->
+      <img class="world__map-fallback" src="assets/svg/mappadot.web.svg" alt="Mappa dei progetti Cottolengo nel mondo">
     </div>
 
     <div class="world__side">

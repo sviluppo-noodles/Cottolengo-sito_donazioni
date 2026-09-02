@@ -999,30 +999,13 @@ fieldset { border: none; }
   flex-direction: column;
 }
 
-/* icona a matrice di punti (SVG disegnate in Illustrator).
-   Tecnica CSS mask: la forma arriva dal file SVG, il colore lo decide il CSS
-   via background-color. Per aggiornare un'icona basta sostituire il file in
-   assets/svg/: nessuna modifica al CSS.
-   Serve un server HTTP (come già per la mappa): con file:// le mask non caricano. */
-.dot-mask {
-  display: block;
-  background-color: var(--azzurro);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-/* un'icona = un file SVG in assets/svg/ usato come maschera */
-.icona-anziani     { -webkit-mask-image: url("../assets/svg/Anziani_soli.svg"); mask-image: url("../assets/svg/Anziani_soli.svg"); }
-.icona-disabilita  { -webkit-mask-image: url("../assets/svg/Disabilit%C3%A0.svg"); mask-image: url("../assets/svg/Disabilit%C3%A0.svg"); }
-.icona-famiglie    { -webkit-mask-image: url("../assets/svg/Persone.svg"); mask-image: url("../assets/svg/Persone.svg"); }
-.icona-casa        { -webkit-mask-image: url("../assets/svg/Casa.svg"); mask-image: url("../assets/svg/Casa.svg"); }
-.icona-cuore       { -webkit-mask-image: url("../assets/svg/Cuore.svg"); mask-image: url("../assets/svg/Cuore.svg"); }
+/* Icone SVG inserite come immagini: funzionano sia su HTTP sia aprendo il file
+   HTML direttamente dal computer. */
 .who-card__icon {
+  display: block;
   width: min(152px, 64%);   /* -20% rispetto a 190px / 80% */
   height: 112px;            /* -20% rispetto a 140px */
+  object-fit: contain;
   margin: 0 auto 1.6rem;
 }
 
@@ -1347,7 +1330,8 @@ fieldset { border: none; }
 /* ---- Mappa a pallini: grigi = disattivi (cls-1), azzurri = aree progetto (cls-2).
    I colori arrivano dallo <style> interno dell'SVG; qui solo highlight e cursore. ---- */
 .world__map { position: relative; }
-.world__svg { width: 100%; height: auto; display: block; }
+.world__svg,
+.world__map-fallback { width: 100%; height: auto; display: block; }
 /* la terra "spenta" è grigia (fill sul gruppo dentro l'SVG); qui gestiamo solo le regioni accese.
    Le regioni attive ricevono .is-live dal JS in base alla config in js/mappa-regioni.js */
 .world__svg path { transition: fill 0.2s ease; }

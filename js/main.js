@@ -337,17 +337,23 @@ document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, 
     href: `progetti.html?area=${s.key}`,
   }));
 
+  const fallback = host.querySelector('.world__map-fallback');
   const svgInDom = document.getElementById('map-svg');
   if (svgInDom) {
+    fallback?.remove();
     setup(svgInDom);                     // già inline (es. include lato server)
   } else if (host.dataset.mapSrc) {
     fetch(host.dataset.mapSrc)           // prototipo statico: carico e inietto
-      .then(r => r.text())
+      .then(r => {
+        if (!r.ok) throw new Error(`SVG non disponibile: ${r.status}`);
+        return r.text();
+      })
       .then(txt => {
+        fallback?.remove();
         host.insertAdjacentHTML('afterbegin', txt);
         setup(document.getElementById('map-svg'));
       })
-      .catch(() => costruisciSchede());  // se l'SVG non carica, le schede restano usabili
+      .catch(() => costruisciSchede());  // con file:// resta visibile l'immagine di fallback
   } else {
     costruisciSchede();
   }
