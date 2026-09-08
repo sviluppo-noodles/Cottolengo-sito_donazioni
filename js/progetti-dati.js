@@ -63,10 +63,10 @@ const PROGETTI = [
      raggiungono da "Vedi tutti i progetti". */
   {
     titolo: 'Family Cottolengo',
-    img: 'https://donazioni.cottolengo.org/wp-content/uploads/2021/06/Foto-COTTOLENGO-FAMILY-progetti.png',
+    img: 'assets/img/progetti/family-cottolengo.jpg',
     copy: 'Accanto alle persone con disabilità grave accolte dalla Piccola Casa: cura quotidiana, dignità e il calore di una famiglia.',
     aree: ['italia'], categorie: ['persone-con-disabilita'],
-    donaUrl: 'https://donazioni.cottolengo.org/family-cottolengo/', inEvidenza: true,
+    donaUrl: 'family-cottolengo.html', cta: 'Scopri e dona', inEvidenza: true,
   },
   {
     titolo: 'Emergenza educativa nelle Scuole Cottolengo',
@@ -219,13 +219,15 @@ function cardProgetto(p) {
   art.innerHTML =
     `<div class="proj-card__media">` +
       (p.inEvidenza ? `<span class="proj-card__flag">In evidenza</span>` : '') +
-      `<img src="${p.img}" alt="${p.titolo}" loading="lazy">` +
+      `<a class="proj-card__media-link" href="${p.donaUrl}" aria-label="Scopri ${p.titolo}">` +
+        `<img src="${p.img}" alt="${p.titolo}" loading="lazy">` +
+      `</a>` +
     `</div>` +
     `<div class="proj-card__body">` +
       `<div class="proj-card__tags">${pillole(p)}</div>` +
-      `<h3 class="proj-card__title">${p.titolo}</h3>` +
+      `<h3 class="proj-card__title"><a href="${p.donaUrl}">${p.titolo}</a></h3>` +
       `<p class="proj-card__copy">${p.copy}</p>` +
-      `<a class="btn proj-card__cta" href="${p.donaUrl}">Dona ora <span aria-hidden="true">→</span></a>` +
+      `<a class="btn proj-card__cta" href="${p.donaUrl}">${p.cta || 'Dona ora'}</a>` +
     `</div>`;
   return art;
 }

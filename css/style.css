@@ -7,48 +7,38 @@
    Palette: azzurro #009FE3 (il colore del logo) · blu #003B57
    ========================================================== */
 
-/* ---------- Caratteri: Poppins nei titoli, Open Sans nel testo ----------
-   File self-hosted in assets/fonts/ (woff2, subset "latin": copre tutto
-   l'italiano, accenti ed € compresi). Nessuna chiamata a Google Fonts.
-   · Poppins  → istanze statiche 600 / 700 / 800 (solo i pesi che usiamo)
-   · Open Sans→ font VARIABILE: un unico file copre i pesi da 300 a 800
+/* ---------- Caratteri: Helvetica in tutto il sito ----------
+   File self-hosted in assets/fonts/: Light, Regular e Bold.
+   Nessuna chiamata a servizi esterni.
    font-display: swap → il testo si legge subito col fallback, niente
    lampo di testo invisibile.
-   In WordPress: stessi quattro file, wp_enqueue_style nel tema. */
+   In WordPress: stessi tre file nel tema. */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Helvetica Cottolengo';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 300;
   font-display: swap;
-  src: url('../assets/fonts/poppins-600-latin.woff2') format('woff2');
+  src: url('../assets/fonts/helvetica-light.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Helvetica Cottolengo';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400 500;
   font-display: swap;
-  src: url('../assets/fonts/poppins-700-latin.woff2') format('woff2');
+  src: url('../assets/fonts/helvetica-regular.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Helvetica Cottolengo';
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600 900;
   font-display: swap;
-  src: url('../assets/fonts/poppins-800-latin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 300 800;              /* variabile: un file, tutti i pesi */
-  font-stretch: 100%;
-  font-display: swap;
-  src: url('../assets/fonts/opensans-variable-latin.woff2') format('woff2-variations');
+  src: url('../assets/fonts/helvetica-bold.woff2') format('woff2');
 }
 
 :root {
   /* ---------- Caratteri ---------- */
-  --f-display: 'Poppins', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
-  --f-testo: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-display: 'Helvetica Cottolengo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-testo: 'Helvetica Cottolengo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* ---------- Colore: marca ---------- */
   --azzurro: #009FE3;              /* key color, dal logo: fondi e superfici piene */
@@ -132,7 +122,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ---------- Titoli ----------
-   Poppins, blu notte: la struttura della pagina è scura e leggibile.
+   Helvetica Bold: la struttura della pagina è chiara e leggibile.
    L'azzurro resta un ACCENTO (hero, link, superfici), non il colore
    di ogni titolo: è ciò che prima appiattiva la gerarchia. */
 h1, h2, h3, h4 {
@@ -156,9 +146,9 @@ strong, b { font-weight: 700; }
 
 a { color: var(--azzurro); }
 
-/* La voce del marchio non è solo nei titoli: Poppins governa anche
-   etichette, comandi, numeri e pillole. Open Sans resta il carattere di
-   TUTTO ciò che si legge come testo. Regola unica: si decide qui. */
+/* Helvetica governa titoli, testo, etichette, comandi, numeri e pillole.
+   I due token restano separati per poter differenziare in futuro display e
+   testo senza riscrivere i singoli componenti. */
 .nav__link, .modi__tab, .world-card__title, .proj-card__title, .proj-all__title,
 .field-label, .freq__toggle label, .amounts__grid label, .amounts__tag,
 .amounts__custom-field, .amounts__custom-field input, .select-wrap select,
@@ -206,7 +196,7 @@ select:focus-visible, [tabindex]:focus-visible {
 /* ============ BOTTONI ============
    Un solo impianto: stessa altezza, stesso raggio, stessa profondità.
    Le varianti cambiano SOLO il ruolo di colore. L'etichetta è in
-   Poppins: la voce del marchio vive sui comandi. */
+   Helvetica Bold: la voce del marchio vive sui comandi. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1505,7 +1495,8 @@ fieldset { border: none; }
   width: max-content;
   animation: partners-scroll 32s linear infinite;
 }
-.partners:hover .partners__viewport { animation-play-state: paused; }
+.partners:hover .partners__viewport,
+.partners:focus-within .partners__viewport { animation-play-state: paused; }
 
 .partners__track {
   display: flex;
@@ -1527,11 +1518,24 @@ fieldset { border: none; }
   color: var(--azzurro-scuro);
   font-weight: 800;
   letter-spacing: 0.02em;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: filter var(--transizione), opacity var(--transizione);
 }
-.partners__logo:hover { filter: grayscale(0); opacity: 1; }
+.partners__logo--image { background: transparent; }
+.partners__link {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--raggio-grande);
+}
+.partners__logo--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--transizione);
+}
+.partners__logo--image:hover img,
+.partners__logo--image:focus-within img { transform: scale(1.05); }
 
 @keyframes partners-scroll {
   from { transform: translateX(0); }
@@ -1789,6 +1793,350 @@ fieldset { border: none; }
 }
 
 /* ==========================================================
+   TEMPLATE PAGINA PROGETTO
+   I blocchi corrispondono a campi editoriali WordPress: il contenuto cambia,
+   mentre struttura, leggibilità e modulo di donazione restano coerenti.
+   ========================================================== */
+.page-project-detail { background: #fff; }
+
+.project-hero {
+  padding-block: var(--s-6) var(--s-8);
+  background: linear-gradient(180deg, var(--azzurro-chiarissimo) 0%, #fff 88%);
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-bottom: var(--s-6);
+  color: var(--ink-tenue);
+  font-size: var(--t-micro);
+  font-weight: 600;
+}
+.breadcrumbs a { color: var(--azzurro-scuro); }
+.breadcrumbs [aria-current="page"] { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.project-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.project-hero__story { min-width: 0; }
+.project-hero__tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-4); }
+.project-hero h1 { max-width: 14ch; }
+.project-hero__lead {
+  max-width: 57ch;
+  margin-top: var(--s-5);
+  color: var(--grigio-testo);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.project-hero__media {
+  margin-top: var(--s-6);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--r-2);
+  box-shadow: var(--e-2);
+  background: var(--azzurro-chiaro);
+}
+.project-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.project-donation {
+  position: sticky;
+  top: 100px;
+  box-shadow: var(--e-3);
+}
+.project-donation__eyebrow {
+  margin-bottom: var(--s-1);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.project-donation .dona-card__head h2 { font-size: clamp(1.65rem, 2.4vw, 2rem); }
+.project-donation .amounts { margin-top: var(--s-5); }
+.project-amounts { grid-template-columns: repeat(3, 1fr); }
+.project-donation .btn--dona { width: 100%; }
+
+.project-intro { padding-block: var(--s-sezione); }
+.project-reading-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.5fr);
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+.project-reading { max-width: 720px; }
+.project-kicker {
+  margin-bottom: var(--s-3);
+  color: var(--azzurro-scuro);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project-richtext { margin-top: var(--s-5); }
+.project-richtext p {
+  color: var(--grigio-testo);
+  font-size: var(--t-body);
+  line-height: 1.65;
+}
+.project-richtext p + p { margin-top: var(--s-4); }
+.project-stat {
+  padding: var(--s-7) var(--s-6);
+  border-left: 5px solid var(--giallo-accento);
+  border-radius: 0 var(--r-2) var(--r-2) 0;
+  background: var(--azzurro-chiarissimo);
+}
+.project-stat strong {
+  display: block;
+  color: var(--azzurro);
+  font-family: var(--f-display);
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+}
+.project-stat span { display: block; margin-top: var(--s-4); color: var(--blu-notte); font-size: 1.1rem; line-height: 1.45; }
+
+.project-services { padding-block: var(--s-sezione); background: var(--azzurro-chiarissimo); }
+.project-services__head { max-width: 760px; margin-inline: auto; }
+.project-services__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-4);
+  list-style: none;
+}
+.project-services__grid li {
+  min-height: 180px;
+  padding: var(--s-5);
+  border: 1px solid var(--bordo);
+  border-radius: var(--r-2);
+  background: #fff;
+  box-shadow: var(--e-1);
+}
+.project-services__grid span {
+  display: block;
+  margin-bottom: var(--s-5);
+  color: var(--azzurro);
+  font-size: var(--t-micro);
+  font-weight: 800;
+}
+.project-services__grid strong { color: var(--blu-notte); font-size: 1.1rem; line-height: 1.35; }
+
+.project-final { padding-block: var(--s-sezione); background: var(--grad-marca); color: #fff; }
+.project-final__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-7);
+}
+.project-final h2 { color: #fff; }
+.project-final .project-kicker { color: rgba(255, 255, 255, 0.82); }
+.project-final p:not(.project-kicker) { max-width: 64ch; margin-top: var(--s-4); font-size: 1.25rem; line-height: 1.55; }
+.project-final .btn--dona { background: #fff; color: var(--azzurro-scuro); white-space: nowrap; }
+.project-final .btn--dona:hover { background: var(--azzurro-chiarissimo); }
+
+@media (max-width: 1020px) {
+  .project-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr); gap: var(--s-6); }
+  .project-donation { position: static; }
+  .project-services__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .project-hero { padding-block: var(--s-5) var(--s-7); }
+  .breadcrumbs { margin-bottom: var(--s-5); }
+  .project-hero__grid,
+  .project-reading-grid,
+  .project-final__inner { grid-template-columns: 1fr; }
+  .project-hero__grid { gap: var(--s-6); }
+  .project-hero__lead { font-size: 1.18rem; }
+  .project-hero__media { margin-top: var(--s-5); }
+  .project-reading-grid { gap: var(--s-6); }
+  .project-stat { padding: var(--s-6) var(--s-5); }
+  .project-services__grid { grid-template-columns: 1fr; }
+  .project-services__grid li { min-height: 0; }
+  .project-final__inner { align-items: stretch; }
+  .project-final .btn--dona { width: 100%; white-space: normal; }
+}
+
+/* Impaginazione editoriale della pagina progetto: fotografia panoramica,
+   modulo sovrapposto e colonna di lettura, sul modello delle landing solidali. */
+.project-cover {
+  position: relative;
+  min-height: clamp(430px, 46vw, 570px);
+  overflow: hidden;
+  background: var(--blu-notte);
+}
+.project-cover__image,
+.project-cover__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.project-cover__image { object-fit: cover; object-position: center 43%; }
+.project-cover__shade {
+  background:
+    linear-gradient(90deg, rgba(0, 39, 62, 0.82) 0%, rgba(0, 39, 62, 0.48) 42%, rgba(0, 39, 62, 0.12) 70%),
+    linear-gradient(0deg, rgba(0, 29, 47, 0.52) 0%, transparent 50%);
+}
+.project-cover__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+}
+.breadcrumbs--cover { margin-block: var(--s-5) 0; color: rgba(255, 255, 255, 0.85); }
+.breadcrumbs--cover a { color: #fff; }
+.project-cover__title {
+  max-width: 690px;
+  margin-top: auto;
+  padding-bottom: clamp(2.6rem, 6vw, 4.8rem);
+  color: #fff;
+}
+.project-cover__tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-4); }
+.project-cover__title h1 {
+  max-width: 12ch;
+  color: #fff;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-shadow: 0 3px 24px rgba(0, 29, 47, 0.28);
+}
+.project-cover__title p {
+  max-width: 34ch;
+  margin-top: var(--s-4);
+  font-size: clamp(1.18rem, 2vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.project-page { padding-bottom: var(--s-sezione); background: #fff; }
+.project-page__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(390px, 440px);
+  gap: clamp(3rem, 7vw, 6.5rem);
+  align-items: start;
+}
+.project-copy { max-width: 720px; padding-top: clamp(3rem, 6vw, 5rem); }
+.project-copy__lead {
+  color: var(--grigio-testo);
+  font-size: 1.16rem;
+  font-weight: 400;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.project-story { margin-top: 2.2rem; }
+.project-story .project-kicker,
+.project-story h2,
+.project-copy__lead,
+.project-richtext p {
+  max-width: none;
+  color: var(--grigio-testo);
+  font-family: var(--f-body);
+  font-size: 1.16rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.project-story .project-kicker {
+  margin-bottom: 0.35rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.project-story h2 { color: var(--grigio-testo); }
+.project-richtext { margin-top: var(--s-4); }
+
+.project-article-content { color: var(--grigio-testo); }
+.project-article-content h2 {
+  margin: 3rem 0 1rem;
+  color: var(--azzurro);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.25;
+}
+.project-article-content h2:first-child { margin-top: 0; }
+.project-article-content p,
+.project-article-content li {
+  font-size: 1.16rem;
+  line-height: 1.7;
+}
+.project-article-content p + p { margin-top: 1.15rem; }
+.project-article-content ul {
+  margin: 0.8rem 0 1.35rem 1.4rem;
+  padding-left: 0.8rem;
+}
+.project-article-content li + li { margin-top: 0.2rem; }
+.project-article-content strong { color: inherit; font-weight: 700; }
+
+.project-sidebar {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(-390px, -31vw, -320px);
+  padding-bottom: var(--s-6);
+}
+.project-sidebar .project-donation {
+  position: sticky;
+  top: 98px;
+  border: 1px solid rgba(0, 159, 227, 0.36);
+  border-radius: 5px;
+  box-shadow: 0 22px 58px rgba(0, 42, 65, 0.22);
+}
+.project-sidebar .dona-card__head {
+  padding: 1.25rem 2rem 1rem;
+  border-bottom: 2px solid var(--azzurro-chiaro);
+  background: #fff;
+  text-align: center;
+}
+.project-sidebar .project-donation__eyebrow { color: var(--azzurro-scuro); opacity: 1; }
+.project-sidebar .dona-card__head h2 { color: var(--azzurro); font-size: 1.8rem; }
+.project-sidebar .dona-card__body { padding: 1.5rem 1.9rem 1.8rem; }
+.project-sidebar .freq__toggle { border: 1px solid var(--azzurro-chiaro); border-radius: 4px; padding: 0; gap: 0; }
+.project-sidebar .freq__toggle label { border-radius: 0; }
+.project-sidebar .freq__toggle input:checked + label { background: var(--azzurro); color: #fff; box-shadow: none; }
+.project-sidebar .amounts__grid { gap: 0; }
+.project-sidebar .amounts__grid label { border-width: 1px; border-radius: 0; min-height: 58px; }
+.project-sidebar .amounts__custom { display: block; }
+.project-sidebar .amounts__custom > label { display: block; margin-bottom: var(--s-2); }
+.project-sidebar .amounts__custom-field { display: flex; width: 100%; border-width: 1px; border-radius: 4px; }
+.project-sidebar .amounts__custom-field input { flex: 1; width: auto; }
+.project-sidebar .btn--dona { border-radius: var(--r-pill); }
+
+.project-stat {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--s-5);
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: var(--s-6);
+  border: 0;
+  border-top: 4px solid var(--giallo-accento);
+  border-radius: 0 0 var(--r-2) var(--r-2);
+  background: var(--azzurro-chiarissimo);
+}
+.project-stat strong { white-space: nowrap; font-size: clamp(2.4rem, 4vw, 3.8rem); }
+.project-stat span { margin-top: 0; }
+
+@media (max-width: 980px) {
+  .project-cover { min-height: 500px; }
+  .project-cover__shade { background: linear-gradient(0deg, rgba(0, 39, 62, 0.82), rgba(0, 39, 62, 0.08) 75%); }
+  .project-page__grid { grid-template-columns: 1fr; gap: 0; }
+  .project-sidebar { order: -1; width: min(100%, 600px); margin: -2rem auto 0; }
+  .project-sidebar .project-donation { position: static; }
+  .project-copy { max-width: 760px; margin-inline: auto; padding-top: var(--s-7); }
+}
+
+@media (max-width: 560px) {
+  .project-cover { min-height: 430px; }
+  .project-cover__title { padding-bottom: 3.2rem; }
+  .project-cover__title h1 { font-size: clamp(2.7rem, 14vw, 4rem); }
+  .project-cover__title p { font-size: 1.12rem; }
+  .project-sidebar { margin-top: -1.5rem; }
+  .project-sidebar .dona-card__body { padding: 1.35rem 1.1rem 1.5rem; }
+  .project-stat { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================
    PAGINA PROGETTI
    ========================================================== */
 /* ----- Card progetto (base) -----
@@ -1813,12 +2161,23 @@ fieldset { border: none; }
   overflow: hidden;
   background: var(--azzurro-chiaro);
 }
+.proj-card__media-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.proj-card__media-link:focus-visible {
+  outline: 4px solid var(--giallo-accento);
+  outline-offset: -5px;
+}
 .proj-card__media img {
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform 0.45s ease;
 }
-.proj-card:hover .proj-card__media img { transform: scale(1.05); }
+.proj-card:hover .proj-card__media img,
+.proj-card__media-link:focus-visible img { transform: scale(1.05); }
 
 /* etichetta "in evidenza": pillola gialla di accento */
 .proj-card__flag {
@@ -1835,6 +2194,8 @@ fieldset { border: none; }
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
   box-shadow: var(--e-1);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .proj-card__body {
@@ -1844,13 +2205,32 @@ fieldset { border: none; }
   padding: 1.4rem 1.4rem 1.5rem;
   gap: 0.75rem;
 }
-.proj-card__tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.proj-card__tags {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.22rem;
+}
+.proj-card__tags .pill {
+  flex: 0 0 auto;
+  padding: 0.18rem 0.38rem;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+.proj-card__tags .pill__icon { width: 9px; height: 9px; }
 .proj-card__title {
   font-size: 1.3rem;
   font-weight: 800;
   line-height: 1.25;
-  color: var(--blu-notte);
+  color: var(--azzurro);
 }
+.proj-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.28s var(--ease-uscita);
+}
+.proj-card__title a:hover,
+.proj-card__title a:focus-visible { color: var(--azzurro-scuro); }
 /* copy troncato a 3 righe: le card mantengono altezze coerenti nella griglia */
 .proj-card__copy {
   color: var(--grigio-testo);
@@ -1893,6 +2273,21 @@ fieldset { border: none; }
 .pill__icon { flex: none; }
 .pill--area { background: var(--azzurro-chiaro); color: var(--blu-notte); }
 .pill--cat  { background: #fff; color: var(--azzurro-scuro); border: 1px solid var(--azzurro-chiaro); }
+
+@media (max-width: 480px) {
+  .proj-card__tags { gap: 0.16rem; }
+  .proj-card__tags .pill { padding: 0.16rem 0.3rem; font-size: 0.62rem; }
+  .proj-card__tags .pill__icon { width: 8px; height: 8px; }
+}
+
+@media (max-width: 720px) {
+  .proj-card__tags .pill--cat { display: none; }
+  .proj-card__tags .pill--area {
+    padding: 0.28rem 0.65rem;
+    font-size: 0.82rem;
+  }
+  .proj-card__tags .pill__icon { width: 11px; height: 11px; }
+}
 
 /* ----- Sezione "Tutti i progetti" (lista unica, titolo sul fondo azzurrino) ----- */
 .proj-all {
