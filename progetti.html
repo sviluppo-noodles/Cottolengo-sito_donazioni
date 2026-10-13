@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I progetti — Donazioni Cottolengo</title>
   <meta name="description" content="Esplora i progetti del Cottolengo in Italia e nel mondo. Filtra per area geografica, categoria di persone aiutate e anno.">
+  <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
+       MANCANO di proposito canonical, og:url e og:image: richiedono URL assoluti e il dominio
+       definitivo non è ancora confermato (vedi SPECIFICHE-TECNICHE.md, "SEO tecnico"). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Donazioni Cottolengo">
+  <meta property="og:title" content="I progetti — Donazioni Cottolengo">
+  <meta property="og:description" content="Esplora i progetti del Cottolengo in Italia e nel mondo. Filtra per area geografica, categoria di persone aiutate e anno.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="I progetti — Donazioni Cottolengo">
+  <meta name="twitter:description" content="Esplora i progetti del Cottolengo in Italia e nel mondo. Filtra per area geografica, categoria di persone aiutate e anno.">
   <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=60">
+  <link rel="stylesheet" href="css/style.css?v=63">
 </head>
 <body>
 
@@ -39,7 +50,7 @@
           <div class="nav__mega" id="menu-chi-aiutiamo">
             <div class="container nav__mega__inner">
               <ul class="nav__mega__voci">
-                <li><a class="nav__mega__voce is-current" href="cura.html"
+                <li><a class="nav__mega__voce" href="cura.html"
                        data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
                 <li><a class="nav__mega__voce" href="accoglienza.html"
                        data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
@@ -63,7 +74,7 @@
           <div class="nav__mega" id="menu-aiutarci">
             <div class="container nav__mega__inner">
               <ul class="nav__mega__voci">
-                <li><a class="nav__mega__voce is-current" href="index.html#dona"
+                <li><a class="nav__mega__voce" href="index.html#dona"
                        data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
                 <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
                        data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
@@ -146,48 +157,16 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer" id="contatti">
   <div class="container footer__grid">
-    <div class="footer__col footer__brand">
-      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="footer__logo">
-      <p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1832.</p>
-    </div>
-    <div class="footer__col">
-      <h3>Contatti</h3>
-      <address>
-        Ufficio Progetti e Raccolta Fondi<br>
-        Via Cottolengo, 14 — 10152 Torino<br>
-        <a href="tel:+390115225658">011 522 5658</a><br>
-        <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br>
-      <a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address>
-    </div>
-    <div class="footer__col">
-      <h3>Dona con bonifico</h3>
-      <p>
-        Fondazione Cottolengo Solidale<br>
-        Ente del Terzo Settore<br>
-        IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>
-        Cod. Fiscale: 97905980013<br>
-        C/C postale n. 1072743170
-      </p>
-    </div>
-    <div class="footer__col">
-      <h3>Link utili</h3>
-      <!-- Voci placeholder: verranno concordate in futuro -->
-      <ul>
-        <li><a href="#">Lorem ipsum</a></li>
-        <li><a href="#">Dolor sit amet</a></li>
-        <li><a href="#">Consectetur elit</a></li>
-        <li><a href="#">Sed do eiusmod</a></li>
-        <li><a href="#">Tempor incididunt</a></li>
-      </ul>
-    </div>
+    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1832.</p></div>
+    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14 — 10152 Torino<br><a href="tel:+390115225658">011 522 5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
+    <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
+    <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
   </div>
-  <div class="container footer__bottom">
-    <p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p>
-  </div>
+  <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p></div>
 </footer>
 
-<script src="js/progetti-dati.js?v=60"></script>
-<script src="js/progetti.js?v=60"></script>
-<script src="js/nav.js?v=60"></script>
+<script src="js/progetti-dati.js?v=63"></script>
+<script src="js/progetti.js?v=63"></script>
+<script src="js/nav.js?v=63"></script>
 </body>
 </html>

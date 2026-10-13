@@ -2,101 +2,113 @@
    Donazioni Cottolengo — interazioni
    ========================================================== */
 
-/* ---------- Modulo donazione: importi e impatto ---------- */
+/* ---------- Modulo donazione: importi e impatto ----------
+   Importo libero validato da js/importo.js (intero da 1 a 100.000 €):
+   con un valore non valido il pulsante è bloccato e l'URL non contiene
+   l'importo. Parametri verso dona.cottolengo.org invariati
+   (importo, ricorrenza, causale). */
 const COSTO_PASTO = 5; // € per pasto completo (da validare con l'ente)
-
-const amountRadios = document.querySelectorAll('input[name="importo"]');
-const customInput = document.getElementById('amt-custom');
-const freqRadios = document.querySelectorAll('input[name="freq"]');
-const tipoSelect = document.getElementById('dona-tipo');
-const impactText = document.getElementById('impact-text');
-const donaCta = document.getElementById('dona-cta');
-
-function importoCorrente() {
-  const custom = parseFloat(customInput.value);
-  if (!isNaN(custom) && custom > 0) return custom;
-  const checked = document.querySelector('input[name="importo"]:checked');
-  return checked ? parseFloat(checked.value) : 35;
-}
-
-function frequenzaCorrente() {
-  const checked = document.querySelector('input[name="freq"]:checked');
-  return checked ? checked.value : 'singola';
-}
 
 function formattaEuro(n) {
   return n.toLocaleString('it-IT', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
-function descriviImpatto(importo, freq) {
-  const pasti = Math.max(1, Math.floor(importo / COSTO_PASTO));
-  const ogniMese = freq === 'mensile' ? ' ogni mese' : '';
-  if (importo >= 100) {
-    return `Con <strong>${formattaEuro(importo)}&nbsp;€</strong>${ogniMese} garantisci <strong>${pasti} pasti caldi</strong> e contribuisci alle cure di un ospite.`;
+(function initModuloHome() {
+  const customInput = document.getElementById('amt-custom');
+  const impactText = document.getElementById('impact-text');
+  const donaCta = document.getElementById('dona-cta');
+  if (!impactText || !donaCta) return;
+
+  const amountRadios = document.querySelectorAll('input[name="importo"]');
+  const freqRadios = document.querySelectorAll('input[name="freq"]');
+  const tipoSelect = document.getElementById('dona-tipo');
+  const Importo = window.CottolengoImporto;
+  const URL_BASE = 'https://dona.cottolengo.org/';
+
+  /* importo scelto: numero valido, oppure null se il campo libero contiene un valore non valido */
+  function importoCorrente() {
+    const libero = Importo ? Importo.leggi(customInput) : { stato: 'vuoto' };
+    if (libero.stato === 'valido') return libero.valore;
+    if (libero.stato === 'errore') return null;
+    const checked = document.querySelector('input[name="importo"]:checked');
+    const n = checked ? Number(checked.value) : 35;
+    return (!Importo || Importo.valido(n)) ? n : 35;
   }
-  if (importo >= 50) {
-    return `Con <strong>${formattaEuro(importo)}&nbsp;€</strong>${ogniMese} offri <strong>${pasti} pasti caldi</strong> e materiale scolastico per un bambino.`;
+
+  function frequenzaCorrente() {
+    const checked = document.querySelector('input[name="freq"]:checked');
+    return checked ? checked.value : 'singola';
   }
-  return `Con <strong>${formattaEuro(importo)}&nbsp;€</strong>${ogniMese} offri <strong>${pasti} pasti caldi</strong> a chi non ha nulla.`;
-}
 
-function aggiornaCard() {
-  const importo = importoCorrente();
-  const freq = frequenzaCorrente();
+  function descriviImpatto(importo, freq) {
+    const pasti = Math.max(1, Math.floor(importo / COSTO_PASTO));
+    const ogniMese = freq === 'mensile' ? ' ogni mese' : '';
+    if (importo >= 100) {
+      return `Con <strong>${formattaEuro(importo)}&nbsp;€</strong>${ogniMese} garantisci <strong>${pasti} pasti caldi</strong> e contribuisci alle cure di un ospite.`;
+    }
+    if (importo >= 50) {
+      return `Con <strong>${formattaEuro(importo)}&nbsp;€</strong>${ogniMese} offri <strong>${pasti} pasti caldi</strong> e materiale scolastico per un bambino.`;
+    }
+    return `Con <strong>${formattaEuro(importo)}&nbsp;€</strong>${ogniMese} offri <strong>${pasti} pasti caldi</strong> a chi non ha nulla.`;
+  }
 
-  impactText.innerHTML = descriviImpatto(importo, freq);
+  function aggiornaCard() {
+    const importo = importoCorrente();
+    const freq = frequenzaCorrente();
+    const errore = importo === null;
 
-  // la nota fiscale (#fiscal-line) è un testo fisso nell'HTML: non dipende
-  // dall'importo e non viene riscritta qui
+    if (Importo) {
+      Importo.segnala(customInput, errore);
+      Importo.bloccaPulsante(donaCta, errore);
+    }
+    if (errore) {
+      // nessun URL con un importo non valido
+      donaCta.href = URL_BASE;
+      donaCta.textContent = 'Inserisci un importo valido';
+      return;
+    }
 
-  const etichettaFreq = freq === 'mensile' ? ' al mese' : '';
-  donaCta.textContent = `Dona ${formattaEuro(importo)} € adesso${etichettaFreq}`;
+    impactText.innerHTML = descriviImpatto(importo, freq);
 
-  // passa la scelta alla piattaforma di pagamento (deep-link verso Myosotis)
-  const url = new URL('https://dona.cottolengo.org/');
-  url.searchParams.set('importo', importo);
-  url.searchParams.set('ricorrenza', freq);
-  if (tipoSelect) url.searchParams.set('causale', tipoSelect.value);
-  donaCta.href = url.toString();
-}
+    // la nota fiscale (#fiscal-line) è un testo fisso nell'HTML: non dipende
+    // dall'importo e non viene riscritta qui
 
-if (tipoSelect) tipoSelect.addEventListener('change', aggiornaCard);
+    const etichettaFreq = freq === 'mensile' ? ' al mese' : '';
+    donaCta.textContent = `Dona ${formattaEuro(importo)} € adesso${etichettaFreq}`;
 
-amountRadios.forEach(r => r.addEventListener('change', () => {
-  customInput.value = '';
+    // passa la scelta alla piattaforma di pagamento (deep-link verso Myosotis)
+    const url = new URL(URL_BASE);
+    url.searchParams.set('importo', importo);
+    url.searchParams.set('ricorrenza', freq);
+    if (tipoSelect) url.searchParams.set('causale', tipoSelect.value);
+    donaCta.href = url.toString();
+  }
+
+  if (tipoSelect) tipoSelect.addEventListener('change', aggiornaCard);
+
+  amountRadios.forEach(r => r.addEventListener('change', () => {
+    if (customInput) customInput.value = '';
+    aggiornaCard();
+  }));
+
+  if (customInput) {
+    customInput.addEventListener('input', () => {
+      if (customInput.value !== '' || (customInput.validity && customInput.validity.badInput)) {
+        amountRadios.forEach(r => (r.checked = false));
+      } else {
+        const predefinito = document.getElementById('amt-35');
+        if (predefinito) predefinito.checked = true;
+      }
+      aggiornaCard();
+    });
+  }
+
+  freqRadios.forEach(r => r.addEventListener('change', aggiornaCard));
+
   aggiornaCard();
-}));
+})();
 
-customInput.addEventListener('input', () => {
-  if (customInput.value !== '') {
-    amountRadios.forEach(r => (r.checked = false));
-  } else {
-    document.getElementById('amt-35').checked = true;
-  }
-  aggiornaCard();
-});
-
-freqRadios.forEach(r => r.addEventListener('change', aggiornaCard));
-
-aggiornaCard();
-
-/* ---------- Menu mobile ---------- */
-const burger = document.getElementById('burger');
-const nav = document.getElementById('nav');
-
-burger.addEventListener('click', () => {
-  const aperto = nav.classList.toggle('open');
-  burger.setAttribute('aria-expanded', aperto);
-  burger.setAttribute('aria-label', aperto ? 'Chiudi il menu' : 'Apri il menu');
-});
-
-// chiudi il menu quando si sceglie una voce
-nav.addEventListener('click', e => {
-  if (e.target.closest('a')) {
-    nav.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-  }
-});
+/* Hamburger e tendine del menu: gestiti da js/nav.js (unico per tutte le pagine). */
 
 /* ---------- Contatori animati ---------- */
 const counters = document.querySelectorAll('.numbers__value');
@@ -165,8 +177,11 @@ if (whereSection) {
    quanto manca alla successiva (l'animazione è in CSS: --cpm-durata deve valere INTERVALLO).
    Si ferma col pulsante pausa, col mouse sopra o col focus da tastiera, e
    dopo una sosta riparte da dove era rimasta. Con "riduci movimento" attivo
-   non parte da solo. Su telefono si sfoglia col dito. Le slide nascoste
-   sono `inert`: il tasto Tab non entra nei loro pulsanti. */
+   non parte da solo: il pulsante parte in stato "fermo" (icona play,
+   aria-pressed="true") e chi vuole lo avvia. Su telefono si sfoglia col
+   dito. Pallini = tab (role="tab", aria-controls → id della slide), slide
+   = tabpanel. Le slide nascoste sono `inert` e aria-hidden: il tasto Tab
+   non entra nei loro pulsanti. */
 (function initCarosello() {
   const banner = document.getElementById('cpm-banner');
   const track = document.getElementById('cpm-track');
@@ -186,16 +201,24 @@ if (whereSection) {
   const ridottoMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let indice = 0;
   let timer = null;
-  let inPausa = false;     // pausa scelta dall'utente col pulsante
+  let inPausa = ridottoMov; // fermo: scelto col pulsante, o di partenza con "riduci movimento"
   let trascorso = 0;       // ms già passati sulla slide attiva prima di una sosta
   let partitoAlle = 0;
 
+  // ogni slide è un tabpanel con un id univoco (quelli già presenti, es. #cinquepermille, restano)
+  slides.forEach((s, i) => {
+    if (!s.id) s.id = `cpm-slide-${i + 1}`;
+    s.setAttribute('role', 'tabpanel');
+  });
+
   // pallini di navigazione: uno per campagna
-  const dots = slides.map((s, i) => {
+  const dots = !dotsWrap ? [] : slides.map((s, i) => {
     const b = document.createElement('button');
     b.className = 'cpm-dot';
     b.type = 'button';
+    b.id = `cpm-dot-${i + 1}`;
     b.setAttribute('role', 'tab');
+    b.setAttribute('aria-controls', s.id);
     const titolo = s.querySelector('.cpm-slide__title');
     b.setAttribute('aria-label', `Campagna ${i + 1} di ${slides.length}` + (titolo ? `: ${titolo.textContent.trim()}` : ''));
     b.addEventListener('click', () => { vaiA(i); avvia(); });
@@ -225,7 +248,7 @@ if (whereSection) {
 
   function avvia() {
     if (timer) { clearTimeout(timer); timer = null; }
-    if (inPausa || ridottoMov) return;
+    if (inPausa) return;
     banner.classList.remove('is-ferma');
     partitoAlle = performance.now();
     timer = setTimeout(() => { timer = null; vaiA(indice + 1); avvia(); },
@@ -239,16 +262,21 @@ if (whereSection) {
     banner.classList.add('is-ferma');
   }
 
+  // stato del pulsante: icona (CSS su aria-pressed), etichetta e classe del banner
+  function statoPausa() {
+    banner.classList.toggle('is-statica', inPausa);
+    if (!pauseBtn) return;
+    pauseBtn.setAttribute('aria-pressed', String(inPausa));
+    pauseBtn.setAttribute('aria-label', inPausa ? 'Avvia lo scorrimento automatico' : 'Metti in pausa lo scorrimento automatico');
+  }
   if (pauseBtn) {
     pauseBtn.addEventListener('click', () => {
       inPausa = !inPausa;
-      pauseBtn.setAttribute('aria-pressed', String(inPausa));
-      pauseBtn.setAttribute('aria-label', inPausa ? 'Riprendi lo scorrimento automatico' : 'Metti in pausa lo scorrimento automatico');
-      banner.classList.toggle('is-statica', inPausa);
+      statoPausa();
       if (inPausa) sosta(); else { trascorso = 0; vaiA(indice); avvia(); }
     });
   }
-  if (ridottoMov) banner.classList.add('is-statica');
+  statoPausa();
 
   // sosta col mouse sopra o col focus da tastiera dentro la hero
   banner.addEventListener('mouseenter', sosta);
@@ -256,12 +284,13 @@ if (whereSection) {
   banner.addEventListener('focusin', sosta);
   banner.addEventListener('focusout', e => { if (!banner.contains(e.relatedTarget)) avvia(); });
 
-  // frecce sinistra/destra quando il focus è sui pallini
-  dotsWrap.addEventListener('keydown', e => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+  // frecce sinistra/destra, Home e Fine quando il focus è sui pallini
+  if (dotsWrap) dotsWrap.addEventListener('keydown', e => {
+    const tasti = { ArrowRight: indice + 1, ArrowLeft: indice - 1, Home: 0, End: slides.length - 1 };
+    if (!(e.key in tasti)) return;
     e.preventDefault();
-    vaiA(indice + (e.key === 'ArrowRight' ? 1 : -1));
-    dots[indice].focus();
+    vaiA(tasti[e.key]);
+    if (dots[indice]) dots[indice].focus();
   });
 
   // swipe orizzontale su touch (uno scorrimento verticale non lo attiva)
@@ -291,26 +320,43 @@ if (whereSection) {
 })();
 
 
-/* ---------- Carosello testimonianze (auto-scorrimento a timer) ---------- */
+/* ---------- Carosello testimonianze (auto-scorrimento a timer) ----------
+   Slide attiva: aria-hidden="false", non inert. Le altre (anche quelle
+   sfumate ai lati): aria-hidden="true" + inert. Pallini = tab con
+   aria-controls, slide = tabpanel; frecce, Home e Fine sui pallini.
+   Pulsante pausa: aria-pressed e icona play/pausa coerenti con lo stato.
+   Con "riduci movimento" non parte da solo: il pulsante parte fermo. */
 (function initTestimonianze() {
+  const root = document.getElementById('quote-carousel');
   const track = document.getElementById('quote-track');
   const dotsWrap = document.getElementById('quote-dots');
   const pauseBtn = document.getElementById('quote-pause');
-  const root = document.getElementById('quote-carousel');
-  if (!track) return;
+  if (!root || !track) return;
 
   const slides = Array.from(track.children);
-  if (slides.length < 2) { if (pauseBtn) pauseBtn.style.display = 'none'; return; }
+  if (!slides.length) return;
+  if (slides.length < 2) {
+    if (pauseBtn) pauseBtn.hidden = true;
+    slides[0].classList.add('is-current');
+    return;
+  }
 
   const INTERVALLO = 6000; // 6 secondi
-  let indice = 0, timer = null, inPausa = false;
   const ridottoMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let indice = 0, timer = null, inPausa = ridottoMov;
 
-  const dots = slides.map((_, i) => {
+  slides.forEach((s, i) => {
+    if (!s.id) s.id = `quote-slide-${i + 1}`;
+    s.setAttribute('role', 'tabpanel');
+  });
+
+  const dots = !dotsWrap ? [] : slides.map((s, i) => {
     const b = document.createElement('button');
     b.className = 'quote-dot';
     b.type = 'button';
+    b.id = `quote-dot-${i + 1}`;
     b.setAttribute('role', 'tab');
+    b.setAttribute('aria-controls', s.id);
     b.setAttribute('aria-label', `Testimonianza ${i + 1} di ${slides.length}`);
     b.addEventListener('click', () => { vaiA(i); riavvia(); });
     dotsWrap.appendChild(b);
@@ -328,29 +374,53 @@ if (whereSection) {
     const w = larghezzaSlidePct();
     const gap = (100 - w) / 2;                 // margine per centrare la slide attiva
     track.style.transform = `translateX(${(gap - indice * w).toFixed(3)}%)`;
-    slides.forEach((s, k) => s.classList.toggle('is-current', k === indice));
-    dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === indice)));
+    slides.forEach((s, k) => {
+      const attiva = k === indice;
+      s.classList.toggle('is-current', attiva);
+      s.setAttribute('aria-hidden', String(!attiva));
+      s.inert = !attiva;
+    });
+    dots.forEach((d, k) => {
+      d.setAttribute('aria-selected', String(k === indice));
+      d.tabIndex = k === indice ? 0 : -1;
+    });
   }
   function avanti() { vaiA(indice + 1); }
-  function avvia() { if (inPausa || ridottoMov) return; stop(); timer = setInterval(avanti, INTERVALLO); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
-  function riavvia() { stop(); avvia(); }
+  function avvia() { stop(); if (inPausa) return; timer = setInterval(avanti, INTERVALLO); }
+  function riavvia() { avvia(); }
 
+  function statoPausa() {
+    if (!pauseBtn) return;
+    pauseBtn.setAttribute('aria-pressed', String(inPausa));
+    pauseBtn.setAttribute('aria-label', inPausa ? 'Avvia lo scorrimento automatico' : 'Metti in pausa lo scorrimento automatico');
+  }
   if (pauseBtn) {
     pauseBtn.addEventListener('click', () => {
       inPausa = !inPausa;
-      pauseBtn.setAttribute('aria-label', inPausa ? 'Riprendi lo scorrimento automatico' : 'Metti in pausa lo scorrimento automatico');
+      statoPausa();
       if (inPausa) stop(); else avvia();
     });
   }
+  statoPausa();
+
+  if (dotsWrap) dotsWrap.addEventListener('keydown', e => {
+    const tasti = { ArrowRight: indice + 1, ArrowLeft: indice - 1, Home: 0, End: slides.length - 1 };
+    if (!(e.key in tasti)) return;
+    e.preventDefault();
+    vaiA(tasti[e.key]);
+    if (dots[indice]) dots[indice].focus();
+    riavvia();
+  });
 
   // ricalcola la posizione al ridimensionamento (la larghezza slide cambia col CSS)
   window.addEventListener('resize', () => vaiA(indice));
 
+  // sosta col mouse sopra o col focus da tastiera dentro il carosello
   root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', () => { if (!inPausa) avvia(); });
+  root.addEventListener('mouseleave', avvia);
   root.addEventListener('focusin', stop);
-  root.addEventListener('focusout', () => { if (!inPausa) avvia(); });
+  root.addEventListener('focusout', e => { if (!root.contains(e.relatedTarget)) avvia(); });
 
   vaiA(0);
   avvia();
@@ -392,17 +462,21 @@ if (whereSection) {
 /* ---------- Barra "Dona ora" fissa su mobile ----------
    Compare solo quando non si vedono né il modulo di donazione né la hero
    campagne: sulla hero c'è già un pulsante largo e la barra lo coprirebbe. */
-const stickyDona = document.getElementById('sticky-dona');
-const donaCard = document.getElementById('dona');
-const heroCampagne = document.getElementById('cpm-banner');
-const inVista = new Map();
+(function initStickyDona() {
+  const stickyDona = document.getElementById('sticky-dona');
+  const donaCard = document.getElementById('dona');
+  const heroCampagne = document.getElementById('cpm-banner');
+  if (!stickyDona || !donaCard || !('IntersectionObserver' in window)) return;
+  const inVista = new Map();
 
-const stickyObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => inVista.set(entry.target, entry.isIntersecting));
-  const visibile = ![...inVista.values()].some(Boolean);
-  stickyDona.classList.toggle('visible', visibile);
-  stickyDona.setAttribute('aria-hidden', String(!visibile));
-}, { threshold: 0.05 });
+  const stickyObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => inVista.set(entry.target, entry.isIntersecting));
+    const visibile = ![...inVista.values()].some(Boolean);
+    stickyDona.classList.toggle('visible', visibile);
+    stickyDona.setAttribute('aria-hidden', String(!visibile));
+    stickyDona.inert = !visibile;   // nascosta: il suo pulsante non riceve il Tab
+  }, { threshold: 0.05 });
 
-stickyObserver.observe(donaCard);
-if (heroCampagne) stickyObserver.observe(heroCampagne);
+  stickyObserver.observe(donaCard);
+  if (heroCampagne) stickyObserver.observe(heroCampagne);
+})();

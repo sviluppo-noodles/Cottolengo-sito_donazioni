@@ -246,8 +246,60 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Nelle pagine CSS e JS sono richiamati con un numero di versione (`style.css?v=44`). A ogni pubblicazione il numero va aumentato in tutte le pagine, altrimenti il browser di chi è già passato dal sito può continuare a mostrare la versione vecchia. In WordPress lo fa da sé il parametro di versione di `wp_enqueue_style` / `wp_enqueue_script`.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=63` dal 13/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
 Ogni documento ha titolo, una riga di descrizione e un pulsante «Scarica PDF». In WordPress: campo file della Libreria media; nel testo del pulsante conviene indicare anno e peso (es. «Scarica PDF, 2025 — 2,4 MB»). Oggi i link sono segnaposto (`#`).
+
+## Script condivisi
+
+| File | Pagine | Compito |
+| --- | --- | --- |
+| `js/nav.js` | tutte, per ultimo | hamburger, tendine, descrizioni delle voci, rimbalzo dei pulsanti, copia del codice fiscale. Unico punto per il menu: gli altri script non lo gestiscono |
+| `js/importo.js` | home, quattro aree, Family Cottolengo, Lasciti; prima dello script della pagina | validazione dell'importo libero |
+| `js/main.js` | home | modulo, contatori, ciambella, caroselli, barra "Dona ora" |
+| `js/project-detail.js` | quattro aree, Family Cottolengo | modulo della colonna laterale |
+| `js/testamento-solidale.js` | Lasciti | modulo generico della colonna laterale |
+| `js/progetti-dati.js`, `js/progetti.js` | Progetti | elenco e filtri |
+
+Ogni script controlla che gli elementi esistano prima di usarli: su una pagina senza un componente non si interrompe e non scrive errori in console.
+
+**Menu.** La pagina corrente è indicata da `aria-current="page"` sulla sua voce (scritto nell'HTML; in WordPress lo stampa il tema). Le voci di primo livello con pannello si sottolineano se contengono la pagina corrente. La classe `.is-puntata` è solo lo stato di hover/focus che collega la voce alla descrizione nella colonna di destra. Esc chiude prima la tendina aperta, poi il menu mobile, e riporta il focus sul pulsante.
+
+## Importo libero dei moduli
+
+- Valido: **intero da 1 a 100.000 €** (coincide con `min`, `max` e passo dei campi `type="number"`). Accettati anche "75,00" / "75.00".
+- Non valido: negativi, zero, decimali (75,50), notazione esponenziale (1e3), oltre 100.000, testo che il browser non riconosce come numero.
+- Con un valore non valido: messaggio sotto il campo (collegato con `aria-describedby`), `aria-invalid="true"`, pulsante "Dona" con `aria-disabled="true"` e clic/invio bloccati. Nessun URL con l'importo: il link torna a `https://dona.cottolengo.org/` senza parametri.
+- Parametri verso Myosotis **invariati**: `importo`, `ricorrenza`, `causale` (moduli delle aree: invio GET con `causale`, `importo`, `project-amount`). Myosotis oggi non li legge (vedi decisione 22): restano pronti per quando NP Solutions li supporterà.
+
+## Caroselli (campagne e testimonianze)
+
+- Pallini = `role="tab"` con `aria-controls` verso l'id della slide; slide = `role="tabpanel"` con `aria-roledescription="slide"`. Gli id mancanti sono creati dal JS (`cpm-slide-N`, `quote-slide-N`); quelli già presenti, come `#cinquepermille`, restano.
+- Slide attiva: `aria-hidden="false"`, non `inert`. Le altre: `aria-hidden="true"` + `inert` (il Tab non entra nei loro link).
+- Tastiera sui pallini: frecce, Home, Fine; un solo pallino nel percorso del Tab.
+- Pulsante pausa: `aria-pressed` e icona coerenti (pausa mentre scorre, play quando è fermo).
+- "Riduci movimento" attivo: il carosello non parte da solo; il pulsante parte premuto, con icona play, e chi vuole lo avvia.
+
+## Modulo Myosotis incorporato (dona-in-memoria.html) — PROVVISORIO
+
+Il ritaglio dell'header e del footer Myosotis è isolato nella classe `.modulo-incorporato__cornice--myosotis` (fondo di `css/style.css`). **Non è dinamico**: margine superiore negativo (`calc(-178px - 31.7%)`) e altezze fisse per fascia di larghezza, misurate il 13/10/2026. Se NP Solutions cambia la pagina il taglio si sposta. Il link "Aprilo in una nuova pagina" resta sempre visibile come alternativa.
+
+Verifica del 13/10/2026: altezza, margine e larghezza della cornice identici alla versione precedente su 241 larghezze (300–1500 px, passo 5); modulo caricato a 320, 360, 375, 390, 768, 1024 e 1440 px.
+
+**Serve da NP Solutions** per togliere la soluzione provvisoria: una versione del modulo **senza header e footer** pensata per l'incorporamento (con uno script che comunichi l'altezza alla pagina, es. `postMessage`), oppure un **widget/API** ufficiale.
+
+## SEO tecnico
+
+Ogni pagina ha `<title>`, meta description, Open Graph (`og:type`, `og:locale`, `og:site_name`, `og:title`, `og:description`) e Twitter Card (`summary_large_image`, titolo, descrizione), con gli stessi testi di title e description: nessun testo visibile cambiato.
+
+**Mancano di proposito**, perché richiedono URL assoluti e il dominio definitivo non è confermato (sottodominio `donazioni.cottolengo.org` o nuovo dominio):
+- `<link rel="canonical">` e `og:url`;
+- `og:image` / `twitter:image`: un'immagine 1200 × 630 px per pagina (o una comune), con URL assoluto.
+Da aggiungere appena il dominio è deciso; in WordPress li genera il plugin SEO (Yoast o Rank Math).
+
+## Header e footer: verifica automatica
+
+Header e footer sono copiati in ogni pagina (GitHub Pages serve file statici: niente include né build). Per tenerli allineati: `python3 tools/verifica-sito.py`. Controlla che header e footer coincidano in tutte le pagine (ammesse solo le differenze volute: `aria-current`, link "#…" della home, destinazione di "Dona ora"), ID duplicati, riferimenti `aria-*`/`for`, link e frammenti interni, file locali e versione `?v=` unica. In WordPress diventeranno template unici (`header.php`, `footer.php`).
+

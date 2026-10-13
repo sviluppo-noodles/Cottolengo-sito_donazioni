@@ -197,7 +197,7 @@ a { color: var(--azzurro); }
 /* Helvetica governa titoli, testo, etichette, comandi, numeri e pillole.
    I due token restano separati per poter differenziare in futuro display e
    testo senza riscrivere i singoli componenti. */
-.nav__link, .world-card__title, .proj-card__title, .proj-all__title,
+.nav__link, .proj-card__title, .proj-all__title,
 .field-label, .freq__toggle label, .amounts__grid label, .amounts__tag,
 .amounts__custom-field, .amounts__custom-field input, .select-wrap select,
 .numbers__value, .legend-row__num,
@@ -283,7 +283,7 @@ select:focus-visible, [tabindex]:focus-visible {
 }
 /* pulsanti larghi quanto il contenitore: stesso effetto, ingrandimento minore,
    altrimenti su 500px di larghezza il +4% diventerebbe vistoso */
-.btn--dona, .btn--esplora, .proj-card__cta { --btn-zoom: 1.02; }
+.btn--dona, .proj-card__cta { --btn-zoom: 1.02; }
 
 /* Rilascio: dopo la pressione il pulsante "rimbalza" morbidamente, supera di
    poco la misura di riposo, torna indietro e si assesta (≈0,6s). La classe
@@ -461,13 +461,20 @@ select:focus-visible, [tabindex]:focus-visible {
   transition: background var(--transizione);
 }
 /* niente freccia sulla voce puntata: la selezione è già indicata dal filo
-   azzurro a sinistra e dal fondo più chiaro */
+   azzurro a sinistra e dal fondo più chiaro.
+   .is-puntata = voce puntata col mouse o col focus (la sua descrizione è a
+   destra); stato solo grafico, scritto da js/nav.js.
+   [aria-current="page"] = pagina in cui ci si trova: filo azzurro anche
+   senza puntarla. */
 .nav__mega__voce:hover,
 .nav__mega__voce:focus-visible,
-.nav__mega__voce.is-current {
+.nav__mega__voce.is-puntata {
   background: rgba(255, 255, 255, 0.1);
   box-shadow: inset 4px 0 0 var(--azzurro);   /* filo azzurro: la voce scelta */
 }
+.nav__mega__voce[aria-current="page"] { box-shadow: inset 4px 0 0 var(--azzurro); }
+/* la voce di primo livello che contiene la pagina corrente resta sottolineata */
+.nav__item--dropdown:has([aria-current="page"]) > .nav__link::after { transform: scaleX(1); }
 
 /* la descrizione sotto la voce serve solo su telefono, dove non c'è la
    colonna di destra: il JS la scrive leggendo lo stesso data-desc */
@@ -794,7 +801,7 @@ select:focus-visible, [tabindex]:focus-visible {
 .cpm-slide--creativita .cpm-slide__cta { box-shadow: var(--e-2); }
 
 /* testo solo per lettori di schermo */
-.cpm-sr, .sr-only {
+.sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
   margin: -1px; padding: 0;
@@ -1246,7 +1253,6 @@ fieldset { border: none; }
   padding-block: var(--s-sezione);
   scroll-margin-top: 90px;
 }
-.world .section-intro { margin-bottom: 4rem; }
 
 /* ---- Cinque schede, stessa costruzione delle schede progetto (.proj-card) ----
    Da 1200 px sono cinque in fila (circa 220 px l'una): per questo la variante
@@ -1292,92 +1298,6 @@ fieldset { border: none; }
   .fila-schede__item { flex-basis: 82%; }
 }
 
-/* ============ PROGETTI DA SOSTENERE (carosello dei progetti in evidenza) ============
-   Finestra sull'archivio: le card sono le stesse di progetti.html (.proj-card,
-   definita in fondo al file), qui disposte in un carosello orizzontale.
-   Le frecce stanno ai margini esterni della fila di card; il pulsante
-   "Vedi tutti i progetti" è centrato sotto il carosello. */
-.evid {
-  background: #fff;
-  padding-block: var(--s-sezione);
-  scroll-margin-top: 90px;
-}
-
-.evid h2 { text-align: center; }
-.evid .section-intro { margin-bottom: 3rem; }
-
-/* la riga: freccia · pista · freccia.
-   Il contenitore è più largo di .container (1200 + le due frecce), così le card
-   restano allineate al resto della pagina e le frecce cadono nel margine. */
-.evid-carousel {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  width: min(1320px, 100% - 2.5rem);
-  margin-inline: auto;
-}
-
-.evid-nav {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  padding: 0;
-  border: 1px solid rgba(0, 59, 87, 0.14);
-  border-radius: 999px;
-  background: #fff;
-  color: var(--azzurro-scuro);
-  cursor: pointer;
-  box-shadow: var(--ombra-leggera);
-  transition: background var(--transizione), color var(--transizione),
-              border-color var(--transizione), transform var(--transizione);
-}
-.evid-nav:hover {
-  background: var(--azzurro);
-  border-color: var(--azzurro);
-  color: #fff;
-}
-.evid-nav:active { transform: scale(0.94); }
-.evid-nav[hidden] { display: none; }
-
-/* pista scorrevole: swipe nativo su touch, scroll-snap per fermarsi sulle card */
-.evid-track {
-  --per-view: 3;
-  --evid-gap: 1.75rem;
-  flex: 1 1 auto;
-  min-width: 0;
-  list-style: none;
-  display: flex;
-  gap: var(--evid-gap);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  /* overflow-x: auto rende "auto" anche l'asse Y: senza spazio interno l'ombra
-     della card sollevata in hover viene tagliata sopra e sotto. Il padding la
-     contiene, i margini negativi restituiscono il ritmo verticale. */
-  padding: 1.25rem 0 3.5rem;
-  margin-block: -1.25rem -2.25rem;
-  scrollbar-width: none;          /* la barra nativa è sostituita dalle frecce */
-  -ms-overflow-style: none;
-}
-.evid-track::-webkit-scrollbar { display: none; }
-.evid-track:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
-
-.evid-item {
-  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--evid-gap)) / var(--per-view));
-  scroll-snap-align: start;
-  display: flex;
-}
-.evid-item > .proj-card { width: 100%; }
-
-.evid__footer {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.25rem;
-  padding-inline: 1.25rem;   /* il pulsante non arriva mai a filo schermo su mobile */
-}
-
 /* azzurro come tutti i bottoni, ma con bordo e non pieno: sopra ci sono i
    "Dona ora" pieni e i due gesti non devono somigliarsi. */
 .btn--vedi-tutti {
@@ -1389,85 +1309,6 @@ fieldset { border: none; }
 .btn--vedi-tutti:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 .btn--vedi-tutti span[aria-hidden] { transition: transform var(--transizione); }
 .btn--vedi-tutti:hover span[aria-hidden] { transform: translateX(3px); }
-
-/* ============ PROGETTI NEL MONDO (mappa interattiva) ============ */
-.world { padding-block: var(--s-sezione); scroll-margin-top: 90px; }
-
-/* layout full-bleed: esce dal limite del body per guadagnare spazio,
-   centrato simmetricamente nel viewport */
-.world__layout {
-  width: min(1640px, 90vw);
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: minmax(0, 2.4fr) minmax(280px, 0.85fr);
-  gap: 2.6rem;
-  align-items: center;
-}
-
-/* ---- Mappa a pallini: grigi = disattivi (cls-1), azzurri = aree progetto (cls-2).
-   I colori arrivano dallo <style> interno dell'SVG; qui solo highlight e cursore. ---- */
-.world__map { position: relative; }
-.world__svg,
-.world__map-fallback { width: 100%; height: auto; display: block; }
-/* la terra "spenta" è grigia (fill sul gruppo dentro l'SVG); qui gestiamo solo le regioni accese.
-   Le regioni attive ricevono .is-live dal JS in base alla config in js/mappa-regioni.js */
-.world__svg path { transition: fill 0.2s ease; }
-.world__svg .is-live { fill: var(--azzurro); }
-/* in hover su un'area/scheda: le altre regioni accese si slavano... */
-.world__svg.is-dimmed .is-live { fill: #a8d8f2; }
-/* ...tranne quella puntata, che resta azzurra e spicca */
-.world__svg.is-dimmed .is-live.is-active { fill: var(--azzurro); }
-/* sensore di hover invisibile sopra ogni regione (i pallini hanno spazi vuoti) */
-.world__hit { fill: transparent; cursor: pointer; }
-.world__hit:focus-visible { outline: 3px solid var(--focus); }
-
-/* ---- Colonna destra: titolo + schede ---- */
-.world__side { display: flex; flex-direction: column; }
-.world__head { margin-bottom: 1.6rem; }
-.world__head h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); }
-.world__head .section-intro { text-align: left; margin: 0.7rem 0 0; font-size: 1.15rem; }
-
-/* ---- Voci-selettore della mappa:
-   titolo + paragrafo, righe divise da linee sottili ed eleganti, accento a sinistra. ---- */
-.world__cards { list-style: none; display: flex; flex-direction: column; }
-.world-card {
-  display: block;
-  position: relative;
-  background: none;
-  text-decoration: none;
-  color: var(--blu-notte);
-  border: none;
-  border-top: 1px solid rgba(0, 59, 87, 0.13);   /* linea sottile ed elegante tra le voci */
-  border-left: 3px solid transparent;            /* barra accento a sinistra (a riposo invisibile) */
-  border-radius: 0;
-  transition: color var(--transizione), border-color var(--transizione);
-}
-.world__cards li:first-child .world-card { border-top: none; }
-.world-card__body {
-  padding: 0.9rem 1.1rem;
-  transform-origin: left center;
-  transition: transform 0.28s cubic-bezier(.34, 1.3, .5, 1);
-}
-.world-card__title { font-size: 1.3rem; font-weight: 700; color: var(--blu-notte); transition: color var(--transizione); }
-.world-card__text { color: var(--grigio-testo); font-size: 1rem; margin-top: 0.2rem; }
-/* lineetta d'accento a sinistra: nasce dal basso verso l'alto (trim path via scaleY) */
-.world-card::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--azzurro);
-  transform: scaleY(0);
-  transform-origin: bottom center;
-  transition: transform 0.4s ease;
-}
-.world-card:hover::before,
-.world-card.is-active::before { transform: scaleY(1); }
-.world-card:hover .world-card__title,
-.world-card.is-active .world-card__title { color: var(--azzurro); }
-/* stesso effetto dei tab "Modi": testo che scala e scivola a destra col comparire della lineetta */
-.world-card:hover .world-card__body,
-.world-card.is-active .world-card__body { transform: translateX(6px) scale(1.05); }
 
 /* ============ TESTIMONIANZA ============ */
 .quote {
@@ -1546,6 +1387,10 @@ fieldset { border: none; }
   cursor: pointer;
 }
 .quote-pause:hover { background: rgba(0, 59, 87, 0.08); }
+/* icona coerente con lo stato: pausa mentre scorre, play quando è fermo */
+.quote-pause__ico-play { display: none; }
+.quote-pause[aria-pressed="true"] .quote-pause__ico-pausa { display: none; }
+.quote-pause[aria-pressed="true"] .quote-pause__ico-play { display: block; }
 .quote__more {
   /* inline-flex + min-height: area di tocco da 44px anche su telefono */
   display: inline-flex;
@@ -1725,12 +1570,7 @@ fieldset { border: none; }
   .where__layout { grid-template-columns: 1fr; gap: 4rem; justify-items: center; }
   .where__legend { width: 100%; max-width: 640px; }
   .where__brush { display: none; }   /* su layout impilato il pennello darebbe fastidio */
-  .evid-track { --per-view: 2; --evid-gap: 1.4rem; }
-  /* mappa: layout impilato (mappa sopra, titolo + schede sotto) */
-  .world__layout { grid-template-columns: 1fr; gap: 2rem; width: 92vw; margin-inline: auto; }
-  .world__head { text-align: center; }
-  .world__head .section-intro { text-align: center; }
-  .world__cards { display: flex; flex-direction: column; }
+
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .numbers__grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1816,7 +1656,6 @@ fieldset { border: none; }
   /* la barra fissa "Dona ora" (≈72px) non deve coprire l'ultima riga del footer */
   body:has(.sticky-dona) .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 
-
   .hero { padding-block: var(--s-7) 0; }   /* stesso stacco dal banner, ridotto per lo schermo piccolo */
   .dona-card__head { padding: 1.4rem 1.6rem; }
   .dona-card__body { padding: 1.6rem 1.6rem 1.8rem; }
@@ -1864,17 +1703,13 @@ fieldset { border: none; }
   .amounts__grid { grid-template-columns: repeat(2, 1fr); }
   /* carosello su mobile: una card e mezza in vista (invita allo swipe),
      frecce nascoste perché il gesto naturale è già lo scorrimento del dito */
-  .evid-carousel { width: min(1320px, 100% - 1.5rem); gap: 0; }
-  .evid-nav { display: none; }
-  .evid-track { --per-view: 1.15; --evid-gap: 1rem; padding-inline: 0.5rem; }
-  .evid__footer { margin-top: 1.5rem; }
+
   .btn--vedi-tutti { width: min(100%, 420px); }
   .donut { width: 280px; height: 280px; }
   .legend-row__num { font-size: 3.3rem; min-width: 120px; }
   .section-head { margin-bottom: 2.8rem; }
   .sticky-dona { display: block; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .world__cards { gap: 0; }
 }
 
 /* Riduzione animazioni per chi la richiede */
@@ -2583,7 +2418,6 @@ fieldset { border: none; }
   .cpm-slide__text { gap: var(--s-3); }
 }
 
-
 /* ============ CHI SIAMO ============
    Sul modello di "Missione e storia" di UNICEF Italia (senza timeline), con i
    componenti del sito: cover delle pagine interne, numeri e schede della home,
@@ -2720,7 +2554,12 @@ fieldset { border: none; }
 .recapiti__grid--uno { grid-template-columns: minmax(0, 26rem); justify-content: center; }
 
 @media (max-width: 61.25em) {
-  .cpm-passi, .cpm-coppia { grid-template-columns: 1fr; }
+  .cpm-passi, .cpm-coppia { grid-template-columns: minmax(0, 1fr); }
+}
+/* sotto i 368 px "Copia il codice da condividere" non sta su una riga: va a
+   capo invece di allargare la scheda oltre lo schermo (overflow a 320–360 px) */
+@media (max-width: 23em) {
+  .documento__btn { white-space: normal; text-align: center; }
 }
 
 /* ============ PAGINE DELLE AREE E DI "COME AIUTARCI" ============
@@ -2761,51 +2600,64 @@ fieldset { border: none; }
   box-shadow: var(--e-1);
   overflow: hidden;
 }
-.modulo-incorporato__cornice iframe {
-  display: block; width: 100%; border: 0;
-  /* La cornice si ferma subito dopo "Metodi di donazione": il footer Myosotis
-     (fascia blu con logo + copyright) resta sotto, fuori vista. Il contenuto
-     del modulo è più lungo quando la cornice è stretta: ~2520 px a 820 px di
-     larghezza, ~2780 a 350 px; la formula in vw segue questa proporzione.
-     Se un passaggio è più lungo, il modulo resta scorrevole all'interno. */
-}
-/* SOLUZIONE PROVVISORIA: la pagina Myosotis ha logo, banner e titolo propri.
-   Li nascondiamo facendo salire il modulo dentro la cornice (che taglia il
-   superfluo). L'intestazione misura circa 120 px + 31,7% della larghezza: il
-   margine in % è calcolato proprio sulla larghezza, quindi il taglio resta
-   giusto a ogni schermo. Da togliere quando NP Solutions fornisce la versione
-   del modulo senza intestazione. */
-.modulo-incorporato__cornice iframe { margin-top: calc(-178px - 31.7%); }
+.modulo-incorporato__cornice iframe { display: block; width: 100%; border: 0; }
 .modulo-incorporato__nota { text-align: center; margin-top: var(--s-4); color: var(--grigio-testo); }
 .modulo-incorporato__nota a { color: var(--azzurro-scuro); font-weight: 700; }
-/* Altezza della cornice per fascia di larghezza dello schermo (larghezza del
-   modulo = schermo − 40 px), misurata sul modulo Myosotis reale il 13/10/2026:
-   la cornice si ferma subito prima della fascia blu del loro footer. */
-.modulo-incorporato__cornice iframe { height: 2539px; }
-@media (max-width: 53.69em) { .modulo-incorporato__cornice iframe { height: 2534px; } }
-@media (max-width: 52.44em) { .modulo-incorporato__cornice iframe { height: 2528px; } }
-@media (max-width: 51.19em) { .modulo-incorporato__cornice iframe { height: 2522px; } }
-@media (max-width: 49.94em) { .modulo-incorporato__cornice iframe { height: 2517px; } }
-@media (max-width: 48.69em) { .modulo-incorporato__cornice iframe { height: 2511px; } }
-@media (max-width: 47.44em) { .modulo-incorporato__cornice iframe { height: 2506px; } }
-@media (max-width: 46.19em) { .modulo-incorporato__cornice iframe { height: 2500px; } }
-@media (max-width: 44.94em) { .modulo-incorporato__cornice iframe { height: 2494px; } }
-@media (max-width: 43.69em) { .modulo-incorporato__cornice iframe { height: 2494px; } }
-@media (max-width: 42.44em) { .modulo-incorporato__cornice iframe { height: 2512px; } }
-@media (max-width: 41.19em) { .modulo-incorporato__cornice iframe { height: 2512px; } }
-@media (max-width: 39.94em) { .modulo-incorporato__cornice iframe { height: 2557px; } }
-@media (max-width: 38.69em) { .modulo-incorporato__cornice iframe { height: 2552px; } }
-@media (max-width: 37.44em) { .modulo-incorporato__cornice iframe { height: 2546px; } }
-@media (max-width: 36.19em) { .modulo-incorporato__cornice iframe { height: 2540px; } }
-@media (max-width: 34.94em) { .modulo-incorporato__cornice iframe { height: 2540px; } }
-@media (max-width: 33.69em) { .modulo-incorporato__cornice iframe { height: 2563px; } }
-@media (max-width: 32.44em) { .modulo-incorporato__cornice iframe { height: 2570px; } }
-@media (max-width: 31.19em) { .modulo-incorporato__cornice iframe { height: 2616px; } }
-@media (max-width: 29.94em) { .modulo-incorporato__cornice iframe { height: 2639px; } }
-@media (max-width: 28.69em) { .modulo-incorporato__cornice iframe { height: 2662px; } }
-@media (max-width: 27.44em) { .modulo-incorporato__cornice iframe { height: 2685px; } }
-@media (max-width: 26.19em) { .modulo-incorporato__cornice iframe { height: 2704px; } }
-@media (max-width: 24.94em) { .modulo-incorporato__cornice iframe { height: 2807px; } }
-@media (max-width: 23.69em) { .modulo-incorporato__cornice iframe { height: 2907px; } }   /* 360–379 px: misurato su 360 e 375 */
-@media (max-width: 22.44em) { .modulo-incorporato__cornice iframe { height: 2929px; } }
-@media (max-width: 21.19em) { .modulo-incorporato__cornice iframe { height: 2975px; } }
+
+/* ============ PROVVISORIO — RITAGLIO DEL MODULO MYOSOTIS ============
+   Vale SOLO per la cornice con .modulo-incorporato__cornice--myosotis
+   (dona-in-memoria.html). NON è una soluzione dinamica: sono valori fissi,
+   misurati a mano il 13/10/2026 sulla pagina https://dona.cottolengo.org/in-memoria/.
+   Se NP Solutions cambia testi, immagini o passaggi del modulo, il taglio
+   si sposta (si vede il loro header o il loro footer, oppure si taglia
+   la fine del modulo). Il link "Aprilo in una nuova pagina" resta sempre
+   come alternativa.
+   Da eliminare quando NP Solutions fornisce un embed senza header/footer
+   (o un'API/widget): allora basta la regola generica qui sopra, con
+   un'altezza adattata dal loro script.
+   1) In alto: la pagina Myosotis ha logo, banner e titolo propri. Il modulo
+      sale dentro la cornice (overflow: hidden) di circa 178 px + 31,7%
+      della larghezza: il margine in % è calcolato sulla larghezza, quindi
+      il taglio in alto segue la larghezza della cornice.
+   2) In basso: altezza fissa per fascia di larghezza dello schermo
+      (larghezza del modulo = schermo − 40 px): la cornice si ferma subito
+      prima della fascia blu del loro footer. Le fasce con lo stesso valore
+      di quella più larga sono state unite (resa identica). */
+.modulo-incorporato__cornice--myosotis iframe { margin-top: calc(-178px - 31.7%); height: 2539px; }
+@media (max-width: 53.69em) { .modulo-incorporato__cornice--myosotis iframe { height: 2534px; } }
+@media (max-width: 52.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2528px; } }
+@media (max-width: 51.19em) { .modulo-incorporato__cornice--myosotis iframe { height: 2522px; } }
+@media (max-width: 49.94em) { .modulo-incorporato__cornice--myosotis iframe { height: 2517px; } }
+@media (max-width: 48.69em) { .modulo-incorporato__cornice--myosotis iframe { height: 2511px; } }
+@media (max-width: 47.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2506px; } }
+@media (max-width: 46.19em) { .modulo-incorporato__cornice--myosotis iframe { height: 2500px; } }
+@media (max-width: 44.94em) { .modulo-incorporato__cornice--myosotis iframe { height: 2494px; } }
+@media (max-width: 42.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2512px; } }
+@media (max-width: 39.94em) { .modulo-incorporato__cornice--myosotis iframe { height: 2557px; } }
+@media (max-width: 38.69em) { .modulo-incorporato__cornice--myosotis iframe { height: 2552px; } }
+@media (max-width: 37.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2546px; } }
+@media (max-width: 36.19em) { .modulo-incorporato__cornice--myosotis iframe { height: 2540px; } }
+@media (max-width: 33.69em) { .modulo-incorporato__cornice--myosotis iframe { height: 2563px; } }
+@media (max-width: 32.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2570px; } }
+@media (max-width: 31.19em) { .modulo-incorporato__cornice--myosotis iframe { height: 2616px; } }
+@media (max-width: 29.94em) { .modulo-incorporato__cornice--myosotis iframe { height: 2639px; } }
+@media (max-width: 28.69em) { .modulo-incorporato__cornice--myosotis iframe { height: 2662px; } }
+@media (max-width: 27.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2685px; } }
+@media (max-width: 26.19em) { .modulo-incorporato__cornice--myosotis iframe { height: 2704px; } }
+@media (max-width: 24.94em) { .modulo-incorporato__cornice--myosotis iframe { height: 2807px; } }
+@media (max-width: 23.69em) { .modulo-incorporato__cornice--myosotis iframe { height: 2907px; } }   /* 360–379 px: misurato su 360 e 375 */
+@media (max-width: 22.44em) { .modulo-incorporato__cornice--myosotis iframe { height: 2929px; } }
+@media (max-width: 21.19em) { .modulo-incorporato__cornice--myosotis iframe { height: 2975px; } }
+
+/* ============ IMPORTO LIBERO NON VALIDO (js/importo.js) ============
+   Messaggio sotto il campo e pulsante "Dona" bloccato finché l'importo
+   non è un intero da 1 a 100.000 €. */
+.importo-errore {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #B42318;                  /* 5,9:1 su bianco */
+}
+.amounts__custom-field:has(input[aria-invalid="true"]) { border-color: #B42318; }
+.btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }

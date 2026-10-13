@@ -19,6 +19,9 @@
   const fCat    = document.getElementById('f-cat');
   const countEl = document.getElementById('proj-count');
   const emptyEl = document.getElementById('proj-empty');
+  // dati da js/progetti-dati.js e campi dei filtri: senza, la pagina resta statica
+  if (!fSearch || !fArea || !fCat || !countEl || !emptyEl) return;
+  if (typeof PROGETTI === 'undefined' || typeof AREE === 'undefined' || typeof CATEGORIE === 'undefined') return;
 
   /* Menu "Area geografica": prima i termini padre, poi i figli indentati
      con "›" (Europa, Europa › Italia). Rispecchia la tassonomia gerarchica:
@@ -73,7 +76,7 @@
 
     const reset = document.getElementById('f-reset');
     const badge = document.getElementById('active-count');
-    reset.classList.toggle('has-active', n > 0);
+    if (reset) reset.classList.toggle('has-active', n > 0);
     if (badge) { badge.textContent = n; badge.hidden = n === 0; }
   }
 
@@ -84,7 +87,8 @@
 
   [fSearch].forEach(el => el.addEventListener('input', filtra));
   [fArea, fCat].forEach(el => el.addEventListener('change', filtra));
-  document.getElementById('f-reset').addEventListener('click', azzera);
+  const reset1 = document.getElementById('f-reset');
+  if (reset1) reset1.addEventListener('click', azzera);
   const reset2 = document.getElementById('f-reset-2');
   if (reset2) reset2.addEventListener('click', azzera);
 
@@ -101,28 +105,8 @@
 
   filtra();               // render iniziale (con eventuali filtri da URL)
   // se arriviamo dalla home con un filtro, portiamo la lista in vista
-  if (preFiltrato) document.getElementById('all-projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const elenco = document.getElementById('all-projects');
+  if (preFiltrato && elenco) elenco.scrollIntoView({ behavior: 'smooth', block: 'start' });
 })();
 
-/* ---------- Menu mobile + dropdown "Come donare" (come nella home) ---------- */
-(function initNav() {
-  const burger = document.getElementById('burger');
-  const nav = document.getElementById('nav');
-  if (burger && nav) {
-    burger.addEventListener('click', () => {
-      const aperto = nav.classList.toggle('open');
-      burger.setAttribute('aria-expanded', aperto);
-      burger.setAttribute('aria-label', aperto ? 'Chiudi il menu' : 'Apri il menu');
-    });
-    nav.addEventListener('click', e => {
-      // closest('a') e non e.target.tagName: nel menu a comparsa il click può
-      // cadere sullo <span> della descrizione dentro il link
-      if (e.target.closest('a')) {
-        nav.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // tendine del menu: gestite da js/nav.js
-})();
+/* Hamburger e tendine del menu: gestiti da js/nav.js (unico per tutte le pagine). */

@@ -1,26 +1,49 @@
 /* ==========================================================
-   Navbar — menu a comparsa "Come donare"
+   Navbar — script condiviso da TUTTE le pagine
    ----------------------------------------------------------
-   Caricato da index.html E da progetti.html, DOPO main.js /
-   progetti.js: apre le schede della sezione "Come fare del bene"
-   simulando il click sul tab, quindi il suo gestore deve esistere già.
+   Unico punto per: hamburger (menu mobile), tendine "Progetti" e
+   "Come aiutarci", descrizioni delle voci, rimbalzo dei pulsanti e
+   copia del codice fiscale. Gli script delle singole pagine (main.js,
+   progetti.js, project-detail.js, testamento-solidale.js) NON gestiscono
+   più il menu: niente listener doppi.
 
    In produzione WordPress: le voci diventano un menu del backend
    (Aspetto → Menu) con la descrizione nel campo "Descrizione" della
    voce, che il tema stampa in data-desc. Nessuna logica da riscrivere.
    ========================================================== */
 
-/* ---------- Tendine del menu ("Come donare", "Contatti") ----------
-   Unico punto per tutte le pagine (prima era copiato in ogni script).
-   Una sola aperta alla volta: aprirne una chiude l'altra. Si chiudono con
-   un clic fuori o con Esc (il focus torna sulla voce del menu). */
-(function initTendine() {
+/* ---------- Hamburger e tendine del menu ----------
+   Hamburger: apre/chiude il menu sotto 72.5em; aria-expanded e aria-label
+   sono aggiornati a OGNI chiusura (pulsante, scelta di una voce, Esc).
+   Tendine: una sola aperta alla volta; si chiudono con un clic fuori o
+   con Esc (il focus torna sulla voce del menu). Esc chiude prima la
+   tendina aperta, poi, alla pressione successiva, il menu mobile. */
+(function initMenu() {
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
   const tendine = Array.from(document.querySelectorAll('.nav__item--dropdown'));
 
+  function impostaBurger(aperto) {
+    if (!burger) return;
+    burger.setAttribute('aria-expanded', String(aperto));
+    burger.setAttribute('aria-label', aperto ? 'Chiudi il menu' : 'Apri il menu');
+  }
+  function chiudiMenu() {
+    if (!nav) return;
+    nav.classList.remove('open');
+    impostaBurger(false);
+  }
   function chiudiTendina(item) {
     item.classList.remove('open');
     const t = item.querySelector('.nav__dropdown-toggle');
     if (t) t.setAttribute('aria-expanded', 'false');
+  }
+
+  if (burger && nav) {
+    burger.addEventListener('click', () => impostaBurger(nav.classList.toggle('open')));
+    // scelta una voce (anche un'àncora nella stessa pagina) il menu si chiude;
+    // closest('a'): il clic può cadere sullo <span> della descrizione
+    nav.addEventListener('click', e => { if (e.target.closest('a')) chiudiMenu(); });
   }
 
   tendine.forEach(item => {
@@ -31,7 +54,7 @@
       const aperto = !item.classList.contains('open');
       tendine.forEach(chiudiTendina);
       item.classList.toggle('open', aperto);
-      toggle.setAttribute('aria-expanded', aperto);
+      toggle.setAttribute('aria-expanded', String(aperto));
     });
   });
 
@@ -42,10 +65,17 @@
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
     const aperta = tendine.find(item => item.classList.contains('open'));
-    if (!aperta) return;
-    chiudiTendina(aperta);
-    const t = aperta.querySelector('.nav__dropdown-toggle');
-    if (t && aperta.contains(document.activeElement)) t.focus();
+    if (aperta) {
+      chiudiTendina(aperta);
+      const t = aperta.querySelector('.nav__dropdown-toggle');
+      if (t && aperta.contains(document.activeElement)) t.focus();
+      return;
+    }
+    if (nav && nav.classList.contains('open')) {
+      const dentro = nav.contains(document.activeElement);
+      chiudiMenu();
+      if (dentro && burger) burger.focus();
+    }
   });
 })();
 
@@ -66,8 +96,12 @@
 })();
 
 /* ---------- Pannelli con elenco: descrizione della voce puntata ----------
-   Vale per ogni pannello con .nav__mega__voci ("Come donare", "Aziende"):
-   a sinistra le voci, a destra la descrizione di quella puntata. */
+   Vale per ogni pannello .nav__mega: a sinistra le voci, a destra la
+   descrizione di quella puntata col mouse o col focus (.is-puntata).
+   .is-puntata è solo uno stato grafico di hover/focus: la pagina in cui ci
+   si trova è indicata da aria-current="page", scritto nell'HTML (in
+   WordPress lo stampa il tema). All'apertura la descrizione mostrata è
+   quella della pagina corrente, se è nel pannello, altrimenti la prima. */
 document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
   const voci = Array.from(mega.querySelectorAll('.nav__mega__voce'));
   if (!voci.length) return;
@@ -88,8 +122,14 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
   });
 
   function mostra(voce) {
-    voci.forEach(v => v.classList.toggle('is-current', v === voce));
+    voci.forEach(v => v.classList.toggle('is-puntata', v === voce));
     if (desc && voce.dataset.desc) desc.textContent = voce.dataset.desc;
+  }
+
+  const corrente = voci.find(v => v.getAttribute('aria-current') === 'page');
+  if (desc) {
+    const iniziale = corrente || voci[0];
+    if (iniziale.dataset.desc) desc.textContent = iniziale.dataset.desc;
   }
 
   voci.forEach(v => {
@@ -104,9 +144,6 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
   });
 });
-
-/* #modo-<voce> (voci del menu "Come donare"): ogni scheda di "Come fare del bene"
-   ha il suo id, quindi il browser ci arriva da solo, senza script. */
 
 /* ---------- Copia codice fiscale 5x1000 (uno o più pulsanti, su qualsiasi pagina) ---------- */
 function abilitaCopia(btn, codice) {

@@ -360,6 +360,22 @@ La freccetta accanto alla voce indica che si apre un pannello. Si apre un pannel
 
 **Spazio.** Con sei voci il menu occupa circa 695 px: il testo resta a 17 px e da 1200 px c'è ampio margine. L'hamburger compare sotto i 1160 px (prima 1120).
 
+## 25. Correzioni tecniche (13/10/2026)
+
+Solo codice: testi, foto, testimonianze, percentuali e partner provvisori non sono stati toccati.
+
+- **Menu:** hamburger in un solo script (`js/nav.js`) per tutte le pagine. Prima era copiato in quattro file e **non funzionava** nelle pagine che caricano solo `nav.js` (Chi siamo, 5×1000, Aziende, Raccolte solidali, Dona in memoria, Sostegno a distanza, Volontariato). Esc chiude tendina e menu; `aria-expanded` e `aria-label` sempre aggiornati.
+- **Pagina corrente nel menu:** `aria-current="page"` sulla voce reale (filo azzurro nel pannello, sottolineatura sulla voce di primo livello che la contiene). "Cura" e "Donazione libera" non risultano più evidenziate su ogni pagina: lo stato di hover/focus usa la classe `.is-puntata`.
+- **Caroselli:** relazione tab/slide con `aria-controls`, slide nascoste `inert` + `aria-hidden`, icona e `aria-pressed` del pulsante pausa coerenti, con "riduci movimento" partono fermi. Grafica, velocità e contenuti invariati.
+- **Importo libero:** intero da 1 a 100.000 €; con un valore non valido messaggio sotto il campo e pulsante bloccato (dettagli in SPECIFICHE-TECNICHE.md).
+- **Aziende:** l'id del titolo "Proponi una collaborazione" diventa `proponi-collaborazione` (`contatti` era già del footer).
+- **Myosotis:** ritaglio provvisorio isolato in `.modulo-incorporato__cornice--myosotis`, resa identica.
+- **5×1000:** a 320–360 px le schede in fondo uscivano dallo schermo (il pulsante "Copia il codice da condividere" non andava a capo). Ora restano nella colonna.
+- **Progetti:** il footer aveva ancora i link "Lorem ipsum": allineato al footer delle altre pagine.
+- **CSS:** tolte le regole della mappa "Progetti nel mondo" e del carosello "Progetti da sostenere" (sezioni eliminate dalla home). Restano i componenti dei template futuri (breadcrumbs, pagina progetto, slide "creatività").
+- **SEO:** Open Graph e Twitter Card; canonical, og:url e og:image in attesa del dominio.
+- **Repository:** `.gitignore`; `.DS_Store` e `.claude/settings.local.json` (impostazioni personali) tolti dal versionamento. `.claude/launch.json` resta: avvia l'anteprima locale per tutto il team.
+
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.
@@ -369,8 +385,10 @@ La freccetta accanto alla voce indica che si apre un pannello. Si apre un pannel
 - **Schede progetto:** al passaggio del mouse si sollevano ancora. Valutare lo stesso ingrandimento morbido dei pulsanti.
 - **Immagini non più usate** da eliminare prima della consegna, su conferma: in `assets/img/hero/` i file `5x1000-*`, `5x1000-creativita-*`, `5-per-mille-cottolengo-anziani-fragili-*` (comprese le versioni `-largo`), `natale-1920/960`, `natale-cottolengo-1920/960` e `pasto-*` (sostituiti da versioni con nomi SEO); in `assets/img/` anche `COT_Adv 5x1000_200x140.jpg` (vecchia immagine della tab 5×1000); più altri file inutilizzati in `assets`.
 - **Pagine delle quattro aree** (Cura, Accoglienza, Educazione, Missioni internazionali) con modulo di donazione: da generare quando arrivano i testi. Testi e foto delle schede sono provvisori.
-- **Pulizia del codice dopo la rimozione dei progetti, su conferma:** la pagina `progetti.html` con `js/progetti-dati.js` e `js/progetti.js`; `js/mappa-regioni.js`; la mappa `assets/img/mappa.svg` / `assets/svg/mappadot.web.svg`, le icone di "Chi aiuti" in `assets/svg/` e le regole CSS di carosello progetti e mappa non servono più alla home. Vanno eliminati quando si decide il destino della pagina Progetti. La pagina di progetto Family Cottolengo (`family-cottolengo.html`, `js/project-detail.js`) può diventare il modello per le pagine delle quattro aree.
+- **Pulizia del codice dopo la rimozione dei progetti, su conferma:** la pagina `progetti.html` con `js/progetti-dati.js` e `js/progetti.js`; `js/mappa-regioni.js` (non caricato da nessuna pagina); la mappa `assets/img/mappa.svg` / `assets/svg/mappadot.web.svg` e le icone di "Chi aiuti" in `assets/svg/` non servono più alla home (le regole CSS di carosello progetti e mappa sono state tolte il 13/10/2026). Vanno eliminati quando si decide il destino della pagina Progetti. La pagina di progetto Family Cottolengo (`family-cottolengo.html`, `js/project-detail.js`) può diventare il modello per le pagine delle quattro aree.
 - **Pagina Chi siamo:** testi da validare; file PDF di bilancio sociale, bilancio d'esercizio e statuto da collegare; scegliere tra 1828 e 1832 come data di inizio (oggi la pagina dice 1828, home e footer 1832).
 - **Pagine nuove** (5×1000, 4 aree, Come aiutarci): testi e foto da validare; collegare il modulo Myosotis per le raccolte solidali. I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
 - **Nome della voce Crowdfunding:** valutare un nome più immediato per il pubblico anziano, per esempio "Raccolte solidali" o "Crea una raccolta".
 - **Myosotis / NP Solutions:** verificare se il contratto comprende personal fundraising, API, webhook e pagine personalizzabili.
+- **Dominio definitivo:** serve per canonical, og:url e og:image (immagine di condivisione 1200 × 630 px da preparare).
+- **Modulo Myosotis senza header/footer** (o widget/API) da NP Solutions, per togliere il ritaglio provvisorio.
