@@ -384,6 +384,10 @@ Richiesta di Fulvio, prima per la home e poi estesa a tutto il sito. Titoli di s
 - Con "riduci movimento" o senza JavaScript tutto è visibile da subito.
 - Il controllo è sulla posizione verticale: funziona anche con le schede in fila orizzontale su telefono e con uno scorrimento veloce.
 
+## 27. Fascia dei numeri in blu notte
+
+Richiesta di Fulvio: la fascia con i numeri (97.000, 1832, 4, 5), sotto la foto della bambina in home e nella pagina Chi siamo, passa dal gradiente azzurro al blu notte pieno (`--blu-notte`, #003B57), il colore del footer e dei pannelli del menu. Il testo resta bianco (contrasto 11,9:1).
+
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.

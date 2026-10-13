@@ -1110,7 +1110,9 @@ fieldset { border: none; }
 
 /* ============ NUMERI ============ */
 .numbers {
-  background: var(--grad-marca);
+  /* blu notte pieno (13/10/2026, decisione 27): stacca la fascia dei numeri
+     dall'azzurro della marca; testo bianco a 11,9:1 */
+  background: var(--blu-notte);
   color: #fff;
   padding-block: 2.8rem;        /* banda ~dimezzata rispetto ai 5.5rem originali */
   text-align: center;
