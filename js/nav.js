@@ -145,6 +145,91 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
   });
 });
 
+/* ---------- Comparsa degli elementi durante lo scorrimento (scroll reveal) ----------
+   In tutte le pagine: titoli di sezione, numeri, schede, paragrafi degli
+   articoli, recapiti, documenti... "arrivano" (salgono di 24 px e si
+   accendono) quando entrano nello schermo; quelli affiancati partono uno
+   dopo l'altro. Una volta sola per elemento.
+   - Restano fermi: menu, hero e copertine, colonna laterale col modulo di
+     donazione, moduli, footer (devono essere subito pronti).
+   - Ciò che è già in vista all'apertura della pagina compare subito, senza
+     animazione.
+   - Con "riduci movimento" attivo o senza JavaScript tutto resta visibile.
+   - Controllo sulla posizione verticale (non IntersectionObserver): funziona
+     anche con le schede in fila orizzontale su telefono e con uno
+     scorrimento veloce (tasto Fine, àncore).
+   Finita la comparsa le classi vengono tolte, così hover e transizioni
+   proprie degli elementi restano quelle di sempre. */
+(function initRivela() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const SELETTORI = [
+    '.section-head', '.numbers__item', '.fila-schede__item', '.legend-row',
+    '.documento', '.recapito', '.cpm-passo', '.cpm-codice .container > *',
+    '.chi-colonna > *', '.chi-affiancato > *', '.chi-citazione .container',
+    '.fascia-invito .container > *', '.partners__title', '.quote .container',
+    '.project-article-content > *', '.proj-grid > *', '.modulo-incorporato__nota',
+  ];
+  const ESCLUSI = '.header, .footer, .cpm-banner, .hero, .project-cover, .project-sidebar, form, .dona-card, .sticky-dona';
+
+  const soglia = () => window.innerHeight * 0.92;
+  let elementi = Array.from(document.querySelectorAll(SELETTORI.join(',')))
+    .filter(el => !el.closest(ESCLUSI));
+  // niente animazioni annidate: se un contenitore si anima, i suoi figli no
+  elementi = elementi.filter(el => !elementi.some(altro => altro !== el && altro.contains(el)));
+  // già in vista all'apertura: si vede subito
+  elementi = elementi.filter(el => el.getBoundingClientRect().top >= soglia());
+  if (!elementi.length) return;
+
+  const PASSO = 90;       // ms tra un elemento e il successivo nella stessa fila
+  const MAX_RITARDO = 4;  // oltre il quinto elemento il ritardo non cresce
+
+  elementi.forEach(el => {
+    const fratelli = Array.from(el.parentElement.children).filter(x => elementi.includes(x));
+    const k = Math.min(fratelli.indexOf(el), MAX_RITARDO);
+    el.style.setProperty('--rivela-ritardo', (k * PASSO) + 'ms');
+    el.classList.add('rivela');
+  });
+  document.documentElement.classList.add('rivela-attiva');
+
+  function fine(el) {
+    el.classList.remove('rivela', 'is-entrato');
+    el.style.removeProperty('--rivela-ritardo');
+  }
+  function entra(el) {
+    el.classList.add('is-entrato');
+    el.addEventListener('transitionend', function t(e) {
+      if (e.target !== el || e.propertyName !== 'opacity') return;
+      el.removeEventListener('transitionend', t);
+      fine(el);
+    });
+  }
+
+  let inAttesa = elementi.slice();
+  let programmato = false;
+  function controlla() {
+    programmato = false;
+    const limite = soglia();
+    inAttesa = inAttesa.filter(el => {
+      if (el.getBoundingClientRect().top < limite) { entra(el); return false; }
+      return true;
+    });
+    if (!inAttesa.length) {
+      window.removeEventListener('scroll', richiedi);
+      window.removeEventListener('resize', richiedi);
+    }
+  }
+  function richiedi() {
+    if (!programmato) { programmato = true; requestAnimationFrame(controlla); }
+  }
+  window.addEventListener('scroll', richiedi, { passive: true });
+  window.addEventListener('resize', richiedi);
+  richiedi();
+
+  // in stampa niente resta nascosto
+  window.addEventListener('beforeprint', () => elementi.forEach(el => { el.classList.add('is-entrato'); fine(el); }));
+})();
+
 /* ---------- Copia codice fiscale 5x1000 (uno o più pulsanti, su qualsiasi pagina) ---------- */
 function abilitaCopia(btn, codice) {
   if (!btn) return;

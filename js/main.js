@@ -427,6 +427,8 @@ if (whereSection) {
 })();
 
 
+/* Comparsa degli elementi durante lo scorrimento: in js/nav.js (vale per tutte le pagine). */
+
 /* ---------- Altezza della sezione col modulo ----------
    --fold-h = viewport meno menu e hero campagne. Con la hero alta il valore
    è piccolo e la sezione prende l'altezza del suo contenuto; resta utile se

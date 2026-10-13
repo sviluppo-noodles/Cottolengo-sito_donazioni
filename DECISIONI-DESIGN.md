@@ -376,6 +376,14 @@ Solo codice: testi, foto, testimonianze, percentuali e partner provvisori non so
 - **SEO:** Open Graph e Twitter Card; canonical, og:url e og:image in attesa del dominio.
 - **Repository:** `.gitignore`; `.DS_Store` e `.claude/settings.local.json` (impostazioni personali) tolti dal versionamento. `.claude/launch.json` resta: avvia l'anteprima locale per tutto il team.
 
+## 26. Gli elementi "arrivano" durante lo scorrimento (scroll reveal), in tutte le pagine
+
+Richiesta di Fulvio, prima per la home e poi estesa a tutto il sito. Titoli di sezione, numeri, schede, paragrafi degli articoli, documenti, recapiti, passi del 5×1000, grafico, partner e testimonianze salgono di 24 px e si accendono in 0,7 s quando entrano nello schermo. Gli elementi affiancati partono uno dopo l'altro (90 ms di scarto, massimo 360 ms). Ogni elemento si anima una sola volta.
+- Restano fermi: menu, hero e copertine, colonna laterale col modulo di donazione, moduli e footer, perché devono essere subito pronti.
+- Ciò che è già in vista all'apertura della pagina compare subito.
+- Con "riduci movimento" o senza JavaScript tutto è visibile da subito.
+- Il controllo è sulla posizione verticale: funziona anche con le schede in fila orizzontale su telefono e con uno scorrimento veloce.
+
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.
