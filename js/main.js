@@ -2,16 +2,14 @@
    Donazioni Cottolengo — interazioni
    ========================================================== */
 
-/* ---------- Modulo donazione: importi, impatto, detrazione ---------- */
+/* ---------- Modulo donazione: importi e impatto ---------- */
 const COSTO_PASTO = 5; // € per pasto completo (da validare con l'ente)
-const DETRAZIONE = 0.30; // detrazione IRPEF 30% per ETS
 
 const amountRadios = document.querySelectorAll('input[name="importo"]');
 const customInput = document.getElementById('amt-custom');
 const freqRadios = document.querySelectorAll('input[name="freq"]');
 const tipoSelect = document.getElementById('dona-tipo');
 const impactText = document.getElementById('impact-text');
-const fiscalLine = document.getElementById('fiscal-line');
 const donaCta = document.getElementById('dona-cta');
 
 function importoCorrente() {
@@ -48,10 +46,8 @@ function aggiornaCard() {
 
   impactText.innerHTML = descriviImpatto(importo, freq);
 
-  const costoReale = importo * (1 - DETRAZIONE);
-  fiscalLine.innerHTML =
-    `La tua donazione è <strong>detraibile al 30%</strong>: ` +
-    `${formattaEuro(importo)}&nbsp;€ te ne costano davvero solo <strong>${formattaEuro(costoReale)}&nbsp;€</strong>.`;
+  // la nota fiscale (#fiscal-line) è un testo fisso nell'HTML: non dipende
+  // dall'importo e non viene riscritta qui
 
   const etichettaFreq = freq === 'mensile' ? ' al mese' : '';
   donaCta.textContent = `Dona ${formattaEuro(importo)} € adesso${etichettaFreq}`;
@@ -99,30 +95,6 @@ nav.addEventListener('click', e => {
   if (e.target.closest('a')) {
     nav.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
-  }
-});
-
-/* ---------- Dropdown "Come donare" ---------- */
-const dropdownItem = document.querySelector('.nav__item--dropdown');
-const dropdownToggle = document.querySelector('.nav__dropdown-toggle');
-
-dropdownToggle.addEventListener('click', e => {
-  e.stopPropagation();
-  const aperto = dropdownItem.classList.toggle('open');
-  dropdownToggle.setAttribute('aria-expanded', aperto);
-});
-
-document.addEventListener('click', e => {
-  if (!dropdownItem.contains(e.target)) {
-    dropdownItem.classList.remove('open');
-    dropdownToggle.setAttribute('aria-expanded', 'false');
-  }
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    dropdownItem.classList.remove('open');
-    dropdownToggle.setAttribute('aria-expanded', 'false');
   }
 });
 
@@ -186,45 +158,6 @@ if (whereSection) {
   }
 }
 
-/* ---------- Tab "Tanti modi per fare del bene" ---------- */
-(function initModiTabs() {
-  const nav = document.querySelector('.modi__nav');
-  if (!nav) return;
-  const tabs = Array.from(nav.querySelectorAll('.modi__tab'));
-  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
-
-  function attiva(i) {
-    tabs.forEach((tab, k) => {
-      const sel = k === i;
-      tab.classList.toggle('is-active', sel);
-      tab.setAttribute('aria-selected', String(sel));
-      tab.tabIndex = sel ? 0 : -1;
-      if (panels[k]) panels[k].hidden = !sel;
-    });
-    // su mobile l'elenco è una riga di chip che scorre: porta in vista quella scelta
-    if (nav.scrollWidth > nav.clientWidth) {
-      tabs[i].scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
-    }
-  }
-
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => attiva(i));
-    // navigazione da tastiera tra i tab (frecce, Home/End)
-    tab.addEventListener('keydown', e => {
-      let target = null;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') target = (i + 1) % tabs.length;
-      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') target = (i - 1 + tabs.length) % tabs.length;
-      else if (e.key === 'Home') target = 0;
-      else if (e.key === 'End') target = tabs.length - 1;
-      if (target !== null) {
-        e.preventDefault();
-        attiva(target);
-        tabs[target].focus();
-      }
-    });
-  });
-})();
-
 /* ---------- Copia codice fiscale 5x1000 (uno o più pulsanti) ---------- */
 function abilitaCopia(btn, codice) {
   if (!btn) return;
@@ -246,214 +179,136 @@ function abilitaCopia(btn, codice) {
 // pulsanti con il codice fiscale nell'attributo data-copy
 document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, b.dataset.copy));
 
-/* ---------- Carosello banner campagne (auto-scroll ogni 5s) ---------- */
+/* ---------- Hero campagne: carosello in dissolvenza (ogni 6s) ----------
+   Il pallino attivo si riempie man mano: mostra quale campagna è attiva e
+   quanto manca alla successiva (l'animazione è in CSS: --cpm-durata deve valere INTERVALLO).
+   Si ferma col pulsante pausa, col mouse sopra o col focus da tastiera, e
+   dopo una sosta riparte da dove era rimasta. Con "riduci movimento" attivo
+   non parte da solo. Su telefono si sfoglia col dito. Le slide nascoste
+   sono `inert`: il tasto Tab non entra nei loro pulsanti. */
 (function initCarosello() {
+  const banner = document.getElementById('cpm-banner');
   const track = document.getElementById('cpm-track');
   const dotsWrap = document.getElementById('cpm-dots');
   const pauseBtn = document.getElementById('cpm-pause');
-  const banner = document.getElementById('cpm-banner');
-  if (!track) return;
+  if (!banner || !track) return;
 
-  const slides = Array.from(track.children);
-  if (slides.length < 2) { if (pauseBtn) pauseBtn.style.display = 'none'; return; }
+  const slides = Array.from(track.querySelectorAll('.cpm-slide'));
+  if (!slides.length) return;
+  if (slides.length < 2) {
+    slides[0].classList.add('is-attiva');
+    banner.classList.add('is-singola');
+    return;
+  }
 
-  const INTERVALLO = 5000; // 5 secondi
+  const INTERVALLO = 6000; // ms — uguale a --cpm-durata in css/style.css
+  const ridottoMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let indice = 0;
   let timer = null;
-  let inPausa = false;
-  const ridottoMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let inPausa = false;     // pausa scelta dall'utente col pulsante
+  let trascorso = 0;       // ms già passati sulla slide attiva prima di una sosta
+  let partitoAlle = 0;
 
-  // crea i pallini di navigazione
-  const dots = slides.map((_, i) => {
+  // pallini di navigazione: uno per campagna
+  const dots = slides.map((s, i) => {
     const b = document.createElement('button');
     b.className = 'cpm-dot';
     b.type = 'button';
     b.setAttribute('role', 'tab');
-    b.setAttribute('aria-label', `Campagna ${i + 1} di ${slides.length}`);
-    b.addEventListener('click', () => { vaiA(i); riavvia(); });
+    const titolo = s.querySelector('.cpm-slide__title');
+    b.setAttribute('aria-label', `Campagna ${i + 1} di ${slides.length}` + (titolo ? `: ${titolo.textContent.trim()}` : ''));
+    b.addEventListener('click', () => { vaiA(i); avvia(); });
     dotsWrap.appendChild(b);
     return b;
   });
 
   function vaiA(i) {
     indice = (i + slides.length) % slides.length;
-    track.style.transform = `translateX(-${indice * 100}%)`;
-    dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === indice)));
-    // slide su fondo chiaro: i controlli bianchi diventerebbero invisibili
+    trascorso = 0;
+    slides.forEach((s, k) => {
+      const attiva = k === indice;
+      s.classList.toggle('is-attiva', attiva);
+      s.inert = !attiva;
+      s.setAttribute('aria-hidden', String(!attiva));
+    });
+    // slide su fondo chiaro: pallini e pausa passano al blu per restare visibili
     banner.classList.toggle('is-chiara', slides[indice].classList.contains('cpm-slide--chiara'));
+    dots.forEach((d, k) => {
+      d.setAttribute('aria-selected', String(k === indice));
+      d.tabIndex = k === indice ? 0 : -1;
+      if (k === indice) {           // fa ripartire da zero il riempimento del pallino
+        d.classList.remove('is-viva'); void d.offsetWidth; d.classList.add('is-viva');
+      }
+    });
   }
-
-  function avanti() { vaiA(indice + 1); }
 
   function avvia() {
+    if (timer) { clearTimeout(timer); timer = null; }
     if (inPausa || ridottoMov) return;
-    stop();
-    timer = setInterval(avanti, INTERVALLO);
+    banner.classList.remove('is-ferma');
+    partitoAlle = performance.now();
+    timer = setTimeout(() => { timer = null; vaiA(indice + 1); avvia(); },
+                       Math.max(300, INTERVALLO - trascorso));
   }
-  function stop() { if (timer) { clearInterval(timer); timer = null; } }
-  function riavvia() { stop(); avvia(); }
+  function sosta() {
+    if (timer) {
+      clearTimeout(timer); timer = null;
+      trascorso += performance.now() - partitoAlle;
+    }
+    banner.classList.add('is-ferma');
+  }
 
   if (pauseBtn) {
     pauseBtn.addEventListener('click', () => {
       inPausa = !inPausa;
+      pauseBtn.setAttribute('aria-pressed', String(inPausa));
       pauseBtn.setAttribute('aria-label', inPausa ? 'Riprendi lo scorrimento automatico' : 'Metti in pausa lo scorrimento automatico');
-      if (inPausa) stop(); else avvia();
+      banner.classList.toggle('is-statica', inPausa);
+      if (inPausa) sosta(); else { trascorso = 0; vaiA(indice); avvia(); }
     });
   }
+  if (ridottoMov) banner.classList.add('is-statica');
 
-  // pausa quando il mouse è sopra o c'è focus da tastiera
-  banner.addEventListener('mouseenter', stop);
-  banner.addEventListener('mouseleave', () => { if (!inPausa) avvia(); });
-  banner.addEventListener('focusin', stop);
-  banner.addEventListener('focusout', () => { if (!inPausa) avvia(); });
+  // sosta col mouse sopra o col focus da tastiera dentro la hero
+  banner.addEventListener('mouseenter', sosta);
+  banner.addEventListener('mouseleave', avvia);
+  banner.addEventListener('focusin', sosta);
+  banner.addEventListener('focusout', e => { if (!banner.contains(e.relatedTarget)) avvia(); });
+
+  // frecce sinistra/destra quando il focus è sui pallini
+  dotsWrap.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    vaiA(indice + (e.key === 'ArrowRight' ? 1 : -1));
+    dots[indice].focus();
+  });
+
+  // swipe orizzontale su touch (uno scorrimento verticale non lo attiva)
+  let x0 = null, y0 = 0;
+  track.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    const dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) { vaiA(indice + (dx < 0 ? 1 : -1)); avvia(); }
+  }, { passive: true });
+
+  // link interni a una slide (es. "Come firmare" → #cinquepermille): la mostrano
+  function mostraDaHash(hash) {
+    const k = slides.findIndex(s => s.id && '#' + s.id === hash);
+    if (k >= 0) { vaiA(k); avvia(); }
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a) mostraDaHash(a.getAttribute('href'));
+  });
 
   vaiA(0);
   avvia();
+  mostraDaHash(location.hash);
 })();
 
-/* ---------- Mappa interattiva: progetti nel mondo ----------
-   L'SVG della mappa è un file esterno (assets/svg/mappadot.web.svg): qui lo
-   iniettiamo inline nel DOM (serve per poterlo stilare e manipolare) e poi
-   accendiamo le regioni elencate in js/mappa-regioni.js. In produzione
-   l'SVG può essere incluso lato server: se è già nel DOM saltiamo il fetch. */
-(function initMappa() {
-  const host = document.getElementById('world-map');
-  const cardsList = document.getElementById('world-cards');
-  if (!host || !cardsList) return;
-
-  /* Aree: schede laterali + destinazione del filtro sulla pagina Progetti.
-     Le chiavi sono i termini di `area_geografica` (vedi js/progetti-dati.js):
-     cliccando "Europa" l'archivio mostra anche i progetti dei termini figli,
-     oggi la sola Italia. I nomi arrivano da AREE per non duplicarli. */
-  const SCHEDE = [
-    { key: 'europa',  testo: 'Testo placeholder: la Piccola Casa di Torino e le opere di carità in Italia, cuore europeo dell’Opera.' },
-    { key: 'africa',  testo: 'Testo placeholder: missioni, scuole e assistenza sanitaria a sostegno delle comunità africane.' },
-    { key: 'asia',    testo: 'Testo placeholder: accoglienza e cura delle persone più fragili nei progetti in Asia.' },
-    { key: 'america', testo: 'Testo placeholder: a Tachina, in Ecuador, accoglienza per anziani soli e senza dimora.' },
-  ];
-  const AREE_SCHEDE = SCHEDE.map(s => ({
-    ...s,
-    nome: typeof nomeArea === 'function' ? nomeArea(s.key) : s.key,
-    href: `progetti.html?area=${s.key}`,
-  }));
-
-  const fallback = host.querySelector('.world__map-fallback');
-  const svgInDom = document.getElementById('map-svg');
-  if (svgInDom) {
-    fallback?.remove();
-    setup(svgInDom);                     // già inline (es. include lato server)
-  } else if (host.dataset.mapSrc) {
-    fetch(host.dataset.mapSrc)           // prototipo statico: carico e inietto
-      .then(r => {
-        if (!r.ok) throw new Error(`SVG non disponibile: ${r.status}`);
-        return r.text();
-      })
-      .then(txt => {
-        fallback?.remove();
-        host.insertAdjacentHTML('afterbegin', txt);
-        setup(document.getElementById('map-svg'));
-      })
-      .catch(() => costruisciSchede());  // con file:// resta visibile l'immagine di fallback
-  } else {
-    costruisciSchede();
-  }
-
-  // crea le schede laterali e restituisce i riferimenti per area
-  function costruisciSchede() {
-    const refs = {};
-    AREE_SCHEDE.forEach(a => {
-      const li = document.createElement('li');
-      const card = document.createElement('a');
-      card.className = 'world-card';
-      card.href = a.href;
-      card.setAttribute('aria-label', `Scopri i progetti in ${a.nome}`);
-      card.innerHTML =
-        `<div class="world-card__body">` +
-          `<span class="world-card__title">${a.nome}</span>` +
-          `<p class="world-card__text">${a.testo}</p>` +
-        `</div>`;
-      li.appendChild(card);
-      cardsList.appendChild(li);
-      refs[a.key] = { card, href: a.href, nome: a.nome, regioni: [] };
-    });
-    return refs;
-  }
-
-  function setup(mapSvg) {
-    const refs = costruisciSchede();
-    if (!mapSvg) return;
-
-    // accendi le regioni elencate nella config e collegale alla loro area
-    const REGIONI = window.REGIONI_MAPPA || {};
-    Object.keys(REGIONI).forEach(id => {
-      const area = REGIONI[id].area;
-      const el = mapSvg.getElementById(id);   // <path id="Africa"> ecc.
-      if (!el || !refs[area]) return;
-      el.classList.add('is-live');
-      refs[area].regioni.push(el);
-    });
-
-    // Sensore invisibile sul bounding box di ogni regione: i pallini hanno spazi
-    // vuoti tra loro, così l'hover scatta sull'intera area e non sul singolo punto.
-    const SVGNS = 'http://www.w3.org/2000/svg';
-    const sensori = Object.keys(refs).map(key => {
-      const regioni = refs[key].regioni;
-      if (!regioni.length) return null;
-      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-      regioni.forEach(el => {
-        const b = el.getBBox();
-        minX = Math.min(minX, b.x); minY = Math.min(minY, b.y);
-        maxX = Math.max(maxX, b.x + b.width); maxY = Math.max(maxY, b.y + b.height);
-      });
-      return { key, x: minX, y: minY, w: maxX - minX, h: maxY - minY, area: (maxX - minX) * (maxY - minY) };
-    }).filter(Boolean);
-
-    // i sensori più piccoli vanno sopra (aggiunti per ultimi) per vincere sugli overlap
-    sensori.sort((a, b) => b.area - a.area);
-    sensori.forEach(s => {
-      const rect = document.createElementNS(SVGNS, 'rect');
-      rect.setAttribute('x', s.x); rect.setAttribute('y', s.y);
-      rect.setAttribute('width', s.w); rect.setAttribute('height', s.h);
-      rect.setAttribute('pointer-events', 'all');
-      rect.setAttribute('class', 'world__hit');
-      rect.setAttribute('role', 'link');
-      rect.setAttribute('tabindex', '0');
-      rect.setAttribute('aria-label', `Progetti in ${refs[s.key].nome}`);
-      mapSvg.appendChild(rect);
-      refs[s.key].hit = rect;
-    });
-
-    function attiva(key, on) {
-      const r = refs[key];
-      if (!r) return;
-      mapSvg.classList.toggle('is-dimmed', on);      // le altre regioni si slavano
-      [r.card, ...r.regioni].forEach(el => el && el.classList.toggle('is-active', on));
-    }
-
-    // evidenziazione incrociata scheda ↔ mappa + click → pagina Progetti filtrata
-    Object.keys(refs).forEach(key => {
-      const r = refs[key];
-      const enter = () => attiva(key, true);
-      const leave = () => attiva(key, false);
-      const vai = () => { window.location.href = r.href; };
-
-      [r.card, r.hit].forEach(el => {
-        if (!el) return;
-        el.addEventListener('mouseenter', enter);
-        el.addEventListener('mouseleave', leave);
-        el.addEventListener('focus', enter);
-        el.addEventListener('blur', leave);
-      });
-
-      if (r.hit) {
-        r.hit.addEventListener('click', vai);
-        r.hit.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vai(); }
-        });
-      }
-    });
-  }
-})();
 
 /* ---------- Carosello testimonianze (auto-scorrimento a timer) ---------- */
 (function initTestimonianze() {
@@ -520,79 +375,11 @@ document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, 
   avvia();
 })();
 
-/* ---------- Carosello "Progetti da sostenere" (finestra sull'archivio) ----------
-   Mostra i progetti con il flag "In evidenza" definito in js/progetti-dati.js,
-   con LE STESSE card della pagina Progetti: una sola card, due contesti.
 
-   Scorrimento orizzontale ciclico: le frecce avanzano di una card e, arrivate
-   in fondo, ricominciano dall'inizio (e viceversa). Nessuna card duplicata nel
-   DOM: così ogni card resta cliccabile e lo screen reader legge i progetti una
-   volta sola. Su touch funziona anche lo swipe nativo (scroll-snap).
-
-   In WordPress: WP_Query sul CPT `progetti` con meta_query sul campo ACF
-   "in evidenza"; se si vuole un loop infinito con cloni, lo dà Swiper
-   (`loop: true`) senza cambiare markup. */
-(function initEvidenza() {
-  const track = document.getElementById('evid-track');
-  if (!track) return;
-  // i dati arrivano da js/progetti-dati.js: se manca, la sezione si nasconde
-  if (typeof PROGETTI === 'undefined' || typeof cardProgetto !== 'function') return;
-
-  const sezione = document.getElementById('progetti-evidenza');
-  const evidenza = PROGETTI.filter(p => p.inEvidenza);
-  if (!evidenza.length) { if (sezione) sezione.hidden = true; return; }
-
-  evidenza.forEach(p => {
-    const li = document.createElement('li');
-    li.className = 'evid-item';
-    li.appendChild(cardProgetto(p));
-    track.appendChild(li);
-  });
-
-  const prev = document.getElementById('evid-prev');
-  const next = document.getElementById('evid-next');
-
-  // larghezza di un passo = una card + il gap che la separa dalla successiva
-  function passo() {
-    const primo = track.querySelector('.evid-item');
-    if (!primo) return track.clientWidth;
-    const stili = getComputedStyle(track);
-    const gap = parseFloat(stili.columnGap || stili.gap) || 0;
-    return primo.getBoundingClientRect().width + gap;
-  }
-
-  const scorribile = () => track.scrollWidth - track.clientWidth;
-
-  function scorri(direzione) {
-    const max = scorribile();
-    if (max <= 1) return;                       // tutte le card sono già visibili
-    const ora = track.scrollLeft;
-    let destinazione = ora + direzione * passo();
-    // ciclico: oltre la fine si riparte dall'inizio, prima dell'inizio si va in fondo
-    if (direzione > 0 && ora >= max - 2) destinazione = 0;
-    else if (direzione < 0 && ora <= 2) destinazione = max;
-    // chi ha chiesto meno animazioni salta direttamente alla posizione
-    const dolce = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    track.scrollTo({
-      left: Math.max(0, Math.min(destinazione, max)),
-      behavior: dolce ? 'smooth' : 'auto',
-    });
-  }
-
-  if (prev) prev.addEventListener('click', () => scorri(-1));
-  if (next) next.addEventListener('click', () => scorri(1));
-
-  // le frecce servono solo se c'è qualcosa da scorrere
-  function aggiornaFrecce() {
-    const serve = scorribile() > 1;
-    [prev, next].forEach(b => { if (b) b.hidden = !serve; });
-  }
-  aggiornaFrecce();
-  window.addEventListener('resize', aggiornaFrecce);
-  window.addEventListener('load', aggiornaFrecce);   // le copertine arrivano dopo
-})();
-
-/* ---------- Above the fold: nav + banner + hero = 100% dell'altezza schermo ---------- */
+/* ---------- Altezza della sezione col modulo ----------
+   --fold-h = viewport meno menu e hero campagne. Con la hero alta il valore
+   è piccolo e la sezione prende l'altezza del suo contenuto; resta utile se
+   la hero viene tolta (fuori campagna) o su schermi molto alti. */
 (function initFoldHeight() {
   const header = document.querySelector('.header');
   const banner = document.getElementById('cpm-banner');
@@ -621,16 +408,20 @@ document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, 
   setTimeout(aggiorna, 1200);
 })();
 
-/* ---------- Barra "Dona ora" fissa su mobile ---------- */
+/* ---------- Barra "Dona ora" fissa su mobile ----------
+   Compare solo quando non si vedono né il modulo di donazione né la hero
+   campagne: sulla hero c'è già un pulsante largo e la barra lo coprirebbe. */
 const stickyDona = document.getElementById('sticky-dona');
 const donaCard = document.getElementById('dona');
+const heroCampagne = document.getElementById('cpm-banner');
+const inVista = new Map();
 
 const stickyObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const visibile = !entry.isIntersecting;
-    stickyDona.classList.toggle('visible', visibile);
-    stickyDona.setAttribute('aria-hidden', String(!visibile));
-  });
+  entries.forEach(entry => inVista.set(entry.target, entry.isIntersecting));
+  const visibile = ![...inVista.values()].some(Boolean);
+  stickyDona.classList.toggle('visible', visibile);
+  stickyDona.setAttribute('aria-hidden', String(!visibile));
 }, { threshold: 0.05 });
 
 stickyObserver.observe(donaCard);
+if (heroCampagne) stickyObserver.observe(heroCampagne);

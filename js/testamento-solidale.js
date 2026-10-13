@@ -2,8 +2,6 @@
 (function () {
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  const dropdownItem = document.querySelector('.nav__item--dropdown');
-  const dropdownToggle = document.querySelector('.nav__dropdown-toggle');
 
   if (burger && nav) {
     burger.addEventListener('click', () => {
@@ -18,18 +16,8 @@
     });
   }
 
-  if (dropdownItem && dropdownToggle) {
-    dropdownToggle.addEventListener('click', event => {
-      event.stopPropagation();
-      const open = dropdownItem.classList.toggle('open');
-      dropdownToggle.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', event => {
-      if (dropdownItem.contains(event.target)) return;
-      dropdownItem.classList.remove('open');
-      dropdownToggle.setAttribute('aria-expanded', 'false');
-    });
-  }
+  // tendine del menu: gestite da js/nav.js
+
 
   const amounts = Array.from(document.querySelectorAll('input[name="legacy-amount"]'));
   const frequencies = Array.from(document.querySelectorAll('input[name="legacy-freq"]'));
@@ -60,10 +48,8 @@
     const frequency = currentFrequency();
     const meals = Math.max(1, Math.floor(amount / 5));
     const monthly = frequency === 'mensile' ? ' ogni mese' : '';
-    const realCost = amount * 0.7;
 
     impact.innerHTML = `Con <strong>${euro(amount)}&nbsp;€</strong>${monthly} offri <strong>${meals} pasti caldi</strong> a chi non ha nulla.`;
-    fiscal.innerHTML = `La tua donazione è <strong>detraibile al 30%</strong>: ${euro(amount)}&nbsp;€ te ne costano davvero solo <strong>${euro(realCost)}&nbsp;€</strong>.`;
     cta.textContent = `Dona ${euro(amount)} € adesso${frequency === 'mensile' ? ' al mese' : ''}`;
 
     const url = new URL('https://dona.cottolengo.org/');

@@ -7,6 +7,13 @@
    Palette: azzurro #009FE3 (il colore del logo) · blu #003B57
    ========================================================== */
 
+/* ---------- Unità di misura ----------
+   Testi e spazi in rem, breakpoint in em: se l'utente ingrandisce il carattere
+   predefinito del browser (comune tra gli over 60), testi e impaginazione
+   crescono insieme e il menu passa all'hamburger prima di andare a capo.
+   70em = 1120px (menu → hamburger) · 75em = 1200px (schede in fila) · 63.75em = 1020px · 61.25em = 980px · 45em = 720px · 38.75em = 620px ·
+   35em = 560px · 30em = 480px (con carattere predefinito 16px). */
+
 /* ---------- Caratteri: Helvetica in tutto il sito ----------
    File self-hosted in assets/fonts/: Light, Regular e Bold.
    Nessuna chiamata a servizi esterni.
@@ -46,11 +53,46 @@
   --blu-notte: #003B57;            /* titoli e struttura (11,9:1 su bianco) */
   --azzurro-chiaro: #C9ECFC;
   --azzurro-chiarissimo: #EDF7FD;  /* fondo delle sezioni chiare */
-  --giallo-accento: #FFC845;       /* accento unico: evidenza e focus */
+  /* Accento caldo — il secondo colore del sito donazioni.
+     Miele: un giallo caldo e profondo, "dorato". I gialli caldi sono più chiari
+     dell'azzurro, quindi gli stanno accanto senza "vibrare" (corallo, rosso,
+     rosa e arancio vivo hanno la sua stessa luminosità e vibrano). Da UNICEF
+     ci distingue l'uso: pulsanti sempre azzurri, miele solo come accento.
+     Regola d'uso (vedi SPECIFICHE-TECNICHE.md):
+       60% bianco e azzurro chiarissimo · 30% azzurri · massimo 10% caldo
+       Regola: il miele VIVO è per i segni grafici, quello SCURO per il testo.
+       --albicocca  → (miele vivo #EAB308) solo linee accanto ai dati d'impatto
+                      e segmento della ciambella; MAI con testo sopra (il bianco
+                      non si legge, il blu notte su un colore caldo saturo "vibra")
+       --terracotta → (miele scuro #A16207) fondo delle etichette di evidenza
+                      ("In evidenza", "il più scelto", "aiuta di più") con testo
+                      BIANCO (4,9:1) e colore dei numeri d'impatto su fondo chiaro
+     I nomi delle variabili restano quelli storici per non toccare il resto del CSS.
+       mai su pulsanti di donazione, titoli, fondi ampi o paragrafi */
+  --albicocca: #EAB308;            /* miele vivo: segni grafici */
+  --terracotta: #A16207;           /* miele scuro: tutto ciò che contiene testo */
+  /* Focus da tastiera: anello blu notte con alone bianco, visibile sia sul
+     bianco sia sull'azzurro; sui fondi scuri (hero, footer) diventa bianco. */
+  --focus: var(--blu-notte);
+
+  /* ---------- Misure dell'intestazione ----------
+     Un solo valore governa menu, pannello mobile, hero e ancore interne.
+     76px su desktop (fascia standard 64–80), 64px quando compare l'hamburger. */
+  --header-h: 76px;
+
+  /* ---------- Pulsanti: tre misure, nessun'altra ----------
+     L 58px · testo 20px → solo l'azione principale (dona nel modulo, hero)
+     M 52px · testo 17px → tutte le altre azioni della pagina
+     S 48px · testo 17px → "Dona ora" nell'intestazione
+     Tutte sopra i 44px di area di tocco minima. L'altezza è fissa (padding
+     verticale 0): non dipende più dall'interlinea del contenitore. */
+  --btn-l: 58px;
+  --btn-m: 52px;
+  --btn-s: 48px;
   --verde-ok: #1E9E6A;
   /* Gradiente delle fasce piene: azzurro del logo → azzurro scuro.
      Scelta del cliente: l'azzurro #009FE3 è il colore principale e resta su
-     titoli, navbar, bottoni e footer anche dove il contrasto col bianco
+     titoli, navbar e bottoni anche dove il contrasto col bianco
      (3,0:1) non raggiunge il minimo WCAG di 4,5:1. */
   --grad-marca: linear-gradient(90deg, var(--azzurro) 0%, var(--azzurro-scuro) 100%);
   --bianco: #ffffff;
@@ -98,11 +140,17 @@
   /* ---------- Movimento ---------- */
   --transizione: 0.18s ease;
   --ease-uscita: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* ritorno elastico discreto: supera di poco la misura finale e si assesta */
+  --ease-gomma: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* le ancore interne (#dona, #contatti…) non finiscono sotto il menu fisso */
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
 
 body {
   font-family: var(--f-testo);
@@ -149,11 +197,11 @@ a { color: var(--azzurro); }
 /* Helvetica governa titoli, testo, etichette, comandi, numeri e pillole.
    I due token restano separati per poter differenziare in futuro display e
    testo senza riscrivere i singoli componenti. */
-.nav__link, .modi__tab, .world-card__title, .proj-card__title, .proj-all__title,
+.nav__link, .world-card__title, .proj-card__title, .proj-all__title,
 .field-label, .freq__toggle label, .amounts__grid label, .amounts__tag,
 .amounts__custom-field, .amounts__custom-field input, .select-wrap select,
-.numbers__value, .legend-row__num, .who-card__stat strong,
-.cpm5__claim, .cpm5__cf-label, .cpm5__cf-num, .cpm-slide__tag, .cpm-slide__title,
+.numbers__value, .legend-row__num,
+.cpm-slide__tag, .cpm-slide__title, .cpm-slide__cf strong,
 .partners__logo, .partners__title, .footer h3, .pill, .badge,
 .proj-filters__label, .proj-filters__reset, .proj-filters__badge, .proj-count {
   font-family: var(--f-display);
@@ -189,8 +237,9 @@ a { color: var(--azzurro); }
 /* Focus ben visibile */
 a:focus-visible, button:focus-visible, input:focus-visible, label:focus-visible,
 select:focus-visible, [tabindex]:focus-visible {
-  outline: 3px solid var(--giallo-accento);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
 }
 
 /* ============ BOTTONI ============
@@ -204,20 +253,52 @@ select:focus-visible, [tabindex]:focus-visible {
   gap: var(--s-2);
   font-family: var(--f-display);
   font-size: 1.0625rem;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.01em;
+  white-space: nowrap;              /* l'etichetta non va mai a capo */
   text-decoration: none;
   border: none;
   cursor: pointer;
   border-radius: var(--r-pill);
-  padding: 0.8rem 1.75rem;
-  min-height: 52px;                 /* area di tocco generosa */
+  padding: 0 1.75rem;
+  min-height: var(--btn-m);         /* misura M */
   box-shadow: var(--e-1);
-  transition: transform var(--transizione), box-shadow var(--transizione),
-              background var(--transizione), color var(--transizione);
+  /* scale e ombra con la curva "gommosa"; colore con una dissolvenza piana */
+  transition: transform 0.45s var(--ease-gomma), box-shadow 0.45s var(--ease-gomma),
+              background var(--transizione), color var(--transizione), border-color var(--transizione);
+  --btn-zoom: 1.04;                 /* ingrandimento al passaggio del mouse */
 }
-.btn:hover { transform: translateY(-2px); box-shadow: var(--e-2); }
-.btn:active { transform: translateY(0); box-shadow: var(--e-1); }
+/* Passaggio del mouse: il pulsante si gonfia appena (+4%) e si assesta con un
+   leggerissimo rimbalzo, come una superficie morbida. Solo dove esiste un
+   mouse: sui touch lo stato hover resterebbe "incollato" dopo il tocco. */
+@media (hover: hover) {
+  .btn:hover { transform: scale(var(--btn-zoom)); box-shadow: var(--e-2); }
+}
+/* Pressione: si schiaccia un poco e torna su, risposta immediata al clic/tocco */
+.btn:active {
+  transform: scale(0.96);
+  box-shadow: var(--e-1);
+  transition-duration: 0.12s;
+}
+/* pulsanti larghi quanto il contenitore: stesso effetto, ingrandimento minore,
+   altrimenti su 500px di larghezza il +4% diventerebbe vistoso */
+.btn--dona, .btn--esplora, .proj-card__cta { --btn-zoom: 1.02; }
+
+/* Rilascio: dopo la pressione il pulsante "rimbalza" morbidamente, supera di
+   poco la misura di riposo, torna indietro e si assesta (≈0,6s). La classe
+   .is-rimbalzo la mette js/nav.js al rilascio del mouse/dito.
+   --btn-riposo: la misura su cui si assesta (ingrandito se il mouse è ancora
+   sopra, normale sui touch che non hanno lo stato hover). */
+.btn { --btn-riposo: 1; }
+@media (hover: hover) { .btn:hover { --btn-riposo: var(--btn-zoom); } }
+.btn.is-rimbalzo { animation: btn-rimbalzo 0.6s cubic-bezier(0.25, 0.8, 0.35, 1) both; }
+@keyframes btn-rimbalzo {
+  0%   { transform: scale(0.96); }
+  40%  { transform: scale(calc(var(--btn-riposo) + 0.035)); }
+  70%  { transform: scale(calc(var(--btn-riposo) - 0.012)); }
+  100% { transform: scale(var(--btn-riposo)); }
+}
 
 /* primario: azzurro pieno */
 .btn--dona {
@@ -225,19 +306,24 @@ select:focus-visible, [tabindex]:focus-visible {
   background: var(--azzurro);
   color: #fff;
   font-size: 1.25rem;
-  font-weight: 700;
-  padding: 0.95rem 1.8rem;
-  min-height: 58px;
+  padding: 0 1.8rem;
+  min-height: var(--btn-l);         /* misura L */
+  white-space: normal;              /* importo + nome progetto può essere lungo: a capo su schermi stretti */
+  text-align: center;
+  text-wrap: balance;
 }
-.btn--dona:hover { background: var(--azzurro-scuro); }
+/* Hover di tutti i pulsanti: blu notte (il colore del footer) con testo
+   bianco, qualunque sia il colore a riposo. Una sola regola per tutto il sito. */
+.btn--dona:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 
 /* su fondo azzurro: bottone bianco */
 .btn--header {
   background: var(--bianco);
   color: var(--azzurro-scuro);
-  font-weight: 700;
+  min-height: var(--btn-s);         /* misura S: nel menu non compete con il pulsante principale */
+  padding-inline: 1.4rem;
 }
-.btn--header:hover { background: var(--azzurro-chiarissimo); }
+.btn--header:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 
 .icon-heart { flex: none; }
 
@@ -254,10 +340,10 @@ select:focus-visible, [tabindex]:focus-visible {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding-block: 0.7rem;
+  min-height: var(--header-h);      /* min-: con caratteri ingranditi cresce invece di tagliare */
 }
 
-.header__logo { height: 52px; width: auto; }
+.header__logo { height: 52px; width: auto; display: block; }
 
 .nav { margin-left: auto; }
 
@@ -276,8 +362,11 @@ select:focus-visible, [tabindex]:focus-visible {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.08rem;
+  font-size: 1.08rem;               /* 17px: nella fascia 16–18 dei menu leggibili */
+  line-height: 1.2;                 /* link e pulsanti del menu alti uguali */
+  min-height: 44px;                 /* area di tocco/clic minima consigliata */
   padding: 0.6rem 0.95rem 0.75rem;
+  white-space: nowrap;
   background: none;
   border: none;
   cursor: pointer;
@@ -320,7 +409,11 @@ select:focus-visible, [tabindex]:focus-visible {
   right: 0;
   height: 24rem;                   /* altezza FISSA: un elenco più corto resta
                                       solo meno pieno, il pannello non salta */
-  background: var(--azzurro);
+  /* Blu notte, come il footer: il pannello si legge come un livello sopra la
+     pagina, distinto dalla barra azzurra, e il testo bianco arriva a 11,9:1
+     (sull'azzurro era 3:1). Menu in alto e footer in basso parlano la stessa
+     lingua: azzurro per la marca, blu notte per le informazioni. */
+  background: var(--blu-notte);
   border-top: 1px solid rgba(255, 255, 255, 0.24);
   box-shadow: 0 20px 44px rgba(0, 59, 87, 0.26);
   z-index: 60;
@@ -362,23 +455,19 @@ select:focus-visible, [tabindex]:focus-visible {
   color: #fff;
   text-decoration: none;
   font-family: var(--f-display);
-  font-size: 1.125rem;
+  font-size: 1.0625rem;             /* 17px, come le voci del menu */
   font-weight: 600;
   letter-spacing: -0.01em;
   transition: background var(--transizione);
 }
-/* freccia sulla voce puntata: dice che il click porta da qualche parte */
-.nav__mega__voce::after {
-  content: "→";
-  margin-left: auto;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity var(--transizione), transform var(--transizione);
-}
+/* niente freccia sulla voce puntata: la selezione è già indicata dal filo
+   azzurro a sinistra e dal fondo più chiaro */
 .nav__mega__voce:hover,
 .nav__mega__voce:focus-visible,
-.nav__mega__voce.is-current { background: rgba(255, 255, 255, 0.18); }
-.nav__mega__voce.is-current::after { opacity: 1; transform: none; }
+.nav__mega__voce.is-current {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 4px 0 0 var(--azzurro);   /* filo azzurro: la voce scelta */
+}
 
 /* la descrizione sotto la voce serve solo su telefono, dove non c'è la
    colonna di destra: il JS la scrive leggendo lo stesso data-desc */
@@ -394,23 +483,28 @@ select:focus-visible, [tabindex]:focus-visible {
    Corpo grande e misura corta, così sono le parole a occupare lo spazio. */
 .nav__mega__desc {
   color: #fff;
-  font-size: clamp(1.25rem, 1.7vw, 1.7rem);
-  font-weight: 300;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  max-width: 30ch;
+  font-size: clamp(1.125rem, 1.4vw, 1.25rem);   /* 18–20px: leggibile senza dominare il pannello */
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 34ch;
   text-wrap: pretty;
 }
+
+.nav__mega :focus-visible { outline-color: #fff; box-shadow: none; }
 
 /* Hamburger (solo mobile) */
 .header__burger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
+  width: 48px; height: 48px;        /* area di tocco 48×48 (linee guida Android/WCAG) */
+  margin-right: -11px;              /* le linee restano allineate al margine del contenuto */
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 0;
 }
 .header__burger span {
   width: 26px; height: 3px;
@@ -434,138 +528,303 @@ select:focus-visible, [tabindex]:focus-visible {
   align-items: stretch;      /* hero__main riempie tutta l'altezza → la foto (bottom:0) resta a filo dei numeri */
 }
 
-/* ===== Banner campagne (carosello 5x1000 + stagionali) =====
-   Fascia a tutta larghezza attaccata alla navbar: nessun raggio/ombra/margine.
-   Il contenuto interno di ogni slide resta entro le dimensioni del body grazie al
-   padding-inline calcolato sulla stessa larghezza del .container (max 1200px). */
+/* ===== Hero campagne (carosello a tutta larghezza sotto il menu) =====
+   Foto piena, testo in basso a sinistra su una sfumatura blu notte, pallini di
+   navigazione in basso a destra. Le slide sono sovrapposte nella stessa cella di
+   griglia e si alternano in dissolvenza: l'altezza la decide la hero, non la
+   slide più lunga.
+   Il punto focale di ogni foto arriva da --fuoco (style inline sulla slide):
+   in WordPress è un campo dell'immagine, così il soggetto resta in vista
+   anche nel taglio verticale del telefono. */
 .cpm-banner {
+  --cpm-h: clamp(460px, 72vh, 720px);
+  --cpm-durata: 6s;                       /* deve coincidere con INTERVALLO in js/main.js */
   position: relative;
   z-index: 2;
-  width: 100%;
+  display: grid;
+  height: var(--cpm-h);
   overflow: hidden;
+  background: var(--blu-notte);           /* fondo mentre la foto carica */
+  color: #fff;
 }
 .cpm-track {
-  display: flex;
-  transition: transform 0.6s ease;
+  grid-area: 1 / 1;
+  display: grid;
 }
-/* allinea il contenuto delle slide al body: gutter minimo 1.25rem, poi centrato a 1200px */
 .cpm-slide {
-  flex: 0 0 100%;
+  grid-area: 1 / 1;
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem 2.5rem;
-  padding: 1.7rem max(1.25rem, calc((100% - 1200px) / 2));
-  min-height: 168px;
-  color: #fff;
+  align-items: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s var(--ease-uscita), visibility 0s linear 0.9s;
 }
-.cpm-slide--natale  { background: linear-gradient(90deg, var(--blu-notte) 0%, #002637 100%); }
+.cpm-slide.is-attiva {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.9s var(--ease-uscita), visibility 0s;
+}
+.cpm-slide__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--fuoco, 50% 50%);
+}
+/* Zoom d'ingresso: quando una campagna entra, la foto parte leggermente
+   ingrandita (+10%) e si allarga fino alla misura piena in 7s, rallentando
+   verso la fine: l'immagine "si apre" davanti al visitatore.
+   Le slide non attive restano alla misura piena: uscendo in dissolvenza non
+   saltano. La grafica impaginata (5×1000) ha uno zoom più leggero, sotto.
+   Si ferma solo con il pulsante pausa; con "riduci movimento" non c'è. */
+.cpm-slide:not(.cpm-slide--creativita) .cpm-slide__img {
+  transform-origin: var(--fuoco, 50% 50%);   /* centrato sul soggetto */
+}
+.cpm-slide.is-attiva:not(.cpm-slide--creativita) .cpm-slide__img {
+  animation: cpm-zoom 7s cubic-bezier(0.25, 0.6, 0.3, 1) both;
+}
+.cpm-banner.is-statica .cpm-slide__img { animation-play-state: paused; }   /* solo con la pausa voluta: col mouse sopra lo zoom continua */
+@keyframes cpm-zoom { from { transform: scale(1.1); } to { transform: scale(1); } }
+/* Grafica impaginata (5×1000): stesso movimento ma più leggero (+5%), così
+   testo e logo, già lontani dai bordi, non vengono mai tagliati. */
+.cpm-slide--creativita .cpm-slide__img { transform-origin: 50% 0; }
+.cpm-slide--creativita.is-attiva .cpm-slide__img {
+  animation: cpm-zoom-leggero 7s cubic-bezier(0.25, 0.6, 0.3, 1) both;
+}
+@keyframes cpm-zoom-leggero { from { transform: scale(1.05); } to { transform: scale(1); } }
 
-/* slide 5x1000 in 3 sezioni (immagine | testo+codice | bottone) */
-.cpm-slide--5x1000 { background: #fff; color: var(--blu-notte); padding: 0 max(1.25rem, calc((100% - 1200px) / 2)); gap: 0; align-items: stretch; }
-.cpm5__sec { flex: 1 1 0; display: flex; align-items: center; min-width: 0; }
-.cpm5__img { padding: 0; }
-.cpm5__img img { width: 100%; height: 100%; object-fit: contain; object-position: left center; display: block; }
-.cpm5__info { flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.7rem; padding: 1rem 1.4rem 1rem 3rem; }
-.cpm5__claim {
-  color: var(--azzurro);
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
-  line-height: 1.12;
+/* Sfumatura: piena in basso a sinistra dove sta il testo, trasparente sul
+   soggetto. Garantisce il contrasto del testo bianco su qualsiasi foto. */
+.cpm-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, rgba(0, 28, 42, 0.88) 0%, rgba(0, 28, 42, 0.55) 32%, rgba(0, 28, 42, 0) 62%),
+    linear-gradient(90deg, rgba(0, 28, 42, 0.7) 0%, rgba(0, 28, 42, 0.25) 45%, rgba(0, 28, 42, 0) 65%);
+  pointer-events: none;
 }
-.cpm5__cf { display: flex; align-items: center; gap: 0.7rem; }
-.cpm5__cf-label {
-  color: var(--ink-tenue);
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  line-height: 1.05;
+.cpm-slide__inner {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 6.5rem;                   /* spazio per i pallini */
 }
-.cpm5__cf-num {
-  color: var(--blu-notte);
+.cpm-slide__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+  max-width: 40rem;
+}
+.cpm-slide__tag {
+  /* stessa pillola delle etichette delle schede: blu notte (il colore del footer)
+     e testo bianco, contrasto circa 11:1 anche a 11 px */
+  background: var(--blu-notte);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.cpm-slide__title {
+  color: #fff;
+  font-size: clamp(2.1rem, 4.4vw, 3.6rem);
   font-weight: 800;
-  font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.cpm-slide__sub {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--t-lead);
+  line-height: 1.45;
+  max-width: 34rem;
+}
+.cpm-slide__cf {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--t-lead);
+}
+.cpm-slide__cf strong {
+  color: #fff;
+  font-size: 1.35em;
+  font-weight: 800;
   letter-spacing: 0.03em;
+  margin-left: 0.3em;
+  white-space: nowrap;
 }
-.cpm5__action { justify-content: center; }
-.cpm-slide--5x1000 .btn--copy {
+.cpm-slide__azioni { margin-top: var(--s-2); }
+.cpm-slide__cta {
   background: var(--azzurro);
   color: #fff;
+  font-size: 1.25rem;
+  min-height: var(--btn-l);         /* misura L: azione principale della hero */
+  min-width: 18rem;                 /* stessa larghezza in tutte le slide: nelle transizioni il pulsante non "salta" */
+  padding: 0 2.2rem;
+  white-space: nowrap;
 }
-.cpm-slide--5x1000 .btn--copy:hover { background: var(--azzurro-scuro); }
-.cpm-slide--ocra    { background: var(--grad-marca); }
+.cpm-slide__cta:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 
-.cpm-slide__text { display: flex; flex-direction: column; gap: 0.35rem; }
-.cpm-slide__tag {
-  align-self: flex-start;
-  background: rgba(255, 255, 255, 0.22);
-  color: #fff;
-  font-weight: 800;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.8rem;
-  border-radius: var(--raggio);
+/* Slide su fondo azzurro (es. Natale con il ritratto del Cottolengo):
+   la sfumatura blu notte resta solo in basso a sinistra, più leggera, così
+   il fondo resta azzurro; l'occhiello diventa bianco con testo azzurro. */
+.cpm-slide--azzurra { background: #00ADEF; }
+.cpm-slide--azzurra::after {
+  background: linear-gradient(20deg, rgba(0, 40, 60, 0.55) 0%, rgba(0, 40, 60, 0.18) 45%, rgba(0, 40, 60, 0) 65%);
 }
-.cpm-slide__title { color: #fff; font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.15; }
-.cpm-slide__sub { font-size: 1rem; opacity: 0.92; }
+.cpm-slide--azzurra .cpm-slide__tag { background: #fff; color: var(--blu-notte); }
+/* slide fotografiche scure: la sfumatura è blu notte, l'etichetta diventa bianca */
+.cpm-slide:not(.cpm-slide--luce):not(.cpm-slide--azzurra) .cpm-slide__tag { background: #fff; color: var(--blu-notte); }
+/* pulsante bianco, come "Dona ora" nel menu: un pulsante azzurro sparirebbe sul fondo azzurro */
+.cpm-slide--azzurra .cpm-slide__cta { background: #fff; color: var(--azzurro-scuro); }
+.cpm-slide--azzurra .cpm-slide__cta:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
+/* slide fotografiche scure: il blu notte si confonderebbe con la sfumatura,
+   un filo bianco tiene il pulsante leggibile */
+.cpm-slide:not(.cpm-slide--luce):not(.cpm-slide--azzurra) .cpm-slide__cta:hover { box-shadow: inset 0 0 0 2px #fff, var(--e-2); }
 
-.cpm-slide__action { display: flex; align-items: center; gap: 1rem; flex: none; }
+/* Slide su fondo bianco (es. lasciti: foto scontornata su bianco):
+   niente sfumatura blu notte, ma una velatura bianca a sinistra; titolo
+   azzurro e testo blu notte, come nel resto del sito. .cpm-slide--chiara
+   (nell'HTML) scurisce pallini e pausa. */
+.cpm-slide--luce { background: #fff; }
+.cpm-slide--luce::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.6) 42%, rgba(255, 255, 255, 0) 60%);
+}
+.cpm-slide--luce .cpm-slide__title { color: var(--azzurro); }
+.cpm-slide--luce .cpm-slide__sub { color: var(--blu-notte); }
+.cpm-slide--luce .cpm-slide__cf { color: var(--blu-notte); }
+.cpm-slide--luce .cpm-slide__cf strong { color: var(--blu-notte); }
 
-/* controlli del carosello */
+/* controlli: pallini a pillola (in basso a destra) + pausa.
+   Il pallino attivo si allunga e si riempie mentre la slide resta in vista:
+   indica quale campagna è attiva e quando cambierà. */
 .cpm-banner__controls {
-  position: absolute;
-  right: max(1.4rem, calc((100% - 1200px) / 2 + 1.4rem));
-  bottom: 1rem;
+  grid-area: 1 / 1;
+  align-self: end;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--s-4);
+  padding-bottom: var(--s-6);
+  pointer-events: none;                   /* il contenitore non copre la foto */
+}
+.cpm-banner__controls > * { pointer-events: auto; }
+.cpm-dots {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  z-index: 3;
+  gap: var(--s-1);
+  padding-inline: 0.5rem;                  /* sempre presente: i pallini non si spostano tra slide */
+  border-radius: 999px;
+  transition: background-color 0.4s ease;
 }
-.cpm-dots { display: flex; align-items: center; gap: 0.45rem; }
 .cpm-dot {
-  width: 11px; height: 11px;
+  position: relative;
+  width: 28px; height: 32px;              /* area di clic comoda, pallino piccolo */
   padding: 0;
   border: none;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
+  background: none;
   cursor: pointer;
-  transition: width 0.2s ease, background 0.2s ease;
+  transition: width 0.3s var(--ease-uscita);
 }
-.cpm-dot[aria-selected="true"] { width: 28px; background: #fff; }
+.cpm-dot[aria-selected="true"] { width: 52px; }
+.cpm-dot::before,
+.cpm-dot::after {
+  content: '';
+  position: absolute;
+  left: 8px; right: 8px;
+  top: 50%;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: var(--r-pill);
+}
+.cpm-dot::before { background: rgba(255, 255, 255, 0.45); transition: background var(--transizione); }
+.cpm-dot:hover::before { background: rgba(255, 255, 255, 0.75); }
+.cpm-dot::after {
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.cpm-dot.is-viva[aria-selected="true"]::after {
+  animation: cpm-avanza var(--cpm-durata) linear forwards;
+}
+/* in sosta (mouse sopra, focus): il riempimento si ferma dov'è */
+.cpm-banner.is-ferma .cpm-dot[aria-selected="true"]::after { animation-play-state: paused; }
+/* senza autoplay (pausa voluta o movimento ridotto): pallino attivo pieno */
+.cpm-banner.is-statica .cpm-dot[aria-selected="true"]::after { animation: none; transform: scaleX(1); }
+@keyframes cpm-avanza { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 .cpm-pause {
+  flex: none;
   display: grid;
   place-items: center;
-  width: 32px; height: 32px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   cursor: pointer;
+  transition: background var(--transizione), border-color var(--transizione);
 }
-.cpm-pause:hover { background: rgba(255, 255, 255, 0.25); }
+.cpm-pause:hover { background: rgba(255, 255, 255, 0.25); border-color: #fff; }
+.cpm-pause__ico-play { display: none; }
+.cpm-pause[aria-pressed="true"] .cpm-pause__ico-pausa { display: none; }
+.cpm-pause[aria-pressed="true"] .cpm-pause__ico-play { display: block; }
+.cpm-banner :focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: none; }
 
-/* Slide su fondo chiaro (es. 5×1000): i controlli sono bianchi e sparirebbero.
-   Il JS mette .is-chiara sul banner quando la slide attiva ha .cpm-slide--chiara. */
-.cpm-banner.is-chiara .cpm-dot { background: rgba(0, 59, 87, 0.3); }
-.cpm-banner.is-chiara .cpm-dot[aria-selected="true"] { background: var(--azzurro-scuro); }
+/* Slide "creatività": la grafica della campagna ha già testo e marchio.
+   Desktop: immagine piena senza sfumatura, si vede solo il pulsante (in basso
+   a sinistra, sulla riga dei pallini). Sotto i 1020px vedi la media query. */
+.cpm-slide--creativita { background: #fff; }
+.cpm-slide--creativita::after { display: none; }
+/* Desktop: la grafica riempie la hero come le altre slide (versione senza
+   logo, vedi <picture> nell'HTML), ancorata in alto: i testi della grafica
+   stanno nella parte alta, quella che resta sempre visibile. */
+.cpm-slide--creativita .cpm-slide__img { object-fit: cover; object-position: 50% 0; }
+.cpm-slide--creativita picture { display: contents; }
+/* stesso padding delle altre slide: il pulsante resta nello stesso punto durante le transizioni */
+.cpm-slide--creativita .cpm-slide__cf,
+.cpm-slide--creativita .cpm-slide__sub { display: none; }
+.cpm-slide--creativita .cpm-slide__cta { box-shadow: var(--e-2); }
+
+/* testo solo per lettori di schermo */
+.cpm-sr, .sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Slide su fondo chiaro: pallini e pausa bianchi sparirebbero.
+   Il JS mette .is-chiara sulla hero quando la slide attiva ha .cpm-slide--chiara. */
+/* pillola bianca dietro i pallini: restano visibili anche sopra la foto */
+.cpm-banner.is-chiara .cpm-dots { background: rgba(255, 255, 255, 0.85); }
+.cpm-banner.is-chiara .cpm-dot::before { background: rgba(0, 59, 87, 0.25); }
+.cpm-banner.is-chiara .cpm-dot:hover::before { background: rgba(0, 59, 87, 0.45); }
+.cpm-banner.is-chiara .cpm-dot::after { background: var(--azzurro); }
 .cpm-banner.is-chiara .cpm-pause {
   border-color: rgba(0, 59, 87, 0.35);
-  background: rgba(0, 59, 87, 0.06);
+  background: rgba(255, 255, 255, 0.8);
   color: var(--azzurro-scuro);
 }
-.cpm-banner.is-chiara .cpm-pause:hover { background: rgba(0, 59, 87, 0.14); }
+.cpm-banner.is-chiara .cpm-pause:hover { background: var(--azzurro-chiarissimo); }
+.cpm-banner.is-chiara :focus-visible { outline-color: var(--azzurro-scuro); }
 
-.btn--copy {
-  background: #fff;
-  color: var(--blu-notte);
-  font-size: 1rem;
-  padding: 0.7rem 1.2rem;
-  min-height: 46px;
-  white-space: nowrap;
-}
-.btn--copy:hover { background: var(--azzurro-chiarissimo); }
+/* una sola campagna: niente controlli */
+.cpm-banner.is-singola .cpm-banner__controls { display: none; }
+.cpm-banner.is-singola .cpm-slide__inner { padding-bottom: var(--s-7); }
+
+/* copia codice fiscale (slide 5×1000) */
+.btn--copy { gap: var(--s-2); }
 
 /* ===== Riga principale: testo (sx) + card (dx), foto sotto al testo =====
    Due righe: il testo occupa quella che gli serve, la foto TUTTO ciò che
@@ -648,8 +907,9 @@ select:focus-visible, [tabindex]:focus-visible {
 }
 .select-wrap select:hover { border-color: var(--azzurro); }
 .select-wrap select:focus-visible {
-  outline: 3px solid var(--giallo-accento);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
   border-color: var(--azzurro);
 }
 .select-wrap__caret {
@@ -723,15 +983,16 @@ fieldset { border: none; }
   box-shadow: var(--e-1);
 }
 .freq__toggle input:focus-visible + label {
-  outline: 3px solid var(--giallo-accento);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
 }
 
 .badge {
   font-size: 0.78rem;
   font-weight: 700;
-  background: var(--giallo-accento);
-  color: var(--blu-notte);
+  background: var(--terracotta);
+  color: #fff;
   border-radius: var(--raggio);
   padding: 0.1rem 0.6rem;
 }
@@ -766,8 +1027,9 @@ fieldset { border: none; }
   color: #fff;
 }
 .amounts__grid input:focus-visible + label {
-  outline: 3px solid var(--giallo-accento);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
 }
 
 .amounts__tag {
@@ -775,8 +1037,8 @@ fieldset { border: none; }
   top: -11px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--giallo-accento);
-  color: var(--blu-notte);
+  background: var(--terracotta);
+  color: #fff;
   font-size: 0.68rem;
   font-weight: 700;
   white-space: nowrap;
@@ -918,7 +1180,7 @@ fieldset { border: none; }
 .donut__seg { fill: none; stroke-width: 69; stroke-dasharray: var(--len) 915; }
 .donut__seg--1 { stroke: var(--azzurro); }
 .donut__seg--2 { stroke: var(--blu-notte); }
-.donut__seg--3 { stroke: var(--giallo-accento); }
+.donut__seg--3 { stroke: var(--albicocca); }
 /* prima dell'ingresso in vista la ciambella non è disegnata; all'arrivo di
    .is-visible i tre archi si tracciano in sequenza (velocità di rotazione costante) */
 .where:not(.is-visible) .donut__seg { stroke-dasharray: 0 915; }
@@ -953,13 +1215,13 @@ fieldset { border: none; }
 }
 .legend-row__num--1 { color: var(--azzurro); }
 .legend-row__num--2 { color: var(--blu-notte); }
-.legend-row__num--3 { color: var(--giallo-accento); }
+.legend-row__num--3 { color: var(--terracotta); }   /* numero: variante leggibile su bianco */
 
 .legend-row__text strong { font-family: var(--f-display); color: var(--azzurro); font-size: 1.25rem; display: block; }
 .legend-row__text p { color: var(--grigio-testo); font-size: 1.05rem; margin-top: 0.2rem; }
 
 /* note metodologiche: misura di lettura contenuta, non tutta la larghezza */
-.where__note, .who__note {
+.where__note {
   margin: var(--s-8) auto 0;
   max-width: 74ch;
   font-size: var(--t-micro);
@@ -974,66 +1236,11 @@ fieldset { border: none; }
   scroll-margin-top: 90px;
 }
 
-.who__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.who-card {
-  background: #fff;
-  border-radius: var(--raggio-grande);
-  padding: 2.6rem 1.8rem 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Icone SVG inserite come immagini: funzionano sia su HTTP sia aprendo il file
-   HTML direttamente dal computer. */
-.who-card__icon {
-  display: block;
-  width: min(152px, 64%);   /* -20% rispetto a 190px / 80% */
-  height: 112px;            /* -20% rispetto a 140px */
-  object-fit: contain;
-  margin: 0 auto 1.6rem;
-}
-
-.who-card h3 { font-size: 1.45rem; margin-bottom: 0.7rem; }
-.who-card p { color: var(--grigio-testo); font-size: 1.05rem; }
-
-/* riga-dato in fondo alla card */
-.who-card__stat {
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1.5px solid var(--azzurro-chiarissimo);
-  color: var(--azzurro-scuro) !important;
-  font-size: 1rem !important;
-  line-height: 1.4;
-}
-.who-card__stat strong { font-size: 1.35rem; font-weight: 800; }
-.who-card p:not(.who-card__stat) { margin-bottom: 1.1rem; }
-
-/* Pulsante stondato "Esplora progetti": piena larghezza della card, sempre su una riga,
-   stessa altezza (52px) dei CTA "apri progetto" (.btn--modi). */
-.btn--esplora {
-  margin-top: 1.2rem;
-  align-self: stretch;        /* usa tutta la larghezza della card */
-  white-space: nowrap;        /* mai su due righe */
-  font-size: 1.02rem;
-  padding-inline: 1rem;
-  background: var(--azzurro);
-  color: #fff;
-}
-.btn--esplora:hover { background: var(--azzurro-scuro); }
-.btn--esplora span[aria-hidden] { transition: transform var(--transizione); }
-.btn--esplora:hover span[aria-hidden] { transform: translateX(3px); }
-
-
+/* le schede di "Chi aiuti" sono .fila-schede + .proj-card (vedi Come fare del bene) */
+.who .section-head { margin-bottom: var(--s-6); }
 
 /* ============ MODI PER DONARE ============ */
-/* sezione su fondo bianco (come "Progetti da sostenere" sotto): elenco voci e
-   pannello vivono in un UNICO modulo con bordo e ombra condivisi. */
+/* sezione su fondo bianco, cinque schede .proj-card in fila */
 .modi {
   background: #fff;
   padding-block: var(--s-sezione);
@@ -1041,164 +1248,49 @@ fieldset { border: none; }
 }
 .world .section-intro { margin-bottom: 4rem; }
 
-/* ---- Un solo oggetto, non due elementi che galleggiano ----
-   Elenco delle voci su fondo azzurrino a sinistra, contenuto su bianco a destra,
-   dentro la stessa cornice con un solo raggio e una sola ombra. La voce attiva
-   diventa bianca: è così che si "attacca" al pannello, senza barrette colorate. */
-.modi__tabs {
+/* ---- Cinque schede, stessa costruzione delle schede progetto (.proj-card) ----
+   Da 1200 px sono cinque in fila (circa 220 px l'una): per questo la variante
+   --modo ha spazi interni e titolo un po' più compatti. Sotto i 1200 px le schede
+   non ci starebbero: diventano una fila che scorre (vedi media query). */
+.modi .section-head { margin-bottom: var(--s-6); }
+.modi .section-intro, .who .section-intro { max-width: none; text-wrap: balance; }   /* una riga su desktop; su telefono va a capo bilanciato, mai con due parole sole */
+.fila-schede {
+  --colonne: 5;
+  list-style: none;
   display: grid;
-  grid-template-columns: minmax(230px, 290px) minmax(0, 1fr);
-  align-items: stretch;
-  background: var(--bianco);
-  border: 1px solid var(--bordo);
-  border-radius: var(--r-2);
-  overflow: hidden;
+  grid-template-columns: repeat(var(--colonne), minmax(0, 1fr));
+  gap: 1.25rem;
 }
-
-/* Colonna laterale: il titolo della sezione e l'elenco delle voci sono
-   un blocco unico. Il titolo dentro il modulo evita di lasciarlo galleggiare
-   sopra e accorcia la distanza fra le voci. */
-.modi__side {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-5);
-  padding: var(--s-5) var(--s-4);
-  background: var(--azzurro-chiarissimo);
-  border-right: 1px solid var(--bordo);
+.fila-schede--quattro { --colonne: 4; }
+.fila-schede__item { display: flex; min-width: 0; scroll-margin-top: 9rem; }   /* dal menu: si vede anche il titolo della sezione */
+.fila-schede__item > .proj-card { width: 100%; }
+.proj-card--compatta .proj-card__body { padding: 1.1rem 1.1rem 1.25rem; gap: 0.6rem; }
+.proj-card--compatta .proj-card__title { font-size: 1.2rem; }
+.proj-card--compatta .proj-card__copy { -webkit-line-clamp: 5; }   /* colonne strette: 5 righe, nessun testo tagliato */
+.proj-card--compatta .proj-card__cta { padding-inline: 0.75rem; }
+/* nota facoltativa sotto il testo (es. telefono per il sostegno a distanza) */
+.proj-card__nota { font-size: var(--t-micro); color: var(--ink-tenue); margin: 0; }
+.proj-card__nota a { color: var(--azzurro-scuro); font-weight: 700; white-space: nowrap; }
+/* Sotto i 1200 px: fila che scorre col dito (o con la barra sottile, per chi
+   usa il mouse). Due schede e mezza in vista su tablet, una e un pezzo su
+   telefono: la scheda tagliata a destra invita a scorrere. Il padding sopra e
+   sotto lascia spazio al sollevamento e all'ombra in hover. */
+@media (max-width: 75em) {
+  .fila-schede {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1.25rem 0.25rem 1.5rem;
+    margin: -1.25rem -0.25rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azzurro) var(--azzurro-chiarissimo);
+  }
+  .fila-schede__item { flex: 0 0 calc((100% - 2 * 1.25rem) / 2.4); scroll-snap-align: start; }
 }
-.modi__side h2 {
-  font-size: clamp(1.6rem, 2.2vw, 2.05rem);
-  padding-inline: 0.35rem;
+@media (max-width: 45em) {
+  .fila-schede { gap: 1rem; }
+  .fila-schede__item { flex-basis: 82%; }
 }
-
-.modi__nav {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);                 /* distanza fissa fra le voci, non elastica */
-}
-
-.modi__tab {
-  position: relative;
-  flex: none;                      /* niente stiramento: le voci hanno l'altezza del loro contenuto */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-  text-align: left;
-  padding: 1.2rem 0.9rem;         /* righe generose: riempiono la colonna, comode da colpire */
-  border: none;
-  border-radius: var(--r-1);
-  background: none;
-  color: var(--blu-notte);
-  cursor: pointer;
-  transition: background var(--transizione), color var(--transizione),
-              box-shadow var(--transizione);
-}
-
-/* la riga che dice cosa chiede al donatore: è l'informazione che fa scegliere */
-.modi__tab-chiede {
-  font-family: var(--f-testo);
-  font-size: var(--t-nano);
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--ink-tenue);
-  transition: color var(--transizione);
-}
-.modi__tab-label {
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-
-/* hairline a metà dello spazio fra due voci: separa senza chiudere le righe
-   in un bordo, così lo sfondo bianco della voce attiva resta libero */
-.modi__tab:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 0.9rem;
-  right: 0.9rem;
-  bottom: calc(-1 * var(--s-2) - 0.5px);
-  height: 1px;
-  background: var(--bordo);
-}
-
-.modi__tab:hover { background: rgba(255, 255, 255, 0.72); color: var(--azzurro-scuro); }
-/* Voce scelta: azzurra piena con testo bianco — si stacca dalle altre
-   molto più di quanto facesse il bianco su fondo azzurrino. */
-.modi__tab.is-active {
-  background: var(--azzurro);
-  color: #fff;
-  box-shadow: var(--e-1);
-}
-.modi__tab.is-active .modi__tab-chiede { color: rgba(255, 255, 255, 0.85); }
-/* la hairline sotto la voce attiva sparisce: il blocco pieno separa già */
-.modi__tab.is-active::after,
-.modi__tab.is-active + .modi__tab::before { opacity: 0; }
-
-/* ---- Pannello: foto in alto, testo e azione sotto ----
-   L'immagine assorbe l'altezza che avanza, così cambiando voce il modulo non
-   sobbalza: la sua altezza la decide l'elenco, non la lunghezza del testo. */
-.modi__panels { position: relative; display: grid; }
-
-.modi__panel[hidden] { display: none; }
-.modi__panel {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  animation: modi-fade 0.42s var(--ease-uscita) both;
-}
-
-@keyframes modi-fade {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* Formato FISSO della fascia immagine. Senza questo l'altezza del modulo la
-   decideva il rapporto naturale di ogni foto: passando da una voce all'altra
-   il blocco cambiava di 180px. Con un formato dichiarato tutte le voci hanno
-   lo stesso ingombro e la foto si adatta col ritaglio. */
-.modi__media { overflow: hidden; aspect-ratio: 7 / 3; }
-.modi__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.modi__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-6);
-  padding: var(--s-5) var(--s-6) var(--s-6);
-  min-height: 11.5rem;             /* regge anche la voce con il recapito in più: nessun sobbalzo */
-}
-.modi__text h3 { font-size: clamp(1.4rem, 2vw, 1.85rem); color: var(--azzurro); }
-.modi__text p {
-  color: var(--grigio-testo);
-  font-size: var(--t-small);
-  margin-top: var(--s-2);
-  max-width: 54ch;
-}
-/* recapito diretto (sostegno a distanza): secondario, non compete col pulsante */
-.modi__contatto { font-size: var(--t-micro) !important; color: var(--ink-tenue) !important; }
-/* padding + margine negativo di pari valore: l'area toccabile del numero
-   arriva a 44px senza spostare di un pixel il testo attorno */
-.modi__contatto a {
-  color: var(--azzurro-scuro);
-  font-weight: 600;
-  padding: 0.8rem 0.25rem;
-  margin: -0.8rem -0.25rem;
-}
-
-.btn--modi {
-  flex: none;
-  background: var(--azzurro);
-  color: #fff;
-}
-.btn--modi:hover { background: var(--azzurro-scuro); }
-.btn--modi span[aria-hidden] { font-size: 1.2rem; transition: transform var(--transizione); }
-.btn--modi:hover span[aria-hidden] { transform: translateX(3px); }
 
 /* ============ PROGETTI DA SOSTENERE (carosello dei progetti in evidenza) ============
    Finestra sull'archivio: le card sono le stesse di progetti.html (.proj-card,
@@ -1211,11 +1303,6 @@ fieldset { border: none; }
   scroll-margin-top: 90px;
 }
 
-/* "Come fare del bene" e "Progetti da sostenere" sono due sezioni bianche una
-   sotto l'altra: senza un cambio di fondo che le separi, sommare i due respiri
-   verticali produceva un vuoto doppio (200px). Qui il respiro è condiviso. */
-.modi { padding-bottom: calc(var(--s-sezione) * 0.5); }
-.evid { padding-top: calc(var(--s-sezione) * 0.5); }
 .evid h2 { text-align: center; }
 .evid .section-intro { margin-bottom: 3rem; }
 
@@ -1275,7 +1362,7 @@ fieldset { border: none; }
   -ms-overflow-style: none;
 }
 .evid-track::-webkit-scrollbar { display: none; }
-.evid-track:focus-visible { outline: 3px solid var(--giallo-accento); outline-offset: 4px; }
+.evid-track:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 
 .evid-item {
   flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--evid-gap)) / var(--per-view));
@@ -1299,7 +1386,7 @@ fieldset { border: none; }
   border: 2px solid var(--azzurro);
   box-shadow: none;
 }
-.btn--vedi-tutti:hover { background: var(--azzurro); color: #fff; }
+.btn--vedi-tutti:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 .btn--vedi-tutti span[aria-hidden] { transition: transform var(--transizione); }
 .btn--vedi-tutti:hover span[aria-hidden] { transform: translateX(3px); }
 
@@ -1332,7 +1419,7 @@ fieldset { border: none; }
 .world__svg.is-dimmed .is-live.is-active { fill: var(--azzurro); }
 /* sensore di hover invisibile sopra ogni regione (i pallini hanno spazi vuoti) */
 .world__hit { fill: transparent; cursor: pointer; }
-.world__hit:focus-visible { outline: 3px solid var(--giallo-accento); }
+.world__hit:focus-visible { outline: 3px solid var(--focus); }
 
 /* ---- Colonna destra: titolo + schede ---- */
 .world__side { display: flex; flex-direction: column; }
@@ -1340,7 +1427,7 @@ fieldset { border: none; }
 .world__head h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); }
 .world__head .section-intro { text-align: left; margin: 0.7rem 0 0; font-size: 1.15rem; }
 
-/* ---- Voci-selettore: stesso aspetto dei tab di "Tanti modi per fare del bene":
+/* ---- Voci-selettore della mappa:
    titolo + paragrafo, righe divise da linee sottili ed eleganti, accento a sinistra. ---- */
 .world__cards { list-style: none; display: flex; flex-direction: column; }
 .world-card {
@@ -1544,13 +1631,25 @@ fieldset { border: none; }
 
 /* ============ FOOTER ============ */
 .footer {
-  background: var(--azzurro);            /* key color Cottolengo */
+  /* Blu notte: la versione profonda dell'azzurro istituzionale. Chiude la pagina
+     con una fascia stabile, distinta dal menu azzurro in alto, e porta il testo
+     bianco (IBAN, indirizzi, link) a un contrasto di 11,9:1 invece di 3:1. */
+  background: var(--blu-notte);
   color: #fff;
   padding-block: 3.5rem 0;
   scroll-margin-top: 90px;
 }
-.footer a { color: #fff; }
-.footer h3 { color: #fff; font-size: 1.15rem; margin-bottom: 0.9rem; }
+.footer a {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-underline-offset: 0.2em;
+  transition: color var(--transizione), text-decoration-color var(--transizione);
+}
+.footer :focus-visible { outline-color: #fff; box-shadow: none; }
+.footer a:hover { color: var(--azzurro-chiaro); text-decoration-color: currentColor; }
+/* titoli in azzurro istituzionale: 4:1 sul blu notte, sopra la soglia 3:1
+   del testo grande (grassetto ≥ 18,7px), come i titoli del resto del sito */
+.footer h3 { color: var(--azzurro); font-size: 1.2rem; margin-bottom: 0.9rem; }
 
 .footer__grid {
   display: grid;
@@ -1563,15 +1662,16 @@ fieldset { border: none; }
 .footer__col p,
 .footer__col address,
 .footer__col ul {
-  font-size: 1rem;
+  font-size: var(--t-small);        /* 17px: come i testi secondari del sito (era 16px) */
   line-height: 1.7;
 }
+.footer__col li a { display: inline-block; padding-block: 0.2rem; }  /* righe di link ≥ 36px */
 .footer address { font-style: normal; }
 
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.18);
   padding-block: 1.4rem;
-  font-size: 1rem;
+  font-size: var(--t-small);
   line-height: 1.7;
   text-align: center;
 }
@@ -1589,12 +1689,12 @@ fieldset { border: none; }
   transition: transform 0.25s ease;
 }
 .sticky-dona.visible { transform: translateY(0); }
-.sticky-dona .btn--dona { font-size: 1.15rem; padding: 0.8rem; min-height: 50px; }
+.sticky-dona .btn--dona { min-height: var(--btn-m); }   /* nella barra fissa: misura M, la barra resta bassa */
 
 /* ==========================================================
    RESPONSIVE
    ========================================================== */
-@media (max-width: 1020px) {
+@media (max-width: 63.75em) {
   .hero { padding-block: var(--s-7) 0; }
   .quote-slide { flex-basis: 58%; }   /* tablet */
   /* mobile: banner 5x1000 in alto, poi donazioni -> testo -> foto in flusso */
@@ -1617,20 +1717,15 @@ fieldset { border: none; }
     left: auto;
     bottom: auto;
   }
-  .cpm-slide { flex-direction: column; align-items: flex-start; text-align: left; padding: 1.4rem 1.6rem 2.4rem; }
-  /* 5x1000: le 3 sezioni si incolonnano e si centrano */
-  .cpm-slide--5x1000 { padding: 1.4rem 1.6rem 2rem; gap: 1.2rem; align-items: center; }
-  .cpm5__sec { flex: none; width: 100%; }
-  .cpm5__img img { height: auto; object-position: center; max-width: 320px; margin: 0 auto; }
-  .cpm5__info { align-items: center; text-align: center; padding: 0; }
-  .cpm5__claim { font-size: 1.25rem; }
-  .cpm-banner__controls { bottom: 0.8rem; right: 1rem; }
+  /* tablet: hero un po' più bassa, sfumatura più estesa (il testo occupa più larghezza) */
+  .cpm-banner { --cpm-h: clamp(460px, 64vh, 640px); }
+  /* creatività 5×1000 su tablet: la hero è meno larga della grafica (16:9),
+     un taglio "cover" mangerebbe il testo a sinistra → grafica intera su bianco */
+  .cpm-slide--creativita .cpm-slide__img { height: calc(100% - 4.5rem); object-fit: contain; object-position: center top; }
   .where__layout { grid-template-columns: 1fr; gap: 4rem; justify-items: center; }
   .where__legend { width: 100%; max-width: 640px; }
   .where__brush { display: none; }   /* su layout impilato il pennello darebbe fastidio */
-  .who__grid { grid-template-columns: repeat(2, 1fr); }
   .evid-track { --per-view: 2; --evid-gap: 1.4rem; }
-  .modi__tabs { grid-template-columns: minmax(210px, 250px) minmax(0, 1fr); }
   /* mappa: layout impilato (mappa sopra, titolo + schede sotto) */
   .world__layout { grid-template-columns: 1fr; gap: 2rem; width: 92vw; margin-inline: auto; }
   .world__head { text-align: center; }
@@ -1640,16 +1735,23 @@ fieldset { border: none; }
   .numbers__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 720px) {
-  body { font-size: 1.125rem; }
-
-  /* menu mobile */
-  .header__burger { display: flex; margin-left: auto; }
-  .btn--header { display: none; }
+/* 70em = 1120px: con cinque voci (Chi siamo, Chi aiutiamo, Come aiutarci, 5×1000,
+   Lasciti) + logo + "Dona ora", sotto questa larghezza
+   la riga non ci sta e il menu passa all'hamburger invece di andare a capo. */
+@media (max-width: 70em) {
+  .nav__link::after { height: 2.5px; }    /* menu a tendina: sottolineatura a metà spessore (5px su desktop) */
+  :root { --header-h: 64px; }
+  .header__logo { height: 44px; }
+  /* menu a hamburger: telefono E tablet. Sotto i 1020px voci, logo e
+     pulsante non stanno su una riga e l'intestazione raddoppiava d'altezza. */
+  .header__burger { display: flex; margin-left: var(--s-2); }
+  /* sul tablet "Dona ora" resta in vista accanto all'hamburger: è l'azione
+     principale del sito; sul telefono la sostituisce la barra fissa in basso */
+  .btn--header { margin-left: auto; }
   .nav {
     position: fixed;
-    inset: 68px 0 auto 0;
-    background: var(--azzurro-scuro);
+    inset: var(--header-h) 0 auto 0;
+    background: var(--blu-notte);
     padding: 1rem 1.2rem 1.5rem;
     transform: translateY(-130%);
     transition: transform 0.25s ease;
@@ -1659,14 +1761,14 @@ fieldset { border: none; }
        dello schermo: senza questo, "Contatti" resta fuori e irraggiungibile
        perché il pannello è fixed e non scorre. dvh tiene conto della barra
        dinamica dei browser mobili; vh è il ripiego. */
-    max-height: calc(100vh - 68px);
-    max-height: calc(100dvh - 68px);
+    max-height: calc(100vh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
     overflow-y: auto;
     overscroll-behavior: contain;
   }
   .nav.open { transform: translateY(0); }
   .nav__list { flex-direction: column; align-items: stretch; gap: 0.2rem; }
-  .nav__link { width: 100%; font-size: 1.2rem; padding: 0.9rem 1rem; }
+  .nav__link { width: 100%; font-size: 1.2rem; min-height: 52px; padding: 0.9rem 1rem; }
   /* Su telefono il pannello non ha spazio per due colonne: diventa un elenco
      impilato dentro il menu, e la descrizione scende sotto ogni voce — così
      l'informazione che rende autoesplicative le voci non si perde. */
@@ -1696,7 +1798,6 @@ fieldset { border: none; }
     gap: 2px;
     font-size: 1.05rem;
   }
-  .nav__mega__voce::after { display: none; }
   .nav__mega__voce-desc {
     display: block;
     font-family: var(--f-testo);
@@ -1706,69 +1807,61 @@ fieldset { border: none; }
     color: rgba(255, 255, 255, 0.82);
   }
   .nav__mega__testo { display: none; }
+}
+
+@media (max-width: 45em) {
+  body { font-size: 1.125rem; }
+  .btn--header { display: none; }
+  .header__burger { margin-left: auto; }
+  /* la barra fissa "Dona ora" (≈72px) non deve coprire l'ultima riga del footer */
+  body:has(.sticky-dona) .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+
 
   .hero { padding-block: var(--s-7) 0; }   /* stesso stacco dal banner, ridotto per lo schermo piccolo */
   .dona-card__head { padding: 1.4rem 1.6rem; }
   .dona-card__body { padding: 1.6rem 1.6rem 1.8rem; }
+  /* Hero campagne su telefono: foto verticale piena, testo in basso,
+     pulsante largo quanto lo schermo (come le app). 100svh esclude le barre
+     del browser; il tetto evita una hero infinita sui telefoni alti. */
+  /* 100svh esclude le barre del browser; i 56px lasciati liberi mostrano
+     l'inizio della sezione successiva: segnale che la pagina continua */
+  .cpm-banner { --cpm-h: min(calc(100svh - var(--header-h) - 56px), 640px); min-height: 480px; }
+  .cpm-slide::after {
+    background: linear-gradient(0deg, rgba(0, 28, 42, 0.92) 0%, rgba(0, 28, 42, 0.7) 38%, rgba(0, 28, 42, 0) 70%);
+  }
+  .cpm-slide__inner { padding-bottom: 5.25rem; }
+  .cpm-slide__text { gap: var(--s-3); max-width: none; }
+  .cpm-slide__title { font-size: clamp(1.9rem, 8.4vw, 2.4rem); }
   .cpm-slide__sub { display: none; }
+  /* creatività 5×1000 su telefono: la grafica si vede INTERA in alto (tagliarla
+     toglierebbe testo e marchio) e sotto c'è il riquadro con codice fiscale e
+     pulsante: il testo dentro l'immagine qui sarebbe troppo piccolo */
+  .cpm-slide--creativita { flex-direction: column; align-items: stretch; justify-content: flex-start; }
+  .cpm-slide--creativita .cpm-slide__img { position: static; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; flex: none; }
+  .cpm-slide--creativita .cpm-slide__inner { flex: 1; display: flex; align-items: flex-end; padding-top: var(--s-5); }   /* fondo come le altre slide: pulsante nello stesso punto */
+  .cpm-slide--creativita .cpm-slide__cf { display: block; color: var(--blu-notte); }
+  .cpm-slide--creativita .cpm-slide__cf strong { color: var(--azzurro); }
+  .cpm-slide--creativita .cpm-slide__sub { display: block; color: var(--grigio-testo); }
+  .cpm-slide__cf { font-size: var(--t-body); }
+  .cpm-slide__azioni { align-self: stretch; }
+  .cpm-slide__cta { width: 100%; }
+  /* fondo bianco su telefono: velatura bianca dal basso, testo scuro sopra */
+  /* Slide chiare su telefono: il velo bianco sta dietro al blocco di testo
+     e ne segue l'altezza (testo corto = velo basso, testo lungo = velo alto),
+     più 5rem di sfumatura sopra. Una sola regola, valida per ogni slide. */
+  .cpm-slide--luce::after { background: none; }
+  .cpm-slide--luce .cpm-slide__inner::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -50vw; right: -50vw;
+    top: -5rem; bottom: 0;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.94) calc(100% - 5rem), rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+  }
+  .cpm-banner__controls { justify-content: center; padding-bottom: var(--s-4); }
   .quote-slide { flex-basis: 86%; padding-inline: 0.8rem; }  /* peek più sottile su mobile */
-  /* Su telefono l'elenco diventa una riga di chip che scorre: stesso modello
-     mentale del desktop (una voce selezionata alla volta), nessun cambio di
-     paradigma a metà strada. */
-  /* minmax(0, 1fr) e non 1fr: "1fr" vale minmax(auto, 1fr) e la larghezza
-     minima delle chip in fila faceva sfondare la traccia oltre lo schermo. */
-  .modi__tabs { grid-template-columns: minmax(0, 1fr); }
-  .modi__side {
-    min-width: 0;
-    gap: var(--s-3);
-    padding: var(--s-4) 0 0;
-    border-right: none;
-    border-bottom: 1px solid var(--bordo);
-  }
-  .modi__side h2 { text-align: center; padding-inline: var(--s-4); }
-  .modi__nav {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: var(--s-2);
-    padding: 0 var(--s-3) var(--s-3);
-    min-width: 0;                    /* serve perché lo scroller non allarghi il genitore */
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .modi__nav::-webkit-scrollbar { display: none; }
-  .modi__tab {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    border: 1px solid var(--bordo);
-    border-radius: var(--r-pill);
-    background: var(--bianco);
-    padding: 0.6rem 1.1rem;
-    min-height: 44px;
-    justify-content: center;
-  }
-  .modi__tab-chiede { display: none; }   /* nella chip resta la sola etichetta */
-  .modi__tab:not(:last-child)::after { display: none; }   /* fra le chip non serve la linea */
-  .modi__tab.is-active {
-    background: var(--azzurro);
-    border-color: var(--azzurro);
-    color: #fff;
-  }
-  .modi__media { aspect-ratio: 3 / 2; }
-  .modi__media img { height: 100%; }
-  .modi__panel { grid-template-rows: auto auto; }
-  .modi__content { min-height: 0; }
-  .modi__content {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--s-4);
-    padding: var(--s-5) var(--s-4) var(--s-5);
-    min-height: 0;
-  }
-  .btn--modi { width: 100%; }
   .amounts__grid { grid-template-columns: repeat(2, 1fr); }
-  .who__grid { grid-template-columns: 1fr; }
   /* carosello su mobile: una card e mezza in vista (invita allo swipe),
      frecce nascoste perché il gesto naturale è già lo scorrimento del dito */
   .evid-carousel { width: min(1320px, 100% - 1.5rem); gap: 0; }
@@ -1885,13 +1978,13 @@ fieldset { border: none; }
 .project-richtext p + p { margin-top: var(--s-4); }
 .project-stat {
   padding: var(--s-7) var(--s-6);
-  border-left: 5px solid var(--giallo-accento);
+  border-left: 5px solid var(--albicocca);
   border-radius: 0 var(--r-2) var(--r-2) 0;
   background: var(--azzurro-chiarissimo);
 }
 .project-stat strong {
   display: block;
-  color: var(--azzurro);
+  color: var(--terracotta);              /* numero d'impatto: accento caldo */
   font-family: var(--f-display);
   font-size: clamp(2.5rem, 5vw, 4.4rem);
   font-weight: 800;
@@ -1935,15 +2028,15 @@ fieldset { border: none; }
 .project-final .project-kicker { color: rgba(255, 255, 255, 0.82); }
 .project-final p:not(.project-kicker) { max-width: 64ch; margin-top: var(--s-4); font-size: 1.25rem; line-height: 1.55; }
 .project-final .btn--dona { background: #fff; color: var(--azzurro-scuro); white-space: nowrap; }
-.project-final .btn--dona:hover { background: var(--azzurro-chiarissimo); }
+.project-final .btn--dona:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 
-@media (max-width: 1020px) {
+@media (max-width: 63.75em) {
   .project-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr); gap: var(--s-6); }
   .project-donation { position: static; }
   .project-services__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 45em) {
   .project-hero { padding-block: var(--s-5) var(--s-7); }
   .breadcrumbs { margin-bottom: var(--s-5); }
   .project-hero__grid,
@@ -2020,7 +2113,7 @@ fieldset { border: none; }
   gap: clamp(3rem, 7vw, 6.5rem);
   align-items: start;
 }
-.project-copy { max-width: 720px; padding-top: clamp(3rem, 6vw, 5rem); }
+.project-copy { min-width: 0; max-width: 720px; padding-top: clamp(3rem, 6vw, 5rem); }
 .project-copy__lead {
   color: var(--grigio-testo);
   font-size: 1.16rem;
@@ -2048,7 +2141,7 @@ fieldset { border: none; }
 .project-story h2 { color: var(--grigio-testo); }
 .project-richtext { margin-top: var(--s-4); }
 
-.project-article-content { color: var(--grigio-testo); }
+.project-article-content { color: var(--grigio-testo); overflow-wrap: anywhere; }   /* indirizzi email lunghi vanno a capo su schermi stretti */
 .project-article-content h2 {
   margin: 3rem 0 1rem;
   color: var(--azzurro);
@@ -2110,23 +2203,23 @@ fieldset { border: none; }
   margin-top: clamp(3rem, 6vw, 5rem);
   padding: var(--s-6);
   border: 0;
-  border-top: 4px solid var(--giallo-accento);
+  border-top: 4px solid var(--albicocca);
   border-radius: 0 0 var(--r-2) var(--r-2);
   background: var(--azzurro-chiarissimo);
 }
 .project-stat strong { white-space: nowrap; font-size: clamp(2.4rem, 4vw, 3.8rem); }
 .project-stat span { margin-top: 0; }
 
-@media (max-width: 980px) {
+@media (max-width: 61.25em) {
   .project-cover { min-height: 500px; }
   .project-cover__shade { background: linear-gradient(0deg, rgba(0, 39, 62, 0.82), rgba(0, 39, 62, 0.08) 75%); }
-  .project-page__grid { grid-template-columns: 1fr; gap: 0; }
+  .project-page__grid { grid-template-columns: minmax(0, 1fr); gap: 0;   /* minmax(0,…): una parola lunga non allarga più la colonna a 320px */ }
   .project-sidebar { order: -1; width: min(100%, 600px); margin: -2rem auto 0; }
   .project-sidebar .project-donation { position: static; }
-  .project-copy { max-width: 760px; margin-inline: auto; padding-top: var(--s-7); }
+  .project-copy { width: 100%; max-width: 760px; margin-inline: auto; padding-top: var(--s-7); }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 35em) {
   .project-cover { min-height: 430px; }
   .project-cover__title { padding-bottom: 3.2rem; }
   .project-cover__title h1 { font-size: clamp(2.7rem, 14vw, 4rem); }
@@ -2198,7 +2291,7 @@ fieldset { border: none; }
 .legacy-examples .legacy-signature { color: var(--ink-tenue); font-size: 1rem; }
 .project-article-content a { color: var(--azzurro-scuro); font-weight: 600; }
 
-@media (max-width: 980px) {
+@media (max-width: 61.25em) {
   .project-sidebar--legacy .project-donation { position: static; }
 }
 
@@ -2234,8 +2327,9 @@ fieldset { border: none; }
   cursor: pointer;
 }
 .proj-card__media-link:focus-visible {
-  outline: 4px solid var(--giallo-accento);
+  outline: 4px solid #fff;
   outline-offset: -5px;
+  box-shadow: inset 0 0 0 9px var(--focus);
 }
 .proj-card__media img {
   width: 100%; height: 100%;
@@ -2251,8 +2345,8 @@ fieldset { border: none; }
   top: 0.9rem; left: 0.9rem;
   display: inline-flex;
   align-items: center;
-  background: var(--giallo-accento);
-  color: var(--blu-notte);
+  background: var(--terracotta);
+  color: #fff;
   font-weight: 800;
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -2313,13 +2407,11 @@ fieldset { border: none; }
   margin-top: auto;
   align-self: stretch;
   justify-content: center;
-  font-size: 1.05rem;
-  min-height: 50px;
-  padding: 0.7rem 1.4rem;
+  padding-inline: 1.4rem;
   background: var(--azzurro);
   color: #fff;
 }
-.proj-card__cta:hover { background: var(--azzurro-scuro); }
+.proj-card__cta:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 .proj-card__cta span[aria-hidden] { font-size: 1.15rem; transition: transform var(--transizione); }
 .proj-card__cta:hover span[aria-hidden] { transform: translateX(3px); }
 
@@ -2340,13 +2432,13 @@ fieldset { border: none; }
 .pill--area { background: var(--azzurro-chiaro); color: var(--blu-notte); }
 .pill--cat  { background: #fff; color: var(--azzurro-scuro); border: 1px solid var(--azzurro-chiaro); }
 
-@media (max-width: 480px) {
+@media (max-width: 30em) {
   .proj-card__tags { gap: 0.16rem; }
   .proj-card__tags .pill { padding: 0.16rem 0.3rem; font-size: 0.62rem; }
   .proj-card__tags .pill__icon { width: 8px; height: 8px; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 45em) {
   .proj-card__tags .pill--cat { display: none; }
   .proj-card__tags .pill--area {
     padding: 0.28rem 0.65rem;
@@ -2434,7 +2526,7 @@ fieldset { border: none; }
 .proj-filters__reset:hover { background: var(--azzurro-chiarissimo); }
 /* quando ci sono filtri attivi il pulsante diventa pieno e mostra il badge col numero */
 .proj-filters__reset.has-active { background: var(--azzurro); color: #fff; }
-.proj-filters__reset.has-active:hover { background: var(--azzurro-scuro); }
+.proj-filters__reset.has-active:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 .proj-filters__badge[hidden] { display: none; }
 .proj-filters__badge {
   display: inline-grid;
@@ -2465,11 +2557,11 @@ fieldset { border: none; }
 }
 
 /* 2 colonne su schermi medi */
-@media (max-width: 980px) {
+@media (max-width: 61.25em) {
   .proj-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 45em) {
   .proj-all { padding-block: 2.5rem 3.5rem; }
   /* su mobile "Azzera" resta sulla stessa riga dei filtri, in versione compatta (solo icona) */
   .proj-filters__reset { padding: 0.7rem; min-width: 50px; justify-content: center; }
@@ -2477,6 +2569,110 @@ fieldset { border: none; }
 }
 
 /* 1 colonna sui telefoni più stretti */
-@media (max-width: 620px) {
+@media (max-width: 38.75em) {
   .proj-grid { grid-template-columns: 1fr; }
+}
+
+/* Schermi molto bassi (telefono orizzontale, zoom del browser al 300–400%):
+   il menu fisso occuperebbe un quarto dello schermo e coprirebbe il testo.
+   Qui scorre via con la pagina; la hero si adatta all'altezza disponibile. */
+@media (max-height: 31.25em) {
+  .header { position: relative; }
+  .cpm-banner { --cpm-h: 420px; min-height: 0; }
+  .cpm-slide__title { font-size: 1.9rem; }        /* titoli lunghi: restano lontani dal bordo alto */
+  .cpm-slide__text { gap: var(--s-3); }
+}
+
+
+/* ============ CHI SIAMO ============
+   Sul modello di "Missione e storia" di UNICEF Italia (senza timeline), con i
+   componenti del sito: cover delle pagine interne, numeri e schede della home,
+   recapiti. Blocchi nuovi: colonna di lettura, motto, testo con foto,
+   documenti da scaricare, invito a donare. */
+.chi-blocco { background: #fff; padding-block: var(--s-sezione); }
+.chi-blocco--chiaro { background: var(--azzurro-chiarissimo); }
+.chi-colonna { max-width: 46rem; }
+.chi-colonna--centro { text-align: center; }
+.chi-colonna h2, .chi-affiancato h2 { color: var(--azzurro); font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: var(--s-4); }
+.chi-colonna p, .chi-affiancato p { color: var(--grigio-testo); font-size: 1.125rem; line-height: 1.7; }
+.chi-colonna p + p, .chi-affiancato p + p { margin-top: var(--s-4); }
+.chi-colonna strong, .chi-affiancato strong { color: var(--blu-notte); }
+.chi-colonna--centro .btn { margin-top: var(--s-5); }
+.chi-lead { font-size: var(--t-lead) !important; color: var(--blu-notte) !important; }
+.chi-occhiello {
+  color: var(--azzurro-scuro) !important;
+  font-size: 0.8rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--s-2);
+}
+.chi-dato { margin-top: var(--s-5) !important; font-size: 1.25rem !important; color: var(--blu-notte) !important; }
+
+/* motto in evidenza: grande, centrato, su azzurro chiarissimo */
+.chi-citazione { background: var(--azzurro-chiarissimo); padding-block: calc(var(--s-sezione) * 0.8); text-align: center; }
+.chi-citazione blockquote p {
+  color: var(--azzurro);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.chi-citazione__trad { margin-top: var(--s-3); color: var(--blu-notte); font-size: var(--t-lead); }
+
+/* testo con foto affiancata */
+.chi-affiancato { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.chi-figura img { width: 100%; height: auto; border-radius: var(--r-2); display: block; }
+.chi-figura figcaption { margin-top: var(--s-2); font-size: var(--t-small); color: var(--ink-tenue); }
+
+/* documenti da scaricare: tre schede in fila */
+.documenti { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.documento {
+  display: flex; flex-direction: column; gap: var(--s-3);
+  background: #fff;
+  border: 1px solid rgba(0, 59, 87, 0.08);
+  border-radius: var(--r-2);
+  box-shadow: var(--e-1);
+  padding: 1.5rem 1.4rem;
+}
+.documento__icona { color: var(--azzurro); flex: none; }
+.documento__testo h3 { color: var(--blu-notte); font-size: 1.2rem; margin-bottom: 0.35rem; }
+.documento__testo p { color: var(--grigio-testo); font-size: 1rem; line-height: 1.5; }
+.documento__btn { margin-top: auto; align-self: stretch; justify-content: center; }
+
+/* fascia d'invito (Chi siamo: "Fai una donazione"; home: raccolte solidali):
+   fascia azzurra come la sezione numeri, titolo, due righe e un pulsante bianco */
+.fascia-invito {
+  background: linear-gradient(120deg, var(--azzurro) 0%, var(--azzurro-scuro) 100%);
+  padding-block: calc(var(--s-sezione) * 0.8);
+  text-align: center;
+  color: #fff;
+}
+.fascia-invito h2 { color: #fff; font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
+.fascia-invito p { margin: var(--s-3) auto 0; max-width: 40rem; font-size: var(--t-lead); }
+.fascia-invito__btn { margin-top: var(--s-5); width: auto !important; display: inline-flex; background: #fff !important; color: var(--azzurro-scuro) !important; min-width: 16rem; justify-content: center; }
+.fascia-invito__btn:hover { background: var(--blu-notte) !important; color: #fff !important; }
+
+.chi-trasparenza { text-align: center; margin-top: var(--s-6); }
+.chi-trasparenza a { color: var(--azzurro-scuro); font-weight: 700; }
+
+@media (max-width: 61.25em) {
+  .chi-affiancato { grid-template-columns: 1fr; }
+  .documenti { grid-template-columns: 1fr; }
+}
+.recapiti { background: #fff; padding-block: var(--s-sezione); }
+.recapiti .section-head { margin-bottom: var(--s-6); }
+.recapiti__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.recapito {
+  border: 1px solid rgba(0, 59, 87, 0.12);
+  border-radius: var(--r-2);
+  padding: 1.5rem 1.4rem;
+  box-shadow: var(--e-1);
+}
+.recapito h3 { color: var(--azzurro); font-size: 1.25rem; margin-bottom: 0.5rem; }
+.recapito p { color: var(--grigio-testo); }
+.recapito__link { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.8rem; }
+.recapito__link a { color: var(--azzurro-scuro); font-weight: 700; overflow-wrap: anywhere; }
+@media (max-width: 45em) {
+  .recapiti__grid { grid-template-columns: 1fr; }
 }

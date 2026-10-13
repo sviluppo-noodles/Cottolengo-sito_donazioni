@@ -10,16 +10,70 @@
    voce, che il tema stampa in data-desc. Nessuna logica da riscrivere.
    ========================================================== */
 
-/* ---------- Pannello: descrizione della voce puntata ---------- */
-(function initMegaMenu() {
-  const mega = document.getElementById('menu-donare');
-  if (!mega) return;
+/* ---------- Tendine del menu ("Come donare", "Contatti") ----------
+   Unico punto per tutte le pagine (prima era copiato in ogni script).
+   Una sola aperta alla volta: aprirne una chiude l'altra. Si chiudono con
+   un clic fuori o con Esc (il focus torna sulla voce del menu). */
+(function initTendine() {
+  const tendine = Array.from(document.querySelectorAll('.nav__item--dropdown'));
 
+  function chiudiTendina(item) {
+    item.classList.remove('open');
+    const t = item.querySelector('.nav__dropdown-toggle');
+    if (t) t.setAttribute('aria-expanded', 'false');
+  }
+
+  tendine.forEach(item => {
+    const toggle = item.querySelector('.nav__dropdown-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', e => {
+      e.stopPropagation();
+      const aperto = !item.classList.contains('open');
+      tendine.forEach(chiudiTendina);
+      item.classList.toggle('open', aperto);
+      toggle.setAttribute('aria-expanded', aperto);
+    });
+  });
+
+  document.addEventListener('click', e => {
+    tendine.forEach(item => { if (!item.contains(e.target)) chiudiTendina(item); });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const aperta = tendine.find(item => item.classList.contains('open'));
+    if (!aperta) return;
+    chiudiTendina(aperta);
+    const t = aperta.querySelector('.nav__dropdown-toggle');
+    if (t && aperta.contains(document.activeElement)) t.focus();
+  });
+})();
+
+/* ---------- Pulsanti: rimbalzo morbido al rilascio ----------
+   Aggiunge .is-rimbalzo al rilascio (mouse o dito); l'animazione è in CSS.
+   Con "riduci movimento" attivo il CSS la annulla. */
+(function initRimbalzo() {
+  document.addEventListener('pointerup', e => {
+    const btn = e.target.closest('.btn');
+    if (!btn) return;
+    btn.classList.remove('is-rimbalzo');
+    void btn.offsetWidth;                 // riavvia l'animazione se già in corso
+    btn.classList.add('is-rimbalzo');
+  });
+  document.addEventListener('animationend', e => {
+    if (e.animationName === 'btn-rimbalzo') e.target.classList.remove('is-rimbalzo');
+  });
+})();
+
+/* ---------- Pannelli con elenco: descrizione della voce puntata ----------
+   Vale per ogni pannello con .nav__mega__voci ("Come donare", "Aziende"):
+   a sinistra le voci, a destra la descrizione di quella puntata. */
+document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
   const voci = Array.from(mega.querySelectorAll('.nav__mega__voce'));
   if (!voci.length) return;
-  const desc = document.getElementById('nav-mega-desc');
-  const item = document.querySelector('.nav__item--dropdown');
-  const toggle = document.querySelector('.nav__dropdown-toggle');
+  const desc = mega.querySelector('.nav__mega__desc');
+  const item = mega.closest('.nav__item--dropdown');
+  const toggle = item ? item.querySelector('.nav__dropdown-toggle') : null;
 
   /* Su telefono la colonna di destra non c'è: la descrizione scende sotto la
      voce. Il testo è lo stesso data-desc, scritto una volta sola nell'HTML.
@@ -49,25 +103,7 @@
     if (item) item.classList.remove('open');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
   });
-})();
+});
 
-/* ---------- #modo-<voce> apre la scheda corrispondente ----------
-   Fa sì che il click sulla voce del menu mantenga la promessa della sua
-   descrizione. Funziona sia arrivando da un'altra pagina (al caricamento)
-   sia cliccando dalla home (hashchange). */
-(function initApriModo() {
-  const modi = document.querySelector('.modi');
-  if (!modi) return;
-
-  function apri() {
-    const m = location.hash.match(/^#modo-([\w-]+)$/);
-    if (!m) return;
-    const tab = document.getElementById('tab-' + m[1]);
-    if (!tab) return;
-    tab.click();                   // passa dal gestore già esistente dei tab
-    modi.scrollIntoView({ block: 'start' });
-  }
-
-  window.addEventListener('hashchange', apri);
-  apri();
-})();
+/* #modo-<voce> (voci del menu "Come donare"): ogni scheda di "Come fare del bene"
+   ha il suo id, quindi il browser ci arriva da solo, senza script. */

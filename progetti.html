@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=33">
+  <link rel="stylesheet" href="css/style.css?v=48">
 </head>
 <body>
 
@@ -22,39 +22,67 @@
     </a>
 
     <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
+           segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
+           5×1000 e Lasciti hanno una voce propria su richiesta del Cottolengo.
+           Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
+           di 5 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
       <ul class="nav__list">
+        <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
+        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porterà alla pagina dell'area con il modulo di donazione. -->
         <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-donare">
-            Come donare
+          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+            Chi aiutiamo
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <!-- Stesso menu a comparsa della home (vedi index.html per le note).
-               Qui gli href puntano a index.html: arrivando sulla home con
-               #modo-<voce> nell'URL, js/nav.js apre la scheda giusta. -->
-          <div class="nav__mega" id="menu-donare">
+          <div class="nav__mega" id="menu-chi-aiutiamo">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce is-current" href="index.html#aiuti-cura"
+                       data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
+                <li><a class="nav__mega__voce" href="index.html#aiuti-accoglienza"
+                       data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
+                <li><a class="nav__mega__voce" href="index.html#aiuti-educazione"
+                       data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
+                <li><a class="nav__mega__voce" href="index.html#aiuti-missioni"
+                       data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. Raccolte solidali (crowdfunding, Myosotis) e Per le aziende portano alle loro pagine, da realizzare; le loro sottovoci diventano sezioni di quelle pagine. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-aiutarci">
+            Come aiutarci
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-aiutarci">
             <div class="container nav__mega__inner">
               <ul class="nav__mega__voci">
                 <li><a class="nav__mega__voce is-current" href="index.html#dona"
                        data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
                 <li><a class="nav__mega__voce" href="index.html#modo-sostegno"
                        data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
-                <li><a class="nav__mega__voce" href="index.html#modo-5x1000"
-                       data-desc="Una firma nella dichiarazione dei redditi vale cure e accoglienza per tanti. Non ti costa un euro.">5×1000</a></li>
                 <li><a class="nav__mega__voce" href="index.html#modo-memoria"
                        data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
-                <li><a class="nav__mega__voce" href="testamento-solidale.html"
-                       data-desc="Il loro futuro è la tua eredità più grande. Un lascito, anche piccolo, resta per sempre.">Testamento solidale</a></li>
+                <li><a class="nav__mega__voce" href="crowdfunding.html"
+                       data-desc="Trasforma un compleanno, un traguardo o una sfida in una raccolta per gli ospiti della Piccola Casa.">Raccolte solidali</a></li>
                 <li><a class="nav__mega__voce" href="index.html#modo-volontariato"
                        data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
+                <li><a class="nav__mega__voce" href="aziende.html"
+                       data-desc="Donazioni d'impresa, regali solidali, volontariato aziendale e partnership.">Per le aziende</a></li>
               </ul>
               <div class="nav__mega__testo">
-                <p class="nav__mega__desc" id="nav-mega-desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
+                <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
               </div>
             </div>
           </div>
         </li>
-        <li><a href="progetti.html" class="nav__link" aria-current="page">I progetti</a></li>
-        <li><a href="index.html#contatti" class="nav__link">Contatti</a></li>
+        <li><a href="index.html#cinquepermille" class="nav__link">5×1000</a></li>
+        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
       </ul>
     </nav>
 
@@ -128,8 +156,8 @@
         Ufficio Progetti e Raccolta Fondi<br>
         Via Cottolengo, 14 — 10152 Torino<br>
         <a href="tel:+390115225658">011 522 5658</a><br>
-        <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>
-      </address>
+        <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br>
+      <a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address>
     </div>
     <div class="footer__col">
       <h3>Dona con bonifico</h3>
@@ -158,8 +186,8 @@
   </div>
 </footer>
 
-<script src="js/progetti-dati.js"></script><!-- dati progetti condivisi con index.html -->
-<script src="js/progetti.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/progetti-dati.js?v=48"></script>
+<script src="js/progetti.js?v=48"></script>
+<script src="js/nav.js?v=48"></script>
 </body>
 </html>

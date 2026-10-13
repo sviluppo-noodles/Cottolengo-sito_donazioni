@@ -124,25 +124,5 @@
     });
   }
 
-  const dropdownItem = document.querySelector('.nav__item--dropdown');
-  const dropdownToggle = document.querySelector('.nav__dropdown-toggle');
-  if (dropdownItem && dropdownToggle) {
-    dropdownToggle.addEventListener('click', e => {
-      e.stopPropagation();
-      const aperto = dropdownItem.classList.toggle('open');
-      dropdownToggle.setAttribute('aria-expanded', aperto);
-    });
-    document.addEventListener('click', e => {
-      if (!dropdownItem.contains(e.target)) {
-        dropdownItem.classList.remove('open');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        dropdownItem.classList.remove('open');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
+  // tendine del menu: gestite da js/nav.js
 })();

@@ -2,8 +2,6 @@
 (function () {
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  const dropdownItem = document.querySelector('.nav__item--dropdown');
-  const dropdownToggle = document.querySelector('.nav__dropdown-toggle');
 
   if (burger && nav) {
     burger.addEventListener('click', () => {
@@ -18,18 +16,8 @@
     });
   }
 
-  if (dropdownItem && dropdownToggle) {
-    dropdownToggle.addEventListener('click', event => {
-      event.stopPropagation();
-      const open = dropdownItem.classList.toggle('open');
-      dropdownToggle.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', event => {
-      if (dropdownItem.contains(event.target)) return;
-      dropdownItem.classList.remove('open');
-      dropdownToggle.setAttribute('aria-expanded', 'false');
-    });
-  }
+  // tendine del menu: gestite da js/nav.js
+
 
   const form = document.getElementById('dona');
   if (!form) return;
