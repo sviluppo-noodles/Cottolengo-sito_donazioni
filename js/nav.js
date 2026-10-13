@@ -107,3 +107,24 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
 
 /* #modo-<voce> (voci del menu "Come donare"): ogni scheda di "Come fare del bene"
    ha il suo id, quindi il browser ci arriva da solo, senza script. */
+
+/* ---------- Copia codice fiscale 5x1000 (uno o più pulsanti, su qualsiasi pagina) ---------- */
+function abilitaCopia(btn, codice) {
+  if (!btn) return;
+  const label = btn.querySelector('.btn__label');
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(codice.trim());
+      if (label) {
+        const originale = label.textContent;
+        label.textContent = 'Copiato ✓';
+        setTimeout(() => (label.textContent = originale), 2000);
+      }
+    } catch {
+      // clipboard non disponibile: niente da fare in modo silenzioso
+    }
+  });
+}
+
+// pulsanti con il codice fiscale nell'attributo data-copy
+document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, b.dataset.copy));

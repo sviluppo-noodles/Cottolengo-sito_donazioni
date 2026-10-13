@@ -158,26 +158,7 @@ if (whereSection) {
   }
 }
 
-/* ---------- Copia codice fiscale 5x1000 (uno o più pulsanti) ---------- */
-function abilitaCopia(btn, codice) {
-  if (!btn) return;
-  const label = btn.querySelector('.btn__label');
-  btn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(codice.trim());
-      if (label) {
-        const originale = label.textContent;
-        label.textContent = 'Copiato ✓';
-        setTimeout(() => (label.textContent = originale), 2000);
-      }
-    } catch {
-      // clipboard non disponibile: niente da fare in modo silenzioso
-    }
-  });
-}
-
-// pulsanti con il codice fiscale nell'attributo data-copy
-document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, b.dataset.copy));
+/* Copia codice fiscale 5x1000: gestita da js/nav.js (presente su tutte le pagine) */
 
 /* ---------- Hero campagne: carosello in dissolvenza (ogni 6s) ----------
    Il pallino attivo si riempie man mano: mostra quale campagna è attiva e

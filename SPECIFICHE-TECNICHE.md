@@ -29,7 +29,7 @@ Le misure seguono le linee guida di accessibilità WCAG 2.2 e quelle per il tocc
 
 **Come valutare le proporzioni.** Le misure sono pensate per lo schermo medio del pubblico (portatile 1366–1920 px, telefono). Per giudicarle si usa una finestra di circa 1440 × 900 px (metà di un monitor 4K, oppure F12 → Ctrl+Shift+M → «Responsive»), più 390 × 844 per il telefono. Su un monitor 4K a schermo intero la hero resta a 720 px e sembra più bassa: è voluto, il tetto evita che il modulo di donazione scenda troppo. Verifica del 13 ottobre: a metà schermo l'altezza è confermata.
 
-**Menu a cinque voci** (Chi siamo · Chi aiutiamo · Come aiutarci · 5×1000 · Lasciti). L'intestazione mostra le voci per esteso da 1120 px di larghezza; sotto passa all'hamburger, con "Dona ora" sempre in vista accanto. Le altre colonne della tabella (hero, footer) cambiano a 1020 px.
+**Menu a sei voci** (Chi siamo · Progetti · Come aiutarci · 5×1000 · Lasciti · Aziende). L'intestazione mostra le voci per esteso da 1160 px di larghezza; sotto passa all'hamburger, con "Dona ora" sempre in vista accanto. Le altre colonne della tabella (hero, footer) cambiano a 1020 px.
 
 **Pulsante della hero:** stessa posizione in tutte le slide (in basso a sinistra, allineato al contenuto) e stessa larghezza minima (288 px su desktop, tutta la larghezza sul telefono).
 

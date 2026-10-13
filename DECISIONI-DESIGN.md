@@ -132,7 +132,7 @@ Il sistema completo si legge come una cosa sola:
 
 **Decisione.**
 - **Menu:** 76 px di altezza su desktop, 64 px su tablet e telefono.
-- **Hamburger:** sotto i 1120 px di larghezza (vedi decisione 18), quindi anche sul tablet e sui portatili piccoli. Sotto questa misura le voci non stanno su una riga. Accanto all'hamburger resta in vista il pulsante "Dona ora".
+- **Hamburger:** sotto i 1160 px di larghezza (vedi decisioni 18 e 24), quindi anche sul tablet e sui portatili piccoli. Sotto questa misura le voci non stanno su una riga. Accanto all'hamburger resta in vista il pulsante "Dona ora".
 - **Testi:** mai sotto i 16 px. Il footer è passato da 16 a 17 px.
 - **Pannelli del menu:** testi tra 17 e 20 px.
 
@@ -313,6 +313,53 @@ La freccetta accanto alla voce indica che si apre un pannello. Si apre un pannel
 
 **Perché.** La hero è riservata alle campagne a tempo (5×1000, Natale, Dona un pasto); il crowdfunding è sempre attivo. Una quinta slide avrebbe ridotto il tempo in vista di ogni campagna. La fascia riusa il componente "Fai una donazione" della pagina Chi siamo (`.fascia-invito`). Una raccolta speciale con scadenza potrà andare anche in hero.
 
+## 21. Pagine dedicate: 5×1000, quattro aree e "Come aiutarci"
+
+**Decisione.** Ogni voce del menu ha ora la sua pagina:
+- **5×1000** (`cinque-per-mille.html`): codice fiscale in grande con pulsante "Copia", come si firma in tre passi, perché firmare, chi non presenta la dichiarazione, passaparola, invito a donare, contatto.
+- **Chi aiutiamo**: `cura.html`, `accoglienza.html`, `educazione.html`, `missioni-internazionali.html`. Testo a sinistra, **modulo di donazione dedicato** a destra (causale = nome dell'area; frase d'impatto e pulsante propri, es. "Dona 20 € per la cura").
+- **Come aiutarci**: `sostegno-a-distanza.html` (contatti di Sr Mary), `dona-in-memoria.html` (modulo con il campo "nome della persona che vuoi ricordare"), `crowdfunding.html` (raccolte solidali, sezioni con le ancore del vecchio pannello, pulsante "Crea la tua raccolta" da collegare a Myosotis), `volontariato.html`, `aziende.html` (sezioni con le ancore del vecchio pannello). Donazione libera resta il modulo della home.
+
+**Perché.** Una pagina per ogni voce dà a ciascun modo di aiutare uno spazio proprio, indicizzabile e condivisibile, con un solo invito chiaro.
+
+**Come sono fatte.** Tutte usano la struttura delle pagine di progetto (cover, testo, modulo o scheda contatti), così in WordPress basta un solo modello di pagina. Lo script del modulo legge frase d'impatto e testo del pulsante dagli attributi `data-impatto` e `data-cta` del modulo. Il pulsante "Copia codice fiscale" ora è gestito dallo script comune (`js/nav.js`) e funziona su ogni pagina.
+
+**Da validare.** Tutti i testi e le foto (in `assets/img/pagine/`) sono provvisori. La foto delle Missioni è piccola (932 px) e va sostituita.
+
+## 22. Moduli di donazione dentro il sito (prova con Myosotis)
+
+**Obiettivo.** Il donatore deve completare la donazione senza lasciare il sito.
+
+**Situazione.** I moduli di pagamento sono su Myosotis (NP Solutions), dominio dona.cottolengo.org: una pagina per causale (es. `/in-memoria/`). Il modulo non accetta importo, frequenza o causale nel link (legge solo il parametro di provenienza `orgn`/`origine`), quindi i nostri moduli non possono passargli la scelta fatta.
+
+**Prova.** Nella pagina Dona in memoria il modulo Myosotis `/in-memoria/` è incorporato in pagina (iframe) a tutta larghezza, sotto il testo. dona.cottolengo.org non ne blocca l'incorporamento: si carica, si compila e calcola la detrazione.
+
+**Limiti emersi.**
+- Il modulo incorporato mostra anche il proprio logo, banner e titolo. Soluzione provvisoria: la cornice li taglia facendo salire il modulo (margine di circa 178 px + 31,7% della larghezza, misurato su schermi da 320 a 1440 px). È fragile: se NP Solutions cambia la loro intestazione il taglio va rifatto. Serve una versione "senza intestazione".
+- Anche il footer Myosotis (fascia blu con logo e copyright, 730–960 px) è nascosto: la cornice si ferma subito dopo «Metodi di donazione». Poiché da fuori non si può leggere l'altezza del modulo, l'altezza della cornice è una tabella misurata sul modulo reale ogni 20 px di larghezza (da 2539 px su computer a circa 2980 sui telefoni più stretti). È molto fragile: se NP Solutions cambia il modulo va rimisurata. Dentro il modulo compare anche il loro avviso cookie, che non possiamo togliere noi.
+- Sul prototipo GitHub (dominio diverso) alcuni browser possono bloccare la sessione tra i passaggi; sul dominio definitivo donazioni.cottolengo.org il problema non c'è.
+
+**Domande per NP Solutions.**
+1. Versione del modulo da incorporare, senza intestazione, banner, footer e avviso cookie, con colori e font del sito.
+2. Altezza automatica del modulo incorporato (script di ridimensionamento).
+3. Un modulo (o una causale) per ogni area: Cura, Accoglienza, Educazione, Missioni internazionali; più Raccolte solidali.
+4. PayPal e Satispay funzionanti dentro il modulo incorporato.
+5. Precompilazione da link di importo, frequenza e causale.
+6. Dove si inserisce il nome della persona ricordata nel modulo in memoria.
+7. Se il contratto include le API, per collegare direttamente i nostri moduli.
+
+**Se la prova convince**, lo stesso schema si applica alle pagine delle aree, alla home e al 5×1000 non serve (non è una donazione).
+
+## 23. "Chi aiutiamo" nel menu si chiama "Progetti"
+
+**Decisione.** La voce del menu che porta alle quattro aree (Cura, Accoglienza, Educazione, Missioni internazionali) si chiama **Progetti**: è il nome che i donatori del Cottolengo già conoscono. Le sezioni nelle pagine mantengono i loro titoli ("Chi aiuti con il tuo gesto", "Chi aiutiamo").
+
+## 24. "Aziende" torna voce del menu
+
+**Decisione.** Su richiesta del Cottolengo, **Aziende** è una voce del menu principale (dopo Lasciti) e non più una voce del pannello "Come aiutarci". Il menu ora è: Chi siamo · Progetti · Come aiutarci · 5×1000 · Lasciti · Aziende + Dona ora.
+
+**Spazio.** Con sei voci il menu occupa circa 695 px: il testo resta a 17 px e da 1200 px c'è ampio margine. L'hamburger compare sotto i 1160 px (prima 1120).
+
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.
@@ -324,6 +371,6 @@ La freccetta accanto alla voce indica che si apre un pannello. Si apre un pannel
 - **Pagine delle quattro aree** (Cura, Accoglienza, Educazione, Missioni internazionali) con modulo di donazione: da generare quando arrivano i testi. Testi e foto delle schede sono provvisori.
 - **Pulizia del codice dopo la rimozione dei progetti, su conferma:** la pagina `progetti.html` con `js/progetti-dati.js` e `js/progetti.js`; `js/mappa-regioni.js`; la mappa `assets/img/mappa.svg` / `assets/svg/mappadot.web.svg`, le icone di "Chi aiuti" in `assets/svg/` e le regole CSS di carosello progetti e mappa non servono più alla home. Vanno eliminati quando si decide il destino della pagina Progetti. La pagina di progetto Family Cottolengo (`family-cottolengo.html`, `js/project-detail.js`) può diventare il modello per le pagine delle quattro aree.
 - **Pagina Chi siamo:** testi da validare; file PDF di bilancio sociale, bilancio d'esercizio e statuto da collegare; scegliere tra 1828 e 1832 come data di inizio (oggi la pagina dice 1828, home e footer 1832).
-- **Pagine Aziende e Crowdfunding** da realizzare (oggi le voci del menu portano a pagine che non esistono ancora). I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
+- **Pagine nuove** (5×1000, 4 aree, Come aiutarci): testi e foto da validare; collegare il modulo Myosotis per le raccolte solidali. I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
 - **Nome della voce Crowdfunding:** valutare un nome più immediato per il pubblico anziano, per esempio "Raccolte solidali" o "Crea una raccolta".
 - **Myosotis / NP Solutions:** verificare se il contratto comprende personal fundraising, API, webhook e pagine personalizzabili.

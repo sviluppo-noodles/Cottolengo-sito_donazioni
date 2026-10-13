@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=48">
+  <link rel="stylesheet" href="css/style.css?v=60">
 </head>
 <body class="page-chi-siamo">
 
@@ -23,27 +23,28 @@
     <nav class="nav" id="nav" aria-label="Navigazione principale">
       <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
            segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
-           5×1000 e Lasciti hanno una voce propria su richiesta del Cottolengo.
+           5×1000, Lasciti e Aziende hanno una voce propria e una pagina dedicata,
+           su richiesta del Cottolengo.
            Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
-           di 5 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
+           di 6 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
       <ul class="nav__list">
         <li><a href="chi-siamo.html" class="nav__link" aria-current="page">Chi siamo</a></li>
-        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porterà alla pagina dell'area con il modulo di donazione. -->
+        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
         <li class="nav__item--dropdown">
           <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
-            Chi aiutiamo
+            Progetti
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="nav__mega" id="menu-chi-aiutiamo">
             <div class="container nav__mega__inner">
               <ul class="nav__mega__voci">
-                <li><a class="nav__mega__voce is-current" href="index.html#aiuti-cura"
+                <li><a class="nav__mega__voce is-current" href="cura.html"
                        data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
-                <li><a class="nav__mega__voce" href="index.html#aiuti-accoglienza"
+                <li><a class="nav__mega__voce" href="accoglienza.html"
                        data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
-                <li><a class="nav__mega__voce" href="index.html#aiuti-educazione"
+                <li><a class="nav__mega__voce" href="educazione.html"
                        data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
-                <li><a class="nav__mega__voce" href="index.html#aiuti-missioni"
+                <li><a class="nav__mega__voce" href="missioni-internazionali.html"
                        data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
               </ul>
               <div class="nav__mega__testo">
@@ -52,7 +53,7 @@
             </div>
           </div>
         </li>
-        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. Raccolte solidali (crowdfunding, Myosotis) e Per le aziende portano alle loro pagine, da realizzare; le loro sottovoci diventano sezioni di quelle pagine. -->
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
         <li class="nav__item--dropdown">
           <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-aiutarci">
             Come aiutarci
@@ -63,16 +64,14 @@
               <ul class="nav__mega__voci">
                 <li><a class="nav__mega__voce is-current" href="index.html#dona"
                        data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
-                <li><a class="nav__mega__voce" href="index.html#modo-sostegno"
+                <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
                        data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
-                <li><a class="nav__mega__voce" href="index.html#modo-memoria"
+                <li><a class="nav__mega__voce" href="dona-in-memoria.html"
                        data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
                 <li><a class="nav__mega__voce" href="crowdfunding.html"
                        data-desc="Trasforma un compleanno, un traguardo o una sfida in una raccolta per gli ospiti della Piccola Casa.">Raccolte solidali</a></li>
-                <li><a class="nav__mega__voce" href="index.html#modo-volontariato"
+                <li><a class="nav__mega__voce" href="volontariato.html"
                        data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
-                <li><a class="nav__mega__voce" href="aziende.html"
-                       data-desc="Donazioni d'impresa, regali solidali, volontariato aziendale e partnership.">Per le aziende</a></li>
               </ul>
               <div class="nav__mega__testo">
                 <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
@@ -80,8 +79,9 @@
             </div>
           </div>
         </li>
-        <li><a href="index.html#cinquepermille" class="nav__link">5×1000</a></li>
+        <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
         <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
+        <li><a href="aziende.html" class="nav__link">Aziende</a></li>
       </ul>
     </nav>
 
@@ -220,7 +220,7 @@
     <div class="container chi-colonna chi-colonna--centro">
       <h2 id="chi-volontari-title">Contiamo su tante persone</h2>
       <p>Volontari di ogni età donano il loro tempo al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.</p>
-      <a class="btn btn--vedi-tutti" href="index.html#modo-volontariato">Diventa volontario</a>
+      <a class="btn btn--vedi-tutti" href="volontariato.html">Diventa volontario</a>
     </div>
   </section>
 
@@ -235,56 +235,56 @@
       <li class="fila-schede__item" data-area="cura">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
-            <a class="proj-card__media-link" href="index.html#dona" tabindex="-1" aria-hidden="true">
+            <a class="proj-card__media-link" href="cura.html" tabindex="-1" aria-hidden="true">
               <img src="assets/img/chi-aiuti/cura-cottolengo-mani-assistenza-800.jpg" alt="Una mano che stringe con delicatezza quella di una persona anziana" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="index.html#dona">Cura</a></h3>
+            <h3 class="proj-card__title"><a href="cura.html">Cura</a></h3>
             <p class="proj-card__copy">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
-            <a class="btn proj-card__cta" href="index.html#dona">Scopri e dona</a>
+            <a class="btn proj-card__cta" href="cura.html">Scopri e dona</a>
           </div>
         </article>
       </li>
       <li class="fila-schede__item" data-area="accoglienza">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
-            <a class="proj-card__media-link" href="index.html#dona" tabindex="-1" aria-hidden="true">
+            <a class="proj-card__media-link" href="accoglienza.html" tabindex="-1" aria-hidden="true">
               <img src="assets/img/chi-aiuti/accoglienza-cottolengo-famiglia-800.jpg" alt="Anziani, ragazzi, una donna in attesa e un ragazzo in carrozzina insieme" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="index.html#dona">Accoglienza</a></h3>
+            <h3 class="proj-card__title"><a href="accoglienza.html">Accoglienza</a></h3>
             <p class="proj-card__copy">Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.</p>
-            <a class="btn proj-card__cta" href="index.html#dona">Scopri e dona</a>
+            <a class="btn proj-card__cta" href="accoglienza.html">Scopri e dona</a>
           </div>
         </article>
       </li>
       <li class="fila-schede__item" data-area="educazione">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
-            <a class="proj-card__media-link" href="index.html#dona" tabindex="-1" aria-hidden="true">
+            <a class="proj-card__media-link" href="educazione.html" tabindex="-1" aria-hidden="true">
               <img src="assets/img/chi-aiuti/educazione-scuole-cottolengo-800.jpg" alt="Bambini seduti in cerchio nel cortile della Scuola Cottolengo" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="index.html#dona">Educazione</a></h3>
+            <h3 class="proj-card__title"><a href="educazione.html">Educazione</a></h3>
             <p class="proj-card__copy">Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.</p>
-            <a class="btn proj-card__cta" href="index.html#dona">Scopri e dona</a>
+            <a class="btn proj-card__cta" href="educazione.html">Scopri e dona</a>
           </div>
         </article>
       </li>
       <li class="fila-schede__item" data-area="missioni">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
-            <a class="proj-card__media-link" href="index.html#dona" tabindex="-1" aria-hidden="true">
+            <a class="proj-card__media-link" href="missioni-internazionali.html" tabindex="-1" aria-hidden="true">
               <img src="assets/img/chi-aiuti/missioni-internazionali-cottolengo-bambini-800.jpg" alt="Bambini sorridenti in divisa scolastica in una missione in Africa" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="index.html#dona">Missioni internazionali</a></h3>
+            <h3 class="proj-card__title"><a href="missioni-internazionali.html">Missioni internazionali</a></h3>
             <p class="proj-card__copy">Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.</p>
-            <a class="btn proj-card__cta" href="index.html#dona">Scopri e dona</a>
+            <a class="btn proj-card__cta" href="missioni-internazionali.html">Scopri e dona</a>
           </div>
         </article>
       </li>
@@ -344,6 +344,6 @@
 
 <div class="sticky-dona" id="sticky-dona"><a href="index.html#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></div>
 
-<script src="js/nav.js?v=48"></script>
+<script src="js/nav.js?v=60"></script>
 </body>
 </html>

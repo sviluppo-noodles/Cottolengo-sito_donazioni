@@ -43,8 +43,15 @@
   function updateDonation() {
     const amount = currentAmount();
     hiddenAmount.value = String(amount);
-    impact.innerHTML = `Con <strong>${euro(amount)}&nbsp;€</strong> contribuisci ad assistenza, terapie e attività fondamentali.`;
-    cta.textContent = `Dona ${euro(amount)} € a ${projectName}`;
+    // testi personalizzabili per pagina: data-impatto e data-cta sul <form>,
+    // con {importo} al posto della cifra (es. pagine delle aree di "Chi aiutiamo")
+    const importo = `<strong>${euro(amount)}&nbsp;€</strong>`;
+    impact.innerHTML = form.dataset.impatto
+      ? form.dataset.impatto.replace('{importo}', importo)
+      : `Con ${importo} contribuisci ad assistenza, terapie e attività fondamentali.`;
+    cta.textContent = form.dataset.cta
+      ? form.dataset.cta.replace('{importo}', euro(amount))
+      : `Dona ${euro(amount)} € a ${projectName}`;
   }
 
   choices.forEach(choice => choice.addEventListener('change', () => {
