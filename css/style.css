@@ -333,7 +333,10 @@ select:focus-visible, [tabindex]:focus-visible {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--grad-marca);
+  /* colore istituzionale: azzurro del logo → azzurro scuro (decisione 30).
+     Eccezione voluta alla regola di contrasto: il bianco del menu sull'azzurro
+     #009FE3 è a 3,0:1; voci in grassetto da 17px per compensare. */
+  background: linear-gradient(90deg, var(--azzurro) 0%, var(--azzurro-scuro) 100%);
   box-shadow: var(--e-2);
 }
 

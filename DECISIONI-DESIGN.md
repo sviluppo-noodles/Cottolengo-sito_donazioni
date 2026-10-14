@@ -404,6 +404,26 @@ Richiesta di Fulvio ("visibilità perfetta"). **Cambia la scelta precedente** pe
 
 Risposta del Cottolengo (Silvia): il 17 gennaio 1828 il Cottolengo apre a Torino il "Deposito de' poveri infermi del Corpus Domini" (Ospedaletto della Volta Rossa); la "Piccola Casa della Divina Provvidenza" è riconosciuta con Regio Decreto di Carlo Alberto il 27 agosto 1833. La data ufficiale di inizio dal punto di vista pastorale è il **1828**, ed è quella che usiamo ovunque: numeri in home, footer di tutte le pagine, pagina Chi siamo, Family Cottolengo e meta description. Prima home e footer dicevano 1832, che non corrisponde a nessuna delle due date. Il 1833 (riconoscimento giuridico) potrà comparire nella storia della pagina Chi siamo, se il cliente lo vorrà.
 
+## 30. Barra del menu: torna il colore istituzionale
+
+Richiesta di Fulvio: con la decisione 28 anche la barra superiore era diventata più scura, ma è il colore istituzionale e deve restare. La barra torna al gradiente dall'azzurro del logo (#009FE3) all'azzurro scuro. È un'eccezione voluta alla regola di contrasto: il bianco delle voci del menu sull'azzurro è a 3,0:1 (testo in grassetto da 17 px). Testata del modulo, fasce e pulsanti restano più scuri, come deciso al punto 28.
+
+## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
+
+Testo pronto da condividere con il Cottolengo.
+
+L'azzurro istituzionale (#009FE3) resta il colore del marchio: lo usiamo nella barra del menu, nelle icone, nelle linee, nel grafico e in tutti gli elementi decorativi. Per **testi, titoli e pulsanti** usiamo invece una tonalità dello stesso azzurro un po' più profonda (#0075B0). Il motivo è la leggibilità.
+
+- **Il contrasto è troppo basso.** Il bianco sull'azzurro del logo, e l'azzurro del logo sul bianco, arrivano a 3:1. Le linee guida internazionali di accessibilità (WCAG 2.1, livello AA) chiedono almeno 4,5:1 per il testo normale e 3:1 per i titoli grandi. Con la tonalità più profonda arriviamo a 5:1.
+- **Il pubblico del sito è in gran parte anziano.** Dopo i 60 anni la sensibilità al contrasto cala in modo marcato. Un testo azzurro chiaro che a noi sembra leggibile, per molti donatori diventa faticoso o sbiadito, soprattutto su telefono e alla luce del sole.
+- **I pulsanti di donazione sono il punto più importante del sito.** Se la scritta "Dona" si legge male, si perdono donazioni. Il pulsante deve essere il testo più leggibile della pagina.
+- **È un obbligo che si sta estendendo.** Dal 28 giugno 2025 l'European Accessibility Act chiede che molti servizi digitali, compresi i pagamenti online, siano accessibili. Per gli enti del Terzo settore è comunque una buona pratica, ed è un segnale di attenzione verso le persone fragili, coerente con la missione dell'Opera.
+- **Il marchio non cambia.** È la stessa famiglia di azzurro, solo più profonda. Usare una variante più scura del colore istituzionale per testi e pulsanti è una pratica comune nei sistemi di identità digitale, proprio per questo motivo.
+
+**Eccezione concordata:** la barra del menu resta nell'azzurro istituzionale (decisione 30), perché è il primo elemento che identifica l'Opera. Le voci del menu sono in grassetto per compensare il contrasto più basso.
+
+Se il Cottolengo preferisce comunque l'azzurro del logo anche su titoli e pulsanti, si può tornare indietro in pochi minuti. In quel caso il sito non rispetterebbe il livello AA su quegli elementi.
+
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.
