@@ -459,6 +459,18 @@ Come è fatta:
 - **Nessuna casella vuota.** Un nuovo logo si aggiunge nel suo gruppo; in WordPress diventa un campo ripetibile (logo, nome, link, gruppo).
 - **Comparsa allo scorrimento:** i gruppi compaiono come il resto della pagina.
 
+## 34. Separazione tra "Dove va la tua donazione" e i sostenitori
+
+Le due sezioni sono entrambe bianche e le separava solo lo spazio vuoto: i due margini pieni sommati facevano circa 180–200 px, e l'occhio li leggeva come un buco. Ora c'è una linea sottile larga quanto il contenuto, la stessa usata tra i gruppi di loghi, e lo spazio si è circa dimezzato. Un fondo colorato è stato escluso perché la sezione delle testimonianze, subito sotto, ha già il fondo azzurro chiarissimo.
+
+## 35. Testimonianze: schede ferme, niente carosello (14/10/2026)
+
+Richiesta di Fulvio: anche le testimonianze in home non scorrono più. Le quattro testimonianze diventano schede ferme, 2 × 2 su computer e una sotto l'altra su telefono, con la stessa logica della fascia dei sostenitori (decisione 33): si leggono con calma, non c'è un movimento da mettere in pausa e lo stesso schema si usa nei siti istituzionali.
+- Ogni scheda: testo della testimonianza (21 px, blu notte), poi una linea sottile e il nome con il ruolo. Le virgolette «» sono già nel testo, quindi niente segni decorativi in più.
+- La sezione ha un titolo, "Le voci della Piccola Casa", da validare con il Cottolengo, e resta il link "Leggi tutte le testimonianze".
+- Tolti il JavaScript del carosello (pallini, pausa, scorrimento automatico) e le relative regole CSS. Le schede compaiono allo scorrimento come il resto della pagina.
+- I testi restano quelli provvisori. In WordPress diventano un campo ripetibile (testo, nome, ruolo).
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.

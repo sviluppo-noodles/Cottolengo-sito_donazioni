@@ -21,7 +21,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=72">
+  <link rel="stylesheet" href="css/style.css?v=74">
 </head>
 <body>
 
@@ -636,42 +636,40 @@
 </section>
 
 <!-- ============ TESTIMONIANZE (carosello auto-scorrevole) ============ -->
-<section class="quote" aria-label="Testimonianze">
+<section class="quote" aria-labelledby="quote-title">
+  <!-- Testimonianze: griglia ferma di schede (decisione 35). Niente scorrimento
+       automatico: ogni testimonianza si legge con calma, nessun comando di pausa.
+       Testi placeholder: in WordPress un campo ripetibile (testo, nome, ruolo). -->
   <div class="container">
-    <div class="quote-carousel" id="quote-carousel" aria-roledescription="carosello" aria-label="Testimonianze">
-      <div class="quote-track" id="quote-track">
-
-        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="1 di 4">
-          <p>«Qui non sono mai stato un numero. Sono stato, da subito, uno di famiglia.»</p>
-          <cite>— Un ospite della Piccola Casa, Torino <em>(testo placeholder)</em></cite>
-        </blockquote>
-
-        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="2 di 4">
-          <p>«Ho trovato una casa quando pensavo di non averne più una. Grazie a chi sostiene tutto questo.»</p>
-          <cite>— Maria, ospite della casa di riposo <em>(testo placeholder)</em></cite>
-        </blockquote>
-
-        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="3 di 4">
-          <p>«Con una piccola donazione mensile so di dare un pasto caldo a chi non ha nulla. È poco per me, tanto per loro.»</p>
-          <cite>— Giulia, donatrice da 3 anni <em>(testo placeholder)</em></cite>
-        </blockquote>
-
-        <blockquote class="quote-slide" aria-roledescription="slide" aria-label="4 di 4">
-          <p>«Da volontario ho visto con i miei occhi dove va l'aiuto: in cura, ascolto e dignità per ogni persona.»</p>
-          <cite>— Paolo, volontario cottolenghino <em>(testo placeholder)</em></cite>
-        </blockquote>
-
-      </div>
-
-      <div class="quote-carousel__controls">
-        <div class="quote-dots" id="quote-dots" role="tablist" aria-label="Scegli la testimonianza"></div>
-        <button class="quote-pause" id="quote-pause" type="button" aria-label="Metti in pausa lo scorrimento automatico" aria-pressed="false">
-          <svg class="quote-pause__ico-pausa" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
-          <svg class="quote-pause__ico-play" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l12-7z" fill="currentColor"/></svg>
-        </button>
-      </div>
-    </div>
-
+    <header class="section-head">
+      <h2 id="quote-title">Le voci della Piccola Casa</h2>
+    </header>
+    <ul class="quote-griglia" role="list">
+      <li class="quote-card">
+        <figure>
+          <blockquote><p>«Qui non sono mai stato un numero. Sono stato, da subito, uno di famiglia.»</p></blockquote>
+          <figcaption>Un ospite della Piccola Casa, Torino <em>(testo placeholder)</em></figcaption>
+        </figure>
+      </li>
+      <li class="quote-card">
+        <figure>
+          <blockquote><p>«Ho trovato una casa quando pensavo di non averne più una. Grazie a chi sostiene tutto questo.»</p></blockquote>
+          <figcaption>Maria, ospite della casa di riposo <em>(testo placeholder)</em></figcaption>
+        </figure>
+      </li>
+      <li class="quote-card">
+        <figure>
+          <blockquote><p>«Con una piccola donazione mensile so di dare un pasto caldo a chi non ha nulla. È poco per me, tanto per loro.»</p></blockquote>
+          <figcaption>Giulia, donatrice da 3 anni <em>(testo placeholder)</em></figcaption>
+        </figure>
+      </li>
+      <li class="quote-card">
+        <figure>
+          <blockquote><p>«Da volontario ho visto con i miei occhi dove va l'aiuto: in cura, ascolto e dignità per ogni persona.»</p></blockquote>
+          <figcaption>Paolo, volontario cottolenghino <em>(testo placeholder)</em></figcaption>
+        </figure>
+      </li>
+    </ul>
     <a class="quote__more" href="https://donazioni.cottolengo.org/testimonianze/">Leggi tutte le testimonianze</a>
   </div>
 </section>
@@ -728,8 +726,8 @@
   </a>
 </div>
 
-<script src="js/importo.js?v=72"></script>
-<script src="js/main.js?v=72"></script>
-<script src="js/nav.js?v=72"></script>
+<script src="js/importo.js?v=74"></script>
+<script src="js/main.js?v=74"></script>
+<script src="js/nav.js?v=74"></script>
 </body>
 </html>

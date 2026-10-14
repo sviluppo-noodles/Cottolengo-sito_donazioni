@@ -1319,87 +1319,54 @@ fieldset { border: none; }
 .btn--vedi-tutti span[aria-hidden] { transition: transform var(--transizione); }
 .btn--vedi-tutti:hover span[aria-hidden] { transform: translateX(3px); }
 
-/* ============ TESTIMONIANZA ============ */
+/* ============ TESTIMONIANZE: griglia ferma (decisione 35) ============
+   Quattro schede ferme: 2 × 2 su computer, una sotto l'altra su telefono.
+   Nessun movimento automatico: si leggono con calma, come nei siti
+   istituzionali; nessun pulsante di pausa da gestire. */
 .quote {
   background: var(--azzurro-chiarissimo);
   padding-block: var(--s-sezione);
   text-align: center;
-  overflow: hidden;            /* contiene il full-bleed, niente scroll orizzontale */
 }
-
-/* carosello testimonianze — a tutta larghezza schermo, così i box laterali non vengono tagliati */
-.quote-carousel {
-  position: relative;
-  overflow: hidden;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-bottom: 0.5rem;
+.quote-griglia {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-5);
+  text-align: left;
 }
-.quote-track { display: flex; align-items: stretch; transition: transform 0.6s ease; }
-.quote-slide {
-  flex: 0 0 40%;              /* slide più strette: le inattive restano vicine alla centrale (solo ±1 visibile) */
+.quote-card figure {
+  height: 100%;
   margin: 0;
-  padding: 0 1.4rem 3.2rem;   /* spazio sotto per i controlli */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  opacity: 0.18;              /* slide laterali super sfumate */
-  transition: opacity 0.5s ease;
+  gap: var(--s-4);
+  background: #fff;
+  border: 1px solid var(--bordo);
+  border-radius: var(--r-2);
+  box-shadow: var(--e-1);
+  padding: var(--s-6) var(--s-6) var(--s-5);
 }
-.quote-slide.is-current { opacity: 1; }  /* slide attiva piena */
-/* citazioni grandi e leggere (peso 300 "editoriale", caricato dal link Google Fonts) */
-.quote-slide p {
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-  font-weight: 300;
+.quote-card blockquote { margin: 0; flex: 1; }
+/* le virgolette «» sono già nel testo: nessun segno decorativo in più */
+.quote-card blockquote p {
   color: var(--blu-notte);
-  max-width: 30ch;
-  margin-inline: auto;
-  line-height: 1.4;
+  font-size: var(--t-lead);       /* 21px */
+  font-weight: 400;
+  line-height: 1.5;
 }
-.quote-slide cite {
-  display: block;
-  margin-top: 1rem;
-  font-style: normal;
+.quote-card figcaption {
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--bordo);
   color: var(--grigio-testo);
-  font-size: 1.1rem;
+  font-size: var(--t-small);
+  font-weight: 600;
 }
-.quote-slide cite em { font-style: italic; opacity: 0.7; }
-
-/* controlli carosello */
-.quote-carousel__controls {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.9rem;
+.quote-card figcaption em { font-style: italic; font-weight: 400; color: var(--ink-tenue); }
+@media (max-width: 45em) {
+  .quote-griglia { grid-template-columns: minmax(0, 1fr); }
+  .quote-card figure { padding: var(--s-5); }
 }
-.quote-dots { display: flex; align-items: center; gap: 0.45rem; }
-.quote-dot {
-  width: 11px; height: 11px;
-  padding: 0;
-  border: none;
-  border-radius: 999px;
-  background: rgba(0, 59, 87, 0.25);
-  cursor: pointer;
-  transition: width 0.2s ease, background 0.2s ease;
-}
-.quote-dot[aria-selected="true"] { width: 28px; background: var(--azzurro-scuro); }
-.quote-pause {
-  display: grid;
-  place-items: center;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0, 59, 87, 0.4);
-  background: transparent;
-  color: var(--azzurro-scuro);
-  cursor: pointer;
-}
-.quote-pause:hover { background: rgba(0, 59, 87, 0.08); }
-/* icona coerente con lo stato: pausa mentre scorre, play quando è fermo */
-.quote-pause__ico-play { display: none; }
-.quote-pause[aria-pressed="true"] .quote-pause__ico-pausa { display: none; }
-.quote-pause[aria-pressed="true"] .quote-pause__ico-play { display: block; }
 .quote__more {
   /* inline-flex + min-height: area di tocco da 44px anche su telefono */
   display: inline-flex;
@@ -1417,8 +1384,15 @@ fieldset { border: none; }
 
 /* ============ LOGHI PARTNER (marquee a scorrimento infinito) ============ */
 .partners {
-  padding-block: var(--s-sezione);
+  /* stessa fascia bianca della sezione sopra ("Dove va la tua donazione"):
+     la separa una linea sottile, come quelle tra i gruppi di loghi, invece di
+     due margini pieni sommati che sembravano un vuoto (decisione 34) */
+  padding-block: 0 var(--s-sezione);
   background: #fff;
+}
+.partners > .container {
+  border-top: 1px solid var(--bordo);
+  padding-top: var(--s-8);
 }
 .partners__title {
   text-align: center;
@@ -1573,7 +1547,6 @@ fieldset { border: none; }
    ========================================================== */
 @media (max-width: 63.75em) {
   .hero { padding-block: var(--s-7) 0; }
-  .quote-slide { flex-basis: 58%; }   /* tablet */
   /* mobile: banner 5x1000 in alto, poi donazioni -> testo -> foto in flusso */
   .hero__main {
     display: flex;
@@ -1731,7 +1704,6 @@ fieldset { border: none; }
     pointer-events: none;
   }
   .cpm-banner__controls { justify-content: center; padding-bottom: var(--s-4); }
-  .quote-slide { flex-basis: 86%; padding-inline: 0.8rem; }  /* peek più sottile su mobile */
   .amounts__grid { grid-template-columns: repeat(2, 1fr); }
   /* carosello su mobile: una card e mezza in vista (invita allo swipe),
      frecce nascoste perché il gesto naturale è già lo scorrimento del dito */

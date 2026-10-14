@@ -167,7 +167,7 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
     '.section-head', '.numbers__item', '.fila-schede__item', '.legend-row',
     '.documento', '.recapito', '.cpm-passo', '.cpm-codice .container > *',
     '.chi-colonna > *', '.chi-affiancato > *', '.chi-citazione .container',
-    '.fascia-invito .container > *', '.partners__title', '.partners__gruppo', '.quote .container',
+    '.fascia-invito .container > *', '.partners__title', '.partners__gruppo', '.quote-card',
     '.project-article-content > *', '.proj-grid > *', '.modulo-incorporato__nota',
   ];
   const ESCLUSI = '.header, .footer, .cpm-banner, .hero, .project-cover, .project-sidebar, form, .dona-card, .sticky-dona';
