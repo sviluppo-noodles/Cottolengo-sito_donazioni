@@ -1461,6 +1461,9 @@ fieldset { border: none; }
   letter-spacing: 0.02em;
 }
 .partners__logo--image { background: transparent; }
+/* loghi molto larghi (rapporto 3:1 o più, es. Fondazione CRC): casella più
+   larga, altrimenti in 120 px diventano una striscia alta 20 px */
+.partners__logo--largo { width: 200px; }
 .partners__link {
   display: grid;
   place-items: center;
