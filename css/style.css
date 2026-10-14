@@ -1948,32 +1948,19 @@ fieldset { border: none; }
   margin-top: clamp(-390px, -31vw, -320px);
   padding-bottom: var(--s-6);
 }
+/* Modulo delle pagine interne: stesso aspetto del modulo della home
+   (angoli arrotondati, testata azzurra, importi e frequenza a pulsanti
+   separati). Qui cambiano solo la posizione (fisso a lato mentre si scorre),
+   l'ombra e il campo "altro importo" a tutta larghezza, perché la colonna è stretta. */
 .project-sidebar .project-donation {
   position: sticky;
   top: 98px;
-  border: 1px solid rgba(0, 159, 227, 0.36);
-  border-radius: 5px;
   box-shadow: 0 22px 58px rgba(0, 42, 65, 0.22);
 }
-.project-sidebar .dona-card__head {
-  padding: 1.25rem 2rem 1rem;
-  border-bottom: 2px solid var(--azzurro-chiaro);
-  background: #fff;
-  text-align: center;
-}
-.project-sidebar .project-donation__eyebrow { color: var(--azzurro-scuro); opacity: 1; }
-.project-sidebar .dona-card__head h2 { color: var(--azzurro); font-size: 1.8rem; }
-.project-sidebar .dona-card__body { padding: 1.5rem 1.9rem 1.8rem; }
-.project-sidebar .freq__toggle { border: 1px solid var(--azzurro-chiaro); border-radius: 4px; padding: 0; gap: 0; }
-.project-sidebar .freq__toggle label { border-radius: 0; font-size: 1.1875rem; font-weight: 700; }   /* 19px grassetto: testo grande, basta 3:1 sull'azzurro */
-.project-sidebar .freq__toggle input:checked + label { background: var(--azzurro); color: #fff; box-shadow: none; }
-.project-sidebar .amounts__grid { gap: 0; }
-.project-sidebar .amounts__grid label { border-width: 1px; border-radius: 0; min-height: 58px; }
 .project-sidebar .amounts__custom { display: block; }
 .project-sidebar .amounts__custom > label { display: block; margin-bottom: var(--s-2); }
-.project-sidebar .amounts__custom-field { display: flex; width: 100%; border-width: 1px; border-radius: 4px; }
+.project-sidebar .amounts__custom-field { display: flex; width: 100%; }
 .project-sidebar .amounts__custom-field input { flex: 1; width: auto; }
-.project-sidebar .btn--dona { border-radius: var(--r-pill); }
 
 .project-stat {
   display: grid;

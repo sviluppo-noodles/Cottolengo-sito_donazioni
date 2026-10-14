@@ -512,6 +512,29 @@ Prima il sottotitolo "Tre recapiti per tre esigenze diverse: ti risponde diretta
 
 Le due frasi sono in `<span class="frase">` (inline-block). Il componente si può riusare per altri sottotitoli in due parti.
 
+## 41. Moduli di donazione delle pagine interne uguali a quello della home (14/10/2026)
+
+Fulvio ha notato che i moduli delle pagine interne avevano gli angoli quadrati e un aspetto diverso da quello della home. Erano rimasti con uno stile proprio: testata bianca, angoli a 5 px, frequenza e importi a caselle attaccate. Adesso tutti i moduli hanno lo stesso aspetto, così chi passa dalla home a una pagina interna ritrova lo stesso modulo:
+
+- angoli arrotondati;
+- testata azzurra sfumata con il titolo in bianco;
+- "Una volta sola / Ogni mese" come interruttore;
+- importi in pulsanti separati.
+
+Nelle pagine interne restano solo le differenze legate alla colonna laterale:
+
+- il modulo resta fisso mentre si scorre;
+- l'ombra è più marcata;
+- il campo "altro importo" va a capo a tutta larghezza.
+
+Dalla testata dei moduli è stata tolta anche la scritta piccola sopra il titolo ("Sostieni la cura", "Donazione libera"…), per tre motivi:
+
+- ripeteva il titolo;
+- la home non ce l'ha;
+- in bianco sull'azzurro, a 14 px, non raggiungeva il contrasto richiesto.
+
+Le schede contatti a lato (5×1000, Volontariato…) non sono moduli e restano com'erano.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
