@@ -2497,6 +2497,11 @@ fieldset { border: none; }
 .cpm-pagina__cover { object-position: 70% 50%; --fuoco: 70% 50%; }
 .cpm-codice { background: #fff; padding-block: calc(var(--s-sezione) * 0.7); text-align: center; }
 .cpm-codice .chi-occhiello { margin-bottom: var(--s-3); }
+/* Codice fiscale e "Come si firma" sono entrambi su bianco: senza sfondo
+   diverso il doppio respiro di sezione sembrava un vuoto. Spazio ridotto a
+   ~96 px tra il pulsante "Copia codice fiscale" e il titolo (decisione 47). */
+.cpm-codice { padding-bottom: var(--s-6); }
+.cpm-codice + .chi-blocco { padding-top: var(--s-8); }
 .cpm-codice__numero {
   color: var(--blu-notte);
   font-weight: 800;

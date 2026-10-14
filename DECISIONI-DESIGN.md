@@ -615,6 +615,12 @@ Nella foto originale il volto dell'anziano sta a destra e finiva dietro il riqua
 
 Il nuovo file è `assets/img/pagine/dona-in-memoria-anziano-sorriso-cottolengo-1600.jpg` (1600 × 1000). Il vecchio `dona-in-memoria-cottolengo-1600.jpg` non è più usato e va eliminato, su conferma.
 
+## 47. 5×1000: meno spazio tra il codice fiscale e "Come si firma" (14/10/2026)
+
+Le due sezioni sono entrambe su bianco. Con il respiro pieno di ogni sezione, tra il pulsante "Copia codice fiscale" e il titolo "Come si firma" restavano circa 190 px vuoti su computer, e sembrava un buco. Ora lo spazio è di **96 px** a tutte le larghezze. Le due parti si leggono come un unico discorso: prima il codice, poi come usarlo.
+
+In CSS: `.cpm-codice { padding-bottom: var(--s-6) }` e `.cpm-codice + .chi-blocco { padding-top: var(--s-8) }`.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
