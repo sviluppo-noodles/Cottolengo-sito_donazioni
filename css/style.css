@@ -1108,6 +1108,44 @@ fieldset { border: none; }
 }
 .impact .icon-heart { color: var(--azzurro); margin-top: 3px; }
 
+/* "Donazione sicura" sotto ogni pulsante Dona (decisione 44): dice dove si
+   completa il dono (pagina ufficiale di Myosotis), con il lucchetto. È il
+   rassicuratore usato dai grandi enti vicino al pulsante di pagamento. */
+.dona-sicura {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: var(--s-4);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--azzurro-chiaro);
+  border-radius: var(--raggio);
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--blu-notte);
+  text-align: left;
+}
+.dona-sicura svg { flex: none; margin-top: 1px; color: var(--blu-notte); }
+.dona-sicura .nowrap { white-space: nowrap; font-weight: 700; }
+
+/* Riquadro "solo pulsante" (Dona in memoria, decisione 45): nessun importo sul
+   sito, il pulsante porta alla pagina di Myosotis. Pulsante più alto del normale
+   perché è l'unica azione del riquadro. */
+.dona-link__testo { font-size: 1.125rem; line-height: 1.55; color: var(--blu-notte); margin-bottom: var(--s-5); }
+.dona-link__btn { gap: 0.55rem; min-height: 64px; font-size: 1.3125rem; }
+.dona-link__btn .icon-heart { flex: none; }
+
+/* Passaggi numerati in colonna, dentro il testo delle pagine con modulo
+   laterale: numero a sinistra, titolo e testo a destra (Dona in memoria). */
+.cpm-passi.passi-verticali { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); margin-top: var(--s-5); }
+.passi-verticali .cpm-passo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--s-4);
+  padding: 1.25rem 1.4rem;
+}
+.passi-verticali .cpm-passo__num { grid-row: span 2; margin-bottom: 0; }
+
 .dona-card__fiscal {
   margin-top: 1rem;
   font-size: 1rem;

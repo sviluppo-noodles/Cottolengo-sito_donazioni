@@ -549,6 +549,66 @@ All'arrivo sulla pagina la foto di copertina parte leggermente ingrandita e in 6
 
 Riguarda le 13 pagine con foto di copertina. È solo CSS (`.project-cover__image`, `@keyframes cover-zoom`), quindi in WordPress funziona senza modifiche.
 
+## 43. Donazioni: il pulsante porta alla pagina di Myosotis, niente moduli incorporati (14/10/2026)
+
+**Decisione di Fulvio.** Il pulsante "Dona" porta l'utente sulla pagina di Myosotis (dona.cottolengo.org), come avviene già oggi, con importo, frequenza e causale compilati nell'indirizzo. Il modulo Myosotis non viene incorporato nelle pagine del sito.
+
+**Perché:**
+
+- Myosotis ha scritto che non può garantire che i moduli incorporati funzionino al 100%, né graficamente né con tutti gli strumenti di pagamento.
+- Sulla loro pagina invece tutto è gestito da loro e funziona già: carta, PayPal, Apple/Google Pay e le conferme della banca (3-D Secure).
+- Per il Cottolengo vuol dire zero problemi sui pagamenti e nessuna manutenzione in più.
+
+**Cosa chiediamo a Myosotis:** di migliorare l'aspetto della loro pagina perché sia coerente con il nuovo sito: logo, azzurro `#0097D8` e blu notte `#003B57`, pulsanti arrotondati, intestazione semplice con un link per tornare al sito. Se ne parla nella call di martedì 20 ottobre.
+
+**Conseguenze sul sito:**
+
+- **Dona in memoria** (`dona-in-memoria.html`) oggi contiene il modulo incorporato. Dopo la call andrà sostituito con un modulo come quelli delle altre pagine, oppure con un pulsante verso `dona.cottolengo.org/in-memoria/`.
+- **Raccolte solidali:** stessa logica, cioè raccolte sulla piattaforma di Myosotis e il nostro sito che spiega e rimanda lì. Dipende da cosa offre il contratto: da verificare in call.
+
+## 44. Dona in memoria come le pagine delle aree e "Donazione sicura" sotto ogni pulsante Dona (14/10/2026)
+
+**Dona in memoria.** La pagina non incorpora più il modulo di Myosotis (decisione 43). Ora è fatta come Cura:
+
+- a lato c'è il modulo con gli importi (30, 50 e 100 € o cifra libera);
+- il pulsante "Dona {importo} € in memoria" apre `dona.cottolengo.org/in-memoria/?importo=…` in una nuova scheda; lì si scrive il nome della persona ricordata e si paga;
+- al posto dell'elenco puntato ci sono **tre passaggi numerati** che dicono cosa succede dopo il clic (Scegli l'importo, Scrivi il nome, Completa il pagamento in sicurezza).
+
+Spiegare prima i passaggi, dicendo che si passa alla pagina ufficiale, evita la sorpresa del cambio di pagina e dà fiducia.
+
+**"Donazione sicura" sotto ogni pulsante Dona.** È un riquadro con lucchetto e testo: "Donazione sicura. Completi il dono sulla pagina ufficiale del Cottolengo, dona.cottolengo.org." I grandi enti mettono un rassicuratore come questo vicino al pulsante di pagamento, perché nel momento in cui si dona chi legge vuole sapere dove finiscono i suoi dati. Il riquadro è in tutti gli 8 moduli: home, quattro aree, Family Cottolengo, Testamento e Dona in memoria. Per credibilità ha un tono sobrio: bordo azzurro chiaro, testo blu notte, nessun bollino colorato o finto "certificato".
+
+**Cose da verificare con Myosotis nella call del 20/10:**
+
+- che la pagina `/in-memoria/` legga il parametro `importo`;
+- quali metodi di pagamento elencare, se si vuole aggiungerli al riquadro. Per ora non sono indicati, perché non sono confermati.
+
+Le regole CSS del vecchio modulo incorporato (`.modulo-incorporato…`) non sono più usate: si possono eliminare, su conferma.
+
+## 45. Dona in memoria: solo il pulsante verso Myosotis, come esempio (14/10/2026)
+
+**Richiesta di Fulvio:** vedere come viene la pagina con il solo pulsante che porta alla pagina di Myosotis, senza modulo con gli importi sul nostro sito. Sostituisce il modulo descritto nella decisione 44 per questa pagina; il riquadro "Donazione sicura" resta.
+
+Nel riquadro a lato ci sono, in quest'ordine:
+
+- il titolo "Dona in memoria";
+- una riga che dice cosa si farà ("Scegli l'importo e scrivi il nome della persona che vuoi ricordare: bastano pochi minuti");
+- **un solo pulsante grande** (64 px di altezza, con il cuore) che apre `dona.cottolengo.org/in-memoria/` in una nuova scheda;
+- sotto, "Donazione sicura" e la nota fiscale.
+
+I tre passaggi nel testo sono stati adattati: premi il pulsante, scegli l'importo e scrivi il nome, completa il pagamento.
+
+**Confronto tra le due soluzioni, per decidere con il cliente:**
+
+| | Modulo con importi (Cura, Accoglienza…) | Solo pulsante (Dona in memoria) |
+| --- | --- | --- |
+| Sul nostro sito | Si sceglie importo e frequenza | Nessuna scelta, solo il pulsante |
+| Su Myosotis | Si arriva con l'importo già compilato | Si sceglie tutto lì |
+| Pro | Il dono "parte" già dal sito; il testo d'impatto mostra cosa fa l'importo scelto | Zero dipendenze dai parametri di Myosotis; massima semplicità |
+| Contro | Serve che Myosotis legga i parametri | Un passaggio in più sulla loro pagina |
+
+Il riquadro (`.dona-link`) è pronto per essere riusato su altre pagine, se si sceglie questa strada.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.

@@ -19,7 +19,7 @@
   <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=81">
+  <link rel="stylesheet" href="css/style.css?v=83">
 </head>
 <body class="page-project-detail">
 
@@ -126,34 +126,45 @@
           <h2>Un ricordo che diventa cura</h2>
           <p>Una donazione in memoria trasforma il ricordo di una persona cara in un aiuto concreto per gli ospiti della Piccola Casa: una cura, un pasto, una compagnia.</p>
           <p>Puoi farla tu, oppure proporla a parenti e amici al posto dei fiori, in occasione di un funerale o di un anniversario.</p>
-          <h2>Come fare</h2>
-          <ul>
-            <li>scrivi nel modulo il <strong>nome della persona</strong> che vuoi ricordare;</li>
-            <li>scegli l'importo e completa la donazione;</li>
-            <li>se vuoi che la famiglia sia avvisata del gesto, <a href="mailto:infodonazioni@cottolengo.org">scrivici</a>.</li>
-          </ul>
+          <h2 id="come-fare">Come fare, in tre passaggi</h2>
         </div>
+        <ol class="cpm-passi passi-verticali" aria-labelledby="come-fare">
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">1</span>
+            <h3>Premi “Dona in memoria”</h3>
+            <p>Si apre in una nuova scheda la pagina di donazione ufficiale del Cottolengo, <strong>dona.cottolengo.org</strong>.</p>
+          </li>
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">2</span>
+            <h3>Scegli l'importo e scrivi il nome</h3>
+            <p>Indica quanto vuoi donare e il nome della persona che vuoi ricordare.</p>
+          </li>
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">3</span>
+            <h3>Completa il pagamento in sicurezza</h3>
+            <p>Ricevi la ricevuta per le detrazioni fiscali. Se vuoi che la famiglia sia avvisata del gesto, <a href="mailto:infodonazioni@cottolengo.org">scrivici</a>.</p>
+          </li>
+        </ol>
       </article>
 
-    </div>
-  </section>
-  <!-- PROVA: modulo di donazione Myosotis (NP Solutions) incorporato nella pagina.
-       Il donatore resta sul sito; tutti i passaggi (importo, dati, pagamento)
-       sono quelli della piattaforma del Cottolengo. Da verificare con NP Solutions:
-       pagamenti PayPal/Satispay dentro la pagina, stile con i colori del sito,
-       moduli per le altre aree. Sul dominio definitivo (donazioni.cottolengo.org)
-       sito e modulo sono dello stesso dominio: nessun problema di sessione. -->
-  <section class="modulo-incorporato" id="dona" aria-labelledby="modulo-title">
-    <div class="container">
-      <header class="section-head">
-        <h2 id="modulo-title">Fai la tua donazione in memoria</h2>
-        <p class="section-intro">Compila il modulo qui sotto: il pagamento è sicuro e gestito dalla piattaforma di donazione del Cottolengo.</p>
-      </header>
-      <div class="modulo-incorporato__cornice modulo-incorporato__cornice--myosotis">
-        <iframe src="https://dona.cottolengo.org/in-memoria/" title="Modulo di donazione in memoria del Cottolengo" loading="lazy"
-                allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-      <p class="modulo-incorporato__nota">Il modulo non si vede? <a href="https://dona.cottolengo.org/in-memoria/" target="_blank" rel="noopener">Aprilo in una nuova pagina</a>.</p>
+      <aside class="project-sidebar" aria-label="Donazione in memoria">
+        <!-- Solo pulsante (decisioni 43 e 45): importo, nome della persona ricordata
+             e pagamento si fanno sulla pagina "in memoria" di Myosotis. -->
+        <section class="dona-card project-donation dona-link" id="dona" aria-labelledby="dona-title">
+          <div class="dona-card__head">
+            <h2 id="dona-title">Dona in memoria</h2>
+          </div>
+          <div class="dona-card__body">
+            <p class="dona-link__testo">Scegli l'importo e scrivi il nome della persona che vuoi ricordare: bastano pochi minuti.</p>
+            <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/in-memoria/" target="_blank" rel="noopener">
+              <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+              Dona in memoria<span class="sr-only"> (si apre in una nuova scheda)</span>
+            </a>
+            <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
+            <p class="dona-card__fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
+          </div>
+        </section>
+      </aside>
     </div>
   </section>
 </main>
@@ -170,6 +181,6 @@
 
 <div class="sticky-dona" id="sticky-dona"><a href="#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></div>
 
-<script src="js/nav.js?v=81"></script>
+<script src="js/nav.js?v=83"></script>
 </body>
 </html>
