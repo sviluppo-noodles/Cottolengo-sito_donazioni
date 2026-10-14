@@ -388,6 +388,22 @@ Richiesta di Fulvio, prima per la home e poi estesa a tutto il sito. Titoli di s
 
 Richiesta di Fulvio: la fascia con i numeri (97.000, 1832, 4, 5), sotto la foto della bambina in home e nella pagina Chi siamo, passa dal gradiente azzurro al blu notte pieno (`--blu-notte`, #003B57), il colore del footer e dei pannelli del menu. Il testo resta bianco (contrasto 11,9:1).
 
+## 28. Leggibilità: contrasto AA e testi di almeno 14 px (14/10/2026)
+
+Richiesta di Fulvio ("visibilità perfetta"). **Cambia la scelta precedente** per cui l'azzurro del logo restava su titoli, menu e pulsanti nonostante il contrasto insufficiente: va comunicato al Cottolengo.
+- L'azzurro del logo #009FE3 ha solo 3,0:1 col bianco, sotto i minimi WCAG AA (3:1 per titoli grandi e pulsanti, 4,5:1 per il testo). Resta per icone, bordi, linee, grafico, pallini e focus.
+- Testi azzurri (titoli, titoli delle schede, link, numeri del grafico) e pulsanti azzurri con testo bianco usano `--azzurro-scuro`, portato da #007AB8 a **#0075B0**: 5,0:1 sul bianco e 4,6:1 sull'azzurro chiarissimo.
+- Header, testata del modulo e fasce piene (raccolte solidali, contatti lasciti): gradiente da #0075B0 a **#005D8A** (`--azzurro-profondo`), da 5,0:1 a 7,2:1 col bianco. Il bianco del menu prima era a 3,0:1.
+- Slide di Natale: velo blu notte sotto il testo. Il bianco sull'azzurro della foto passa da 2,6:1 ad almeno 4,6:1 su desktop; il titolo è a 3,2:1 nel caso peggiore (1024 px), che va bene per un titolo grande.
+- Etichette ("il più scelto", "aiuta di più", "In evidenza", pillole dei progetti, occhielli di Chi siamo): minimo **14 px** (prima 10–13 px). Le pillole dei progetti vanno a capo invece di uscire dalla scheda.
+- Righe di testo sotto i 75 caratteri: colonna di Chi siamo a 42rem, pagine senza colonna laterale (Aziende, Dona in memoria) a 42rem.
+- Il footer resta com'è: i titoli azzurri su blu notte sono già leggibili.
+- Verifica automatica su 12 pagine a 1440 e 390 px: nessun testo sotto i minimi WCAG AA su fondo pieno, nessun testo sotto i 14 px, righe sotto i 75 caratteri.
+
+## 29. Data di inizio dell'Opera: 1828 (14/10/2026)
+
+Risposta del Cottolengo (Silvia): il 17 gennaio 1828 il Cottolengo apre a Torino il "Deposito de' poveri infermi del Corpus Domini" (Ospedaletto della Volta Rossa); la "Piccola Casa della Divina Provvidenza" è riconosciuta con Regio Decreto di Carlo Alberto il 27 agosto 1833. La data ufficiale di inizio dal punto di vista pastorale è il **1828**, ed è quella che usiamo ovunque: numeri in home, footer di tutte le pagine, pagina Chi siamo, Family Cottolengo e meta description. Prima home e footer dicevano 1832, che non corrisponde a nessuna delle due date. Il 1833 (riconoscimento giuridico) potrà comparire nella storia della pagina Chi siamo, se il cliente lo vorrà.
+
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.
@@ -398,7 +414,7 @@ Richiesta di Fulvio: la fascia con i numeri (97.000, 1832, 4, 5), sotto la foto 
 - **Immagini non più usate** da eliminare prima della consegna, su conferma: in `assets/img/hero/` i file `5x1000-*`, `5x1000-creativita-*`, `5-per-mille-cottolengo-anziani-fragili-*` (comprese le versioni `-largo`), `natale-1920/960`, `natale-cottolengo-1920/960` e `pasto-*` (sostituiti da versioni con nomi SEO); in `assets/img/` anche `COT_Adv 5x1000_200x140.jpg` (vecchia immagine della tab 5×1000); più altri file inutilizzati in `assets`.
 - **Pagine delle quattro aree** (Cura, Accoglienza, Educazione, Missioni internazionali) con modulo di donazione: da generare quando arrivano i testi. Testi e foto delle schede sono provvisori.
 - **Pulizia del codice dopo la rimozione dei progetti, su conferma:** la pagina `progetti.html` con `js/progetti-dati.js` e `js/progetti.js`; `js/mappa-regioni.js` (non caricato da nessuna pagina); la mappa `assets/img/mappa.svg` / `assets/svg/mappadot.web.svg` e le icone di "Chi aiuti" in `assets/svg/` non servono più alla home (le regole CSS di carosello progetti e mappa sono state tolte il 13/10/2026). Vanno eliminati quando si decide il destino della pagina Progetti. La pagina di progetto Family Cottolengo (`family-cottolengo.html`, `js/project-detail.js`) può diventare il modello per le pagine delle quattro aree.
-- **Pagina Chi siamo:** testi da validare; file PDF di bilancio sociale, bilancio d'esercizio e statuto da collegare; scegliere tra 1828 e 1832 come data di inizio (oggi la pagina dice 1828, home e footer 1832).
+- **Pagina Chi siamo:** testi da validare; file PDF di bilancio sociale, bilancio d'esercizio e statuto da collegare; data di inizio decisa: 1828 (vedi decisione 29).
 - **Pagine nuove** (5×1000, 4 aree, Come aiutarci): testi e foto da validare; collegare il modulo Myosotis per le raccolte solidali. I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
 - **Nome della voce Crowdfunding:** valutare un nome più immediato per il pubblico anziano, per esempio "Raccolte solidali" o "Crea una raccolta".
 - **Myosotis / NP Solutions:** verificare se il contratto comprende personal fundraising, API, webhook e pagine personalizzabili.

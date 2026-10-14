@@ -49,7 +49,7 @@
 
   /* ---------- Colore: marca ---------- */
   --azzurro: #009FE3;              /* key color, dal logo: fondi e superfici piene */
-  --azzurro-scuro: #007AB8;        /* hover dei fondi azzurri */
+  --azzurro-scuro: #0075B0;        /* testo azzurro e fondi con testo bianco: 5,0:1 su bianco, 4,6:1 sull'azzurro chiarissimo */
   --blu-notte: #003B57;            /* titoli e struttura (11,9:1 su bianco) */
   --azzurro-chiaro: #C9ECFC;
   --azzurro-chiarissimo: #EDF7FD;  /* fondo delle sezioni chiare */
@@ -90,11 +90,12 @@
   --btn-m: 52px;
   --btn-s: 48px;
   --verde-ok: #1E9E6A;
-  /* Gradiente delle fasce piene: azzurro del logo → azzurro scuro.
-     Scelta del cliente: l'azzurro #009FE3 è il colore principale e resta su
-     titoli, navbar e bottoni anche dove il contrasto col bianco
-     (3,0:1) non raggiunge il minimo WCAG di 4,5:1. */
-  --grad-marca: linear-gradient(90deg, var(--azzurro) 0%, var(--azzurro-scuro) 100%);
+  /* Leggibilità (13/10/2026, decisione 28): l'azzurro del logo #009FE3 ha
+     solo 3,0:1 col bianco. Resta per superfici senza testo, icone, bordi,
+     linee e grafici; testi azzurri, pulsanti e fasce con testo bianco usano
+     --azzurro-scuro (5,0:1), le fasce piene un gradiente scuro (5,0–7,0:1). */
+  --azzurro-profondo: #005D8A;     /* fine del gradiente delle fasce: 7,0:1 col bianco */
+  --grad-marca: linear-gradient(90deg, var(--azzurro-scuro) 0%, var(--azzurro-profondo) 100%);
   --bianco: #ffffff;
 
   /* ---------- Colore: inchiostri (grigi virati sull'azzurro, non neutri) ---------- */
@@ -115,7 +116,7 @@
   --t-body:  1.1875rem;            /* 19px — testo corrente */
   --t-small: 1.0625rem;            /* 17px — testo secondario nelle card */
   --t-micro: 0.875rem;             /* 14px — note, conteggi */
-  --t-nano:  0.78rem;              /* 12,5px — pillole, tag */
+  --t-nano:  0.875rem;             /* 14px — pillole, tag (minimo leggibile) */
 
   /* ---------- Spazio: scala a base 4 ---------- */
   --s-1: 0.25rem;  --s-2: 0.5rem;  --s-3: 0.75rem;  --s-4: 1rem;
@@ -175,7 +176,7 @@ img { max-width: 100%; display: block; }
    di ogni titolo: è ciò che prima appiattiva la gerarchia. */
 h1, h2, h3, h4 {
   font-family: var(--f-display);
-  color: var(--azzurro);
+  color: var(--azzurro-scuro);
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-wrap: balance;              /* titoli su più righe: righe di lunghezza simile */
@@ -186,13 +187,13 @@ h2 { font-size: var(--t-h2);   font-weight: 800; }
 h3 { font-size: var(--t-h3);   font-weight: 700; letter-spacing: -0.01em; }
 h4 { font-size: 1.125rem;      font-weight: 600; letter-spacing: 0; }
 
-h1 em { font-style: normal; color: var(--azzurro); }
+h1 em { font-style: normal; color: var(--azzurro-scuro); }
 
 /* Il grassetto enfatizza col PESO e non col colore: un colore fisso qui
    diventava inchiostro scuro su fondi scuri (IBAN nel footer, slide Natale). */
 strong, b { font-weight: 700; }
 
-a { color: var(--azzurro); }
+a { color: var(--azzurro-scuro); }
 
 /* Helvetica governa titoli, testo, etichette, comandi, numeri e pillole.
    I due token restano separati per poter differenziare in futuro display e
@@ -303,7 +304,7 @@ select:focus-visible, [tabindex]:focus-visible {
 /* primario: azzurro pieno */
 .btn--dona {
   width: 100%;
-  background: var(--azzurro);
+  background: var(--azzurro-scuro);
   color: #fff;
   font-size: 1.25rem;
   padding: 0 1.8rem;
@@ -667,7 +668,7 @@ select:focus-visible, [tabindex]:focus-visible {
 }
 .cpm-slide__azioni { margin-top: var(--s-2); }
 .cpm-slide__cta {
-  background: var(--azzurro);
+  background: var(--azzurro-scuro);
   color: #fff;
   font-size: 1.25rem;
   min-height: var(--btn-l);         /* misura L: azione principale della hero */
@@ -682,7 +683,9 @@ select:focus-visible, [tabindex]:focus-visible {
    il fondo resta azzurro; l'occhiello diventa bianco con testo azzurro. */
 .cpm-slide--azzurra { background: #00ADEF; }
 .cpm-slide--azzurra::after {
-  background: linear-gradient(20deg, rgba(0, 40, 60, 0.55) 0%, rgba(0, 40, 60, 0.18) 45%, rgba(0, 40, 60, 0) 65%);
+  /* velo blu notte sotto il testo: il bianco sull'azzurro della foto arriva
+     ad almeno 4,5:1 (era 2,6:1); il ritratto a destra resta sul fondo azzurro */
+  background: linear-gradient(90deg, rgba(0, 40, 60, 0.5) 0%, rgba(0, 40, 60, 0.45) 48%, rgba(0, 40, 60, 0) 72%);
 }
 .cpm-slide--azzurra .cpm-slide__tag { background: #fff; color: var(--blu-notte); }
 /* slide fotografiche scure: la sfumatura è blu notte, l'etichetta diventa bianca */
@@ -702,7 +705,7 @@ select:focus-visible, [tabindex]:focus-visible {
 .cpm-slide--luce::after {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.6) 42%, rgba(255, 255, 255, 0) 60%);
 }
-.cpm-slide--luce .cpm-slide__title { color: var(--azzurro); }
+.cpm-slide--luce .cpm-slide__title { color: var(--azzurro-scuro); }
 .cpm-slide--luce .cpm-slide__sub { color: var(--blu-notte); }
 .cpm-slide--luce .cpm-slide__cf { color: var(--blu-notte); }
 .cpm-slide--luce .cpm-slide__cf strong { color: var(--blu-notte); }
@@ -996,7 +999,7 @@ fieldset { border: none; }
 }
 
 .badge {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
   background: var(--terracotta);
   color: #fff;
@@ -1029,8 +1032,8 @@ fieldset { border: none; }
 }
 .amounts__grid label:hover { border-color: var(--azzurro); }
 .amounts__grid input:checked + label {
-  background: var(--azzurro);
-  border-color: var(--azzurro);
+  background: var(--azzurro-scuro);
+  border-color: var(--azzurro-scuro);
   color: #fff;
 }
 .amounts__grid input:focus-visible + label {
@@ -1046,7 +1049,7 @@ fieldset { border: none; }
   transform: translateX(-50%);
   background: var(--terracotta);
   color: #fff;
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
   white-space: nowrap;
   border-radius: var(--raggio);
@@ -1222,11 +1225,11 @@ fieldset { border: none; }
   line-height: 1;
   min-width: 168px;
 }
-.legend-row__num--1 { color: var(--azzurro); }
+.legend-row__num--1 { color: var(--azzurro-scuro); }
 .legend-row__num--2 { color: var(--blu-notte); }
 .legend-row__num--3 { color: var(--terracotta); }   /* numero: variante leggibile su bianco */
 
-.legend-row__text strong { font-family: var(--f-display); color: var(--azzurro); font-size: 1.25rem; display: block; }
+.legend-row__text strong { font-family: var(--f-display); color: var(--azzurro-scuro); font-size: 1.25rem; display: block; }
 .legend-row__text p { color: var(--grigio-testo); font-size: 1.05rem; margin-top: 0.2rem; }
 
 /* note metodologiche: misura di lettura contenuta, non tutta la larghezza */
@@ -1681,7 +1684,7 @@ fieldset { border: none; }
   .cpm-slide--creativita .cpm-slide__img { position: static; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; flex: none; }
   .cpm-slide--creativita .cpm-slide__inner { flex: 1; display: flex; align-items: flex-end; padding-top: var(--s-5); }   /* fondo come le altre slide: pulsante nello stesso punto */
   .cpm-slide--creativita .cpm-slide__cf { display: block; color: var(--blu-notte); }
-  .cpm-slide--creativita .cpm-slide__cf strong { color: var(--azzurro); }
+  .cpm-slide--creativita .cpm-slide__cf strong { color: var(--azzurro-scuro); }
   .cpm-slide--creativita .cpm-slide__sub { display: block; color: var(--grigio-testo); }
   .cpm-slide__cf { font-size: var(--t-body); }
   .cpm-slide__azioni { align-self: stretch; }
@@ -1848,7 +1851,7 @@ fieldset { border: none; }
 .project-services__grid span {
   display: block;
   margin-bottom: var(--s-5);
-  color: var(--azzurro);
+  color: var(--azzurro-scuro);
   font-size: var(--t-micro);
   font-weight: 800;
 }
@@ -1981,7 +1984,7 @@ fieldset { border: none; }
 .project-article-content { color: var(--grigio-testo); overflow-wrap: anywhere; }   /* indirizzi email lunghi vanno a capo su schermi stretti */
 .project-article-content h2 {
   margin: 3rem 0 1rem;
-  color: var(--azzurro);
+  color: var(--azzurro-scuro);
   font-size: clamp(1.5rem, 2.4vw, 2rem);
   line-height: 1.25;
 }
@@ -2019,11 +2022,11 @@ fieldset { border: none; }
   text-align: center;
 }
 .project-sidebar .project-donation__eyebrow { color: var(--azzurro-scuro); opacity: 1; }
-.project-sidebar .dona-card__head h2 { color: var(--azzurro); font-size: 1.8rem; }
+.project-sidebar .dona-card__head h2 { color: var(--azzurro-scuro); font-size: 1.8rem; }
 .project-sidebar .dona-card__body { padding: 1.5rem 1.9rem 1.8rem; }
 .project-sidebar .freq__toggle { border: 1px solid var(--azzurro-chiaro); border-radius: 4px; padding: 0; gap: 0; }
 .project-sidebar .freq__toggle label { border-radius: 0; }
-.project-sidebar .freq__toggle input:checked + label { background: var(--azzurro); color: #fff; box-shadow: none; }
+.project-sidebar .freq__toggle input:checked + label { background: var(--azzurro-scuro); color: #fff; box-shadow: none; }
 .project-sidebar .amounts__grid { gap: 0; }
 .project-sidebar .amounts__grid label { border-width: 1px; border-radius: 0; min-height: 58px; }
 .project-sidebar .amounts__custom { display: block; }
@@ -2113,7 +2116,7 @@ fieldset { border: none; }
   border-left: 4px solid var(--azzurro);
   background: var(--azzurro-chiarissimo);
 }
-.legacy-definitions dt { color: var(--azzurro); font-size: 1.16rem; font-weight: 700; }
+.legacy-definitions dt { color: var(--azzurro-scuro); font-size: 1.16rem; font-weight: 700; }
 .legacy-definitions dd { margin-top: var(--s-2); color: var(--grigio-testo); font-size: 1.16rem; line-height: 1.7; }
 .legacy-examples { display: grid; gap: var(--s-4); margin-top: var(--s-4); }
 .legacy-examples section {
@@ -2123,7 +2126,7 @@ fieldset { border: none; }
   background: #fff;
   box-shadow: var(--e-1);
 }
-.legacy-examples h3 { color: var(--azzurro); font-size: 1.2rem; }
+.legacy-examples h3 { color: var(--azzurro-scuro); font-size: 1.2rem; }
 .legacy-examples p { margin-top: var(--s-3); }
 .legacy-examples .legacy-signature { color: var(--ink-tenue); font-size: 1rem; }
 .project-article-content a { color: var(--azzurro-scuro); font-weight: 600; }
@@ -2185,7 +2188,7 @@ fieldset { border: none; }
   background: var(--terracotta);
   color: #fff;
   font-weight: 800;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.4rem 0.8rem;
@@ -2204,14 +2207,14 @@ fieldset { border: none; }
 }
 .proj-card__tags {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;                 /* pillole a 14px: vanno a capo invece di uscire dalla scheda */
   align-items: center;
   gap: 0.22rem;
 }
 .proj-card__tags .pill {
   flex: 0 0 auto;
   padding: 0.18rem 0.38rem;
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   white-space: nowrap;
 }
 .proj-card__tags .pill__icon { width: 9px; height: 9px; }
@@ -2219,7 +2222,7 @@ fieldset { border: none; }
   font-size: 1.3rem;
   font-weight: 800;
   line-height: 1.25;
-  color: var(--azzurro);
+  color: var(--azzurro-scuro);
 }
 .proj-card__title a {
   color: inherit;
@@ -2245,7 +2248,7 @@ fieldset { border: none; }
   align-self: stretch;
   justify-content: center;
   padding-inline: 1.4rem;
-  background: var(--azzurro);
+  background: var(--azzurro-scuro);
   color: #fff;
 }
 .proj-card__cta:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
@@ -2271,7 +2274,7 @@ fieldset { border: none; }
 
 @media (max-width: 30em) {
   .proj-card__tags { gap: 0.16rem; }
-  .proj-card__tags .pill { padding: 0.16rem 0.3rem; font-size: 0.62rem; }
+  .proj-card__tags .pill { padding: 0.16rem 0.3rem; font-size: 0.875rem; }
   .proj-card__tags .pill__icon { width: 8px; height: 8px; }
 }
 
@@ -2279,7 +2282,7 @@ fieldset { border: none; }
   .proj-card__tags .pill--cat { display: none; }
   .proj-card__tags .pill--area {
     padding: 0.28rem 0.65rem;
-    font-size: 0.82rem;
+    font-size: 0.875rem;
   }
   .proj-card__tags .pill__icon { width: 11px; height: 11px; }
 }
@@ -2362,7 +2365,7 @@ fieldset { border: none; }
 .proj-filters__reset-icon { flex: none; }
 .proj-filters__reset:hover { background: var(--azzurro-chiarissimo); }
 /* quando ci sono filtri attivi il pulsante diventa pieno e mostra il badge col numero */
-.proj-filters__reset.has-active { background: var(--azzurro); color: #fff; }
+.proj-filters__reset.has-active { background: var(--azzurro-scuro); color: #fff; }
 .proj-filters__reset.has-active:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
 .proj-filters__badge[hidden] { display: none; }
 .proj-filters__badge {
@@ -2427,9 +2430,9 @@ fieldset { border: none; }
    documenti da scaricare, invito a donare. */
 .chi-blocco { background: #fff; padding-block: var(--s-sezione); }
 .chi-blocco--chiaro { background: var(--azzurro-chiarissimo); }
-.chi-colonna { max-width: 46rem; }
+.chi-colonna { max-width: 42rem; }   /* ~70 caratteri per riga a 18px */
 .chi-colonna--centro { text-align: center; }
-.chi-colonna h2, .chi-affiancato h2 { color: var(--azzurro); font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: var(--s-4); }
+.chi-colonna h2, .chi-affiancato h2 { color: var(--azzurro-scuro); font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom: var(--s-4); }
 .chi-colonna p, .chi-affiancato p { color: var(--grigio-testo); font-size: 1.125rem; line-height: 1.7; }
 .chi-colonna p + p, .chi-affiancato p + p { margin-top: var(--s-4); }
 .chi-colonna strong, .chi-affiancato strong { color: var(--blu-notte); }
@@ -2437,7 +2440,7 @@ fieldset { border: none; }
 .chi-lead { font-size: var(--t-lead) !important; color: var(--blu-notte) !important; }
 .chi-occhiello {
   color: var(--azzurro-scuro) !important;
-  font-size: 0.8rem !important;
+  font-size: 0.875rem !important;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2448,7 +2451,7 @@ fieldset { border: none; }
 /* motto in evidenza: grande, centrato, su azzurro chiarissimo */
 .chi-citazione { background: var(--azzurro-chiarissimo); padding-block: calc(var(--s-sezione) * 0.8); text-align: center; }
 .chi-citazione blockquote p {
-  color: var(--azzurro);
+  color: var(--azzurro-scuro);
   font-weight: 800;
   font-size: clamp(2rem, 5vw, 3.6rem);
   line-height: 1.15;
@@ -2479,7 +2482,7 @@ fieldset { border: none; }
 /* fascia d'invito (Chi siamo: "Fai una donazione"; home: raccolte solidali):
    fascia azzurra come la sezione numeri, titolo, due righe e un pulsante bianco */
 .fascia-invito {
-  background: linear-gradient(120deg, var(--azzurro) 0%, var(--azzurro-scuro) 100%);
+  background: linear-gradient(120deg, var(--azzurro-scuro) 0%, var(--azzurro-profondo) 100%);
   padding-block: calc(var(--s-sezione) * 0.8);
   text-align: center;
   color: #fff;
@@ -2505,7 +2508,7 @@ fieldset { border: none; }
   padding: 1.5rem 1.4rem;
   box-shadow: var(--e-1);
 }
-.recapito h3 { color: var(--azzurro); font-size: 1.25rem; margin-bottom: 0.5rem; }
+.recapito h3 { color: var(--azzurro-scuro); font-size: 1.25rem; margin-bottom: 0.5rem; }
 .recapito p { color: var(--grigio-testo); }
 .recapito__link { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.8rem; }
 .recapito__link a { color: var(--azzurro-scuro); font-weight: 700; overflow-wrap: anywhere; }
@@ -2542,7 +2545,7 @@ fieldset { border: none; }
   display: inline-grid; place-items: center;
   width: 2.6rem; height: 2.6rem;
   border-radius: 50%;
-  background: var(--azzurro);
+  background: var(--azzurro-scuro);
   color: #fff;
   font-weight: 800;
   font-size: 1.25rem;
@@ -2592,7 +2595,7 @@ fieldset { border: none; }
 .legacy-contact-card .contatto__btn:hover { background: var(--blu-notte); color: #fff; }
 
 /* Modulo di donazione esterno (Myosotis) incorporato in pagina — PROVA */
-.page-project-detail .project-page__grid:not(:has(.project-sidebar)) { grid-template-columns: minmax(0, 46rem); }
+.page-project-detail .project-page__grid:not(:has(.project-sidebar)) { grid-template-columns: minmax(0, 42rem); }   /* righe sotto i 75 caratteri */
 .modulo-incorporato { background: var(--azzurro-chiarissimo); padding-block: var(--s-sezione); scroll-margin-top: 90px; }
 .modulo-incorporato .section-head { margin-bottom: var(--s-6); }
 .modulo-incorporato__cornice {

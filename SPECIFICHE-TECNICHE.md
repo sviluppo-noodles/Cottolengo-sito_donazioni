@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=66` dal 13/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=67` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
@@ -306,4 +306,15 @@ Header e footer sono copiati in ogni pagina (GitHub Pages serve file statici: ni
 ## Comparsa durante lo scorrimento (scroll reveal, tutte le pagine)
 
 `initRivela` in `js/nav.js` + regole `.rivela-attiva .rivela` in fondo a `css/style.css`. Elementi: `.section-head`, `.numbers__item`, `.fila-schede__item`, `.legend-row`, `.documento`, `.recapito`, `.cpm-passo`, contenuto di `.cpm-codice`, `.chi-colonna`, `.chi-affiancato`, `.chi-citazione`, `.fascia-invito`, `.partners__title`, `.quote .container`, figli di `.project-article-content`, schede di `.proj-grid`, `.modulo-incorporato__nota`. Esclusi tutti gli elementi dentro header, footer, hero, copertina, colonna laterale, moduli e barra "Dona ora". Movimento: 24 px, 0,7 s, curva `--ease-uscita`, ritardo 90 ms per posizione nella fila (massimo 4 passi). L'elemento si attiva quando il bordo superiore supera il 92% dell'altezza dello schermo; quelli già in vista all'apertura non si animano. Finita la comparsa le classi vengono tolte. È disattivata con `prefers-reduced-motion: reduce`; in stampa tutto è visibile. In WordPress resta lo stesso script nel tema.
+
+## Colori e leggibilità (WCAG AA)
+
+| Uso | Colore | Contrasto col bianco |
+| --- | --- | --- |
+| Testo azzurro, pulsanti con testo bianco | `--azzurro-scuro` #0075B0 | 5,0:1 (4,6:1 sull'azzurro chiarissimo) |
+| Fine del gradiente di header e fasce | `--azzurro-profondo` #005D8A | 7,2:1 |
+| Azzurro del logo, solo senza testo (icone, bordi, linee, grafico) | `--azzurro` #009FE3 | 3,0:1 |
+| Titoli e struttura | `--blu-notte` #003B57 | 11,9:1 |
+
+Testo minimo 14 px (`--t-nano`). Lunghezza delle righe sotto i 75 caratteri. Il testo sopra le foto della hero ha un velo che lo porta ad almeno 4,5:1.
 

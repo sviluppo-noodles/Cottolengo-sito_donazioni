@@ -115,7 +115,7 @@ const counters = document.querySelectorAll('.numbers__value');
 
 function animaContatore(el, durata = 1400) {
   const target = parseInt(el.dataset.count, 10);
-  const plain = el.dataset.plain === 'true'; // es. l'anno 1832: niente separatore migliaia
+  const plain = el.dataset.plain === 'true'; // es. l'anno 1828: niente separatore migliaia
   const suffisso = el.dataset.suffix || ''; // es. "%" per la ciambella
   const inizio = performance.now();
 
