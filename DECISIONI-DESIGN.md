@@ -503,6 +503,15 @@ Richiesta del Cottolengo (Silvia): nella pagina Volontariato servono i due colle
 
 Fornita da Fulvio: un'operatrice sanitaria stringe la mano di una persona anziana. L'immagine è **specchiata**: le mani stanno a sinistra, dove c'è il titolo, e non a destra sotto il modulo di donazione che copre la copertina. Il file è `assets/img/pagine/cura-assistenza-anziani-cottolengo-1920.jpg` (1920 × 640, 92 KB). La vecchia `cura-cottolengo-1600.jpg` non è più usata: va eliminata su conferma.
 
+## 40. Chi siamo, Contatti: il sottotitolo va a capo dopo i due punti (14/10/2026)
+
+Prima il sottotitolo "Tre recapiti per tre esigenze diverse: ti risponde direttamente chi se ne occupa." finiva con "ne occupa." da solo sulla seconda riga. Adesso:
+
+- da 900 px in su sta su una riga sola;
+- sotto i 900 px va a capo dopo i due punti, così ogni frase ha la sua riga.
+
+Le due frasi sono in `<span class="frase">` (inline-block). Il componente si può riusare per altri sottotitoli in due parti.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.

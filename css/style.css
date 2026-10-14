@@ -1268,7 +1268,8 @@ fieldset { border: none; }
    --modo ha spazi interni e titolo un po' più compatti. Sotto i 1200 px le schede
    non ci starebbero: diventano una fila che scorre (vedi media query). */
 .modi .section-head { margin-bottom: var(--s-6); }
-.modi .section-intro, .who .section-intro { max-width: none; text-wrap: balance; }   /* una riga su desktop; su telefono va a capo bilanciato, mai con due parole sole */
+.modi .section-intro, .who .section-intro, .recapiti .section-intro { max-width: none; text-wrap: balance; }   /* una riga su desktop; su telefono va a capo bilanciato, mai con due parole sole */
+.section-intro .frase { display: inline-block; text-wrap: balance; }   /* se il testo va a capo, va a capo tra le due frasi (dopo i due punti) */
 .fila-schede {
   --colonne: 5;
   list-style: none;
