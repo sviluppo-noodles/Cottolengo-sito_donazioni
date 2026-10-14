@@ -439,7 +439,25 @@ Il Cottolengo ha fornito 9 loghi, che sostituiscono le caselle segnaposto della 
 - **Regola:** nessuna casella vuota o segnaposto. Nella fascia compaiono solo i loghi già ricevuti; i nuovi si aggiungono man mano che arrivano, ognuno con il link al sito dell'ente.
 - Lo scorrimento passa a 44 secondi per giro, così la velocità resta quella di prima con 11 loghi invece di 8.
 - I link sono da confermare con il Cottolengo, soprattutto quello di Intesa Sanpaolo, che porta alla pagina del Fondo di beneficenza.
-- 14/10/2026: arrivati i loghi di CEI (1080 px), Fondazione Davida (336 px), Dipartimento Pari Opportunità (591 px) Fondazione CRC (566 px), Fondazione CRT (600 px), Sermig (995 px, ridotto a 400), Agenda della Disabilità (200 px), Intesa Sanpaolo (762 px; solo il marchio della banca, senza la dicitura del Fondo di beneficenza: il link porta comunque alla pagina del Fondo) e For a Smile (440 px, ora "Ente Terzo Settore" invece di Onlus), che sostituiscono quelli da 150 px. Il logo delle Pari Opportunità è arrivato bianco su fondo blu: lo usiamo in positivo (blu su bianco), come gli altri loghi della fascia. Tutti i loghi sono ora in alta risoluzione. I loghi molto larghi (CRC, CRT, Intesa Sanpaolo, For a Smile: rapporto 3:1 o più) hanno una casella da 200 px invece di 120, altrimenti diventano strisce alte 20 px.
+- 14/10/2026: arrivati i loghi di CEI (1080 px), Fondazione Davida (336 px), Dipartimento Pari Opportunità (591 px) Fondazione CRC (566 px), Fondazione CRT (600 px), Sermig (995 px, ridotto a 400), Agenda della Disabilità (200 px), Intesa Sanpaolo (1280 px, fondo grigio chiaro portato a bianco; solo il marchio della banca, senza la dicitura del Fondo di beneficenza: il link porta comunque alla pagina del Fondo) e For a Smile (440 px, ora "Ente Terzo Settore" invece di Onlus), che sostituiscono quelli da 150 px. Il logo delle Pari Opportunità è arrivato bianco su fondo blu: lo usiamo in positivo (blu su bianco), come gli altri loghi della fascia. Tutti i loghi sono ora in alta risoluzione. I loghi molto larghi (CRC, CRT, Intesa Sanpaolo, For a Smile: rapporto 3:1 o più) hanno una casella da 200 px invece di 120, altrimenti diventano strisce alte 20 px.
+
+## 33. Sostenitori: griglia ferma divisa per gruppi, niente scorrimento (14/10/2026)
+
+Su proposta concordata con Fulvio, la fascia "Con il sostegno e la collaborazione di" non scorre più: tutti i loghi sono fermi, divisi in tre gruppi con un'etichetta. È la soluzione più diffusa nei siti istituzionali e non pone problemi tecnici: niente animazione, niente JavaScript, niente lista duplicata.
+- **Istituzioni:** Dipartimento per le Pari Opportunità, Conferenza Episcopale Italiana.
+- **Fondazioni ed enti erogatori:** Compagnia di San Paolo, Fondazione CRT, Fondazione CRC, Fondazione CR Firenze, Intesa Sanpaolo – Fondo di beneficenza, Fondazione Davida.
+- **Reti e associazioni:** Agenda della Disabilità, Sermig – Arsenale della Pace, For a Smile.
+
+Perché:
+- un logo fermo si legge e si clicca, mentre uno in movimento si insegue;
+- non c'è contenuto in movimento da fermare (WCAG 2.2.2): prima la pausa funzionava solo col mouse, quindi non da telefono;
+- i gruppi spiegano chi sostiene l'Opera, un segnale di fiducia per chi dona.
+
+Come è fatta:
+- **Colonne fisse per gruppo, così nessun logo resta da solo su una riga.** Fondazioni: 6 colonne su desktop, 3 sotto i 1200 px, 2 su telefono. Su telefono un ultimo logo dispari si centra.
+- **Altezza in base alla forma del logo, non al file.** Quadrati 80 px, medi 60 px, orizzontali 40 px, così hanno tutti un peso visivo simile.
+- **Nessuna casella vuota.** Un nuovo logo si aggiunge nel suo gruppo; in WordPress diventa un campo ripetibile (logo, nome, link, gruppo).
+- **Comparsa allo scorrimento:** i gruppi compaiono come il resto della pagina.
 
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 

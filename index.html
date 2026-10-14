@@ -21,7 +21,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=71">
+  <link rel="stylesheet" href="css/style.css?v=72">
 </head>
 <body>
 
@@ -554,129 +554,84 @@
 </section>
 
 <!-- ============ LOGHI PARTNER (carosello a scorrimento infinito) ============ -->
-<section class="partners" aria-label="I nostri partner">
+<section class="partners" aria-labelledby="partners-title">
+  <!-- Sostenitori: griglia ferma, divisa per tipo di ente (decisione 33).
+       Niente scorrimento: tutti i loghi leggibili e cliccabili insieme, nessun
+       movimento da fermare (WCAG 2.2.2). Nessuna casella vuota: un nuovo logo si
+       aggiunge nel suo gruppo quando arriva. In WordPress: campo ripetibile
+       (logo, nome, link, gruppo). -->
   <div class="container">
-    <p class="partners__title">Con il sostegno e la collaborazione di</p>
-  </div>
-  <!-- Marquee CSS: la lista dei loghi è duplicata (aria-hidden) per lo scorrimento continuo senza stacchi.
-       Loghi forniti dal Cottolengo il 14/10/2026 (file 150×150 px: per una resa nitida sugli schermi
-       ad alta densità servono versioni da almeno 300×300 px o SVG). In WordPress: un campo ripetibile
-       (logo, nome, link). -->
-  <div class="partners__viewport">
-    <ul class="partners__track" role="list">
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.compagniadisanpaolo.it/it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione Compagnia di San Paolo (si apre in una nuova scheda)">
-          <img src="assets/img/partners/compagnia-san-paolo.svg" alt="Fondazione Compagnia di San Paolo" width="3209" height="1350">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://fondazionecrfirenze.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione CR Firenze (si apre in una nuova scheda)">
-          <img src="assets/img/partners/fondazione-cr-firenze.svg" alt="Fondazione CR Firenze" width="5334" height="3000">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.pariopportunita.gov.it/" target="_blank" rel="noopener noreferrer" aria-label="Presidenza del Consiglio dei Ministri – Dipartimento per le Pari Opportunità (si apre in una nuova scheda)">
-          <img src="assets/img/partners/dipartimento-pari-opportunita.png?v=2" alt="Presidenza del Consiglio dei Ministri – Dipartimento per le Pari Opportunità" width="500" height="399" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.agendadelladisabilita.it/" target="_blank" rel="noopener noreferrer" aria-label="Agenda della Disabilità – Anche noi ci impegniamo (si apre in una nuova scheda)">
-          <img src="assets/img/partners/agenda-della-disabilita.png?v=2" alt="Agenda della Disabilità – Anche noi ci impegniamo" width="200" height="200" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.sermig.org/" target="_blank" rel="noopener noreferrer" aria-label="Sermig – Arsenale della Pace (si apre in una nuova scheda)">
-          <img src="assets/img/partners/sermig-arsenale-della-pace.png?v=2" alt="Sermig – Arsenale della Pace" width="400" height="342" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.chiesacattolica.it/" target="_blank" rel="noopener noreferrer" aria-label="Conferenza Episcopale Italiana (si apre in una nuova scheda)">
-          <img src="assets/img/partners/conferenza-episcopale-italiana.jpg?v=2" alt="Conferenza Episcopale Italiana" width="600" height="346" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://group.intesasanpaolo.com/it/sociale/fondo-di-beneficenza" target="_blank" rel="noopener noreferrer" aria-label="Intesa Sanpaolo – Fondo di beneficenza ed opere di carattere sociale e culturale (si apre in una nuova scheda)">
-          <img src="assets/img/partners/intesa-sanpaolo-fondo-beneficenza.png?v=2" alt="Intesa Sanpaolo – Fondo di beneficenza ed opere di carattere sociale e culturale" width="746" height="103" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://www.fondazionecrt.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione CRT (si apre in una nuova scheda)">
-          <img src="assets/img/partners/fondazione-crt.png?v=2" alt="Fondazione CRT" width="600" height="156" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://fondazionedavida.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione Davida (si apre in una nuova scheda)">
-          <img src="assets/img/partners/fondazione-davida.png?v=2" alt="Fondazione Davida" width="300" height="156" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://www.fondazionecrc.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione CRC (si apre in una nuova scheda)">
-          <img src="assets/img/partners/fondazione-crc.png?v=2" alt="Fondazione CRC" width="566" height="106" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://www.forasmile.org/" target="_blank" rel="noopener noreferrer" aria-label="For a Smile – Ente Terzo Settore (si apre in una nuova scheda)">
-          <img src="assets/img/partners/for-a-smile-onlus.jpg?v=2" alt="For a Smile – Ente Terzo Settore" width="440" height="129" loading="lazy">
-        </a>
-      </li>
-    </ul>
-    <ul class="partners__track" role="list" aria-hidden="true">
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.compagniadisanpaolo.it/it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/compagnia-san-paolo.svg" alt="" width="3209" height="1350">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://fondazionecrfirenze.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/fondazione-cr-firenze.svg" alt="" width="5334" height="3000">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.pariopportunita.gov.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/dipartimento-pari-opportunita.png?v=2" alt="" width="500" height="399" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.agendadelladisabilita.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/agenda-della-disabilita.png?v=2" alt="" width="200" height="200" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.sermig.org/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/sermig-arsenale-della-pace.png?v=2" alt="" width="400" height="342" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://www.chiesacattolica.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/conferenza-episcopale-italiana.jpg?v=2" alt="" width="600" height="346" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://group.intesasanpaolo.com/it/sociale/fondo-di-beneficenza" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/intesa-sanpaolo-fondo-beneficenza.png?v=2" alt="" width="746" height="103" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://www.fondazionecrt.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/fondazione-crt.png?v=2" alt="" width="600" height="156" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image">
-        <a class="partners__link" href="https://fondazionedavida.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/fondazione-davida.png?v=2" alt="" width="300" height="156" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://www.fondazionecrc.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/fondazione-crc.png?v=2" alt="" width="566" height="106" loading="lazy">
-        </a>
-      </li>
-      <li class="partners__logo partners__logo--image partners__logo--largo">
-        <a class="partners__link" href="https://www.forasmile.org/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-          <img src="assets/img/partners/for-a-smile-onlus.jpg?v=2" alt="" width="440" height="129" loading="lazy">
-        </a>
-      </li>
-    </ul>
+    <h2 class="partners__title" id="partners-title">Con il sostegno e la collaborazione di</h2>
+    <div class="partners__gruppo partners__gruppo--istituzioni">
+      <h3 class="partners__etichetta" id="partners-gruppo-1">Istituzioni</h3>
+      <ul class="partners__griglia" role="list" aria-labelledby="partners-gruppo-1">
+        <li class="partners__logo partners__logo--quadrato">
+          <a class="partners__link" href="https://www.pariopportunita.gov.it/" target="_blank" rel="noopener noreferrer" aria-label="Presidenza del Consiglio dei Ministri – Dipartimento per le Pari Opportunità (si apre in una nuova scheda)">
+            <img src="assets/img/partners/dipartimento-pari-opportunita.png?v=2" alt="Presidenza del Consiglio dei Ministri – Dipartimento per le Pari Opportunità" width="500" height="399" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--medio">
+          <a class="partners__link" href="https://www.chiesacattolica.it/" target="_blank" rel="noopener noreferrer" aria-label="Conferenza Episcopale Italiana (si apre in una nuova scheda)">
+            <img src="assets/img/partners/conferenza-episcopale-italiana.jpg?v=2" alt="Conferenza Episcopale Italiana" width="600" height="346" loading="lazy">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="partners__gruppo partners__gruppo--fondazioni">
+      <h3 class="partners__etichetta" id="partners-gruppo-2">Fondazioni ed enti erogatori</h3>
+      <ul class="partners__griglia" role="list" aria-labelledby="partners-gruppo-2">
+        <li class="partners__logo partners__logo--medio">
+          <a class="partners__link" href="https://www.compagniadisanpaolo.it/it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione Compagnia di San Paolo (si apre in una nuova scheda)">
+            <img src="assets/img/partners/compagnia-san-paolo.svg" alt="Fondazione Compagnia di San Paolo" width="3209" height="1350" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--largo">
+          <a class="partners__link" href="https://www.fondazionecrt.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione CRT (si apre in una nuova scheda)">
+            <img src="assets/img/partners/fondazione-crt.png?v=2" alt="Fondazione CRT" width="600" height="156" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--largo">
+          <a class="partners__link" href="https://www.fondazionecrc.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione CRC (si apre in una nuova scheda)">
+            <img src="assets/img/partners/fondazione-crc.png?v=2" alt="Fondazione CRC" width="566" height="106" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--medio">
+          <a class="partners__link" href="https://fondazionecrfirenze.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione CR Firenze (si apre in una nuova scheda)">
+            <img src="assets/img/partners/fondazione-cr-firenze.svg" alt="Fondazione CR Firenze" width="5334" height="3000" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--largo">
+          <a class="partners__link" href="https://group.intesasanpaolo.com/it/sociale/fondo-di-beneficenza" target="_blank" rel="noopener noreferrer" aria-label="Intesa Sanpaolo – Fondo di beneficenza ed opere di carattere sociale e culturale (si apre in una nuova scheda)">
+            <img src="assets/img/partners/intesa-sanpaolo-fondo-beneficenza.png?v=3" alt="Intesa Sanpaolo – Fondo di beneficenza ed opere di carattere sociale e culturale" width="825" height="104" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--medio">
+          <a class="partners__link" href="https://fondazionedavida.it/" target="_blank" rel="noopener noreferrer" aria-label="Fondazione Davida (si apre in una nuova scheda)">
+            <img src="assets/img/partners/fondazione-davida.png?v=2" alt="Fondazione Davida" width="300" height="156" loading="lazy">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="partners__gruppo partners__gruppo--reti">
+      <h3 class="partners__etichetta" id="partners-gruppo-3">Reti e associazioni</h3>
+      <ul class="partners__griglia" role="list" aria-labelledby="partners-gruppo-3">
+        <li class="partners__logo partners__logo--quadrato">
+          <a class="partners__link" href="https://www.agendadelladisabilita.it/" target="_blank" rel="noopener noreferrer" aria-label="Agenda della Disabilità – Anche noi ci impegniamo (si apre in una nuova scheda)">
+            <img src="assets/img/partners/agenda-della-disabilita.png?v=2" alt="Agenda della Disabilità – Anche noi ci impegniamo" width="200" height="200" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--quadrato">
+          <a class="partners__link" href="https://www.sermig.org/" target="_blank" rel="noopener noreferrer" aria-label="Sermig – Arsenale della Pace (si apre in una nuova scheda)">
+            <img src="assets/img/partners/sermig-arsenale-della-pace.png?v=2" alt="Sermig – Arsenale della Pace" width="400" height="342" loading="lazy">
+          </a>
+        </li>
+        <li class="partners__logo partners__logo--largo">
+          <a class="partners__link" href="https://www.forasmile.org/" target="_blank" rel="noopener noreferrer" aria-label="For a Smile – Ente Terzo Settore (si apre in una nuova scheda)">
+            <img src="assets/img/partners/for-a-smile-onlus.jpg?v=2" alt="For a Smile – Ente Terzo Settore" width="440" height="129" loading="lazy">
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -773,8 +728,8 @@
   </a>
 </div>
 
-<script src="js/importo.js?v=71"></script>
-<script src="js/main.js?v=71"></script>
-<script src="js/nav.js?v=71"></script>
+<script src="js/importo.js?v=72"></script>
+<script src="js/main.js?v=72"></script>
+<script src="js/nav.js?v=72"></script>
 </body>
 </html>
