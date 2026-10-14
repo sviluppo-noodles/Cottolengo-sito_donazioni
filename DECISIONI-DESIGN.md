@@ -535,6 +535,20 @@ Dalla testata dei moduli è stata tolta anche la scritta piccola sopra il titolo
 
 Le schede contatti a lato (5×1000, Volontariato…) non sono moduli e restano com'erano.
 
+## 42. Pagine interne: zoom d'ingresso della foto di copertina (14/10/2026)
+
+All'arrivo sulla pagina la foto di copertina parte leggermente ingrandita e in 6 secondi torna alla misura normale. È lo stesso gesto della hero in home, così tutto il sito ha un movimento coerente e passare da una pagina all'altra dà l'idea di "entrare" in un luogo.
+
+**Più leggero della home, per non disturbare:**
+
+- +5% invece di +10%;
+- una volta sola, niente movimento continuo;
+- si muove solo la foto: titolo, testi e modulo di donazione restano fermi;
+- lo zoom è centrato sul soggetto: dove la pagina ha un punto focale (Cura, Aziende, Testamento, 5×1000) lo zoom parte da lì;
+- con "riduci movimento" attivo nel sistema la foto è ferma.
+
+Riguarda le 13 pagine con foto di copertina. È solo CSS (`.project-cover__image`, `@keyframes cover-zoom`), quindi in WordPress funziona senza modifiche.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.

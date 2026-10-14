@@ -1849,6 +1849,16 @@ fieldset { border: none; }
   height: 100%;
 }
 .project-cover__image { object-fit: cover; object-position: center 43%; }
+/* Zoom d'ingresso della foto di copertina (pagine interne): stesso gesto
+   della hero in home ma più leggero (+5% invece di +10%) e una volta sola.
+   Si muove solo la foto: titolo, testi e modulo restano fermi. Lo zoom è
+   centrato sul soggetto: --fuoco ripete l'object-position della pagina,
+   se ne ha uno. Con "riduci movimento" attivo non c'è (regola generale). */
+.project-cover__image {
+  transform-origin: var(--fuoco, 50% 43%);
+  animation: cover-zoom 6s cubic-bezier(0.25, 0.6, 0.3, 1) both;
+}
+@keyframes cover-zoom { from { transform: scale(1.05); } to { transform: scale(1); } }
 .project-cover__shade {
   background:
     linear-gradient(90deg, rgba(0, 39, 62, 0.82) 0%, rgba(0, 39, 62, 0.48) 42%, rgba(0, 39, 62, 0.12) 70%),
@@ -2446,7 +2456,7 @@ fieldset { border: none; }
 /* ============ PAGINA 5×1000 ============
    Componenti del sito (cover, colonna di lettura, schede .documento, fascia
    d'invito, recapiti) + due blocchi propri: codice fiscale in evidenza e passi. */
-.cpm-pagina__cover { object-position: 70% 50%; }
+.cpm-pagina__cover { object-position: 70% 50%; --fuoco: 70% 50%; }
 .cpm-codice { background: #fff; padding-block: calc(var(--s-sezione) * 0.7); text-align: center; }
 .cpm-codice .chi-occhiello { margin-bottom: var(--s-3); }
 .cpm-codice__numero {
