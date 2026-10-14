@@ -609,6 +609,12 @@ I tre passaggi nel testo sono stati adattati: premi il pulsante, scegli l'import
 
 Il riquadro (`.dona-link`) è pronto per essere riusato su altre pagine, se si sceglie questa strada.
 
+## 46. Dona in memoria: foto di copertina specchiata (14/10/2026)
+
+Nella foto originale il volto dell'anziano sta a destra e finiva dietro il riquadro "Dona in memoria". La foto è stata **specchiata**: il volto ora sta a sinistra, sotto il titolo, e resta visibile. Il titolo si legge bene grazie alla sfumatura scura già presente sul lato sinistro. È la stessa soluzione usata per Cura (decisione 39).
+
+Il nuovo file è `assets/img/pagine/dona-in-memoria-anziano-sorriso-cottolengo-1600.jpg` (1600 × 1000). Il vecchio `dona-in-memoria-cottolengo-1600.jpg` non è più usato e va eliminato, su conferma.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
