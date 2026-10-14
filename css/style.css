@@ -1319,68 +1319,8 @@ fieldset { border: none; }
 .btn--vedi-tutti span[aria-hidden] { transition: transform var(--transizione); }
 .btn--vedi-tutti:hover span[aria-hidden] { transform: translateX(3px); }
 
-/* ============ TESTIMONIANZE: griglia ferma (decisione 35) ============
-   Quattro schede ferme: 2 × 2 su computer, una sotto l'altra su telefono.
-   Nessun movimento automatico: si leggono con calma, come nei siti
-   istituzionali; nessun pulsante di pausa da gestire. */
-.quote {
-  background: var(--azzurro-chiarissimo);
-  padding-block: var(--s-sezione);
-  text-align: center;
-}
-.quote-griglia {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s-5);
-  text-align: left;
-}
-.quote-card figure {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);
-  background: #fff;
-  border: 1px solid var(--bordo);
-  border-radius: var(--r-2);
-  box-shadow: var(--e-1);
-  padding: var(--s-6) var(--s-6) var(--s-5);
-}
-.quote-card blockquote { margin: 0; flex: 1; }
-/* le virgolette «» sono già nel testo: nessun segno decorativo in più */
-.quote-card blockquote p {
-  color: var(--blu-notte);
-  font-size: var(--t-lead);       /* 21px */
-  font-weight: 400;
-  line-height: 1.5;
-}
-.quote-card figcaption {
-  padding-top: var(--s-4);
-  border-top: 1px solid var(--bordo);
-  color: var(--grigio-testo);
-  font-size: var(--t-small);
-  font-weight: 600;
-}
-.quote-card figcaption em { font-style: italic; font-weight: 400; color: var(--ink-tenue); }
-@media (max-width: 45em) {
-  .quote-griglia { grid-template-columns: minmax(0, 1fr); }
-  .quote-card figure { padding: var(--s-5); }
-}
-.quote__more {
-  /* inline-flex + min-height: area di tocco da 44px anche su telefono */
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-height: 44px;
-  padding-inline: 0.25rem;
-  margin-top: 1.6rem;
-  font-weight: 700;
-  color: var(--azzurro-scuro);
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-.quote__more:hover { text-decoration: underline; }
+/* Testimonianze: sezione tolta dalla home il 14/10/2026 (decisione 37). */
+
 
 /* ============ LOGHI PARTNER (marquee a scorrimento infinito) ============ */
 .partners {
@@ -2679,5 +2619,57 @@ fieldset { border: none; }
 .rivela-attiva .rivela.is-entrato { opacity: 1; transform: none; }
 @media print {
   .rivela-attiva .rivela { opacity: 1; transform: none; }
+}
+
+/* ============ SCELTE: due strade affiancate (es. volontariato Italia / mondo) ============
+   Schede intere cliccabili dentro il testo di una pagina: titolo, una riga di
+   spiegazione, invito all'azione. Due colonne, una sotto l'altra su telefono. */
+.project-article-content .scelte {
+  list-style: none;
+  margin: var(--s-4) 0 var(--s-6);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+.project-article-content .scelte li { margin: 0; padding: 0; }
+.project-article-content .scelte li::before { content: none; }
+.scelta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  height: 100%;
+  padding: var(--s-5);
+  background: #fff;
+  border: 1px solid var(--bordo-forte);
+  border-left: 4px solid var(--azzurro);
+  border-radius: var(--r-2);
+  box-shadow: var(--e-1);
+  color: var(--grigio-testo);
+  text-decoration: none;
+  transition: box-shadow var(--transizione), border-color var(--transizione), transform var(--transizione);
+}
+.project-article-content a.scelta { color: var(--grigio-testo); font-weight: 400; text-decoration: none; }
+.scelta:hover { box-shadow: var(--e-2); border-color: var(--azzurro); transform: translateY(-2px); }
+.scelta__titolo {
+  font-family: var(--f-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--azzurro);
+  line-height: 1.25;
+}
+.scelta__testo { font-size: 1rem; line-height: 1.55; flex: 1; }
+.scelta__azione {
+  margin-top: var(--s-2);
+  font-weight: 700;
+  color: var(--azzurro-scuro);
+}
+.scelta__azione span[aria-hidden] { display: inline-block; transition: transform var(--transizione); }
+.scelta:hover .scelta__azione span[aria-hidden] { transform: translateX(4px); }
+@media (max-width: 38.75em) {
+  .project-article-content .scelte { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scelta:hover { transform: none; }
 }
 

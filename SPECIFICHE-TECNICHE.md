@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=74` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=77` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
@@ -276,7 +276,7 @@ Ogni script controlla che gli elementi esistano prima di usarli: su una pagina s
 
 ## Carosello delle campagne (hero)
 
-Le testimonianze non sono più un carosello: dal 14/10/2026 sono schede ferme (decisione 35).
+La sezione testimonianze è stata tolta dalla home il 14/10/2026 (decisione 37).
 
 
 - Pallini = `role="tab"` con `aria-controls` verso l'id della slide; slide = `role="tabpanel"` con `aria-roledescription="slide"`. Gli id mancanti sono creati dal JS (`cpm-slide-N`, `quote-slide-N`); quelli già presenti, come `#cinquepermille`, restano.

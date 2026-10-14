@@ -471,6 +471,38 @@ Richiesta di Fulvio: anche le testimonianze in home non scorrono più. Le quattr
 - Tolti il JavaScript del carosello (pallini, pausa, scorrimento automatico) e le relative regole CSS. Le schede compaiono allo scorrimento come il resto della pagina.
 - I testi restano quelli provvisori. In WordPress diventano un campo ripetibile (testo, nome, ruolo).
 
+## 36. Testimonianze: niente pagina dedicata, "Mostra altre" solo se servono
+
+Il link "Leggi tutte le testimonianze" portava a una pagina del vecchio sito ed è stato tolto. Non c'è una pagina dedicata alle testimonianze.
+- **Con 4 testimonianze o meno** (oggi sono 4): nessun pulsante e nessun link, la sezione finisce con le schede.
+- **Con più di 4:** si vedono le prime 4 e compare il pulsante "Mostra altre testimonianze (N)", che apre le altre nella stessa sezione e le richiude ("Mostra meno testimonianze"). Il pulsante ha `aria-expanded` e `aria-controls`, e all'apertura il focus va alla prima testimonianza nuova. Senza JavaScript si vedono tutte.
+- **In WordPress:** basta aggiungere voci al campo ripetibile, il pulsante compare da solo.
+- **Proposta da valutare:** 1–2 testimonianze pertinenti nelle pagine tematiche (Cura, Volontariato, Sostegno a distanza, Lasciti), vicino al modulo di donazione.
+
+## 37. Testimonianze tolte dalla home (14/10/2026)
+
+Decisione di Fulvio, che supera le decisioni 35 e 36. La sezione delle testimonianze è stata eliminata dalla home, con il relativo codice (schede, pulsante "Mostra altre", stili).
+
+**Perché:**
+- **Suonavano false.** Erano citazioni senza cognome, senza volto e senza un fatto concreto ("Maria, ospite della casa di riposo"), con frasi troppo levigate e tutte uguali nel tono. Chi legge le percepisce come scritte da chi fa il sito.
+- **Su un sito di donazioni la fiducia è il bene principale.** Una testimonianza che sembra inventata toglie credibilità anche al resto della pagina: è peggio di nessuna testimonianza.
+- **Il materiale vero è difficile da avere.** Gli ospiti sono persone fragili (anziani, persone con disabilità, minori): usarne nome e volto richiede consenso e delicatezza, e spesso non è opportuno.
+- **La home regge senza.** La fiducia la costruiscono già i numeri dell'Opera, il grafico "Dove va la tua donazione" e i loghi dei sostenitori, che sono elementi verificabili.
+
+**Se in futuro il Cottolengo fornisce materiale vero**, la forma consigliata non sono le citazioni ma brevi **storie raccontate dall'Opera**: in terza persona, con un fatto concreto, una foto (anche di spalle o di dettaglio, per la privacy) e il link al progetto da sostenere. In alternativa, testimonianze di chi può firmarle con nome, cognome, ruolo e foto: volontari, operatori, suore, donatori.
+
+## 38. Volontariato: "in Italia" e "nel mondo" (14/10/2026)
+
+Richiesta del Cottolengo (Silvia): nella pagina Volontariato servono i due collegamenti "Volontariato in Italia" e "Volontariato nel mondo", come sulla pagina cottolengo.org/volontariato2/, ma presentati meglio. Lì sono due immagini senza testo alternativo né descrizione.
+- Nuovo paragrafo "Dove puoi fare volontariato" con **due schede affiancate**, interamente cliccabili (una sotto l'altra su telefono). Ogni scheda ha un titolo, una riga di spiegazione e l'invito "Scopri come partecipare →".
+- **Link:** https://www.cottolengo.org/volontariato-in-italia/ e https://www.cottolengo.org/volontariato-nel-mondo/, in una nuova scheda.
+- **Spiegazioni**, riassunte dalle due pagine e da validare con il Cottolengo: in Italia le case in Piemonte e in altre regioni, accanto ad anziani, persone con disabilità, donne in difficoltà e bambini; nel mondo le missioni in Ecuador, Kenya, Tanzania, India e Kazakistan.
+- Componente riutilizzabile (`.scelte` / `.scelta`) per altre scelte del tipo "due strade".
+
+## 39. Cura: nuova immagine di copertina, specchiata (14/10/2026)
+
+Fornita da Fulvio: un'operatrice sanitaria stringe la mano di una persona anziana. L'immagine è **specchiata**: le mani stanno a sinistra, dove c'è il titolo, e non a destra sotto il modulo di donazione che copre la copertina. Il file è `assets/img/pagine/cura-assistenza-anziani-cottolengo-1920.jpg` (1920 × 640, 92 KB). La vecchia `cura-cottolengo-1600.jpg` non è più usata: va eliminata su conferma.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
