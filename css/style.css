@@ -2663,9 +2663,10 @@ fieldset { border: none; }
   margin-top: var(--s-2);
   font-weight: 700;
   color: var(--azzurro-scuro);
+  text-decoration: underline;          /* niente freccia: il link si riconosce dalla sottolineatura */
+  text-underline-offset: 0.2em;
 }
-.scelta__azione span[aria-hidden] { display: inline-block; transition: transform var(--transizione); }
-.scelta:hover .scelta__azione span[aria-hidden] { transform: translateX(4px); }
+.scelta:hover .scelta__azione { color: var(--blu-notte); }
 @media (max-width: 38.75em) {
   .project-article-content .scelte { grid-template-columns: minmax(0, 1fr); }
 }

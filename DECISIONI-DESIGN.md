@@ -494,7 +494,7 @@ Decisione di Fulvio, che supera le decisioni 35 e 36. La sezione delle testimoni
 ## 38. Volontariato: "in Italia" e "nel mondo" (14/10/2026)
 
 Richiesta del Cottolengo (Silvia): nella pagina Volontariato servono i due collegamenti "Volontariato in Italia" e "Volontariato nel mondo", come sulla pagina cottolengo.org/volontariato2/, ma presentati meglio. Lì sono due immagini senza testo alternativo né descrizione.
-- Nuovo paragrafo "Dove puoi fare volontariato" con **due schede affiancate**, interamente cliccabili (una sotto l'altra su telefono). Ogni scheda ha un titolo, una riga di spiegazione e l'invito "Scopri come partecipare →".
+- Nuovo paragrafo "Dove puoi fare volontariato" con **due schede affiancate**, interamente cliccabili (una sotto l'altra su telefono). Ogni scheda ha un titolo, una riga di spiegazione e l'invito "Scopri come partecipare", sottolineato e senza freccia (le frecce sottili non piacciono a Fulvio).
 - **Link:** https://www.cottolengo.org/volontariato-in-italia/ e https://www.cottolengo.org/volontariato-nel-mondo/, in una nuova scheda.
 - **Spiegazioni**, riassunte dalle due pagine e da validare con il Cottolengo: in Italia le case in Piemonte e in altre regioni, accanto ad anziani, persone con disabilità, donne in difficoltà e bambini; nel mondo le missioni in Ecuador, Kenya, Tanzania, India e Kazakistan.
 - Componente riutilizzabile (`.scelte` / `.scelta`) per altre scelte del tipo "due strade".
