@@ -408,19 +408,30 @@ Risposta del Cottolengo (Silvia): il 17 gennaio 1828 il Cottolengo apre a Torino
 
 Richiesta di Fulvio: con la decisione 28 anche la barra superiore era diventata più scura, ma è il colore istituzionale e deve restare. La barra torna al gradiente dall'azzurro del logo (#009FE3) all'azzurro scuro. È un'eccezione voluta alla regola di contrasto: il bianco delle voci del menu sull'azzurro è a 3,0:1 (testo in grassetto da 17 px). Testata del modulo, fasce e pulsanti restano più scuri, come deciso al punto 28.
 
+## 31. Un solo azzurro istituzionale per il web: #0097D8 (14/10/2026)
+
+Proposta concordata con Fulvio. Supera in parte le decisioni 28 e 30: con un azzurro per l'header e uno più scuro per pulsanti e fasce, due colori quasi uguali sembravano un errore.
+- **Azzurro web #0097D8:** è l'azzurro del logo (#009FE3) scurito appena, con una differenza di ΔE 3,3 che si vede solo mettendo i due colori fianco a fianco. Col bianco arriva a 3,3:1, la soglia WCAG AA per titoli grandi e per pulsanti con testo grande. Lo usiamo per header, fasce, testata del modulo, pulsanti, titoli e scelte attive dei moduli.
+- **Scritte dei pulsanti a 19 px in grassetto** (erano 17 px): così sono "testo grande" e il 3,3:1 basta. Lo stesso vale per le scelte "Una volta sola / Ogni mese" nella colonna laterale.
+- **Fascia "Crea una raccolta solidale":** sottotitolo in grassetto (21 px), per lo stesso motivo.
+- **Azzurro scuro #0075B0 solo per il testo piccolo:** link nel testo, occhielli ed etichette sotto i 19 px.
+- **Riquadri dei contatti** (es. "Parla con noi" nei lasciti): blu notte, come le altre informazioni.
+- **Unica eccezione:** le voci del menu (17 px) sull'azzurro sono a 3,3:1, meglio di prima (3,0:1) ma sotto i 4,5:1 del testo normale. Ingrandirle a 19 px non ci starebbe in una riga.
+- Il colore del logo (#009FE3) resta come riferimento (`--azzurro-logo`) per stampa e marchio.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
 
-L'azzurro istituzionale (#009FE3) resta il colore del marchio: lo usiamo nella barra del menu, nelle icone, nelle linee, nel grafico e in tutti gli elementi decorativi. Per **testi, titoli e pulsanti** usiamo invece una tonalità dello stesso azzurro un po' più profonda (#0075B0). Il motivo è la leggibilità.
+L'azzurro istituzionale (#009FE3) resta il colore del marchio: lo usiamo nella barra del menu, nelle icone, nelle linee, nel grafico e in tutti gli elementi decorativi. Sul sito usiamo una versione appena più intensa dello stesso azzurro (#0097D8): la differenza dal logo si nota solo mettendo i due colori fianco a fianco, ma basta a rendere leggibili titoli e pulsanti. Per il testo piccolo (link, etichette) usiamo una tonalità più profonda (#0075B0). Il motivo è la leggibilità.
 
-- **Il contrasto è troppo basso.** Il bianco sull'azzurro del logo, e l'azzurro del logo sul bianco, arrivano a 3:1. Le linee guida internazionali di accessibilità (WCAG 2.1, livello AA) chiedono almeno 4,5:1 per il testo normale e 3:1 per i titoli grandi. Con la tonalità più profonda arriviamo a 5:1.
+- **Il contrasto è troppo basso.** Il bianco sull'azzurro del logo, e l'azzurro del logo sul bianco, arrivano a 2,97:1. Le linee guida internazionali di accessibilità (WCAG 2.1, livello AA) chiedono almeno 4,5:1 per il testo normale e 3:1 per i titoli grandi e i pulsanti con testo grande. Con l'azzurro web arriviamo a 3,3:1, e i pulsanti hanno scritte da 19 px in grassetto; il testo piccolo, nella tonalità più profonda, arriva a 5:1.
 - **Il pubblico del sito è in gran parte anziano.** Dopo i 60 anni la sensibilità al contrasto cala in modo marcato. Un testo azzurro chiaro che a noi sembra leggibile, per molti donatori diventa faticoso o sbiadito, soprattutto su telefono e alla luce del sole.
 - **I pulsanti di donazione sono il punto più importante del sito.** Se la scritta "Dona" si legge male, si perdono donazioni. Il pulsante deve essere il testo più leggibile della pagina.
 - **È un obbligo che si sta estendendo.** Dal 28 giugno 2025 l'European Accessibility Act chiede che molti servizi digitali, compresi i pagamenti online, siano accessibili. Per gli enti del Terzo settore è comunque una buona pratica, ed è un segnale di attenzione verso le persone fragili, coerente con la missione dell'Opera.
 - **Il marchio non cambia.** È la stessa famiglia di azzurro, solo più profonda. Usare una variante più scura del colore istituzionale per testi e pulsanti è una pratica comune nei sistemi di identità digitale, proprio per questo motivo.
 
-**Eccezione concordata:** la barra del menu resta nell'azzurro istituzionale (decisione 30), perché è il primo elemento che identifica l'Opera. Le voci del menu sono in grassetto per compensare il contrasto più basso.
+**Eccezione concordata:** le voci del menu (17 px) sull'azzurro restano sotto la soglia del testo normale; sono in grassetto per compensare.
 
 Se il Cottolengo preferisce comunque l'azzurro del logo anche su titoli e pulsanti, si può tornare indietro in pochi minuti. In quel caso il sito non rispetterebbe il livello AA su quegli elementi.
 

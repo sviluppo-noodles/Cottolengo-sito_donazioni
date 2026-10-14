@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=68` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=69` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
@@ -311,10 +311,11 @@ Header e footer sono copiati in ogni pagina (GitHub Pages serve file statici: ni
 
 | Uso | Colore | Contrasto col bianco |
 | --- | --- | --- |
-| Testo azzurro, pulsanti con testo bianco | `--azzurro-scuro` #0075B0 | 5,0:1 (4,6:1 sull'azzurro chiarissimo) |
-| Fine del gradiente di header e fasce | `--azzurro-profondo` #005D8A | 7,2:1 |
-| Azzurro del logo, solo senza testo (icone, bordi, linee, grafico) | `--azzurro` #009FE3 | 3,0:1 |
-| Titoli e struttura | `--blu-notte` #003B57 | 11,9:1 |
+| Azzurro web: header, fasce, pulsanti (scritte 19 px grassetto), titoli | `--azzurro` #0097D8 | 3,3:1 (testo grande) |
+| Testo azzurro piccolo: link, occhielli; fine dei gradienti | `--azzurro-scuro` #0075B0 | 5,0:1 |
+| Azzurro del logo: solo riferimento (stampa, marchio) | `--azzurro-logo` #009FE3 | 3,0:1 |
+| Informazioni: footer, numeri, contatti, pannelli del menu | `--blu-notte` #003B57 | 11,9:1 |
 
+Regola: testo bianco sull'azzurro solo se è "testo grande" (almeno 24 px, oppure almeno 19 px in grassetto). Unica eccezione: le voci del menu (17 px).
 Testo minimo 14 px (`--t-nano`). Lunghezza delle righe sotto i 75 caratteri. Il testo sopra le foto della hero ha un velo che lo porta ad almeno 4,5:1.
 
