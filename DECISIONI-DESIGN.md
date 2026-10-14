@@ -419,6 +419,26 @@ Proposta concordata con Fulvio. Supera in parte le decisioni 28 e 30: con un azz
 - **Unica eccezione:** le voci del menu (17 px) sull'azzurro sono a 3,3:1, meglio di prima (3,0:1) ma sotto i 4,5:1 del testo normale. Ingrandirle a 19 px non ci starebbe in una riga.
 - Il colore del logo (#009FE3) resta come riferimento (`--azzurro-logo`) per stampa e marchio.
 
+## 32. Loghi dei sostenitori in home (14/10/2026)
+
+Il Cottolengo ha fornito 9 loghi, che sostituiscono le caselle segnaposto della fascia "Con il sostegno e la collaborazione di", dopo Compagnia di San Paolo e Fondazione CR Firenze. Ogni logo apre in una nuova scheda il sito dell'ente:
+
+| Ente | Link |
+| --- | --- |
+| Presidenza del Consiglio – Dipartimento per le Pari Opportunità | https://www.pariopportunita.gov.it/ |
+| Agenda della Disabilità ("Anche noi ci impegniamo", CPD con Fondazione CRT) | https://www.agendadelladisabilita.it/ |
+| Sermig – Arsenale della Pace | https://www.sermig.org/ |
+| Conferenza Episcopale Italiana | https://www.chiesacattolica.it/ |
+| Intesa Sanpaolo – Fondo di beneficenza | https://group.intesasanpaolo.com/it/sociale/fondo-di-beneficenza |
+| Fondazione CRT | https://www.fondazionecrt.it/ |
+| Fondazione Davida | https://fondazionedavida.it/ |
+| Fondazione CRC | https://www.fondazionecrc.it/ |
+| For a Smile Onlus | https://www.forasmile.org/ |
+
+- I file ricevuti sono 150×150 px con molto margine bianco. Abbiamo ritagliato il bianco in eccesso e, nella fascia, i fondi chiari spariscono sul bianco (`mix-blend-mode: multiply`). Alcuni loghi restano poco nitidi: vanno richiesti in SVG o PNG da almeno 300 px.
+- Lo scorrimento passa a 44 secondi per giro, così la velocità resta quella di prima con 11 loghi invece di 8.
+- I link sono da confermare con il Cottolengo, soprattutto quello di Intesa Sanpaolo, che porta alla pagina del Fondo di beneficenza.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
