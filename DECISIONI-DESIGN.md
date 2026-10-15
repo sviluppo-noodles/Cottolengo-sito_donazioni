@@ -720,6 +720,30 @@ Controlli fatti: 15 pagine a 7 larghezze, con e senza "riduci movimento"; 146 co
 
 **Da chiedere al Cottolengo:** per ogni area, 3 esempi veri "cifra → cosa permette" (vedi `claude/richieste-contenuti-cliente.md` nel progetto).
 
+## 53. Home: un "perché" più chiaro accanto al modulo, e su telefono prima del modulo (15/10/2026)
+
+**Testo.** Il titolo resta "Fare bene fa bene al cuore.". Cambia il testo sotto.
+
+- **Prima:** "Ogni giorno il Cottolengo accoglie anziani soli, persone con disabilità, bambini e famiglie in difficoltà. Bastano pochi euro per fare molto."
+- **Ora:** "Dal 1828 il Cottolengo è una casa per chi è solo e fragile: anziani, persone con disabilità, bambini e famiglie in difficoltà. Insieme a te possiamo continuare ad accoglierli. **Bastano 35 € per offrire 7 pasti caldi.**"
+
+**Perché.** Un buon "perché" deve dare, in poche righe, quattro cose:
+
+| Serve | Nel testo |
+| --- | --- |
+| **Fiducia** | "Dal 1828": quasi 200 anni di storia contano più di qualsiasi aggettivo |
+| **Motivazione** | "chi è solo e fragile": il bisogno, detto in modo umano |
+| **Legame** | "una casa", "insieme a te": il donatore entra nella famiglia, non fa beneficenza a distanza |
+| **Risultato concreto** | "35 € = 7 pasti caldi": al posto del generico "pochi euro per fare molto" |
+
+La cifra coincide con l'importo proposto nel modulo ("il più scelto", 35 €) e con il suo testo d'impatto: il testo prepara la scelta che si fa subito dopo.
+
+**Ordine su telefono.** Prima il modulo stava sopra e il testo sotto, quindi chi apriva il sito vedeva "Dona" prima di sapere perché. Ora vengono prima il titolo e il testo (circa 6 righe), poi il modulo, poi la foto. Il modulo resta a portata di pollice e la barra fissa "Dona ora" è comunque sempre visibile scorrendo.
+
+**Da confermare con il Cottolengo:** "35 € = 7 pasti caldi" (come gli altri esempi d'impatto, vedi `claude/richieste-contenuti-cliente.md`).
+
+**Se il modulo della home diventa "solo pulsante" verso Myosotis** (probabile, come Dona in memoria e Missioni), il testo funziona lo stesso: "35 € = 7 pasti" resta un esempio concreto e non dipende più da un importo proposto nel modulo. In quel caso, su telefono, l'ordine testo → pulsante diventa ancora più naturale.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
