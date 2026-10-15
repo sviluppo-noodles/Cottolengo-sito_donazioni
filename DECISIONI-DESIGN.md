@@ -639,6 +639,15 @@ In fondo al testo sono stati aggiunti i **tre passaggi numerati**: premi il puls
 
 Le pagine con il solo pulsante oggi sono Dona in memoria e Missioni internazionali. Hanno ancora il modulo con gli importi la home, Cura, Accoglienza, Educazione, Family Cottolengo e Testamento.
 
+## 49. Home, "Chi aiuti con il tuo gesto": la descrizione dice che si dona per i progetti (15/10/2026)
+
+Il titolo resta "Chi aiuti con il tuo gesto"; cambia solo la descrizione sotto.
+
+- **Prima:** "Dietro ogni donazione c'è un volto. Questi sono i nostri ospiti, la nostra famiglia."
+- **Ora:** "Tutti i progetti del Cottolengo sono divisi in quattro aree. Scegli quella che ti sta più a cuore: la tua donazione sosterrà i suoi progetti."
+
+**Perché.** La descrizione di prima era emotiva, ma non spiegava cosa sono le quattro schede. Ora si capisce che Cura, Accoglienza, Educazione e Missioni sono le aree in cui sono divisi **tutti** i progetti e che si dona **per i progetti** dell'area scelta. Sul computer la descrizione va a capo dopo la prima frase (`<span class="frase">`, decisione 40).
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
