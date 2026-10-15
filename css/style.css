@@ -1135,6 +1135,29 @@ fieldset { border: none; }
 .dona-link__btn { gap: 0.55rem; min-height: 64px; font-size: 1.3125rem; }
 .dona-link__btn .icon-heart { flex: none; }
 
+/* Pagine delle aree in tre blocchi: Perché → Cosa fa il tuo dono → Come
+   donare (decisione 52). L'occhiello (PERCHÉ, COSA…, COME…) rende visibile la
+   logica anche a chi scorre veloce; il titolo che segue non ha margine sopra. */
+.project-article-content .chi-occhiello { margin-top: var(--s-8); }
+.project-article-content .chi-occhiello:first-child { margin-top: 0; }
+.project-article-content .chi-occhiello + h2 { margin-top: 0; }
+.impatti__nota + .project-article-content { margin-top: var(--s-8); }   /* stacco prima di "Come donare" */
+
+/* "Cosa fa il tuo dono": tre esempi con cifra. Cifre e testi da confermare
+   con il Cottolengo (.da-confermare le segnala con un tratteggio). */
+.impatti { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); margin-top: var(--s-5); padding: 0; }
+.impatti__voce {
+  display: flex; flex-direction: column; gap: var(--s-2);
+  padding: 1.25rem 1.2rem;
+  background: var(--azzurro-chiarissimo);
+  border-radius: var(--r-2);
+}
+.impatti__cifra { font-size: 1.75rem; font-weight: 800; line-height: 1.1; color: var(--blu-notte); font-variant-numeric: tabular-nums; }
+.impatti__testo { font-size: 1.0625rem; line-height: 1.5; color: var(--blu-notte); }
+.da-confermare { text-decoration: underline dashed var(--azzurro-scuro); text-underline-offset: 0.18em; text-decoration-thickness: 2px; }
+.impatti__nota { margin-top: var(--s-2); font-size: var(--t-nano); color: var(--grigio-testo); }
+@media (max-width: 40em) { .impatti { grid-template-columns: minmax(0, 1fr); } }
+
 /* Passaggi numerati in colonna, dentro il testo delle pagine con modulo
    laterale: numero a sinistra, titolo e testo a destra (Dona in memoria). */
 .cpm-passi.passi-verticali { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); margin-top: var(--s-5); }
@@ -1641,8 +1664,11 @@ fieldset { border: none; }
   body { font-size: 1.125rem; }
   .btn--header { display: none; }
   .header__burger { margin-left: auto; }
-  /* la barra fissa "Dona ora" (≈72px) non deve coprire l'ultima riga del footer */
-  body:has(.sticky-dona) .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  /* la barra fissa "Dona ora" (≈72px) non deve coprire l'ultima riga del footer.
+     Regola valida sempre (prima era body:has(.sticky-dona), che Safari < 15.4
+     e Firefox < 121 non leggono): la barra c'è in tutte le pagine tranne
+     progetti.html, dove resta solo un po' di spazio in più in fondo. */
+  .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 
   .hero { padding-block: var(--s-7) 0; }   /* stesso stacco dal banner, ridotto per lo schermo piccolo */
   .dona-card__head { padding: 1.4rem 1.6rem; }

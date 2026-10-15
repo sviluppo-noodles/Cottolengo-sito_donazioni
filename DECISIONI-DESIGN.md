@@ -667,6 +667,69 @@ Le quattro schede ora hanno tutte immagini dello stesso stile.
 
 **Da decidere con il cliente:** se le immagini generate con l'AI vanno indicate come tali (per esempio con una nota nei crediti), in linea con le nuove regole europee sull'AI. Le vecchie `cura-cottolengo-mani-assistenza-800.jpg`, `accoglienza-cottolengo-famiglia-800.jpg`, `educazione-scuole-cottolengo-800.jpg` e `missioni-internazionali-cottolengo-bambini-800.jpg` non sono più usate nelle schede e vanno eliminate, su conferma.
 
+## 51. Compatibilità tra browser: verifica e una correzione (15/10/2026)
+
+**Verifica.** Il sito usa solo HTML, CSS e JavaScript standard, senza librerie esterne. Le tecnologie più recenti sono usate in modo che, se un browser non le conosce, la pagina resti comunque usabile:
+
+- titoli a capo bilanciato (`text-wrap`);
+- selettore `:has()`;
+- misure `dvh` e `svh`, che hanno sempre una misura `vh` di riserva.
+
+Controlli fatti: 15 pagine a 7 larghezze, con e senza "riduci movimento"; 146 controlli di funzionamento; simulazione iPhone 13; navigazione senza JavaScript (si vede la prima slide del carosello e il pulsante Dona c'è sempre).
+
+**Correzione.** Su telefono il footer lascia spazio alla barra fissa "Dona ora" con una regola valida per tutti i browser. Prima la regola passava da `body:has(.sticky-dona)`, che Safari prima della 15.4 e Firefox prima della 121 non leggono: lì la barra poteva coprire l'ultima riga del footer.
+
+**Limite.** I test automatici girano su Chrome. Per Safari (iPhone e Mac) e Firefox c'è la lista di controllo a mano nel progetto: `claude/checklist-test-dispositivi.md`.
+
+## 52. La logica "perché → cosa → come" in home e nelle pagine delle aree (15/10/2026)
+
+**Cosa cambia**
+
+1. **Home: le quattro aree vengono prima di "Come fare del bene".** Il nuovo ordine:
+   - carosello e modulo "Dona ora";
+   - numeri;
+   - **Chi aiuti con il tuo gesto** (il cosa);
+   - **Come fare del bene** (il come);
+   - raccolte solidali;
+   - dove va la tua donazione;
+   - sostenitori.
+
+   Prima "Come fare del bene" stava sopra le quattro aree.
+
+   **Il "perché" della home c'è già: è il testo accanto al modulo.** "Fare bene fa bene al cuore. Ogni giorno il Cottolengo accoglie anziani soli, persone con disabilità, bambini e famiglie in difficoltà. Bastano pochi euro per fare molto." dice chi aiuta l'Opera e perché donare, nel punto in cui si dona. Per questo **non si aggiunge una fascia "perché" separata**, che sarebbe un doppione. Il percorso della home è quindi:
+   - **perché:** il testo accanto al modulo;
+   - **cosa:** i numeri, le quattro aree e l'esempio d'impatto nel modulo ("Con 35 € offri 7 pasti caldi");
+   - **come:** "Come fare del bene" e il pulsante Dona.
+2. **Pagine delle aree (Cura, Accoglienza, Educazione, Missioni) in tre blocchi, ognuno con un occhiello visibile:**
+   - **PERCHÉ:** chi aiutiamo e di cosa ha bisogno (il testo che c'era già);
+   - **COSA FA IL TUO DONO:** "Dove arriva il tuo aiuto", con perché servono le donazioni, l'elenco dei servizi e **tre esempi con cifra** ("00 € = …"). Le cifre e le descrizioni sono **segnaposti tratteggiati, da confermare con il Cottolengo**, e nella pagina c'è la nota "Esempi indicativi, da confermare";
+   - **COME DONARE:** "Bastano tre passaggi", numerati, come in Dona in memoria.
+
+**Perché: i principi su cui si basa**
+
+- **Il percorso del donatore: perché → cosa → come.** Chi arriva su un sito di raccolta fondi vuole capire prima *chi aiuta* e *a cosa serve* il dono, poi *come* farlo. Le ricerche di Nielsen Norman Group sui siti di donazione hanno trovato che la maggior parte dei problemi degli utenti nasce dalla mancanza di informazioni su cosa fa l'ente e dove vanno i soldi, non dai moduli.
+- **Prima la motivazione, poi lo strumento.** È il principio dei modelli sul comportamento (Fogg: motivazione + facilità + stimolo) e del classico AIDA (attenzione, interesse, desiderio, azione). Mostrare gli strumenti (5×1000, lasciti, sostegno a distanza…) prima delle persone aiutate è come mostrare il carrello prima del prodotto.
+- **Coerenza con il menu.** Il menu dice già Chi siamo → Progetti → Come aiutarci; se la home segue lo stesso ordine, l'utente si orienta meglio.
+- **Cifre concrete.** "Con 50 € offri…" trasforma un gesto astratto in un risultato visibile. Le grandi organizzazioni usano questi esempi perché aumentano la fiducia e aiutano a scegliere l'importo. Per questo le cifre devono essere **vere**: inventarle sarebbe lo stesso errore delle testimonianze finte (decisione 37).
+- **Gli occhielli rendono la logica leggibile anche a chi scorre veloce,** che è la maggioranza su telefono.
+- **I siti di riferimento** (UNICEF, Lega del Filo d'Oro, EMERGENCY) mettono "cosa facciamo / chi aiutiamo" prima di "come puoi aiutare".
+
+**Cosa si perde.** Il 5×1000 scende un po' nella home. Resta però nella prima slide del carosello e ha una voce propria nel menu.
+
+**Come verificarlo.** Sono principi consolidati, non leggi. Una volta online conviene misurare con Analytics i clic su ogni sezione e le donazioni completate, ed eventualmente fare un test A/B tra i due ordini.
+
+**Da chiedere al Cottolengo:** per ogni area, 3 esempi veri "cifra → cosa permette" (vedi `claude/richieste-contenuti-cliente.md` nel progetto).
+
+## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
+
+Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
+
+1. **Perché dovrei aiutare?**
+2. **Che cosa farà il mio dono?**
+3. **Come posso donare?**
+
+Il sito ora segue questo ordine: in home le quattro aree vengono prima dei modi di donare. Ogni pagina delle aree è divisa in tre parti con un'etichetta chiara (PERCHÉ, COSA FA IL TUO DONO, COME DONARE). Per completare la seconda parte servono da voi alcuni esempi veri del tipo "con 30 € garantiamo…", perché sono ciò che convince di più chi sta per donare.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.

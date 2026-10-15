@@ -21,7 +21,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=86">
+  <link rel="stylesheet" href="css/style.css?v=88">
 </head>
 <body>
 
@@ -326,6 +326,82 @@
   </div>
 </section>
 
+<!-- ============ CHI AIUTI ============
+     Quattro schede costruite come quelle di "Come fare del bene" (.proj-card).
+     Prima di "Come fare del bene": logica perché → cosa → come (decisione 52).
+     Prendono il posto dei singoli progetti: ogni scheda porterà a una pagina
+     dedicata con il modulo di donazione (cura.html, accoglienza.html,
+     educazione.html, missioni-internazionali.html, da generare quando arrivano
+     i testi). Per ora i link portano al modulo di donazione della home.
+     TESTI E FOTO PROVVISORI (foto tratte dai progetti del Cottolengo). -->
+<section class="who" id="chi-aiuti" aria-labelledby="who-title">
+  <div class="container">
+    <header class="section-head">
+      <h2 id="who-title">Chi aiuti con il tuo gesto</h2>
+      <p class="section-intro"><span class="frase">Tutti i progetti del Cottolengo sono divisi in quattro aree.</span> <span class="frase">Scegli quella che ti sta più a cuore: la tua donazione sosterrà i suoi progetti.</span></p>
+    </header>
+
+    <ul class="fila-schede fila-schede--quattro" aria-label="Chi aiuti con il tuo gesto">
+      <li class="fila-schede__item" id="aiuti-cura">
+        <article class="proj-card proj-card--compatta">
+          <div class="proj-card__media">
+            <a class="proj-card__media-link" href="cura.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/chi-aiuti/cura-cottolengo-mani-operatrice-anziano-800.jpg" srcset="assets/img/chi-aiuti/cura-cottolengo-mani-operatrice-anziano-800.jpg 800w, assets/img/chi-aiuti/cura-cottolengo-mani-operatrice-anziano-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Le mani di un'operatrice stringono con delicatezza quelle di una persona anziana" loading="lazy">
+            </a>
+          </div>
+          <div class="proj-card__body">
+            <h3 class="proj-card__title"><a href="cura.html">Cura</a></h3>
+            <p class="proj-card__copy">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
+            <a class="btn proj-card__cta" href="cura.html">Scopri e dona</a>
+          </div>
+        </article>
+      </li>
+      <li class="fila-schede__item" id="aiuti-accoglienza">
+        <article class="proj-card proj-card--compatta">
+          <div class="proj-card__media">
+            <a class="proj-card__media-link" href="accoglienza.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/chi-aiuti/accoglienza-cottolengo-tavola-pane-800.jpg" srcset="assets/img/chi-aiuti/accoglienza-cottolengo-tavola-pane-800.jpg 800w, assets/img/chi-aiuti/accoglienza-cottolengo-tavola-pane-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Attorno a una tavola apparecchiata due mani si passano il cestino del pane; accanto, una persona in carrozzina" loading="lazy">
+            </a>
+          </div>
+          <div class="proj-card__body">
+            <h3 class="proj-card__title"><a href="accoglienza.html">Accoglienza</a></h3>
+            <p class="proj-card__copy">Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.</p>
+            <a class="btn proj-card__cta" href="accoglienza.html">Scopri e dona</a>
+          </div>
+        </article>
+      </li>
+      <li class="fila-schede__item" id="aiuti-educazione">
+        <article class="proj-card proj-card--compatta">
+          <div class="proj-card__media">
+            <a class="proj-card__media-link" href="educazione.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/chi-aiuti/educazione-cottolengo-quaderno-mani-800.jpg" srcset="assets/img/chi-aiuti/educazione-cottolengo-quaderno-mani-800.jpg 800w, assets/img/chi-aiuti/educazione-cottolengo-quaderno-mani-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Un bambino scrive sul quaderno mentre l'insegnante e un compagno indicano la pagina" loading="lazy">
+            </a>
+          </div>
+          <div class="proj-card__body">
+            <h3 class="proj-card__title"><a href="educazione.html">Educazione</a></h3>
+            <p class="proj-card__copy">Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.</p>
+            <a class="btn proj-card__cta" href="educazione.html">Scopri e dona</a>
+          </div>
+        </article>
+      </li>
+      <li class="fila-schede__item" id="aiuti-missioni">
+        <article class="proj-card proj-card--compatta">
+          <div class="proj-card__media">
+            <a class="proj-card__media-link" href="missioni-internazionali.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/chi-aiuti/missioni-cottolengo-bambini-scuola-800.jpg" srcset="assets/img/chi-aiuti/missioni-cottolengo-bambini-scuola-800.jpg 800w, assets/img/chi-aiuti/missioni-cottolengo-bambini-scuola-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Bambini in divisa scolastica, visti di spalle, camminano su un sentiero di terra rossa verso la scuola" loading="lazy">
+            </a>
+          </div>
+          <div class="proj-card__body">
+            <h3 class="proj-card__title"><a href="missioni-internazionali.html">Missioni internazionali</a></h3>
+            <p class="proj-card__copy">Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.</p>
+            <a class="btn proj-card__cta" href="missioni-internazionali.html">Scopri e dona</a>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ COME FARE DEL BENE ============ -->
 <section class="modi" id="come-donare" aria-labelledby="modi-title">
   <div class="container">
@@ -410,81 +486,6 @@
             <h3 class="proj-card__title"><a href="volontariato.html">Volontariato</a></h3>
             <p class="proj-card__copy">Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.</p>
             <a class="btn proj-card__cta" href="volontariato.html">Diventa volontario</a>
-          </div>
-        </article>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ CHI AIUTI ============
-     Quattro schede costruite come quelle di "Come fare del bene" (.proj-card).
-     Prendono il posto dei singoli progetti: ogni scheda porterà a una pagina
-     dedicata con il modulo di donazione (cura.html, accoglienza.html,
-     educazione.html, missioni-internazionali.html, da generare quando arrivano
-     i testi). Per ora i link portano al modulo di donazione della home.
-     TESTI E FOTO PROVVISORI (foto tratte dai progetti del Cottolengo). -->
-<section class="who" id="chi-aiuti" aria-labelledby="who-title">
-  <div class="container">
-    <header class="section-head">
-      <h2 id="who-title">Chi aiuti con il tuo gesto</h2>
-      <p class="section-intro"><span class="frase">Tutti i progetti del Cottolengo sono divisi in quattro aree.</span> <span class="frase">Scegli quella che ti sta più a cuore: la tua donazione sosterrà i suoi progetti.</span></p>
-    </header>
-
-    <ul class="fila-schede fila-schede--quattro" aria-label="Chi aiuti con il tuo gesto">
-      <li class="fila-schede__item" id="aiuti-cura">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="cura.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/chi-aiuti/cura-cottolengo-mani-operatrice-anziano-800.jpg" srcset="assets/img/chi-aiuti/cura-cottolengo-mani-operatrice-anziano-800.jpg 800w, assets/img/chi-aiuti/cura-cottolengo-mani-operatrice-anziano-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Le mani di un'operatrice stringono con delicatezza quelle di una persona anziana" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="cura.html">Cura</a></h3>
-            <p class="proj-card__copy">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
-            <a class="btn proj-card__cta" href="cura.html">Scopri e dona</a>
-          </div>
-        </article>
-      </li>
-      <li class="fila-schede__item" id="aiuti-accoglienza">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="accoglienza.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/chi-aiuti/accoglienza-cottolengo-tavola-pane-800.jpg" srcset="assets/img/chi-aiuti/accoglienza-cottolengo-tavola-pane-800.jpg 800w, assets/img/chi-aiuti/accoglienza-cottolengo-tavola-pane-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Attorno a una tavola apparecchiata due mani si passano il cestino del pane; accanto, una persona in carrozzina" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="accoglienza.html">Accoglienza</a></h3>
-            <p class="proj-card__copy">Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.</p>
-            <a class="btn proj-card__cta" href="accoglienza.html">Scopri e dona</a>
-          </div>
-        </article>
-      </li>
-      <li class="fila-schede__item" id="aiuti-educazione">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="educazione.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/chi-aiuti/educazione-cottolengo-quaderno-mani-800.jpg" srcset="assets/img/chi-aiuti/educazione-cottolengo-quaderno-mani-800.jpg 800w, assets/img/chi-aiuti/educazione-cottolengo-quaderno-mani-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Un bambino scrive sul quaderno mentre l'insegnante e un compagno indicano la pagina" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="educazione.html">Educazione</a></h3>
-            <p class="proj-card__copy">Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.</p>
-            <a class="btn proj-card__cta" href="educazione.html">Scopri e dona</a>
-          </div>
-        </article>
-      </li>
-      <li class="fila-schede__item" id="aiuti-missioni">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="missioni-internazionali.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/chi-aiuti/missioni-cottolengo-bambini-scuola-800.jpg" srcset="assets/img/chi-aiuti/missioni-cottolengo-bambini-scuola-800.jpg 800w, assets/img/chi-aiuti/missioni-cottolengo-bambini-scuola-1200.jpg 1200w" sizes="(max-width: 47.5em) 85vw, 320px" width="800" height="600" alt="Bambini in divisa scolastica, visti di spalle, camminano su un sentiero di terra rossa verso la scuola" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="missioni-internazionali.html">Missioni internazionali</a></h3>
-            <p class="proj-card__copy">Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.</p>
-            <a class="btn proj-card__cta" href="missioni-internazionali.html">Scopri e dona</a>
           </div>
         </article>
       </li>
@@ -689,8 +690,8 @@
   </a>
 </div>
 
-<script src="js/importo.js?v=86"></script>
-<script src="js/main.js?v=86"></script>
-<script src="js/nav.js?v=86"></script>
+<script src="js/importo.js?v=88"></script>
+<script src="js/main.js?v=88"></script>
+<script src="js/nav.js?v=88"></script>
 </body>
 </html>
