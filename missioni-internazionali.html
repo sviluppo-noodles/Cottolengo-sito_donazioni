@@ -134,56 +134,45 @@
           </ul>
           <h2>Perché il tuo gesto conta</h2>
           <p>Nelle missioni anche pochi euro fanno una grande differenza: un ciclo di cure, un anno di scuola, un tetto sicuro. Il tuo aiuto arriva dove serve, attraverso le comunità del Cottolengo presenti sul posto.</p>
+          <h2 id="come-fare">Come donare, in tre passaggi</h2>
         </div>
+        <ol class="cpm-passi passi-verticali" aria-labelledby="come-fare">
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">1</span>
+            <h3>Premi “Dona per le missioni”</h3>
+            <p>Si apre in una nuova scheda la pagina di donazione ufficiale del Cottolengo, <strong>dona.cottolengo.org</strong>.</p>
+          </li>
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">2</span>
+            <h3>Scegli l'importo e la frequenza</h3>
+            <p>Puoi donare una volta sola oppure ogni mese: la donazione mensile aiuta le missioni a programmare cure e scuola.</p>
+          </li>
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">3</span>
+            <h3>Completa il pagamento in sicurezza</h3>
+            <p>Ricevi la ricevuta per le detrazioni fiscali.</p>
+          </li>
+        </ol>
       </article>
 
-      <aside class="project-sidebar" aria-label="Modulo di donazione">
-        <!-- Modulo di donazione dedicato: causale, testi d'impatto e pulsante sono
-             campi della pagina (data-impatto / data-cta, {importo} = cifra scelta). -->
-        <form class="dona-card project-donation" id="dona" action="https://dona.cottolengo.org/" method="get" target="_blank" rel="noopener" aria-labelledby="dona-title"
-              data-impatto="Con {importo} contribuisci a cure e scuola per un bambino in missione." data-cta="Dona {importo} € per le missioni">
-          <input type="hidden" name="causale" value="missioni-internazionali">
-          <input type="hidden" name="importo" id="project-importo" value="20">
+      <aside class="project-sidebar" aria-label="Donazione per le missioni">
+        <!-- Solo pulsante (decisioni 43, 45 e 48): importo, frequenza e pagamento
+             si scelgono sulla pagina di Myosotis. Indirizzo generico finché
+             NP Solutions non indica una pagina dedicata alle missioni. -->
+        <section class="dona-card project-donation dona-link" id="dona" aria-labelledby="dona-title">
           <div class="dona-card__head">
             <h2 id="dona-title">Dona per le missioni</h2>
           </div>
           <div class="dona-card__body">
-            <fieldset class="freq">
-              <legend class="field-label">Ogni quanto vuoi donare?</legend>
-              <div class="freq__toggle" role="group">
-                <input type="radio" name="ricorrenza" id="project-freq-una" value="singola" checked>
-                <label for="project-freq-una">Una volta sola</label>
-                <input type="radio" name="ricorrenza" id="project-freq-mese" value="mensile">
-                <label for="project-freq-mese">Ogni mese <span class="badge">aiuta di più ❤</span></label>
-              </div>
-            </fieldset>
-            <fieldset class="amounts">
-              <legend class="field-label">Quanto vuoi donare?</legend>
-              <div class="amounts__grid project-amounts">
-                <input type="radio" name="project-amount" id="project-amt-10" value="10">
-                <label for="project-amt-10">10&nbsp;€</label>
-                <input type="radio" name="project-amount" id="project-amt-20" value="20" checked>
-                <label for="project-amt-20">20&nbsp;€<span class="amounts__tag">il più scelto</span></label>
-                <input type="radio" name="project-amount" id="project-amt-50" value="50">
-                <label for="project-amt-50">50&nbsp;€</label>
-              </div>
-              <div class="amounts__custom">
-                <label for="project-amt-custom">Oppure scegli un altro importo:</label>
-                <div class="amounts__custom-field">
-                  <input type="number" id="project-amt-custom" inputmode="numeric" min="1" max="100000" placeholder="Es. 75">
-                  <span aria-hidden="true">€</span>
-                </div>
-              </div>
-            </fieldset>
-            <p class="impact" aria-live="polite">
+            <p class="dona-link__testo">Scegli quanto donare, una volta sola o ogni mese: bastano pochi minuti.</p>
+            <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener">
               <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
-              <span id="project-impact">Con <strong>20&nbsp;€</strong> contribuisci a cure e scuola per un bambino in missione.</span>
-            </p>
-            <button class="btn btn--dona" id="project-dona-cta" type="submit">Dona 20 € per le missioni</button>
+              Dona per le missioni<span class="sr-only"> (si apre in una nuova scheda)</span>
+            </a>
             <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
             <p class="dona-card__fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
           </div>
-        </form>
+        </section>
       </aside>
     </div>
   </section>
@@ -201,8 +190,6 @@
 
 <div class="sticky-dona" id="sticky-dona"><a href="#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></div>
 
-<script src="js/importo.js?v=85"></script>
-<script src="js/project-detail.js?v=85"></script>
 <script src="js/nav.js?v=85"></script>
 </body>
 </html>

@@ -621,6 +621,24 @@ Le due sezioni sono entrambe su bianco. Con il respiro pieno di ogni sezione, tr
 
 In CSS: `.cpm-codice { padding-bottom: var(--s-6) }` e `.cpm-codice + .chi-blocco { padding-top: var(--s-8) }`.
 
+## 48. Missioni internazionali: solo pulsante verso Myosotis, come Dona in memoria (15/10/2026)
+
+Su richiesta di Fulvio, anche Missioni internazionali usa il riquadro con **il solo pulsante** (decisione 45), al posto del modulo con frequenza e importi. Il riquadro contiene:
+
+- il titolo "Dona per le missioni";
+- la riga "Scegli quanto donare, una volta sola o ogni mese: bastano pochi minuti";
+- il pulsante grande "Dona per le missioni", che apre `dona.cottolengo.org` in una nuova scheda;
+- il riquadro "Donazione sicura" e la nota fiscale.
+
+In fondo al testo sono stati aggiunti i **tre passaggi numerati**: premi il pulsante, scegli importo e frequenza, completa il pagamento.
+
+**Da verificare con Myosotis (call del 20/10):**
+
+- se esiste una pagina dedicata alle missioni, da collegare al pulsante al posto dell'indirizzo generico;
+- che sulla loro pagina si possa scegliere anche la donazione mensile, come dice la riga del riquadro.
+
+Le pagine con il solo pulsante oggi sono Dona in memoria e Missioni internazionali. Hanno ancora il modulo con gli importi la home, Cura, Accoglienza, Educazione, Family Cottolengo e Testamento.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.
