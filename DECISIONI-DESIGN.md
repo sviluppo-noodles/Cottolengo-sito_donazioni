@@ -648,6 +648,25 @@ Il titolo resta "Chi aiuti con il tuo gesto"; cambia solo la descrizione sotto.
 
 **Perché.** La descrizione di prima era emotiva, ma non spiegava cosa sono le quattro schede. Ora si capisce che Cura, Accoglienza, Educazione e Missioni sono le aree in cui sono divisi **tutti** i progetti e che si dona **per i progetti** dell'area scelta. Sul computer la descrizione va a capo dopo la prima frase (`<span class="frase">`, decisione 40).
 
+## 50. Schede delle quattro aree: foto 4:3 e nuove immagini generate con l'AI (15/10/2026)
+
+**Formato.** Nelle schede Cura, Accoglienza, Educazione e Missioni (home e Chi siamo) le foto passano da 16:10 a **4:3**. Sono più alte, quindi su telefono riempiono meglio la scheda; sul computer, con quattro schede in fila, restano equilibrate. Va bene un solo ritaglio per tutte le larghezze, con il soggetto al centro.
+
+**Misure da fornire:** 1200 × 900 e 800 × 600 px, in JPEG. Il sito sceglie da solo quella giusta (`srcset`): 800 sugli schermi normali, 1200 su quelli ad alta densità.
+
+**Immagini generate con l'AI.** Fulvio le genera con ChatGPT partendo da prompt che hanno uno stile comune: foto documentaristica, luce naturale, colori vivi ma veri, bianco e azzurro chiaro sullo sfondo. Soprattutto, **nessun volto riconoscibile**: mani, gesti e dettagli. Così le immagini sono belle e nessuno può scambiarle per ospiti reali del Cottolengo; è la stessa attenzione alla credibilità della decisione 37.
+
+**Arrivate finora:**
+
+- **Cura:** le mani di un'operatrice stringono quelle di una persona anziana su una coperta azzurra (`cura-cottolengo-mani-operatrice-anziano-800/1200.jpg`);
+- **Accoglienza:** una tavola apparecchiata in cui ci si passa il cestino del pane, con una persona in carrozzina tra i commensali (`accoglienza-cottolengo-tavola-pane-800/1200.jpg`);
+- **Educazione:** un bambino scrive sul quaderno mentre l'insegnante e un compagno indicano la pagina (`educazione-cottolengo-quaderno-mani-800/1200.jpg`);
+- **Missioni:** bambini in divisa, visti di spalle, camminano al tramonto su un sentiero di terra rossa verso la scuola (`missioni-cottolengo-bambini-scuola-800/1200.jpg`).
+
+Le quattro schede ora hanno tutte immagini dello stesso stile.
+
+**Da decidere con il cliente:** se le immagini generate con l'AI vanno indicate come tali (per esempio con una nota nei crediti), in linea con le nuove regole europee sull'AI. Le vecchie `cura-cottolengo-mani-assistenza-800.jpg`, `accoglienza-cottolengo-famiglia-800.jpg`, `educazione-scuole-cottolengo-800.jpg` e `missioni-internazionali-cottolengo-bambini-800.jpg` non sono più usate nelle schede e vanno eliminate, su conferma.
+
 ## Nota per il cliente: perché l'azzurro del logo non va usato per i testi
 
 Testo pronto da condividere con il Cottolengo.

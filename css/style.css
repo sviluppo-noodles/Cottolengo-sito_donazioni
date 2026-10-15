@@ -1316,6 +1316,10 @@ fieldset { border: none; }
   gap: 1.25rem;
 }
 .fila-schede--quattro { --colonne: 4; }
+/* Schede delle quattro aree: foto 4:3 (decisione 50), più alte del 16:10
+   generale, così su telefono riempiono la scheda. Le foto vanno fornite
+   in 4:3 (800 × 600 e 1200 × 900) con il soggetto al centro. */
+.fila-schede--quattro .proj-card__media { aspect-ratio: 4 / 3; }
 .fila-schede__item { display: flex; min-width: 0; scroll-margin-top: 9rem; }   /* dal menu: si vede anche il titolo della sezione */
 .fila-schede__item > .proj-card { width: 100%; }
 .proj-card--compatta .proj-card__body { padding: 1.1rem 1.1rem 1.25rem; gap: 0.6rem; }
