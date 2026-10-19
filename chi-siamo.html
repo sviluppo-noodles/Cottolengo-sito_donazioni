@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SITO DI PROVA: non deve comparire su Google (testi provvisori, segnaposti "00 €",
+       indirizzo non definitivo). TOGLIERE questa riga al lancio sul dominio definitivo. -->
+  <meta name="robots" content="noindex, nofollow">
   <title>Chi siamo | Piccola Casa della Divina Provvidenza – Cottolengo</title>
   <meta name="description" content="Dal 1828 la Piccola Casa della Divina Provvidenza – Cottolengo accoglie anziani, persone con disabilità, malati e bambini, in Italia e nel mondo. Scopri chi siamo e come contattarci.">
   <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
@@ -16,10 +19,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chi siamo | Piccola Casa della Divina Provvidenza – Cottolengo">
   <meta name="twitter:description" content="Dal 1828 la Piccola Casa della Divina Provvidenza – Cottolengo accoglie anziani, persone con disabilità, malati e bambini, in Italia e nel mondo. Scopri chi siamo e come contattarci.">
-  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png" sizes="150x133" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#0097D8">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=89">
+  <link rel="stylesheet" href="css/style.css?v=95">
 </head>
 <body class="page-chi-siamo">
 
@@ -28,7 +34,7 @@
 <header class="header" id="top">
   <div class="container header__inner">
     <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
-      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="header__logo">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
     </a>
 
     <nav class="nav" id="nav" aria-label="Navigazione principale">
@@ -42,7 +48,7 @@
         <li><a href="chi-siamo.html" class="nav__link" aria-current="page">Chi siamo</a></li>
         <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
         <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
             Progetti
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -66,7 +72,7 @@
         </li>
         <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
         <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-aiutarci">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
             Come aiutarci
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -100,7 +106,7 @@
       <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
       Dona ora
     </a>
-    <button class="header__burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -115,11 +121,8 @@
 
   <!-- Hero: stesso componente delle pagine interne (Testamento solidale) -->
   <section class="project-cover chi-cover" aria-labelledby="chi-title">
-    <img class="project-cover__image"
-         src="assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-1920.jpg"
-         srcset="assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-960.jpg 960w, assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-1920.jpg 1920w"
-         sizes="100vw" width="1920" height="1200"
-         alt="Dipinto della Piccola Casa della Divina Provvidenza a Torino, vista dall'alto">
+    <picture><source type="image/webp" srcset="assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-960.webp 960w, assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-1920.webp 1920w" sizes="100vw"><img class="project-cover__image" src="assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-1920.jpg" srcset="assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-960.jpg 960w, assets/img/chi-siamo/piccola-casa-cottolengo-torino-dipinto-1920.jpg 1920w" sizes="100vw" width="1920" height="1200"
+         alt="Dipinto della Piccola Casa della Divina Provvidenza a Torino, vista dall'alto"></picture>
     <div class="project-cover__shade" aria-hidden="true"></div>
     <div class="container project-cover__inner">
       <div class="project-cover__title">
@@ -242,7 +245,7 @@
         <h2 id="chi-aiutiamo-title">Chi aiutiamo</h2>
         <p class="section-intro">Quattro aree, un'unica famiglia. Scegli dove far arrivare il tuo aiuto.</p>
       </header>
-    <ul class="fila-schede fila-schede--quattro" aria-label="Chi aiuti con il tuo gesto">
+    <ul class="fila-schede fila-schede--quattro">
       <li class="fila-schede__item" data-area="cura">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
@@ -324,17 +327,17 @@
         <div class="recapito">
           <h3>Donazioni e informazioni</h3>
           <p>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14 — 10152 Torino</p>
-          <p class="recapito__link"><a href="tel:+390115225658">011 522 5658</a><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a></p>
+          <p class="recapito__link"><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a></p>
         </div>
         <div class="recapito">
           <h3>Sostegno a distanza</h3>
           <p>Sr Mary Soshiyat</p>
-          <p class="recapito__link"><a href="tel:+393488989163">348 8989163</a><a href="mailto:adozioni@cottolengo.org">adozioni@cottolengo.org</a></p>
+          <p class="recapito__link"><a href="tel:+393488989163">348&nbsp;8989163</a><a href="mailto:adozioni@cottolengo.org">adozioni@cottolengo.org</a></p>
         </div>
         <div class="recapito">
           <h3>Lasciti e testamento solidale</h3>
           <p>Informazioni riservate e assistenza</p>
-          <p class="recapito__link"><a href="tel:+390115225131">011 5225131</a><a href="mailto:dir.amministrativa@cottolengo.org">dir.amministrativa@cottolengo.org</a></p>
+          <p class="recapito__link"><a href="tel:+390115225131">011&nbsp;5225131</a><a href="mailto:dir.amministrativa@cottolengo.org">dir.amministrativa@cottolengo.org</a></p>
         </div>
       </div>
       <p class="chi-trasparenza"><a href="https://www.cottolengo.org/" target="_blank" rel="noopener noreferrer">Approfondisci la storia dell'Opera sul sito del Cottolengo</a></p>
@@ -345,16 +348,16 @@
 
 <footer class="footer" id="contatti">
   <div class="container footer__grid">
-    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
-    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14 — 10152 Torino<br><a href="tel:+390115225658">011 522 5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
+    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
+    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14 — 10152 Torino<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
     <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
     <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
   </div>
   <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p></div>
 </footer>
 
-<div class="sticky-dona" id="sticky-dona"><a href="index.html#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></div>
+<aside class="sticky-dona" id="sticky-dona" aria-label="Donazione rapida"><a href="index.html#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></aside>
 
-<script src="js/nav.js?v=89"></script>
+<script src="js/nav.js?v=95"></script>
 </body>
 </html>

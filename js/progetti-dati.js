@@ -225,7 +225,7 @@ function cardProgetto(p) {
     `</div>` +
     `<div class="proj-card__body">` +
       `<div class="proj-card__tags">${pillole(p)}</div>` +
-      `<h3 class="proj-card__title"><a href="${p.donaUrl}">${p.titolo}</a></h3>` +
+      `<h2 class="proj-card__title"><a href="${p.donaUrl}">${p.titolo}</a></h2>` +
       `<p class="proj-card__copy">${p.copy}</p>` +
       `<a class="btn proj-card__cta" href="${p.donaUrl}">${p.cta || 'Dona ora'}</a>` +
     `</div>`;

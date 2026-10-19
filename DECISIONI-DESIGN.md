@@ -744,6 +744,78 @@ La cifra coincide con l'importo proposto nel modulo ("il più scelto", 35 €) e
 
 **Se il modulo della home diventa "solo pulsante" verso Myosotis** (probabile, come Dona in memoria e Missioni), il testo funziona lo stesso: "35 € = 7 pasti" resta un esempio concreto e non dipende più da un importo proposto nel modulo. In quel caso, su telefono, l'ordine testo → pulsante diventa ancora più naturale.
 
+## 54. Revisione di qualità formale: codice, accessibilità, prestazioni, motori di ricerca (15/10/2026)
+
+**Obiettivo.** Il sito deve rispettare i criteri formali di un sito istituzionale di raccolta fondi, perché il suo scopo è far crescere le donazioni in modo misurabile (piano di misurazione nel progetto: `claude/piano-misurazione-donazioni.md`).
+
+**Strumenti usati** (gli stessi delle verifiche professionali):
+
+- `html-validate`: correttezza del codice HTML;
+- `axe-core`: accessibilità secondo WCAG 2.2 AA più le buone pratiche;
+- Lighthouse di Google: prestazioni, accessibilità, buone pratiche e SEO;
+- i nostri test: 15 pagine × 7 larghezze e 146 controlli di funzionamento;
+- confronto pixel per pixel prima/dopo, per essere sicuri che l'aspetto non cambiasse.
+
+**Corretto**
+
+- **Codice HTML valido su tutte le pagine.** Pulsanti del menu con `type="button"`, numeri di telefono che non si spezzano a fine riga, etichette ARIA tolte dove non erano ammesse, vecchia pagina Progetti senza errori di struttura. Restano 4 `role="list"` voluti: servono a VoiceOver su Safari, che altrimenti non annuncia gli elenchi senza pallini.
+- **Accessibilità: zero violazioni con axe** (WCAG 2.2 AA e buone pratiche), su tutte le pagine, a 1440 e 390 px.
+  - Il riquadro di donazione a lato non è più un `<aside>` dentro un'altra area.
+  - La barra fissa "Dona ora" è un'area propria ("Donazione rapida").
+  - Le slide del carosello seguono lo schema ufficiale W3C (`role="group"`).
+  - I titoli seguono l'ordine giusto.
+- **Prestazioni: home da circa 4 MB a 0,66 MB,** con lo stesso aspetto.
+  - Bambina in WebP (36 KB al posto di 1,1 MB).
+  - Pennello in PNG ridotto (39 KB al posto di 816 KB).
+  - Foto delle schede "Come fare del bene" a 800 px: erano a 1920 px fino a 2,2 MB l'una.
+  - Copertine delle pagine in WebP con versione da 960 px per telefono.
+  - Misure (`width`/`height`) su tutte le immagini, così la pagina non "salta" mentre carica.
+  - I JPG e i PNG originali restano come riserva per i browser che non leggono WebP.
+- **Pagina 404** con header, footer, pulsante Dona e link utili, così chi sbaglia indirizzo non si perde.
+- **Icone:** favicon a 32 px, icona per la schermata Home di iPhone e colore del browser azzurro su telefono.
+- **Dati strutturati (schema.org, tipo NGO)** in home: nome, codice fiscale, indirizzo e contatti dell'ente. Aiutano Google a mostrare l'ente correttamente. L'URL verrà aggiunto con il dominio definitivo.
+- **Blocco per i motori di ricerca sul sito di prova** (`noindex, nofollow`). Il sito su GitHub ha testi provvisori, segnaposti "00 €" e un indirizzo che non sarà quello definitivo: non deve comparire su Google. **Va tolto al lancio.** Per questo Lighthouse dà ora un punteggio SEO più basso: è voluto.
+
+**Risultati Lighthouse (telefono, server di prova senza compressione)**
+
+| Pagina | Prestazioni | Accessibilità | Buone pratiche | SEO* |
+| --- | --- | --- | --- | --- |
+| Home | 80 | 100 | 100 | 100 |
+| Cura | 93 | 100 | 100 | 100 |
+| Dona in memoria | 91 | 100 | 100 | 100 |
+| Chi siamo | 89 | 100 | 100 | 100 |
+
+\* Misurato prima del blocco `noindex`. Online, con la compressione di GitHub Pages, le prestazioni salgono ancora.
+
+**Non toccato, di proposito**
+
+- **I caratteri Helvetica** pesano circa 106 KB l'uno. Si potrebbero alleggerire tenendo solo le lettere usate, ma è una modifica del file del carattere e va prima verificata la licenza.
+- **Il CSS non è compresso a mano:** lo comprime il server (GitHub Pages; in WordPress, il tema o la cache).
+
+**Incoerenza di contenuto da sistemare con il cliente:** in home la fascia dei numeri dice "97.000 pasti", il carosello e la pagina Accoglienza "oltre 110.000 pasti ogni anno". Serve il dato giusto.
+
+## 55. Telefono: header e carosello come UNICEF (19/10/2026)
+
+Riferimento indicato da Fulvio: la home di unicef.it su telefono.
+
+**Header su telefono e tablet (fino a 1160 px):**
+
+- il menu (tre linee) passa **a sinistra**, poi il logo, e **"Dona ora" resta sempre a destra**, anche su telefono, dove prima era nascosto;
+- sotto i 720 px il pulsante è più compatto (40 px di altezza), il logo è alto 36 px, e 30 px sui telefoni da 320–360 px.
+
+Il pulsante di donazione resta così visibile in ogni momento, come su UNICEF.
+
+**Carosello su telefono e tablet in verticale (fino a 800 px): foto sopra, testo sotto.**
+
+- La foto sta in alto, **intera e senza veli**, inquadrata sul soggetto. Prima un velo bianco o una sfumatura scura la copriva quasi tutta: le nostre immagini sono soggetti scontornati su fondo bianco o azzurro e il velo le spegneva.
+- Il testo è bianco su fondo blu notte, con il pulsante a tutta larghezza e i pallini sotto.
+- **La foto prende tutto lo spazio che il testo lascia libero:** testo corto, foto più grande. Il pulsante resta sempre in vista, anche sul telefono più piccolo (320 px).
+- Inquadratura sul soggetto (`--fuoco-telefono`): 5×1000 e Natale sul lato destro. Per i Lasciti c'è un **ritaglio dedicato** (`…-nonno-nipote-telefono-800/1200.jpg`), perché nell'originale nonno e nipote sono piccoli sul bordo destro.
+- Su telefono niente zoom d'ingresso.
+- Sopra gli 800 px (tablet orizzontale, computer) il carosello resta com'era, con il testo sovrapposto alla foto.
+
+**Da migliorare con il cliente:** le immagini del carosello sono pensate per il computer (orizzontali, soggetto su un lato). Per un risultato davvero come UNICEF servirebbero foto vere a tutto campo, con una versione verticale per telefono (misure in `SPECIFICHE-TECNICHE.md`).
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

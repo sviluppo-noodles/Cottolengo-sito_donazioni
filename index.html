@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SITO DI PROVA: non deve comparire su Google (testi provvisori, segnaposti "00 €",
+       indirizzo non definitivo). TOGLIERE questa riga al lancio sul dominio definitivo. -->
+  <meta name="robots" content="noindex, nofollow">
   <title>Donazioni Cottolengo — Fare bene fa bene al cuore</title>
   <meta name="description" content="Sostieni la Piccola Casa della Divina Provvidenza. Con la tua donazione doni pasti, cura e famiglia a chi ne ha più bisogno.">
   <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
@@ -16,12 +19,30 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Donazioni Cottolengo — Fare bene fa bene al cuore">
   <meta name="twitter:description" content="Sostieni la Piccola Casa della Divina Provvidenza. Con la tua donazione doni pasti, cura e famiglia a chi ne ha più bisogno.">
-  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png" sizes="150x133" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#0097D8">
   <!-- i due caratteri che servono già al primo schermo: precaricati per non far
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=89">
+  <link rel="stylesheet" href="css/style.css?v=95">
+  <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
+       Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Fondazione Cottolengo Solidale ETS",
+    "description": "Raccolta fondi per le opere di carità della Piccola Casa della Divina Provvidenza – Cottolengo: cura, accoglienza, educazione e missioni internazionali.",
+    "taxID": "97905980013",
+    "parentOrganization": { "@type": "Organization", "name": "Piccola Casa della Divina Provvidenza – Cottolengo", "foundingDate": "1828", "sameAs": "https://www.cottolengo.org/" },
+    "address": { "@type": "PostalAddress", "streetAddress": "Via Cottolengo, 14", "postalCode": "10152", "addressLocality": "Torino", "addressCountry": "IT" },
+    "telephone": "+39 011 522 5658",
+    "email": "infodonazioni@cottolengo.org"
+  }
+  </script>
 </head>
 <body>
 
@@ -31,7 +52,7 @@
 <header class="header" id="top">
   <div class="container header__inner">
     <a href="#top" class="header__logo-link" aria-label="Donazioni Cottolengo — torna all'inizio">
-      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="header__logo">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
     </a>
 
     <nav class="nav" id="nav" aria-label="Navigazione principale">
@@ -45,7 +66,7 @@
         <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
         <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
         <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
             Progetti
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -69,7 +90,7 @@
         </li>
         <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
         <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-controls="menu-aiutarci">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
             Come aiutarci
             <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -104,7 +125,7 @@
       Dona ora
     </a>
 
-    <button class="header__burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu">
+    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -135,7 +156,7 @@
          Foto su fondo bianco con testo vero (non dentro l'immagine): leggibile a
          ogni misura, tradotto dai lettori di schermo e indicizzato da Google.
          cpm-slide--luce: velatura bianca e testo scuro. -->
-    <article class="cpm-slide cpm-slide--luce cpm-slide--chiara" id="cinquepermille" aria-roledescription="slide" aria-label="1 di 4: 5 per mille" style="--fuoco: 72% 50%">
+    <div class="cpm-slide cpm-slide--luce cpm-slide--chiara" id="cinquepermille" role="group" aria-roledescription="slide" aria-label="1 di 4: 5 per mille" style="--fuoco: 72% 50%; --fuoco-telefono: 100% 50%">
       <img class="cpm-slide__img"
            src="assets/img/hero/5-per-mille-cottolengo-mani-generazioni-1920.jpg"
            srcset="assets/img/hero/5-per-mille-cottolengo-mani-generazioni-960.jpg 960w, assets/img/hero/5-per-mille-cottolengo-mani-generazioni-1920.jpg 1920w"
@@ -154,13 +175,13 @@
           </div>
         </div>
       </div>
-    </article>
+    </div>
 
     <!-- Slide 2 · campagna stagionale (Natale)
          Immagine su fondo azzurro (ritratto di san Giuseppe Benedetto Cottolengo):
          cpm-slide--azzurra usa una sfumatura più leggera e l'occhiello bianco,
          perché la pillola azzurra sparirebbe sul fondo dello stesso colore. -->
-    <article class="cpm-slide cpm-slide--azzurra" aria-roledescription="slide" aria-label="2 di 4: speciale Natale" style="--fuoco: 72% 35%">
+    <div class="cpm-slide cpm-slide--azzurra" role="group" aria-roledescription="slide" aria-label="2 di 4: speciale Natale" style="--fuoco: 72% 35%; --fuoco-telefono: 100% 30%">
       <img class="cpm-slide__img"
            src="assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-1920.jpg"
            srcset="assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-960.jpg 960w, assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-1920.jpg 1920w"
@@ -176,10 +197,10 @@
           </div>
         </div>
       </div>
-    </article>
+    </div>
 
     <!-- Slide 3 · campagna Dona un pasto -->
-    <article class="cpm-slide" aria-roledescription="slide" aria-label="3 di 4: dona un pasto" style="--fuoco: 50% 40%">
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="3 di 4: dona un pasto" style="--fuoco: 50% 40%">
       <img class="cpm-slide__img"
            src="assets/img/hero/dona-un-pasto-cottolengo-1600.jpg"
            srcset="assets/img/hero/dona-un-pasto-cottolengo-960.jpg 960w, assets/img/hero/dona-un-pasto-cottolengo-1600.jpg 1600w"
@@ -194,17 +215,21 @@
           </div>
         </div>
       </div>
-    </article>
+    </div>
 
     <!-- Slide 4 · lasciti / testamento solidale
          Foto su fondo bianco: cpm-slide--luce usa testo scuro e una velatura
          bianca al posto della sfumatura blu notte. -->
-    <article class="cpm-slide cpm-slide--luce cpm-slide--chiara" aria-roledescription="slide" aria-label="4 di 4: testamento solidale" style="--fuoco: 85% 30%">
-      <img class="cpm-slide__img"
+    <div class="cpm-slide cpm-slide--luce cpm-slide--chiara" role="group" aria-roledescription="slide" aria-label="4 di 4: testamento solidale" style="--fuoco: 85% 30%; --fuoco-telefono: 50% 50%">
+      <!-- su telefono un ritaglio dedicato: nell'originale nonno e nipote sono piccoli, sul bordo destro -->
+      <picture>
+        <source media="(max-width: 45em)" srcset="assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-telefono-800.jpg 800w, assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-telefono-1200.jpg 1200w" sizes="100vw">
+        <img class="cpm-slide__img"
            src="assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-1920.jpg"
            srcset="assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-960.jpg 960w, assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-1920.jpg 1920w"
-           sizes="100vw" width="1920" height="1200"
+           sizes="100vw" width="1920" height="1080"
            alt="Un nonno sorridente porta sulle spalle il nipote che saluta felice" loading="lazy">
+      </picture>
       <div class="container cpm-slide__inner">
         <div class="cpm-slide__text">
           <p class="cpm-slide__tag">Lasciti solidali</p>
@@ -215,7 +240,7 @@
           </div>
         </div>
       </div>
-    </article>
+    </div>
 
   </div>
 
@@ -234,7 +259,7 @@
   <!-- ===== Riga principale: testo (sx) + card (dx), foto sullo sfondo ===== -->
   <div class="container hero__main">
 
-    <img class="hero__bg-photo" src="assets/img/bambina.png" alt="" aria-hidden="true">
+    <picture><source type="image/webp" srcset="assets/img/bambina-900.webp 900w, assets/img/bambina-1472.webp 1472w" sizes="(max-width: 63.75em) 480px, 50vw"><img class="hero__bg-photo" src="assets/img/bambina.png" width="1472" height="982" alt="" aria-hidden="true"></picture>
 
     <div class="hero__text">
       <h1 id="hero-title">Fare bene fa bene al cuore.</h1>
@@ -345,7 +370,7 @@
       <p class="section-intro"><span class="frase">Tutti i progetti del Cottolengo sono divisi in quattro aree.</span> <span class="frase">Scegli quella che ti sta più a cuore: la tua donazione sosterrà i suoi progetti.</span></p>
     </header>
 
-    <ul class="fila-schede fila-schede--quattro" aria-label="Chi aiuti con il tuo gesto">
+    <ul class="fila-schede fila-schede--quattro">
       <li class="fila-schede__item" id="aiuti-cura">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
@@ -421,12 +446,12 @@
       <p class="section-intro">Cinque modi per stare accanto a chi ha bisogno. Scegli quello più vicino a te.</p><!-- testo provvisorio -->
     </header>
 
-    <ul class="fila-schede" aria-label="Modi per fare del bene">
+    <ul class="fila-schede">
       <li class="fila-schede__item" id="modo-sostegno">
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="sostegno-a-distanza.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/Adozioni-a-distanza-con-Cottolengo.jpg" alt="Bambine e bambini sostenuti con il sostegno a distanza" loading="lazy">
+              <img src="assets/img/adozioni-a-distanza-con-cottolengo-scheda-800.jpg" width="800" height="500" alt="Bambine e bambini sostenuti con il sostegno a distanza" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
@@ -441,7 +466,7 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="cinque-per-mille.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/5-per-mille-cottolengo-mani-generazioni-scheda-800.jpg" alt="Le mani di un bambino, di un adulto e di un anziano una sopra l'altra" loading="lazy">
+              <img src="assets/img/5-per-mille-cottolengo-mani-generazioni-scheda-800.jpg" width="800" height="500" alt="Le mani di un bambino, di un adulto e di un anziano una sopra l'altra" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
@@ -455,7 +480,7 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="dona-in-memoria.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/adotta-un-nonno-a-Tachina.jpg" alt="Il sorriso di un anziano accolto in una casa del Cottolengo" loading="lazy">
+              <img src="assets/img/adotta-un-nonno-a-tachina-scheda-800.jpg" width="800" height="500" alt="Il sorriso di un anziano accolto in una casa del Cottolengo" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
@@ -469,7 +494,7 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="testamento-solidale.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/testamento-solidale-cottolengo-nonno-nipote-scheda-800.jpg" alt="Un nonno sorridente porta sulle spalle il nipote" loading="lazy">
+              <img src="assets/img/testamento-solidale-cottolengo-nonno-nipote-scheda-800.jpg" width="800" height="500" alt="Un nonno sorridente porta sulle spalle il nipote" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
@@ -483,7 +508,7 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="volontariato.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/Adotta-un-ospite-con-Cottolengo.jpg" alt="Volontari e ospiti insieme al Cottolengo" loading="lazy">
+              <img src="assets/img/adotta-un-ospite-con-cottolengo-scheda-800.jpg" width="800" height="500" alt="Volontari e ospiti insieme al Cottolengo" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
@@ -519,7 +544,7 @@
     </header>
 
     <div class="where__layout">
-      <img class="where__brush" src="assets/img/pennello.png" alt="" aria-hidden="true">
+      <img class="where__brush" src="assets/img/pennello-800.png" width="800" height="677" loading="lazy" decoding="async" alt="" aria-hidden="true">
       <div class="donut" role="img" aria-label="Grafico a torta: 84% ai progetti di assistenza, 10% al funzionamento delle case, 6% alla raccolta fondi">
         <!-- ciambella SVG: si disegna progressivamente quando la sezione entra in vista
              (circonferenza r=145.5 → 914.2; i segmenti sono frazioni di essa via --len) -->
@@ -648,7 +673,7 @@
 <footer class="footer" id="contatti">
   <div class="container footer__grid">
     <div class="footer__col footer__brand">
-      <img src="assets/img/logo-bianco.png" alt="Cottolengo" class="footer__logo">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo">
       <p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p>
     </div>
     <div class="footer__col">
@@ -656,7 +681,7 @@
       <address>
         Ufficio Progetti e Raccolta Fondi<br>
         Via Cottolengo, 14 — 10152 Torino<br>
-        <a href="tel:+390115225658">011 522 5658</a><br>
+        <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br>
         <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br>
       <a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address>
     </div>
@@ -687,15 +712,15 @@
 </footer>
 
 <!-- Barra "Dona ora" fissa su mobile -->
-<div class="sticky-dona" id="sticky-dona" aria-hidden="true" inert>
+<aside class="sticky-dona" id="sticky-dona" aria-label="Donazione rapida" aria-hidden="true" inert>
   <a href="#dona" class="btn btn--dona">
     <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
     Dona ora
   </a>
-</div>
+</aside>
 
-<script src="js/importo.js?v=89"></script>
-<script src="js/main.js?v=89"></script>
-<script src="js/nav.js?v=89"></script>
+<script src="js/importo.js?v=95"></script>
+<script src="js/main.js?v=95"></script>
+<script src="js/nav.js?v=95"></script>
 </body>
 </html>

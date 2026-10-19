@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=89` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=95` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
@@ -322,3 +322,23 @@ Header e footer sono copiati in ogni pagina (GitHub Pages serve file statici: ni
 Regola: testo bianco sull'azzurro solo se è "testo grande" (almeno 24 px, oppure almeno 19 px in grassetto). Unica eccezione: le voci del menu (17 px).
 Testo minimo 14 px (`--t-nano`). Lunghezza delle righe sotto i 75 caratteri. Il testo sopra le foto della hero ha un velo che lo porta ad almeno 4,5:1.
 
+
+
+## Immagini: formati e pesi (dal 15/10/2026, decisione 54)
+
+- **Copertine delle pagine:** `<picture>` con WebP (960 px e originale) e JPG di riserva (960 px e originale), `sizes="100vw"`, `width`/`height` dell'originale.
+- **Schede delle quattro aree:** JPG 4:3, 800 × 600 e 1200 × 900, con `srcset`.
+- **Schede "Come fare del bene":** JPG 16:10, 800 × 500.
+- **Bambina in home:** WebP 900 e 1472 px, PNG di riserva.
+- **Pennello del grafico:** PNG 800 px a 256 colori (39 KB).
+- **Regola CSS:** `picture { display: contents }` e `picture > source { display: none }`: il contenitore `<picture>` non deve cambiare l'impaginazione.
+- **Ogni `<img>` ha `width` e `height`,** per evitare spostamenti durante il caricamento (CLS).
+
+## Da fare al lancio sul dominio definitivo
+
+1. Togliere `<meta name="robots" content="noindex, nofollow">` da tutte le pagine.
+2. Aggiungere canonical, og:url e og:image (immagine 1200 × 630) con URL assoluti.
+3. Aggiungere `"url"` e `"logo"` (URL assoluti) ai dati strutturati in home.
+4. Creare `robots.txt` e `sitemap.xml` nella radice del dominio.
+5. In `404.html`, aggiornare (o togliere, in WordPress) `<base href="/Cottolengo-sito_donazioni/">`.
+6. Attivare la misurazione concordata (vedi il piano di misurazione nel progetto) e il banner dei cookie, se serve.

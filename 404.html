@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <!-- Pagina 404 di GitHub Pages: viene mostrata anche per indirizzi in sottocartelle,
+       per questo <base> fissa la radice del sito. In WordPress la 404 la gestisce il tema. -->
+  <base href="/Cottolengo-sito_donazioni/">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina non trovata — Donazioni Cottolengo</title>
+  <meta name="description" content="La pagina che cercavi non esiste o è stata spostata. Torna alla home delle donazioni del Cottolengo.">
+  <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
+       MANCANO di proposito canonical, og:url e og:image: richiedono URL assoluti e il dominio
+       definitivo non è ancora confermato (vedi SPECIFICHE-TECNICHE.md, "SEO tecnico"). -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png" sizes="150x133" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#0097D8">
+  <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=95">
+</head>
+<body class="page-404">
+
+<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
+           segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
+           5×1000, Lasciti e Aziende hanno una voce propria e una pagina dedicata,
+           su richiesta del Cottolengo.
+           Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
+           di 6 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
+      <ul class="nav__list">
+        <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
+        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+            Progetti
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-chi-aiutiamo">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="cura.html"
+                       data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
+                <li><a class="nav__mega__voce" href="accoglienza.html"
+                       data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
+                <li><a class="nav__mega__voce" href="educazione.html"
+                       data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
+                <li><a class="nav__mega__voce" href="missioni-internazionali.html"
+                       data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
+            Come aiutarci
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-aiutarci">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="index.html#dona"
+                       data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
+                <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
+                       data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
+                <li><a class="nav__mega__voce" href="dona-in-memoria.html"
+                       data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
+                <li><a class="nav__mega__voce" href="crowdfunding.html"
+                       data-desc="Trasforma un compleanno, un traguardo o una sfida in una raccolta per gli ospiti della Piccola Casa.">Raccolte solidali</a></li>
+                <li><a class="nav__mega__voce" href="volontariato.html"
+                       data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
+        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
+        <li><a href="aziende.html" class="nav__link">Aziende</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html#dona" class="btn btn--header">
+      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
+      Dona ora
+    </a>
+    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ DONA IN MEMORIA ============
+     Voce di "Come aiutarci": pagina con modulo di donazione e campo "in memoria di".
+     TESTI E FOTO PROVVISORI, da validare con il Cottolengo. -->
+<main id="contenuto">
+  <section class="pagina-404" aria-labelledby="titolo-404">
+    <div class="container pagina-404__inner">
+      <p class="chi-occhiello">Errore 404</p>
+      <h1 id="titolo-404">Questa pagina non c'è</h1>
+      <p class="pagina-404__testo">Forse l'indirizzo è sbagliato o la pagina è stata spostata. Nessun problema: da qui puoi ritrovare quello che cercavi.</p>
+      <div class="pagina-404__azioni">
+        <a class="btn btn--dona" href="index.html#dona">Fai una donazione</a>
+        <a class="btn btn--vedi-tutti" href="index.html">Torna alla home</a>
+      </div>
+      <h2 class="sr-only">Pagine utili</h2>
+      <ul class="pagina-404__link">
+        <li><a href="index.html#chi-aiuti">I progetti che puoi sostenere</a></li>
+        <li><a href="cinque-per-mille.html">5×1000</a></li>
+        <li><a href="testamento-solidale.html">Lasciti e testamento solidale</a></li>
+        <li><a href="chi-siamo.html#recapiti">Contatti</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contatti">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
+    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14 — 10152 Torino<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
+    <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
+    <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
+  </div>
+  <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p></div>
+</footer>
+
+
+<script src="js/nav.js?v=95"></script>
+</body>
+</html>
