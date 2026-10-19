@@ -796,25 +796,34 @@ La cifra coincide con l'importo proposto nel modulo ("il più scelto", 35 €) e
 
 ## 55. Telefono: header e carosello come UNICEF (19/10/2026)
 
-Riferimento indicato da Fulvio: la home di unicef.it su telefono.
+Riferimento indicato da Fulvio: la home di unicef.it su telefono. Non per copiarla, ma per avere le stesse misure, che sono collaudate per la leggibilità.
 
-**Header su telefono e tablet (fino a 1160 px):**
+**Header su telefono (fino a 720 px), stesse misure di UNICEF** (lette con il browser su iPhone 13):
 
-- il menu (tre linee) passa **a sinistra**, poi il logo, e **"Dona ora" resta sempre a destra**, anche su telefono, dove prima era nascosto;
-- sotto i 720 px il pulsante è più compatto (40 px di altezza), il logo è alto 36 px, e 30 px sui telefoni da 320–360 px.
+| | UNICEF | Cottolengo |
+| --- | --- | --- |
+| Altezza header | 60 px | 60 px |
+| Margini laterali | 20 px | 20 px |
+| Menu (tre linee), a sinistra | 36 × 36 px | 36 × 36 px |
+| Logo | alto 25 px, a 16 px dal menu | alto 25 px, a 16 px dal menu |
+| Pulsante "Dona ora", a destra | 32 px di altezza, testo 16 px, margine interno 12 px | uguale (110 px di larghezza invece di 100, per il cuoricino) |
 
-Il pulsante di donazione resta così visibile in ogni momento, come su UNICEF.
+Su tablet (fino a 1160 px) vale lo stesso ordine: menu a sinistra, logo e "Dona ora" a destra. Prima, su telefono, "Dona ora" era nascosto.
 
-**Carosello su telefono e tablet in verticale (fino a 800 px): foto sopra, testo sotto.**
+**Carosello su telefono e tablet in verticale (fino a 800 px), come UNICEF:**
 
-- La foto sta in alto, **intera e senza veli**, inquadrata sul soggetto. Prima un velo bianco o una sfumatura scura la copriva quasi tutta: le nostre immagini sono soggetti scontornati su fondo bianco o azzurro e il velo le spegneva.
-- Il testo è bianco su fondo blu notte, con il pulsante a tutta larghezza e i pallini sotto.
-- **La foto prende tutto lo spazio che il testo lascia libero:** testo corto, foto più grande. Il pulsante resta sempre in vista, anche sul telefono più piccolo (320 px).
-- Inquadratura sul soggetto (`--fuoco-telefono`): 5×1000 e Natale sul lato destro. Per i Lasciti c'è un **ritaglio dedicato** (`…-nonno-nipote-telefono-800/1200.jpg`), perché nell'originale nonno e nipote sono piccoli sul bordo destro.
+- **Foto a tutto schermo,** alta circa il 60% dello schermo sotto il menu (`clamp(470px, 64svh, 580px)`) e inquadrata sul soggetto (`--fuoco-telefono`). Per i Lasciti c'è un ritaglio dedicato (`…-nonno-nipote-telefono-800/1200.jpg`), perché nell'originale nonno e nipote sono piccoli sul bordo destro.
+- **Testo bianco sovrapposto in basso,** su una sfumatura scura che copre solo il terzo inferiore: la parte alta della foto resta pulita. Il velo bianco che prima spegneva le foto chiare è stato tolto.
+- **Proporzioni più leggere:**
+  - titolo intorno ai 26–30 px, prima arrivava a 38;
+  - pulsante alto 48 px, a tutta larghezza;
+  - occhiello bianco e pallini in basso.
 - Su telefono niente zoom d'ingresso.
-- Sopra gli 800 px (tablet orizzontale, computer) il carosello resta com'era, con il testo sovrapposto alla foto.
+- Sopra gli 800 px il carosello resta com'era.
 
-**Da migliorare con il cliente:** le immagini del carosello sono pensate per il computer (orizzontali, soggetto su un lato). Per un risultato davvero come UNICEF servirebbero foto vere a tutto campo, con una versione verticale per telefono (misure in `SPECIFICHE-TECNICHE.md`).
+Una prima versione (foto sopra e testo sotto su una banda blu notte) è stata scartata da Fulvio: la banda blu era troppo pesante.
+
+**Da migliorare con il cliente:** le immagini del carosello sono pensate per il computer (orizzontali, soggetto su un lato, fondo bianco). Per un risultato davvero come UNICEF servono foto vere a tutto campo, con una versione verticale per telefono.
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 

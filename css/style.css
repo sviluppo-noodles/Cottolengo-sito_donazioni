@@ -2765,49 +2765,55 @@ fieldset { border: none; }
 
 /* ==========================================================
    TELEFONO, come UNICEF (decisione 55)
-   1. Header: menu a sinistra, logo, pulsante "Dona ora" sempre a destra.
-   2. Carosello: foto in alto, intera e senza veli (si vede bene il soggetto),
-      testo bianco e pulsante sotto, su fondo blu notte. Niente zoom.
+   1. Header: menu a sinistra, logo, pulsante "Dona ora" sempre a destra,
+      con le stesse misure di UNICEF.
+   2. Carosello: foto a tutto schermo, testo bianco sovrapposto in basso su
+      una sfumatura scura, titolo più piccolo. Niente zoom.
    ========================================================== */
 @media (max-width: 72.5em) {
   .header__burger { order: -1; margin-left: -11px; margin-right: 0; }
   .btn--header { margin-left: auto; }
 }
 @media (max-width: 45em) {
-  .header__inner { gap: var(--s-3); }
-  .header__logo { height: 36px; }
-  .btn--header { display: inline-flex; margin-left: auto; min-height: 40px; padding-inline: 0.9rem; font-size: 1rem; gap: 0.35rem; }
-  .btn--header .icon-heart { width: 14px; height: 14px; }
+  /* stesse misure dell'header di UNICEF su telefono (lette con il browser il
+     19/10/2026): altezza 60, margini 20, menu 36×36, logo alto 25 a 16 px dal
+     menu, "Dona ora" 32 px di altezza, testo 16 px, 12 px di margine interno */
+  :root { --header-h: 60px; }
+  .header__inner { gap: 0; }
+  .header__burger { width: 36px; height: 36px; margin: 0 16px 0 0; gap: 6px; }
+  .header__burger span { width: 26px; }
+  .header__logo { height: 25px; }
+  .btn--header { display: inline-flex; margin-left: auto; min-height: 32px; padding: 0 12px; font-size: 1rem; gap: 0.3rem; }
+  .btn--header .icon-heart { width: 13px; height: 13px; }
+}
 
-}
-/* carosello "foto sopra, testo sotto": telefoni e tablet in verticale (fino a 800 px);
-   sopra, la foto in orizzontale resta più leggibile con il testo sovrapposto */
-@media (min-width: 45.01em) and (max-width: 50em) {
-  .cpm-banner { --cpm-h: clamp(560px, 70svh, 760px); }
-}
+/* Carosello su telefono e tablet verticale (fino a 800 px), come UNICEF:
+   foto a tutto schermo (circa il 60% dello schermo sotto il menu), testo
+   sovrapposto in basso su una sfumatura scura che copre solo la parte bassa,
+   titolo ~27 px, pulsante 48 px. La parte alta della foto resta pulita. */
 @media (max-width: 50em) {
-  .cpm-slide { flex-direction: column; align-items: stretch; justify-content: flex-start; background: var(--blu-notte); }
-  /* la foto prende tutto lo spazio che il testo lascia libero: testo corto =
-     foto più grande; il pulsante resta sempre in vista */
-  .cpm-slide__img {
-    position: static; flex: 1 1 0; min-height: 150px;
-    width: 100%; height: auto;
-    object-fit: cover; object-position: var(--fuoco-telefono, var(--fuoco, 50% 50%));
-    background: #fff;
-  }
+  .cpm-banner { --cpm-h: clamp(470px, 64svh, 580px); min-height: 0; }
+  .cpm-slide__img { object-position: var(--fuoco-telefono, var(--fuoco, 50% 50%)); }
   .cpm-slide.is-attiva:not(.cpm-slide--creativita) .cpm-slide__img { animation: none; }
-  .cpm-slide::after, .cpm-slide--luce::after { display: none; }
+  .cpm-slide::after, .cpm-slide--luce::after, .cpm-slide--azzurra::after {
+    display: block;
+    background: linear-gradient(0deg, rgba(0, 28, 42, 0.94) 0%, rgba(0, 28, 42, 0.82) 30%, rgba(0, 28, 42, 0.35) 52%, rgba(0, 28, 42, 0) 66%);
+  }
   .cpm-slide--luce .cpm-slide__inner::before { display: none; }
-  .cpm-slide--azzurra .cpm-slide__img { background: #00ADEF; }
-  .cpm-slide__inner { flex: none; display: flex; align-items: flex-start; padding-top: var(--s-5); padding-bottom: 4.75rem; }
-  .cpm-slide__text { gap: var(--s-3); }
-  .cpm-slide__title { font-size: clamp(1.6rem, 7vw, 2.1rem); }
-  /* testo bianco su blu notte in tutte le slide, anche quelle "chiare" */
+  .cpm-slide__inner { padding-top: 0; padding-bottom: 4.5rem; }
+  .cpm-slide__text { gap: var(--s-2); max-width: 34rem; }
+  .cpm-slide__title { font-size: clamp(1.55rem, 6.6vw, 1.9rem); line-height: 1.15; }
+  .cpm-slide__cf { font-size: 1rem; }
+  .cpm-slide__cf strong { font-size: 1.2em; }
+  .cpm-slide__azioni { margin-top: var(--s-2); }
+  .cpm-slide__cta { min-height: 48px; font-size: 1.0625rem; }
+  /* testo bianco su sfumatura scura in tutte le slide, anche quelle "chiare" */
   .cpm-slide--luce .cpm-slide__title,
   .cpm-slide--luce .cpm-slide__cf, .cpm-slide--luce .cpm-slide__cf strong { color: #fff; }
   .cpm-slide__tag, .cpm-slide--luce .cpm-slide__tag, .cpm-slide--azzurra .cpm-slide__tag { background: #fff; color: var(--blu-notte); }
   .cpm-slide__cta, .cpm-slide--azzurra .cpm-slide__cta { background: var(--azzurro); color: #fff; }
   /* controlli sempre nella versione per fondo scuro */
+  .cpm-banner__controls { padding-bottom: var(--s-4); }
   .cpm-banner.is-chiara .cpm-dots { background: transparent; }
   .cpm-banner.is-chiara .cpm-dot::before { background: rgba(255, 255, 255, 0.45); }
   .cpm-banner.is-chiara .cpm-dot::after { background: #fff; }
@@ -2815,8 +2821,8 @@ fieldset { border: none; }
   .cpm-banner.is-chiara :focus-visible { outline-color: #fff; }
 }
 @media (max-width: 22.5em) {
-  .header__logo { height: 30px; }
-  .btn--header { padding-inline: 0.7rem; }
-  .cpm-banner { min-height: 580px; }   /* 5×1000 ha il testo più lungo: pallini sempre in vista */
-  .cpm-slide__title { font-size: 1.5rem; }
+  .header__logo { height: 22px; }
+  .header__burger { margin-right: 12px; }
+  .btn--header { padding-inline: 10px; }
+  .cpm-slide__title { font-size: 1.45rem; }
 }
