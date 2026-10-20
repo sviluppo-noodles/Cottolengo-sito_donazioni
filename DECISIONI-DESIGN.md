@@ -825,6 +825,58 @@ Una prima versione (foto sopra e testo sotto su una banda blu notte) è stata sc
 
 **Da migliorare con il cliente:** le immagini del carosello sono pensate per il computer (orizzontali, soggetto su un lato, fondo bianco). Per un risultato davvero come UNICEF servono foto vere a tutto campo, con una versione verticale per telefono.
 
+## 56. Tutte le donazioni e le raccolte solidali su Myosotis: solo il pulsante (20/10/2026)
+
+**Decisione presa nella riunione del 20 ottobre** tra Cottolengo, Myosotis (NP Solutions) e Noodles.
+
+- **Donazioni.** Tutte le donazioni si fanno sulla pagina di Myosotis. Sul nostro sito non ci sono più moduli con importi e frequenza: ogni riquadro di donazione ha **solo un testo e un pulsante** che apre il modulo Myosotis in una nuova scheda. È lo stesso schema già usato in Dona in memoria e in Missioni internazionali (decisioni 45 e 48).
+- **Moduli dedicati.** Myosotis creerà un **modulo dedicato per ogni pagina**. Finché non arrivano gli indirizzi, tutti i pulsanti puntano a `https://dona.cottolengo.org/`. Ogni pulsante ha l'attributo `data-modulo` (es. `cura`, `accoglienza`) e un commento "DA AGGIORNARE", così si trovano e si cambiano subito.
+- **Raccolte solidali.** Sono **gestite interamente da Myosotis**, cioè la strada A degli appunti per la riunione. La pagina `crowdfunding.html` spiega e porta lì con il pulsante "Crea la tua raccolta". Prima il pulsante non portava da nessuna parte.
+
+**Pagine cambiate.**
+
+| Pagina | Titolo del riquadro | Pulsante | Modulo dedicato |
+| --- | --- | --- | --- |
+| Home | Dona alle opere di carità del Cottolengo | Dona ora | donazione libera |
+| Cura | Dona per la cura | Dona per la cura | cura |
+| Accoglienza | Dona per l'accoglienza | Dona per l'accoglienza | accoglienza |
+| Educazione | Dona per l'educazione | Dona per l'educazione | educazione |
+| Family Cottolengo | Adotta un ospite | Adotta un ospite | family-cottolengo |
+| Testamento solidale | Vuoi donare ora? | Dona ora | donazione libera |
+| Raccolte solidali | Crea la tua raccolta | Crea la tua raccolta | raccolte solidali |
+
+Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`).
+
+**Cosa resta uguale.**
+
+- Riquadro con testata azzurra, angoli arrotondati, "Donazione sicura" e nota fiscale.
+- Pulsante grande, alto 64 px, con il cuore.
+- Barra fissa "Dona ora" su telefono.
+
+**Testi.**
+
+- Nelle pagine delle aree, i passaggi di "Come donare" ora sono: premi il pulsante, scegli importo e frequenza su Myosotis, completa il pagamento.
+- In home e nei Lasciti resta l'esempio "con 35 € offri 7 pasti caldi", da confermare con il Cottolengo.
+- Su Raccolte solidali il riquadro sicurezza dice che le donazioni arrivano direttamente all'Opera e indica la mail infodonazioni@cottolengo.org.
+
+**Perché.**
+
+- È la soluzione più sicura: pagamenti, ricevute e conferme della banca restano sulla piattaforma che li garantisce.
+- Ogni pagina ha un solo invito chiaro.
+- Togliendo la scelta dell'importo dal nostro sito, il donatore la fa una volta sola, sul modulo Myosotis, invece di farla due volte.
+
+**Codice.**
+
+- I file `js/importo.js`, `js/project-detail.js` e `js/testamento-solidale.js` non sono più caricati da nessuna pagina. Restano nella cartella finché non si decide di eliminarli.
+- In `js/main.js` il codice del vecchio modulo della home non si attiva più, perché non trova i suoi campi.
+
+**Verifiche.**
+
+- `html-validate`: nessun errore nuovo.
+- axe: 0 violazioni.
+- 15 pagine × 7 larghezze: nessun problema.
+- Controlli di funzionamento: 137, tutti superati. Su 9 pagine, a 1440 e 390 px, si verifica che non ci siano moduli, che il pulsante porti a dona.cottolengo.org in una nuova scheda e che sia alto almeno 48 px.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
@@ -862,7 +914,8 @@ Se il Cottolengo preferisce comunque l'azzurro del logo anche su titoli e pulsan
 - **Pagine delle quattro aree** (Cura, Accoglienza, Educazione, Missioni internazionali) con modulo di donazione: da generare quando arrivano i testi. Testi e foto delle schede sono provvisori.
 - **Pulizia del codice dopo la rimozione dei progetti, su conferma:** la pagina `progetti.html` con `js/progetti-dati.js` e `js/progetti.js`; `js/mappa-regioni.js` (non caricato da nessuna pagina); la mappa `assets/img/mappa.svg` / `assets/svg/mappadot.web.svg` e le icone di "Chi aiuti" in `assets/svg/` non servono più alla home (le regole CSS di carosello progetti e mappa sono state tolte il 13/10/2026). Vanno eliminati quando si decide il destino della pagina Progetti. La pagina di progetto Family Cottolengo (`family-cottolengo.html`, `js/project-detail.js`) può diventare il modello per le pagine delle quattro aree.
 - **Pagina Chi siamo:** testi da validare; file PDF di bilancio sociale, bilancio d'esercizio e statuto da collegare; data di inizio decisa: 1828 (vedi decisione 29).
-- **Pagine nuove** (5×1000, 4 aree, Come aiutarci): testi e foto da validare; collegare il modulo Myosotis per le raccolte solidali. I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
+- **Indirizzi dei moduli dedicati Myosotis** (decisione 56): quando arrivano, sostituirli nei pulsanti con `data-modulo` (home, Cura, Accoglienza, Educazione, Missioni, Family Cottolengo, Testamento solidale, Raccolte solidali).
+- **Pagine nuove** (5×1000, 4 aree, Come aiutarci): testi e foto da validare. I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
 - **Nome della voce Crowdfunding:** valutare un nome più immediato per il pubblico anziano, per esempio "Raccolte solidali" o "Crea una raccolta".
 - **Myosotis / NP Solutions:** verificare se il contratto comprende personal fundraising, API, webhook e pagine personalizzabili.
 - **Dominio definitivo:** serve per canonical, og:url e og:image (immagine di condivisione 1200 × 630 px da preparare).

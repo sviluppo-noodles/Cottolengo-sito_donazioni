@@ -171,49 +171,22 @@
             <a href="mailto:dir.amministrativa@cottolengo.org">dir.amministrativa@cottolengo.org</a>
           </section>
 
-          <!-- Modulo generico: distinto dal lascito e identico nella logica a quello della home. -->
-          <div class="dona-card project-donation generic-donation" id="dona" aria-labelledby="dona-title">
-          <div class="dona-card__head">
-            <h2 id="dona-title">Vuoi donare ora?</h2>
-          </div>
-          <div class="dona-card__body">
-            <fieldset class="freq">
-              <legend class="field-label">Ogni quanto vuoi donare?</legend>
-              <div class="freq__toggle" role="group">
-                <input type="radio" name="legacy-freq" id="legacy-freq-una" value="singola" checked>
-                <label for="legacy-freq-una">Una volta sola</label>
-                <input type="radio" name="legacy-freq" id="legacy-freq-mese" value="mensile">
-                <label for="legacy-freq-mese">Ogni mese <span class="badge">aiuta di più ❤</span></label>
-              </div>
-            </fieldset>
-            <fieldset class="amounts">
-              <legend class="field-label">Quanto vuoi donare?</legend>
-              <div class="amounts__grid">
-                <input type="radio" name="legacy-amount" id="legacy-amt-20" value="20">
-                <label for="legacy-amt-20">20&nbsp;€</label>
-                <input type="radio" name="legacy-amount" id="legacy-amt-35" value="35" checked>
-                <label for="legacy-amt-35">35&nbsp;€<span class="amounts__tag">il più scelto</span></label>
-                <input type="radio" name="legacy-amount" id="legacy-amt-50" value="50">
-                <label for="legacy-amt-50">50&nbsp;€</label>
-                <input type="radio" name="legacy-amount" id="legacy-amt-100" value="100">
-                <label for="legacy-amt-100">100&nbsp;€</label>
-              </div>
-              <div class="amounts__custom">
-                <label for="legacy-amt-custom">Oppure scrivi tu una cifra:</label>
-                <div class="amounts__custom-field">
-                  <input type="number" id="legacy-amt-custom" inputmode="numeric" min="1" max="100000" placeholder="Es. 75">
-                  <span aria-hidden="true">€</span>
-                </div>
-              </div>
-            </fieldset>
-            <p class="impact" aria-live="polite">
-              <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
-              <span id="legacy-impact">Con <strong>35&nbsp;€</strong> offri <strong>7 pasti caldi</strong> a chi non ha nulla.</span>
-            </p>
-            <a class="btn btn--dona" id="legacy-dona-cta" href="https://dona.cottolengo.org/">Dona 35 € adesso</a>
-            <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
-            <p class="dona-card__fiscal" id="legacy-fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
-          </div>
+          <!-- Solo pulsante (decisione 56, riunione del 20/10/2026): importo, frequenza e
+               pagamento si scelgono sul modulo Myosotis. DA AGGIORNARE: l'indirizzo è quello
+               generico finché NP Solutions non crea il modulo dedicato "donazione libera". -->
+          <div class="dona-card project-donation generic-donation dona-link" id="dona" aria-labelledby="dona-title">
+            <div class="dona-card__head">
+              <h2 id="dona-title">Vuoi donare ora?</h2>
+            </div>
+            <div class="dona-card__body">
+              <p class="dona-link__testo">Puoi sostenere subito gli ospiti della Piccola Casa, una volta sola o ogni mese: con 35&nbsp;€ offri 7 pasti caldi.</p>
+              <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener" data-modulo="donazione libera">
+                <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+                Dona ora<span class="sr-only"> (si apre in una nuova scheda)</span>
+              </a>
+              <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
+              <p class="dona-card__fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
+            </div>
           </div>
         </div>
       </div>
@@ -234,8 +207,6 @@
 
 <aside class="sticky-dona" id="sticky-dona" aria-label="Donazione rapida"><a href="#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></aside>
 
-<script src="js/importo.js?v=97"></script>
-<script src="js/testamento-solidale.js?v=97"></script>
 <script src="js/nav.js?v=97"></script>
 </body>
 </html>

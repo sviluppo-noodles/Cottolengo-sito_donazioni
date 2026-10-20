@@ -265,7 +265,7 @@
       <h1 id="hero-title">Fare bene fa bene al cuore.</h1>
       <!-- Il "perché" della home (decisioni 52 e 53): fiducia (dal 1828), motivazione
            (chi è solo e fragile), legame (insieme a te), risultato concreto.
-           "35 € = 7 pasti" coincide con l'importo proposto nel modulo: DA CONFERMARE. -->
+           "35 € = 7 pasti" ripetuto nel riquadro di donazione: DA CONFERMARE. -->
       <p class="hero__sub">
         Dal 1828 il Cottolengo è una casa per chi è solo e fragile: anziani,
         persone con disabilità, bambini e famiglie in difficoltà. Insieme a te
@@ -273,58 +273,22 @@
       </p>
     </div>
 
-    <!-- ---- Modulo donazione ---- -->
-    <div class="dona-card" id="dona" aria-labelledby="dona-title">
+    <!-- ---- Donazione: solo pulsante ---- -->
+    <!-- Solo pulsante (decisione 56, riunione del 20/10/2026): importo, frequenza e
+         pagamento si scelgono sul modulo Myosotis. DA AGGIORNARE: l'indirizzo è quello
+         generico finché NP Solutions non crea il modulo dedicato "donazione libera (home)". -->
+    <div class="dona-card dona-link" id="dona" aria-labelledby="dona-title">
       <div class="dona-card__head">
         <h2 id="dona-title">Dona alle opere di carità del Cottolengo</h2>
       </div>
-
       <div class="dona-card__body">
-        <fieldset class="freq">
-          <legend class="field-label">Ogni quanto vuoi donare?</legend>
-          <div class="freq__toggle" role="group">
-            <input type="radio" name="freq" id="freq-una" value="singola" checked>
-            <label for="freq-una">Una volta sola</label>
-            <input type="radio" name="freq" id="freq-mese" value="mensile">
-            <label for="freq-mese">Ogni mese <span class="badge">aiuta di più ❤</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="amounts">
-          <legend class="field-label">Quanto vuoi donare?</legend>
-          <div class="amounts__grid">
-            <input type="radio" name="importo" id="amt-20" value="20">
-            <label for="amt-20">20&nbsp;€</label>
-            <input type="radio" name="importo" id="amt-35" value="35" checked>
-            <label for="amt-35">35&nbsp;€<span class="amounts__tag">il più scelto</span></label>
-            <input type="radio" name="importo" id="amt-50" value="50">
-            <label for="amt-50">50&nbsp;€</label>
-            <input type="radio" name="importo" id="amt-100" value="100">
-            <label for="amt-100">100&nbsp;€</label>
-          </div>
-          <div class="amounts__custom">
-            <label for="amt-custom">Oppure scrivi tu una cifra:</label>
-            <div class="amounts__custom-field">
-              <input type="number" id="amt-custom" inputmode="numeric" min="1" max="100000" placeholder="Es. 75">
-              <span aria-hidden="true">€</span>
-            </div>
-          </div>
-        </fieldset>
-
-        <p class="impact" id="impact-line" aria-live="polite">
+        <p class="dona-link__testo">Con 35&nbsp;€ offri 7 pasti caldi a chi non ha nulla. Scegli tu quanto donare, una volta sola o ogni mese.</p>
+        <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener" data-modulo="donazione libera (home)">
           <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
-          <span id="impact-text">Con <strong>35&nbsp;€</strong> offri <strong>7 pasti caldi</strong> a chi non ha nulla.</span>
-        </p>
-
-        <a href="https://dona.cottolengo.org/" class="btn btn--dona" id="dona-cta">
-          Dona 35&nbsp;€ adesso
+          Dona ora<span class="sr-only"> (si apre in una nuova scheda)</span>
         </a>
-
         <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
-
-        <p class="dona-card__fiscal" id="fiscal-line">
-          Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).
-        </p>
+        <p class="dona-card__fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
       </div>
     </div>
 
@@ -525,7 +489,7 @@
 <!-- ============ RACCOLTE SOLIDALI (crowdfunding) ============
      Fascia d'invito: il crowdfunding è uno strumento sempre attivo, non una
      campagna a tempo, quindi sta in home e non nella hero. Porta alla pagina
-     crowdfunding.html (da realizzare, modulo Myosotis). TESTI PROVVISORI. -->
+     crowdfunding.html; le raccolte sono gestite da Myosotis (decisione 56). TESTI PROVVISORI. -->
 <section class="fascia-invito" id="raccolte-solidali" aria-labelledby="raccolte-title">
   <div class="container">
     <h2 id="raccolte-title">Crea una raccolta solidale</h2>
@@ -719,7 +683,6 @@
   </a>
 </aside>
 
-<script src="js/importo.js?v=97"></script>
 <script src="js/main.js?v=97"></script>
 <script src="js/nav.js?v=97"></script>
 </body>

@@ -111,7 +111,7 @@
 </header>
 
 <!-- ============ RACCOLTE SOLIDALI ============
-     Voce di "Come aiutarci": pagina informativa con contatti. Il modulo di creazione delle raccolte sarà fornito da Myosotis (NP Solutions): il pulsante "Crea la tua raccolta" va collegato.
+     Voce di "Come aiutarci": pagina informativa con contatti. Le raccolte si creano e si gestiscono sulla piattaforma Myosotis (NP Solutions), decisione 56: qui c'è solo il pulsante.
      TESTI E FOTO PROVVISORI, da validare con il Cottolengo. -->
 <main id="contenuto">
   <section class="project-cover" aria-labelledby="project-title">
@@ -145,13 +145,23 @@
       </article>
 
       <div class="project-sidebar">
-        <section class="legacy-contact-card" aria-labelledby="contatto-title">
-          <p class="project-donation__eyebrow">Raccolte solidali</p>
-          <h2 id="contatto-title">Inizia ora</h2>
-          <p>La piattaforma per creare le raccolte è in arrivo. Nel frattempo scrivici: ti aiutiamo a organizzarla.</p>
-          <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>
-          <a class="btn btn--dona contatto__btn" href="#">Crea la tua raccolta</a>
-        </section>
+        <!-- Solo pulsante (decisione 56, riunione del 20/10/2026): importo, frequenza e
+             pagamento si scelgono sul modulo Myosotis. DA AGGIORNARE: l'indirizzo è quello
+             generico finché NP Solutions non crea la pagina dedicata "raccolte solidali". -->
+        <div class="dona-card project-donation dona-link" id="dona" aria-labelledby="dona-title">
+          <div class="dona-card__head">
+            <h2 id="dona-title">Crea la tua raccolta</h2>
+          </div>
+          <div class="dona-card__body">
+            <p class="dona-link__testo">Apri la tua pagina sulla piattaforma ufficiale del Cottolengo: scegli l'occasione, l'obiettivo e condividi il link con amici e parenti.</p>
+            <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener" data-modulo="raccolte solidali">
+              <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+              Crea la tua raccolta<span class="sr-only"> (si apre in una nuova scheda)</span>
+            </a>
+            <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Raccolta sicura.</strong> Le donazioni arrivano direttamente all'Opera, mai all'organizzatore. Hai dubbi? Scrivici a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>.</span></p>
+            <p class="dona-card__fiscal">Le raccolte sono gestite sulla piattaforma ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>. Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -293,6 +293,10 @@ Verifica del 13/10/2026: altezza, margine e larghezza della cornice identici all
 
 **Serve da NP Solutions** per togliere la soluzione provvisoria: una versione del modulo **senza header e footer** pensata per l'incorporamento (con uno script che comunichi l'altezza alla pagina, es. `postMessage`), oppure un **widget/API** ufficiale.
 
+## Pulsanti di donazione verso Myosotis (dal 20/10/2026, decisione 56)
+
+Ogni riquadro di donazione è `div.dona-card.dona-link#dona` con testo (`.dona-link__testo`) e un solo link `a.dona-link__btn` (alto 64 px, testo 21 px), `target="_blank"` e `rel="noopener"`. Nessun modulo né importo sul nostro sito. L'attributo `data-modulo` indica quale modulo dedicato Myosotis va collegato. Indirizzo provvisorio: `https://dona.cottolengo.org/`. Dona in memoria: `/in-memoria/`. In WordPress i campi della pagina sono: titolo, testo, testo del pulsante e indirizzo del modulo.
+
 ## SEO tecnico
 
 Ogni pagina ha `<title>`, meta description, Open Graph (`og:type`, `og:locale`, `og:site_name`, `og:title`, `og:description`) e Twitter Card (`summary_large_image`, titolo, descrizione), con gli stessi testi di title e description: nessun testo visibile cambiato.
