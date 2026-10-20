@@ -540,7 +540,8 @@ select:focus-visible, [tabindex]:focus-visible {
      min-height (non height) → su schermi bassi la hero cresce e NON taglia mai la card. */
   /* il min() mette un tetto: su monitor molto alti la hero non diventa
      una distesa vuota con la card sperduta al centro */
-  min-height: min(var(--fold-h, calc(100vh - 220px)), 960px);
+  /* decisione 57: senza riquadro di donazione la hero è alta quanto il suo
+     contenuto (testo + pulsante a sinistra, bambina a destra) */
   display: flex;
   align-items: stretch;      /* hero__main riempie tutta l'altezza → la foto (bottom:0) resta a filo dei numeri */
 }
@@ -845,55 +846,44 @@ select:focus-visible, [tabindex]:focus-visible {
 /* copia codice fiscale (slide 5×1000) */
 .btn--copy { gap: var(--s-2); }
 
-/* ===== Riga principale: testo (sx) + card (dx), foto sotto al testo =====
-   Due righe: il testo occupa quella che gli serve, la foto TUTTO ciò che
-   resta fino al fondo della hero. Prima la foto era in position:absolute con
-   l'altezza legata a --fold-h: su finestre alte diventava più grande del suo
-   spazio e finiva SOPRA al paragrafo. In griglia non può più succedere. */
+/* ===== Riga principale: testo + pulsante Dona (sx), bambina (dx) =====
+   Decisione 57 (20/10/2026): in home non c'è più il riquadro di donazione,
+   solo il pulsante "Dona ora" sotto il testo. La bambina sta a destra,
+   appoggiata alla fascia dei numeri, e guarda verso il testo: la foto è
+   specchiata (nell'originale guarda a destra, cioè fuori pagina). */
 .hero__main {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 2.6fr);  /* testo ~43% · card ~57% (leggermente più stretta) */
-  grid-template-rows: auto minmax(0, 1fr);
-  grid-template-areas:
-    "testo card"
-    "foto  card";
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-areas: "testo foto";
   gap: 0 2.5rem;
   padding-bottom: 0;
 }
 
-.hero__text { grid-area: testo; }
-/* align-self: start, non center: così il bordo alto della card e la prima riga
-   del titolo stanno SEMPRE alla stessa quota, a qualunque altezza di finestra.
-   Con "center" coincidevano solo per caso a certe altezze. */
-.dona-card  { grid-area: card; align-self: start; }
+.hero__text { grid-area: testo; align-self: center; padding-bottom: var(--s-8); }
 
-/* Foto scontornata: a filo col margine inferiore della hero (= inizio dei numeri).
-   object-fit: contain + object-position: bottom → resta appoggiata in basso e si
-   rimpicciolisce da sola quando il testo sopra è più lungo. */
-/* La foto è ORIZZONTALE (1472×982): con object-fit: contain il vincolo è la
-   larghezza della colonna, non l'altezza. Per farla più grande esce a sinistra
-   fino al bordo dello schermo — il margine negativo vale esattamente il gutter
-   del .container — e l'eccedenza la taglia l'overflow:hidden della hero.
-   Resta sempre sotto al testo: l'altezza è quella della riga che le avanza. */
+/* La parte piena della foto (la bambina) occupa la metà sinistra dell'immagine:
+   specchiata finisce a destra, e la metà vuota va verso il testo. */
 .hero__bg-photo {
-  --sbordo: max(1.25rem, (100vw - 1200px) / 2);
   grid-area: foto;
   z-index: 0;
   align-self: end;
-  width: calc(100% + var(--sbordo));
-  max-width: none;                 /* scavalca img { max-width: 100% } globale */
-  margin-left: calc(-1 * var(--sbordo));
-  height: 100%;
-  min-height: 0;
-  margin-top: var(--s-3);
-  object-fit: contain;
-  object-position: bottom center;
+  justify-self: end;
+  /* più grande della colonna: la metà vuota (trasparente) sborda a sinistra
+     sotto al testo, la bambina resta nella colonna di destra */
+  width: auto;
+  max-width: none;
+  height: clamp(380px, 40vw, 580px);
+  transform: scaleX(-1);
+  margin-top: var(--s-5);
   pointer-events: none;
   user-select: none;
 }
 
-.hero__text, .dona-card { position: relative; z-index: 1; }
+.hero__azione { margin-top: var(--s-6); }
+.hero__btn { width: auto; min-width: 16rem; padding-inline: 2.6rem; }
+
+.hero__text { position: relative; z-index: 1; }
 
 .hero__text {
   display: flex;
@@ -1558,20 +1548,20 @@ fieldset { border: none; }
    ========================================================== */
 @media (max-width: 63.75em) {
   .hero { padding-block: var(--s-7) 0; }
-  /* mobile: banner in alto, poi testo -> modulo -> foto in flusso.
-     Il testo (titolo + 5 righe) viene PRIMA del modulo: è il "perché" della
-     home e deve essere la prima cosa che si legge (decisione 53). */
+  /* tablet e telefono: banner in alto, poi testo con il pulsante Dona, poi la
+     bambina in flusso (decisioni 53 e 57). Qui la foto non è specchiata:
+     sta sotto al testo, non di fianco. */
   .hero__main {
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
     padding-bottom: 0;             /* la foto resta a filo della sezione numeri */
   }
-  .hero__text   { order: 1; }
-  .dona-card    { order: 2; }
+  .hero__text   { order: 1; padding-bottom: 0; }
   .hero__bg-photo {
     position: static;
-    order: 3;
+    order: 2;
+    max-height: none;
     width: 100%;
     height: auto;                  /* annulla lo scaling in altezza del desktop */
     max-width: 480px;
@@ -2825,4 +2815,10 @@ fieldset { border: none; }
   .header__burger { margin-right: 12px; }
   .btn--header { padding-inline: 10px; }
   .cpm-slide__title { font-size: 1.45rem; }
+}
+
+/* Home, decisione 57: su telefono il pulsante "Dona ora" della hero è largo
+   quanto la colonna, come i pulsanti principali delle app. */
+@media (max-width: 45em) {
+  .hero__btn { width: 100%; min-width: 0; }
 }

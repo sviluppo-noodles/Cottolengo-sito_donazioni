@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=97">
+  <link rel="stylesheet" href="css/style.css?v=98">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -256,10 +256,10 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" aria-labelledby="hero-title">
-  <!-- ===== Riga principale: testo (sx) + card (dx), foto sullo sfondo ===== -->
+  <!-- ===== Riga principale: testo e pulsante Dona (sx), bambina (dx) — decisione 57 ===== -->
   <div class="container hero__main">
 
-    <picture><source type="image/webp" srcset="assets/img/bambina-900.webp 900w, assets/img/bambina-1472.webp 1472w" sizes="(max-width: 63.75em) 480px, 50vw"><img class="hero__bg-photo" src="assets/img/bambina.png" width="1472" height="982" alt="" aria-hidden="true"></picture>
+    <picture><source type="image/webp" srcset="assets/img/bambina-900.webp 900w, assets/img/bambina-1472.webp 1472w" sizes="(max-width: 63.75em) 480px, 45vw"><img class="hero__bg-photo" src="assets/img/bambina.png" width="1472" height="982" alt="" aria-hidden="true"></picture>
 
     <div class="hero__text">
       <h1 id="hero-title">Fare bene fa bene al cuore.</h1>
@@ -271,24 +271,14 @@
         persone con disabilità, bambini e famiglie in difficoltà. Insieme a te
         possiamo continuare ad accoglierli. <strong>Bastano 35&nbsp;€ per offrire 7&nbsp;pasti caldi.</strong>
       </p>
-    </div>
-
-    <!-- ---- Donazione: solo pulsante ---- -->
-    <!-- Solo pulsante (decisione 56, riunione del 20/10/2026): importo, frequenza e
-         pagamento si scelgono sul modulo Myosotis. DA AGGIORNARE: l'indirizzo è quello
-         generico finché NP Solutions non crea il modulo dedicato "donazione libera (home)". -->
-    <div class="dona-card dona-link" id="dona" aria-labelledby="dona-title">
-      <div class="dona-card__head">
-        <h2 id="dona-title">Dona alle opere di carità del Cottolengo</h2>
-      </div>
-      <div class="dona-card__body">
-        <p class="dona-link__testo">Con 35&nbsp;€ offri 7 pasti caldi a chi non ha nulla. Scegli tu quanto donare, una volta sola o ogni mese.</p>
-        <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener" data-modulo="donazione libera (home)">
+      <!-- Solo pulsante (decisioni 56 e 57): importo e frequenza si scelgono sul
+           modulo Myosotis. DA AGGIORNARE: indirizzo generico finché NP Solutions
+           non crea il modulo dedicato "donazione libera". -->
+      <div class="hero__azione" id="dona">
+        <a class="btn btn--dona dona-link__btn hero__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener" data-modulo="donazione libera">
           <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
           Dona ora<span class="sr-only"> (si apre in una nuova scheda)</span>
         </a>
-        <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
-        <p class="dona-card__fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
       </div>
     </div>
 
@@ -683,7 +673,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=97"></script>
-<script src="js/nav.js?v=97"></script>
+<script src="js/main.js?v=98"></script>
+<script src="js/nav.js?v=98"></script>
 </body>
 </html>

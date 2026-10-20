@@ -837,7 +837,7 @@ Una prima versione (foto sopra e testo sotto su una banda blu notte) è stata sc
 
 | Pagina | Titolo del riquadro | Pulsante | Modulo dedicato |
 | --- | --- | --- | --- |
-| Home | Dona alle opere di carità del Cottolengo | Dona ora | donazione libera |
+| Home | nessun riquadro, solo il pulsante sotto il testo (decisione 57) | Dona ora | donazione libera |
 | Cura | Dona per la cura | Dona per la cura | cura |
 | Accoglienza | Dona per l'accoglienza | Dona per l'accoglienza | accoglienza |
 | Educazione | Dona per l'educazione | Dona per l'educazione | educazione |
@@ -876,6 +876,32 @@ Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`
 - axe: 0 violazioni.
 - 15 pagine × 7 larghezze: nessun problema.
 - Controlli di funzionamento: 137, tutti superati. Su 9 pagine, a 1440 e 390 px, si verifica che non ci siano moduli, che il pulsante porti a dona.cottolengo.org in una nuova scheda e che sia alto almeno 48 px.
+
+## 57. Home: solo il pulsante "Dona ora" sotto il testo, la bambina di fianco (20/10/2026)
+
+**Problema.** Con il solo pulsante (decisione 56) il riquadro di donazione in home era diventato basso. Restava appeso in alto a destra, con un grande vuoto sotto, mentre la bambina era in basso a sinistra.
+
+**Soluzione, chiesta da Fulvio.**
+
+- **Niente riquadro in home.** Sotto il titolo "Fare bene fa bene al cuore." e il testo c'è **solo il pulsante "Dona ora"**. Il pulsante è grande (64 px), con il cuore, e apre il modulo Myosotis in una nuova scheda.
+- **La bambina a destra, di fianco al testo,** appoggiata alla fascia dei numeri. Nella foto originale guarda verso destra, cioè fuori dalla pagina: l'immagine è **specchiata** perché guardi verso il testo e il pulsante. È lo stesso principio della copertina di Cura (decisione 39).
+- **La hero è alta quanto il suo contenuto.** Prima riempiva lo schermo per far posto al modulo; ora è alta circa 550–650 px su computer.
+- **Su tablet e telefono** l'ordine è testo, pulsante, bambina. Su telefono il pulsante è largo quanto lo schermo. Qui la foto non è specchiata, perché sta sotto il testo e non di fianco.
+
+**Misure.**
+
+- Colonne 1,1 : 1.
+- La foto è alta `clamp(380px, 40vw, 580px)`: 576 px a 1440.
+- La parte trasparente della foto sborda sotto il testo; la bambina resta nella colonna di destra.
+
+**Cosa si perde.** In home non ci sono più il riquadro "Donazione sicura" e la nota fiscale vicino al pulsante. Restano nel footer (IBAN e codice fiscale) e su tutte le pagine interne.
+
+**Verifiche.**
+
+- 15 pagine × 7 larghezze: nessun problema.
+- Controlli di funzionamento: 137 su 137.
+- axe: 0 violazioni.
+- Nessuno scorrimento orizzontale.
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
