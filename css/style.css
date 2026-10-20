@@ -846,35 +846,34 @@ select:focus-visible, [tabindex]:focus-visible {
 /* copia codice fiscale (slide 5×1000) */
 .btn--copy { gap: var(--s-2); }
 
-/* ===== Riga principale: testo + pulsante Dona (sx), bambina (dx) =====
+/* ===== Riga principale: bambina (sx), testo + pulsante Dona (dx) =====
    Decisione 57 (20/10/2026): in home non c'è più il riquadro di donazione,
-   solo il pulsante "Dona ora" sotto il testo. La bambina sta a destra,
-   appoggiata alla fascia dei numeri, e guarda verso il testo: la foto è
-   specchiata (nell'originale guarda a destra, cioè fuori pagina). */
+   solo il pulsante "Dona ora" sotto il testo. Decisione 58: la bambina sta a
+   sinistra, appoggiata alla fascia dei numeri, e il testo a destra. La foto
+   non è specchiata: nell'originale la bambina guarda già a destra, verso il
+   testo e il pulsante. */
 .hero__main {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  grid-template-areas: "testo foto";
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-areas: "foto testo";
   gap: 0 2.5rem;
   padding-bottom: 0;
 }
 
 .hero__text { grid-area: testo; align-self: center; padding-bottom: var(--s-8); }
 
-/* La parte piena della foto (la bambina) occupa la metà sinistra dell'immagine:
-   specchiata finisce a destra, e la metà vuota va verso il testo. */
+/* La bambina occupa la metà sinistra dell'immagine: la metà vuota
+   (trasparente) sborda a destra sotto al testo, la bambina resta nella
+   colonna di sinistra. */
 .hero__bg-photo {
   grid-area: foto;
   z-index: 0;
   align-self: end;
-  justify-self: end;
-  /* più grande della colonna: la metà vuota (trasparente) sborda a sinistra
-     sotto al testo, la bambina resta nella colonna di destra */
+  justify-self: start;
   width: auto;
   max-width: none;
   height: clamp(380px, 40vw, 580px);
-  transform: scaleX(-1);
   margin-top: var(--s-5);
   pointer-events: none;
   user-select: none;
@@ -1549,8 +1548,7 @@ fieldset { border: none; }
 @media (max-width: 63.75em) {
   .hero { padding-block: var(--s-7) 0; }
   /* tablet e telefono: banner in alto, poi testo con il pulsante Dona, poi la
-     bambina in flusso (decisioni 53 e 57). Qui la foto non è specchiata:
-     sta sotto al testo, non di fianco. */
+     bambina in flusso (decisioni 53, 57 e 58). */
   .hero__main {
     display: flex;
     flex-direction: column;

@@ -903,6 +903,23 @@ Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`
 - axe: 0 violazioni.
 - Nessuno scorrimento orizzontale.
 
+## 58. Home: bambina a sinistra, testo e pulsante a destra (20/10/2026)
+
+**Richiesta di Fulvio.** Rispetto alla decisione 57, si invertono le due colonne della hero della home:
+
+- la **bambina a sinistra**, appoggiata alla fascia dei numeri;
+- a destra il titolo, il testo e il pulsante **"Dona ora"**.
+
+**Foto.** La foto torna nel verso originale, non specchiata: la bambina guarda già verso destra, cioè verso il testo e il pulsante. Il suo sguardo accompagna l'occhio verso l'invito a donare.
+
+**Misure.**
+
+- Colonne 1 : 1,1.
+- La foto è alta `clamp(380px, 40vw, 580px)`, appoggiata in basso a sinistra.
+- La parte trasparente della foto sborda a destra, sotto il testo.
+
+**Tablet e telefono.** Nessun cambiamento: testo, pulsante e poi la bambina sotto.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
