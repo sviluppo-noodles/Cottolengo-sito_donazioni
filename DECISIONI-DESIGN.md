@@ -844,6 +844,7 @@ Una prima versione (foto sopra e testo sotto su una banda blu notte) è stata sc
 | Family Cottolengo | Adotta un ospite | Adotta un ospite | family-cottolengo |
 | Testamento solidale | Vuoi donare ora? | Dona ora | donazione libera |
 | Raccolte solidali | Crea la tua raccolta | Crea la tua raccolta | raccolte solidali |
+| Per le aziende (decisione 59) | Dona come azienda | Dona come azienda | aziende |
 
 Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`).
 
@@ -920,6 +921,21 @@ Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`
 
 **Tablet e telefono.** Nessun cambiamento: testo, pulsante e poi la bambina sotto.
 
+## 59. Per le aziende: riquadro "Dona come azienda" verso Myosotis (20/10/2026)
+
+**Richiesta di Fulvio.** Anche le donazioni aziendali devono avere il loro riquadro di donazione, come le altre pagine (decisione 56).
+
+**Riquadro.**
+
+- Titolo e pulsante: **"Dona come azienda"**.
+- Testo: "Scegli quanto donare a nome della tua impresa, una volta sola o con continuità: bastano pochi minuti."
+- Sotto il pulsante, come nelle altre pagine, "Donazione sicura" e la nota fiscale.
+- Il pulsante apre in una nuova scheda il modulo Myosotis. **DA AGGIORNARE:** per ora punta a `dona.cottolengo.org`, finché NP Solutions non crea il modulo dedicato `aziende` (`data-modulo="aziende"`).
+
+**Posizione.** Nelle altre pagine il riquadro sale sopra la copertina. Qui non è possibile: nella foto le cinque persone occupano tutta la metà destra, e il riquadro le coprirebbe. Su computer il riquadro parte quindi **sotto la copertina**, accanto a "Donazioni aziendali" (`.project-sidebar--sotto`). Su tablet e telefono resta come nelle altre pagine: subito sotto la copertina, prima del testo.
+
+**Da chiedere al Cottolengo.** Servono le informazioni fiscali specifiche per le imprese, cioè la deducibilità secondo l'art. 83 del Codice del Terzo Settore, da scrivere vicino al pulsante. Va chiesto anche se le ricevute per le aziende si richiedono da Myosotis o all'ufficio.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
@@ -957,7 +973,7 @@ Se il Cottolengo preferisce comunque l'azzurro del logo anche su titoli e pulsan
 - **Pagine delle quattro aree** (Cura, Accoglienza, Educazione, Missioni internazionali) con modulo di donazione: da generare quando arrivano i testi. Testi e foto delle schede sono provvisori.
 - **Pulizia del codice dopo la rimozione dei progetti, su conferma:** la pagina `progetti.html` con `js/progetti-dati.js` e `js/progetti.js`; `js/mappa-regioni.js` (non caricato da nessuna pagina); la mappa `assets/img/mappa.svg` / `assets/svg/mappadot.web.svg` e le icone di "Chi aiuti" in `assets/svg/` non servono più alla home (le regole CSS di carosello progetti e mappa sono state tolte il 13/10/2026). Vanno eliminati quando si decide il destino della pagina Progetti. La pagina di progetto Family Cottolengo (`family-cottolengo.html`, `js/project-detail.js`) può diventare il modello per le pagine delle quattro aree.
 - **Pagina Chi siamo:** testi da validare; file PDF di bilancio sociale, bilancio d'esercizio e statuto da collegare; data di inizio decisa: 1828 (vedi decisione 29).
-- **Indirizzi dei moduli dedicati Myosotis** (decisione 56): quando arrivano, sostituirli nei pulsanti con `data-modulo` (home, Cura, Accoglienza, Educazione, Missioni, Family Cottolengo, Testamento solidale, Raccolte solidali).
+- **Indirizzi dei moduli dedicati Myosotis** (decisione 56): quando arrivano, sostituirli nei pulsanti con `data-modulo` (home, Aziende, Cura, Accoglienza, Educazione, Missioni, Family Cottolengo, Testamento solidale, Raccolte solidali).
 - **Pagine nuove** (5×1000, 4 aree, Come aiutarci): testi e foto da validare. I testi dei pannelli Crowdfunding e Aziende sono provvisori e vanno validati con il Cottolengo.
 - **Nome della voce Crowdfunding:** valutare un nome più immediato per il pubblico anziano, per esempio "Raccolte solidali" o "Crea una raccolta".
 - **Myosotis / NP Solutions:** verificare se il contratto comprende personal fundraising, API, webhook e pagine personalizzabili.
