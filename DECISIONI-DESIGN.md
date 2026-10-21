@@ -1080,6 +1080,33 @@ Il Cottolengo ha chiesto queste modifiche prima di mandare la pagina a NP Soluti
 
 Gli altri riquadri del sito non contengono calcoli della detrazione. Dicono solo "possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs. 117/2017)", quindi non sono stati toccati.
 
+## 65. Footer: testi un gradino più piccoli, IBAN sempre su una riga (22/10/2026)
+
+**Problema.** Il footer era scritto a 17 px, quasi come i paragrafi delle pagine (18,5 px). Nelle colonne strette:
+
+- l'indirizzo lasciava "Torino" da solo su una riga;
+- l'IBAN si spezzava in due, ed è facile copiarlo sbagliato;
+- su telefono il footer era lungo circa 1.080 px.
+
+**Modifiche, approvate da Fulvio.**
+
+- **Testo delle colonne a 16 px**, interlinea 1,55 invece di 1,7. Sotto i 16 px non si scende, perché il pubblico è anziano.
+- **Riga finale a 15 px**: copyright, Privacy Policy, Cookie Policy.
+- **Titoli delle colonne invariati a 19,2 px.** L'azzurro sul blu notte ha un contrasto di 4:1, valido solo per il testo grande (grassetto da 18,7 px in su). Rimpicciolirli li porterebbe sotto la soglia WCAG.
+- **IBAN su una riga sola** (`.footer__iban`, `white-space: nowrap`). La colonna "Dona con bonifico" è un po' più larga: colonne `1.1fr 1fr 1.3fr 1fr`.
+- **Indirizzo su due righe:** "Via Cottolengo, 14" e sotto "10152 Torino", in tutte le 17 pagine.
+
+**Risultato.**
+
+- Su computer il footer passa da 383 a 361 px.
+- Su telefono passa da circa 1.080 a circa 1.025 px.
+
+**Verifiche.**
+
+- Header e footer identici su tutte le pagine.
+- Nessuno scorrimento orizzontale da 320 px.
+- axe: 0 violazioni.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

@@ -1504,7 +1504,7 @@ fieldset { border: none; }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
+  grid-template-columns: 1.1fr 1fr 1.3fr 1fr;   /* colonna del bonifico più larga: l'IBAN sta su una riga */
   gap: 2.5rem;
   padding-bottom: 2.5rem;
 }
@@ -1513,17 +1513,18 @@ fieldset { border: none; }
 .footer__col p,
 .footer__col address,
 .footer__col ul {
-  font-size: var(--t-small);        /* 17px: come i testi secondari del sito (era 16px) */
-  line-height: 1.7;
+  font-size: 1rem;                  /* 16px (decisione 65): un gradino sotto il testo delle pagine; sotto i 16 non si scende, pubblico anziano */
+  line-height: 1.55;
 }
-.footer__col li a { display: inline-block; padding-block: 0.2rem; }  /* righe di link ≥ 36px */
+.footer__col li a { display: inline-block; padding-block: 0.25rem; }  /* righe di link ≥ 34px */
 .footer address { font-style: normal; }
+.footer__iban { white-space: nowrap; }   /* un IBAN spezzato si copia male (decisione 65) */
 
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.18);
-  padding-block: 1.4rem;
-  font-size: var(--t-small);
-  line-height: 1.7;
+  padding-block: 1.25rem;
+  font-size: 0.9375rem;             /* 15px: riga di servizio (copyright, privacy, cookie) */
+  line-height: 1.6;
   text-align: center;
 }
 
