@@ -1514,9 +1514,9 @@ fieldset { border: none; }
 .footer__col address,
 .footer__col ul {
   font-size: 1rem;                  /* 16px (decisione 65): un gradino sotto il testo delle pagine; sotto i 16 non si scende, pubblico anziano */
-  line-height: 1.55;
+  line-height: 1.7;            /* decisione 65: più aria tra le righe, richiesta di Fulvio */
 }
-.footer__col li a { display: inline-block; padding-block: 0.25rem; }  /* righe di link ≥ 34px */
+.footer__col li a { display: inline-block; padding-block: 0; }  /* stessa interlinea delle altre colonne: righe allineate (27 px, sopra i 24 px minimi WCAG 2.2) */
 .footer address { font-style: normal; }
 .footer__iban { white-space: nowrap; }   /* un IBAN spezzato si copia male (decisione 65) */
 

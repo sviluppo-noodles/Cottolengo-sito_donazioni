@@ -1090,16 +1090,16 @@ Gli altri riquadri del sito non contengono calcoli della detrazione. Dicono solo
 
 **Modifiche, approvate da Fulvio.**
 
-- **Testo delle colonne a 16 px**, interlinea 1,55 invece di 1,7. Sotto i 16 px non si scende, perché il pubblico è anziano.
+- **Testo delle colonne a 16 px**, interlinea 1,7 (provata a 1,55, poi Fulvio ha chiesto più aria tra le righe). Sotto i 16 px non si scende, perché il pubblico è anziano.
 - **Riga finale a 15 px**: copyright, Privacy Policy, Cookie Policy.
 - **Titoli delle colonne invariati a 19,2 px.** L'azzurro sul blu notte ha un contrasto di 4:1, valido solo per il testo grande (grassetto da 18,7 px in su). Rimpicciolirli li porterebbe sotto la soglia WCAG.
 - **IBAN su una riga sola** (`.footer__iban`, `white-space: nowrap`). La colonna "Dona con bonifico" è un po' più larga: colonne `1.1fr 1fr 1.3fr 1fr`.
 - **Indirizzo su due righe:** "Via Cottolengo, 14" e sotto "10152 Torino", in tutte le 17 pagine.
+- **Righe allineate tra le colonne.** I link utili non hanno più il margine sopra e sotto. Ogni riga è alta come quelle delle altre colonne (27 px, sopra i 24 px minimi di WCAG 2.2), così le righe delle quattro colonne sono alla stessa altezza.
 
 **Risultato.**
 
-- Su computer il footer passa da 383 a 361 px.
-- Su telefono passa da circa 1.080 a circa 1.025 px.
+- Su computer il footer passa da 383 a circa 370 px, perché si accorcia l'indirizzo.
 
 **Verifiche.**
 
