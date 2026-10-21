@@ -837,7 +837,7 @@ Una prima versione (foto sopra e testo sotto su una banda blu notte) è stata sc
 
 | Pagina | Titolo del riquadro | Pulsante | Modulo dedicato |
 | --- | --- | --- | --- |
-| Home | nessun riquadro, solo il pulsante sotto il testo (decisione 57) | Dona ora | donazione libera |
+| Home | nessun riquadro, solo il pulsante sotto il testo (decisione 57); dal 21/10 porta a dona.html (decisione 62) | Dona ora | — |
 | Cura | Dona per la cura | Dona per la cura | cura |
 | Accoglienza | Dona per l'accoglienza | Dona per l'accoglienza | accoglienza |
 | Educazione | Dona per l'educazione | Dona per l'educazione | educazione |
@@ -1041,6 +1041,14 @@ Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`
   - premendo "Dona" a modulo vuoto compaiono 12 errori, e il focus va sull'elenco;
   - con il modulo compilato compare l'avviso finale;
   - nessun errore JavaScript.
+
+## 62. Home: "Dona ora" della hero porta alla pagina Dona (21/10/2026)
+
+Su richiesta di Fulvio, il pulsante "Dona ora" sotto "Fare bene fa bene al cuore." porta a `dona.html` (decisioni 60 e 61), come il "Dona ora" dell'header. Prima apriva Myosotis.
+
+Visto che porta a una pagina del sito, si apre **nella stessa scheda**. Ci si torna con "Indietro", senza schede aperte da gestire: è più semplice per un pubblico anziano.
+
+I pulsanti dei riquadri delle pagine interne continuano a portare a Myosotis (decisione 56).
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
