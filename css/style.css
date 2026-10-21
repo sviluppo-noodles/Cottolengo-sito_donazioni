@@ -2025,6 +2025,10 @@ fieldset { border: none; }
    (angoli arrotondati, testata azzurra, importi e frequenza a pulsanti
    separati). Qui cambiano solo la posizione (fisso a lato mentre si scorre),
    l'ombra e il campo "altro importo" a tutta larghezza, perché la colonna è stretta. */
+/* Aziende (decisione 63): riquadro più basso, sale meno sulla copertina
+   e lascia libere le persone della foto. Su tablet e telefono vale la regola
+   comune (più sotto, nel blocco responsive). */
+.project-sidebar--bassa { margin-top: clamp(-230px, -16vw, -170px); }
 .project-sidebar .project-donation {
   position: sticky;
   top: 98px;

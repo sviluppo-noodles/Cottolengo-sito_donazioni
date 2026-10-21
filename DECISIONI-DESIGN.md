@@ -1054,7 +1054,12 @@ I pulsanti dei riquadri delle pagine interne continuano a portare a Myosotis (de
 
 Su richiesta di Fulvio, il riquadro "Dona come azienda" torna a stare a cavallo tra copertina e testo, come in tutte le altre pagine. Si annulla la posizione "sotto la copertina" della decisione 59 (classe `.project-sidebar--sotto` tolta). La coerenza tra le pagine vale più dell'eccezione.
 
-**Effetto sulla foto.** Su computer il riquadro copre parte del gruppo a destra (la donna e l'infermiera). L'uomo in primo piano resta visibile. Con la foto attuale non si può spostare il gruppo: l'immagine è quasi tutta in larghezza e non c'è margine. Se serve, si può valutare una foto con le persone a sinistra.
+**Foto specchiata.** Con il riquadro sopra, il gruppo a destra della foto restava coperto. Su richiesta di Fulvio la copertina è stata **specchiata**: ora le persone sono a sinistra e il riquadro copre il paesaggio con la basilica di Superga.
+
+- Sono stati specchiati direttamente i quattro file `aziende-cottolengo-960/1600.jpg` e `-960/1916.webp`, come per Cura (decisione 39). Così lo zoom d'ingresso della copertina continua a funzionare.
+- L'inquadratura passa da `72% 50%` a `28% 50%`.
+
+**Riquadro più basso.** Sempre su richiesta di Fulvio, qui il riquadro sale meno sulla copertina: `margin-top: clamp(-230px, -16vw, -170px)`, contro `clamp(-390px, -31vw, -320px)` delle altre pagine (classe `.project-sidebar--bassa`). Così sta tutto sul paesaggio e le persone restano libere. Su tablet e telefono resta la regola comune.
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 

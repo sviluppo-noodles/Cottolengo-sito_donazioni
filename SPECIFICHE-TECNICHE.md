@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=103` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=104` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
