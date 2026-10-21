@@ -1107,6 +1107,39 @@ Gli altri riquadri del sito non contengono calcoli della detrazione. Dicono solo
 - Nessuno scorrimento orizzontale da 320 px.
 - axe: 0 violazioni.
 
+## 66. Pagina Dona: header e footer "chiusi" da pagina di pagamento (22/10/2026)
+
+**Perché.** La pagina di donazione starà su dona.cottolengo.org, la piattaforma di Myosotis, che dovrà riprodurre anche header e footer. Il menu completo del sito non serve: è uno dei punti di uscita più frequenti mentre si dona. In un esperimento di NextAfter, una pagina ridisegnata senza menu, con una proposta di valore chiara e importi più grandi, ha avuto **+45% di donazioni**. Lo stesso schema, il "checkout chiuso" raccomandato da Baymard, è usato da banche ed e-commerce. Vedi `claude/strategia-conversione-donazioni.md`, punto 1.
+
+**Header.**
+
+- Stesso azzurro e stessa altezza dell'header del sito, così la pagina sembra parte dello stesso sito.
+- A sinistra il logo, che riporta al sito.
+- A destra il lucchetto con **"Pagamento sicuro"** e il link **"Torna al sito"**.
+- Niente menu, niente tendine, niente "Dona ora".
+- Sotto i 480 px resta solo "Pagamento sicuro": si torna al sito dal logo o dal footer.
+
+**Footer di due righe**, testo a 15 px:
+
+1. Fondazione Cottolengo Solidale ETS · Codice fiscale 97905980013 · telefono · email;
+2. © Piccola Casa della Divina Provvidenza – Cottolengo · Privacy Policy · Cookie Policy · Torna al sito.
+
+Ogni voce resta intera quando la riga va a capo.
+
+**Su questa pagina non c'è la barra "Dona ora" fissa**: si è già nella pagina di donazione.
+
+**Codice.**
+
+- Classi `.header--checkout`, `.checkout-sicuro`, `.checkout-torna`, `.footer--checkout`, `.footer__checkout`, `.footer__voce`.
+- In `tools/verifica-sito.py`, la pagina `dona.html` è esclusa dal controllo "header e footer identici" (`PAGINE_CHECKOUT`).
+
+**Verifiche.**
+
+- HTML valido.
+- axe: 0 violazioni.
+- Nessuno scorrimento orizzontale da 320 px.
+- Il modulo funziona come prima.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

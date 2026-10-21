@@ -84,6 +84,9 @@ def blocco(html, tag, pagina):
     return re.sub(r'\s+', ' ', t)
 
 
+PAGINE_CHECKOUT = {'dona.html'}   # header e footer da pagina di pagamento
+
+
 def locale(url):
     return not re.match(r'^(https?:|mailto:|tel:|data:|//|javascript:)', url)
 
@@ -98,10 +101,12 @@ def main():
         a.feed(html)
         analisi[p] = a
 
-    # 1. header e footer
+    # 1. header e footer (dona.html ha header e footer ridotti, decisione 66)
     for tag in ('header', 'footer'):
         modelli = {}
         for p in pagine:
+            if p in PAGINE_CHECKOUT:
+                continue
             modelli.setdefault(blocco(sorgenti[p], tag, p), []).append(p)
         if len(modelli) > 1:
             gruppi = sorted(modelli.values(), key=len, reverse=True)

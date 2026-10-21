@@ -25,88 +25,21 @@
   <meta name="theme-color" content="#0097D8">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=108">
+  <link rel="stylesheet" href="css/style.css?v=109">
 </head>
 <body class="page-dona">
 
 <a class="skip-link" href="#contenuto">Vai al contenuto</a>
 
-<header class="header" id="top">
+<!-- Header "chiuso" da pagina di pagamento (decisione 66): niente menu, così chi
+     sta donando non esce a metà. Myosotis lo riprodurrà su dona.cottolengo.org. -->
+<header class="header header--checkout" id="top">
   <div class="container header__inner">
-    <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
+    <a href="index.html" class="header__logo-link" aria-label="Cottolengo, torna al sito">
       <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
     </a>
-
-    <nav class="nav" id="nav" aria-label="Navigazione principale">
-      <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
-           segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
-           5×1000, Lasciti e Aziende hanno una voce propria e una pagina dedicata,
-           su richiesta del Cottolengo.
-           Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
-           di 6 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
-      <ul class="nav__list">
-        <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
-        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
-        <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
-            Progetti
-            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="nav__mega" id="menu-chi-aiutiamo">
-            <div class="container nav__mega__inner">
-              <ul class="nav__mega__voci">
-                <li><a class="nav__mega__voce" href="cura.html"
-                       data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
-                <li><a class="nav__mega__voce" href="accoglienza.html"
-                       data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
-                <li><a class="nav__mega__voce" href="educazione.html"
-                       data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
-                <li><a class="nav__mega__voce" href="missioni-internazionali.html"
-                       data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
-              </ul>
-              <div class="nav__mega__testo">
-                <p class="nav__mega__desc" aria-live="polite">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
-        <li class="nav__item--dropdown">
-          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
-            Come aiutarci
-            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="nav__mega" id="menu-aiutarci">
-            <div class="container nav__mega__inner">
-              <ul class="nav__mega__voci">
-                <li><a class="nav__mega__voce" href="index.html#dona"
-                       data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
-                <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
-                       data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
-                <li><a class="nav__mega__voce" href="dona-in-memoria.html"
-                       data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
-                <li><a class="nav__mega__voce" href="crowdfunding.html"
-                       data-desc="Trasforma un compleanno, un traguardo o una sfida in una raccolta per gli ospiti della Piccola Casa.">Raccolte solidali</a></li>
-                <li><a class="nav__mega__voce" href="volontariato.html"
-                       data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
-              </ul>
-              <div class="nav__mega__testo">
-                <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
-        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
-        <li><a href="aziende.html" class="nav__link">Aziende</a></li>
-      </ul>
-    </nav>
-
-    <a href="dona.html" class="btn btn--header">
-      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
-      Dona ora
-    </a>
-    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+    <p class="checkout-sicuro"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg><span>Pagamento sicuro</span></p>
+    <a class="checkout-torna" href="index.html">Torna al sito</a>
   </div>
 </header>
 
@@ -118,7 +51,8 @@
        PROTOTIPO GRAFICO da passare a Myosotis (NP Solutions): pagina unica con
        tre sezioni numerate, stessi campi e stesso ordine del modulo di
        dona.cottolengo.org, nell'impaginazione del sito (pubblico anziano:
-       testo e campi grandi, nessun passaggio nascosto).
+       testo e campi grandi, nessun passaggio nascosto). Header e footer ridotti
+       da pagina di pagamento, come saranno su dona.cottolengo.org (decisione 66).
        Il modulo NON invia dati: all'ultimo passaggio mostra solo un avviso. -->
   <div class="container dona-pagina__inner">
 
@@ -565,18 +499,16 @@
 </main>
 
 
-<footer class="footer" id="contatti">
-  <div class="container footer__grid">
-    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
-    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14<br>10152 Torino<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
-    <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong class="footer__iban">IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
-    <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
+<!-- Footer ridotto (decisione 66): dati dell'ente, contatti, privacy e cookie. -->
+<footer class="footer footer--checkout" id="contatti">
+  <div class="container footer__checkout">
+    <p><strong>Fondazione Cottolengo Solidale ETS</strong> · <span class="footer__voce">Codice fiscale 97905980013</span> · <span class="footer__voce"><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a></span> · <span class="footer__voce"><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a></span></p>
+    <p>© Piccola Casa della Divina Provvidenza — Cottolengo · <span class="footer__voce"><a href="#">Privacy Policy</a></span> · <span class="footer__voce"><a href="#">Cookie Policy</a></span> · <span class="footer__voce"><a href="index.html">Torna al sito</a></span></p>
   </div>
-  <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p></div>
 </footer>
 
 
-<script src="js/nav.js?v=108"></script>
-<script src="js/dona-pagina.js?v=108"></script>
+<script src="js/nav.js?v=109"></script>
+<script src="js/dona-pagina.js?v=109"></script>
 </body>
 </html>

@@ -3125,3 +3125,41 @@ fieldset { border: none; }
   .dona-passo__titolo { font-size: 1.3125rem; }
   .dona-modulo { padding: 1.25rem 1rem 1.5rem; border-radius: 8px; }
 }
+
+/* ==========================================================
+   Header e footer "chiusi" della pagina Dona (decisione 66)
+   Come i checkout di banche ed e-commerce: logo che riporta al sito,
+   "Pagamento sicuro" e "Torna al sito"; niente menu. Stesso azzurro e
+   stessa altezza dell'header del sito, così sembra la stessa casa.
+   ========================================================== */
+.header--checkout .header__inner { gap: 1.25rem; }
+.checkout-sicuro {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0 auto;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.checkout-torna {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
+  text-underline-offset: 0.2em;
+  padding: 0.5rem 0;
+}
+.checkout-torna:hover { text-decoration-color: #fff; }
+.checkout-torna:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.footer--checkout { padding-block: 1.5rem; }
+.footer__checkout { display: grid; gap: 0.35rem; text-align: center; font-size: 0.9375rem; line-height: 1.7; }
+.footer__checkout strong { font-weight: 700; }
+.footer__voce { white-space: nowrap; }   /* ogni voce resta intera quando la riga va a capo */
+@media (max-width: 45em) {
+  .footer--checkout { padding-bottom: 1.5rem; }   /* niente barra Dona fissa su questa pagina */
+}
+@media (max-width: 30em) {
+  .checkout-torna { display: none; }               /* su telefono si torna dal logo e dal footer */
+}
