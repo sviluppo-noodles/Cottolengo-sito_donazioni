@@ -68,7 +68,7 @@ def blocco(html, tag, pagina):
       - aria-current="page" sulla voce della pagina corrente;
       - nella home i link interni sono scritti "#dona" invece di "index.html#dona"
         e il logo porta a "#top" ("torna all'inizio");
-      - "Dona ora" (btn--header) porta al modulo della pagina, se la pagina ne ha uno.
+      - "Dona ora" (btn--header): dal 21/10/2026 porta sempre a dona.html (decisione 60).
     """
     m = re.search(rf'<{tag}\b[^>]*>.*?</{tag}>', html, re.S)
     if not m:

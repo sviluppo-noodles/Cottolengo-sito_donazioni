@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SITO DI PROVA: non deve comparire su Google (testi provvisori, segnaposti "00 €",
+       indirizzo non definitivo). TOGLIERE questa riga al lancio sul dominio definitivo. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dona ora | Sostieni le opere di carità – Cottolengo</title>
+  <meta name="description" content="Dona alla Piccola Casa della Divina Provvidenza – Cottolengo: una donazione singola o continuativa per le opere di carità, con ricevuta valida per le detrazioni fiscali.">
+  <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
+       MANCANO di proposito canonical, og:url e og:image: richiedono URL assoluti e il dominio
+       definitivo non è ancora confermato (vedi SPECIFICHE-TECNICHE.md, "SEO tecnico"). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Donazioni Cottolengo">
+  <meta property="og:title" content="Dona ora | Sostieni le opere di carità – Cottolengo">
+  <meta property="og:description" content="Dona alla Piccola Casa della Divina Provvidenza – Cottolengo: una donazione singola o continuativa per le opere di carità, con ricevuta valida per le detrazioni fiscali.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dona ora | Sostieni le opere di carità – Cottolengo">
+  <meta name="twitter:description" content="Dona alla Piccola Casa della Divina Provvidenza – Cottolengo: una donazione singola o continuativa per le opere di carità, con ricevuta valida per le detrazioni fiscali.">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png" sizes="150x133" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#0097D8">
+  <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=102">
+</head>
+<body class="page-dona">
+
+<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
+           segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
+           5×1000, Lasciti e Aziende hanno una voce propria e una pagina dedicata,
+           su richiesta del Cottolengo.
+           Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
+           di 6 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
+      <ul class="nav__list">
+        <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
+        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+            Progetti
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-chi-aiutiamo">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="cura.html"
+                       data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
+                <li><a class="nav__mega__voce" href="accoglienza.html"
+                       data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
+                <li><a class="nav__mega__voce" href="educazione.html"
+                       data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
+                <li><a class="nav__mega__voce" href="missioni-internazionali.html"
+                       data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
+            Come aiutarci
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-aiutarci">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="index.html#dona"
+                       data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
+                <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
+                       data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
+                <li><a class="nav__mega__voce" href="dona-in-memoria.html"
+                       data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
+                <li><a class="nav__mega__voce" href="crowdfunding.html"
+                       data-desc="Trasforma un compleanno, un traguardo o una sfida in una raccolta per gli ospiti della Piccola Casa.">Raccolte solidali</a></li>
+                <li><a class="nav__mega__voce" href="volontariato.html"
+                       data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
+        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
+        <li><a href="aziende.html" class="nav__link">Aziende</a></li>
+      </ul>
+    </nav>
+
+    <a href="dona.html" class="btn btn--header">
+      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
+      Dona ora
+    </a>
+    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ CURA ============
+     Area di "Chi aiutiamo": pagina con testo e modulo di donazione dedicato (causale = nome dell'area). Stessa struttura delle pagine di progetto.
+     TESTI E FOTO PROVVISORI, da validare con il Cottolengo. -->
+<main id="contenuto" class="dona-pagina">
+  <!-- ============ PAGINA DONAZIONE (decisione 60) ============
+       PROTOTIPO GRAFICO da passare a Myosotis (NP Solutions): pagina unica con
+       tre sezioni numerate, stessi campi e stesso ordine del modulo di
+       dona.cottolengo.org, nell'impaginazione del sito (pubblico anziano:
+       testo e campi grandi, nessun passaggio nascosto).
+       Il modulo NON invia dati: all'ultimo passaggio mostra solo un avviso. -->
+  <div class="container dona-pagina__inner">
+
+    <p class="dona-prototipo" role="note"><strong>Prototipo grafico.</strong> Questa pagina mostra come sarà il modulo di donazione: i dati inseriti non vengono inviati.</p>
+
+    <header class="dona-pagina__testa">
+      <h1>Sostieni le opere di carità del Cottolengo</h1>
+      <p>Donazione a <strong>Fondazione Cottolengo Solidale ETS</strong> · Codice fiscale 97905980013</p>
+    </header>
+
+
+    <div class="dona-pagina__griglia">
+
+      <form class="dona-modulo" id="dona-modulo" novalidate>
+        <div class="dona-errori" id="dona-errori" role="alert" hidden></div>
+
+
+        <!-- ===== Sezione 1: donazione ===== -->
+        <section class="dona-passo" id="passo-1" data-passo="1" aria-labelledby="passo-1-titolo">
+          <h2 class="dona-passo__titolo" id="passo-1-titolo"><span class="dona-passo__num" aria-hidden="true">1</span>La tua donazione</h2>
+
+          <div class="dona-campo">
+            <span class="dona-etichetta" id="destinazione-etichetta">Destinazione</span>
+            <p class="dona-fisso" aria-labelledby="destinazione-etichetta">Donazione libera · <strong>Per le Opere di Carità</strong></p>
+            <input type="hidden" name="causale" value="donazione-libera">
+          </div>
+
+          <fieldset class="dona-campo">
+            <legend class="dona-etichetta">Frequenza</legend>
+            <div class="dona-scelte dona-scelte--due">
+              <label class="dona-scelta"><input type="radio" name="ricorrenza" value="singola" checked><span>Una tantum</span></label>
+              <label class="dona-scelta"><input type="radio" name="ricorrenza" value="continuativa"><span>Continuativa</span></label>
+            </div>
+            <div class="dona-sottoscelta" id="periodicita" hidden>
+              <p class="dona-aiuto" id="periodicita-aiuto">Ogni quanto vuoi donare?</p>
+              <div class="dona-scelte dona-scelte--tre" role="radiogroup" aria-labelledby="periodicita-aiuto">
+                <label class="dona-scelta"><input type="radio" name="periodicita" value="mensile" checked><span>Mensile</span></label>
+                <label class="dona-scelta"><input type="radio" name="periodicita" value="trimestrale"><span>Trimestrale</span></label>
+                <label class="dona-scelta"><input type="radio" name="periodicita" value="annuale"><span>Annuale</span></label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="dona-campo">
+            <legend class="dona-etichetta">Importo</legend>
+            <div class="dona-scelte dona-scelte--tre">
+              <label class="dona-scelta dona-scelta--importo"><input type="radio" name="importo-proposto" value="50"><span>50&nbsp;€</span></label>
+              <label class="dona-scelta dona-scelta--importo"><input type="radio" name="importo-proposto" value="100" checked><span>100&nbsp;€</span></label>
+              <label class="dona-scelta dona-scelta--importo"><input type="radio" name="importo-proposto" value="200"><span>200&nbsp;€</span></label>
+            </div>
+            <div class="dona-campo dona-campo--interno">
+              <label class="dona-etichetta dona-etichetta--leggera" for="importo-libero">Oppure inserisci un altro importo</label>
+              <div class="dona-valuta">
+                <input class="dona-input" type="text" id="importo-libero" name="importo-libero" inputmode="numeric" autocomplete="off" placeholder="Es. 75" aria-describedby="importo-libero-errore">
+                <span class="dona-valuta__simbolo" aria-hidden="true">€</span>
+              </div>
+              <p class="dona-errore" id="importo-libero-errore" hidden>Inserisci un importo intero da 1 a 100.000&nbsp;€.</p>
+            </div>
+          </fieldset>
+
+          <!-- DA CONFERMARE con il Cottolengo: percentuale (30% per le persone fisiche,
+               art. 83 c. 1 D.Lgs. 117/2017) e testo. Su Myosotis il testo ha segnaposti
+               ##IMPORTO## ##PERCENTUALE## ##DETRAZIONE## ancora vuoti. -->
+          <div class="dona-fiscale" id="dona-fiscale">
+            <p class="dona-fiscale__riga">Dopo la detrazione fiscale del 30% la tua donazione ti costa <strong id="fiscale-costo">70&nbsp;€</strong>: recuperi <strong id="fiscale-recupero">30&nbsp;€</strong>.</p>
+            <p class="dona-fiscale__nota">Per ottenere la ricevuta inserisci indirizzo e codice fiscale qui sotto. Detrazione per le persone fisiche (art.&nbsp;83 D.Lgs.&nbsp;117/2017).</p>
+          </div>
+
+        </section>
+
+        <!-- ===== Sezione 2: dati del donatore ===== -->
+        <section class="dona-passo" id="passo-2" data-passo="2" aria-labelledby="passo-2-titolo">
+          <h2 class="dona-passo__titolo" id="passo-2-titolo"><span class="dona-passo__num" aria-hidden="true">2</span>I tuoi dati</h2>
+          <p class="dona-passo__intro">Servono per intestarti la ricevuta valida ai fini fiscali. Tutti i campi sono obbligatori, salvo dove indicato.</p>
+
+          <fieldset class="dona-campo">
+            <legend class="dona-etichetta">Doni come</legend>
+            <div class="dona-scelte dona-scelte--due">
+              <label class="dona-scelta"><input type="radio" name="tipo-donatore" value="individuo" checked><span>Privato</span></label>
+              <label class="dona-scelta"><input type="radio" name="tipo-donatore" value="organizzazione"><span>Azienda o ente</span></label>
+            </div>
+          </fieldset>
+
+          <div class="dona-gruppo" data-per="individuo">
+            <div class="dona-riga dona-riga--2">
+              <div class="dona-campo"><label class="dona-etichetta" for="nome">Nome</label><input class="dona-input" type="text" id="nome" name="nome" autocomplete="given-name" required></div>
+              <div class="dona-campo"><label class="dona-etichetta" for="cognome">Cognome</label><input class="dona-input" type="text" id="cognome" name="cognome" autocomplete="family-name" required></div>
+            </div>
+          </div>
+          <div class="dona-gruppo" data-per="organizzazione" hidden>
+            <div class="dona-campo"><label class="dona-etichetta" for="ragione-sociale">Ragione sociale</label><input class="dona-input" type="text" id="ragione-sociale" name="ragione-sociale" autocomplete="organization" required></div>
+          </div>
+
+          <div class="dona-campo"><label class="dona-etichetta" for="email">Email</label><p class="dona-aiuto" id="email-aiuto">Ti inviamo qui la conferma della donazione.</p><input class="dona-input" type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-aiuto"></div>
+
+          <div class="dona-gruppo" data-per="individuo">
+            <div class="dona-campo"><label class="dona-etichetta" for="codice-fiscale">Codice fiscale</label><p class="dona-aiuto" id="cf-aiuto">È necessario per la detrazione fiscale.</p><input class="dona-input dona-input--maiuscolo" type="text" id="codice-fiscale" name="codice-fiscale" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" required aria-describedby="cf-aiuto" data-formato="cf"></div>
+          </div>
+          <div class="dona-gruppo" data-per="organizzazione" hidden>
+            <div class="dona-campo"><label class="dona-etichetta" for="partita-iva">Partita IVA</label><input class="dona-input" type="text" id="partita-iva" name="partita-iva" inputmode="numeric" autocomplete="off" maxlength="11" required data-formato="piva"></div>
+          </div>
+
+          <div class="dona-riga dona-riga--indirizzo">
+            <div class="dona-campo"><label class="dona-etichetta" for="indirizzo">Indirizzo</label><input class="dona-input" type="text" id="indirizzo" name="indirizzo" autocomplete="address-line1" required></div>
+            <div class="dona-campo"><label class="dona-etichetta" for="civico">Civico</label><input class="dona-input" type="text" id="civico" name="civico" autocomplete="off" required></div>
+          </div>
+          <div class="dona-riga dona-riga--citta">
+            <div class="dona-campo"><label class="dona-etichetta" for="cap">CAP</label><input class="dona-input" type="text" id="cap" name="cap" inputmode="numeric" autocomplete="postal-code" maxlength="5" required data-formato="cap"></div>
+            <div class="dona-campo"><label class="dona-etichetta" for="comune">Comune</label><input class="dona-input" type="text" id="comune" name="comune" autocomplete="address-level2" required></div>
+            <div class="dona-campo"><label class="dona-etichetta" for="provincia">Provincia</label><input class="dona-input dona-input--maiuscolo" type="text" id="provincia" name="provincia" autocomplete="address-level1" maxlength="2" placeholder="TO" required></div>
+          </div>
+          <div class="dona-campo">
+            <label class="dona-etichetta" for="nazione">Nazione</label>
+            <div class="dona-select">
+              <select class="dona-input" id="nazione" name="nazione" autocomplete="country" required>
+                  <option value="IT" selected>Italia</option>
+                  <option disabled>──────────</option>
+                  <option value="AF">Afghanistan</option>
+                  <option value="AL">Albania</option>
+                  <option value="DZ">Algeria</option>
+                  <option value="AD">Andorra</option>
+                  <option value="AO">Angola</option>
+                  <option value="AI">Anguilla</option>
+                  <option value="AQ">Antartide</option>
+                  <option value="AG">Antigua e Barbuda</option>
+                  <option value="SA">Arabia Saudita</option>
+                  <option value="AR">Argentina</option>
+                  <option value="AM">Armenia</option>
+                  <option value="AW">Aruba</option>
+                  <option value="AU">Australia</option>
+                  <option value="AT">Austria</option>
+                  <option value="AZ">Azerbaigian</option>
+                  <option value="BS">Bahamas</option>
+                  <option value="BH">Bahrein</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="BB">Barbados</option>
+                  <option value="BE">Belgio</option>
+                  <option value="BZ">Belize</option>
+                  <option value="BJ">Benin</option>
+                  <option value="BM">Bermuda</option>
+                  <option value="BT">Bhutan</option>
+                  <option value="BY">Bielorussia</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BA">Bosnia ed Erzegovina</option>
+                  <option value="BW">Botswana</option>
+                  <option value="BR">Brasile</option>
+                  <option value="BN">Brunei</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="BF">Burkina Faso</option>
+                  <option value="BI">Burundi</option>
+                  <option value="KH">Cambogia</option>
+                  <option value="CM">Camerun</option>
+                  <option value="CA">Canada</option>
+                  <option value="CV">Capo Verde</option>
+                  <option value="BQ">Caraibi Olandesi</option>
+                  <option value="CZ">Cechia</option>
+                  <option value="EA">Ceuta e Melilla</option>
+                  <option value="TD">Ciad</option>
+                  <option value="CL">Cile</option>
+                  <option value="CN">Cina</option>
+                  <option value="CY">Cipro</option>
+                  <option value="VA">Città del Vaticano</option>
+                  <option value="CO">Colombia</option>
+                  <option value="KM">Comore</option>
+                  <option value="CD">Congo - Kinshasa</option>
+                  <option value="CG">Congo-Brazzaville</option>
+                  <option value="KP">Corea del Nord</option>
+                  <option value="KR">Corea del Sud</option>
+                  <option value="CI">Costa d’Avorio</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">Croazia</option>
+                  <option value="CU">Cuba</option>
+                  <option value="CW">Curaçao</option>
+                  <option value="DK">Danimarca</option>
+                  <option value="DG">Diego Garcia</option>
+                  <option value="DM">Dominica</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="EG">Egitto</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="AE">Emirati Arabi Uniti</option>
+                  <option value="ER">Eritrea</option>
+                  <option value="EE">Estonia</option>
+                  <option value="SZ">Eswatini</option>
+                  <option value="ET">Etiopia</option>
+                  <option value="FJ">Figi</option>
+                  <option value="PH">Filippine</option>
+                  <option value="FI">Finlandia</option>
+                  <option value="FR">Francia</option>
+                  <option value="GA">Gabon</option>
+                  <option value="GM">Gambia</option>
+                  <option value="GE">Georgia</option>
+                  <option value="GS">Georgia del Sud e Sandwich Australi</option>
+                  <option value="DE">Germania</option>
+                  <option value="GH">Ghana</option>
+                  <option value="JM">Giamaica</option>
+                  <option value="JP">Giappone</option>
+                  <option value="GI">Gibilterra</option>
+                  <option value="DJ">Gibuti</option>
+                  <option value="JO">Giordania</option>
+                  <option value="GR">Grecia</option>
+                  <option value="GD">Grenada</option>
+                  <option value="GL">Groenlandia</option>
+                  <option value="GP">Guadalupa</option>
+                  <option value="GU">Guam</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="GG">Guernsey</option>
+                  <option value="GN">Guinea</option>
+                  <option value="GQ">Guinea Equatoriale</option>
+                  <option value="GW">Guinea-Bissau</option>
+                  <option value="GY">Guyana</option>
+                  <option value="GF">Guyana Francese</option>
+                  <option value="HT">Haiti</option>
+                  <option value="HN">Honduras</option>
+                  <option value="IN">India</option>
+                  <option value="ID">Indonesia</option>
+                  <option value="IR">Iran</option>
+                  <option value="IQ">Iraq</option>
+                  <option value="IE">Irlanda</option>
+                  <option value="IS">Islanda</option>
+                  <option value="AC">Isola Ascensione</option>
+                  <option value="BV">Isola Bouvet</option>
+                  <option value="CX">Isola Christmas</option>
+                  <option value="CP">Isola di Clipperton</option>
+                  <option value="IM">Isola di Man</option>
+                  <option value="NF">Isola Norfolk</option>
+                  <option value="AX">Isole Åland</option>
+                  <option value="IC">Isole Canarie</option>
+                  <option value="KY">Isole Cayman</option>
+                  <option value="CC">Isole Cocos (Keeling)</option>
+                  <option value="CK">Isole Cook</option>
+                  <option value="FK">Isole Falkland</option>
+                  <option value="FO">Isole Fær Øer</option>
+                  <option value="HM">Isole Heard e McDonald</option>
+                  <option value="MP">Isole Marianne Settentrionali</option>
+                  <option value="MH">Isole Marshall</option>
+                  <option value="UM">Isole Minori Esterne degli Stati Uniti</option>
+                  <option value="PN">Isole Pitcairn</option>
+                  <option value="SB">Isole Salomone</option>
+                  <option value="TC">Isole Turks e Caicos</option>
+                  <option value="VI">Isole Vergini Americane</option>
+                  <option value="VG">Isole Vergini Britanniche</option>
+                  <option value="IL">Israele</option>
+                  <option value="JE">Jersey</option>
+                  <option value="KZ">Kazakistan</option>
+                  <option value="KE">Kenya</option>
+                  <option value="KG">Kirghizistan</option>
+                  <option value="KI">Kiribati</option>
+                  <option value="KW">Kuwait</option>
+                  <option value="LA">Laos</option>
+                  <option value="LS">Lesotho</option>
+                  <option value="LV">Lettonia</option>
+                  <option value="LB">Libano</option>
+                  <option value="LR">Liberia</option>
+                  <option value="LY">Libia</option>
+                  <option value="LI">Liechtenstein</option>
+                  <option value="LT">Lituania</option>
+                  <option value="LU">Lussemburgo</option>
+                  <option value="MK">Macedonia del Nord</option>
+                  <option value="MG">Madagascar</option>
+                  <option value="MW">Malawi</option>
+                  <option value="MY">Malaysia</option>
+                  <option value="MV">Maldive</option>
+                  <option value="ML">Mali</option>
+                  <option value="MT">Malta</option>
+                  <option value="MA">Marocco</option>
+                  <option value="MQ">Martinica</option>
+                  <option value="MR">Mauritania</option>
+                  <option value="MU">Mauritius</option>
+                  <option value="YT">Mayotte</option>
+                  <option value="MX">Messico</option>
+                  <option value="FM">Micronesia</option>
+                  <option value="MD">Moldavia</option>
+                  <option value="MC">Monaco</option>
+                  <option value="MN">Mongolia</option>
+                  <option value="ME">Montenegro</option>
+                  <option value="MS">Montserrat</option>
+                  <option value="MZ">Mozambico</option>
+                  <option value="MM">Myanmar (Birmania)</option>
+                  <option value="NA">Namibia</option>
+                  <option value="NR">Nauru</option>
+                  <option value="NP">Nepal</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NE">Niger</option>
+                  <option value="NG">Nigeria</option>
+                  <option value="NU">Niue</option>
+                  <option value="NO">Norvegia</option>
+                  <option value="NC">Nuova Caledonia</option>
+                  <option value="NZ">Nuova Zelanda</option>
+                  <option value="OM">Oman</option>
+                  <option value="NL">Paesi Bassi</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="PW">Palau</option>
+                  <option value="PA">Panama</option>
+                  <option value="PG">Papua Nuova Guinea</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Perù</option>
+                  <option value="PF">Polinesia Francese</option>
+                  <option value="PL">Polonia</option>
+                  <option value="PT">Portogallo</option>
+                  <option value="PR">Portorico</option>
+                  <option value="QA">Qatar</option>
+                  <option value="HK">RAS di Hong Kong</option>
+                  <option value="MO">RAS di Macao</option>
+                  <option value="GB">Regno Unito</option>
+                  <option value="CF">Repubblica Centrafricana</option>
+                  <option value="DO">Repubblica Dominicana</option>
+                  <option value="RE">Riunione</option>
+                  <option value="RO">Romania</option>
+                  <option value="RW">Ruanda</option>
+                  <option value="RU">Russia</option>
+                  <option value="EH">Sahara Occidentale</option>
+                  <option value="KN">Saint Kitts e Nevis</option>
+                  <option value="LC">Saint Lucia</option>
+                  <option value="MF">Saint Martin</option>
+                  <option value="VC">Saint Vincent e Grenadine</option>
+                  <option value="BL">Saint-Barthélemy</option>
+                  <option value="PM">Saint-Pierre e Miquelon</option>
+                  <option value="WS">Samoa</option>
+                  <option value="AS">Samoa Americane</option>
+                  <option value="SM">San Marino</option>
+                  <option value="SH">Sant’Elena</option>
+                  <option value="SN">Senegal</option>
+                  <option value="RS">Serbia</option>
+                  <option value="SC">Seychelles</option>
+                  <option value="SL">Sierra Leone</option>
+                  <option value="SG">Singapore</option>
+                  <option value="SX">Sint Maarten</option>
+                  <option value="SY">Siria</option>
+                  <option value="SK">Slovacchia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="SO">Somalia</option>
+                  <option value="ES">Spagna</option>
+                  <option value="LK">Sri Lanka</option>
+                  <option value="US">Stati Uniti</option>
+                  <option value="SS">Sud Sudan</option>
+                  <option value="ZA">Sudafrica</option>
+                  <option value="SD">Sudan</option>
+                  <option value="SR">Suriname</option>
+                  <option value="SJ">Svalbard e Jan Mayen</option>
+                  <option value="SE">Svezia</option>
+                  <option value="CH">Svizzera</option>
+                  <option value="ST">São Tomé e Príncipe</option>
+                  <option value="TJ">Tagikistan</option>
+                  <option value="TW">Taiwan</option>
+                  <option value="TZ">Tanzania</option>
+                  <option value="TF">Terre Australi Francesi</option>
+                  <option value="PS">Territori Palestinesi</option>
+                  <option value="IO">Territorio Britannico dell’Oceano Indiano</option>
+                  <option value="TH">Thailandia</option>
+                  <option value="TL">Timor Est</option>
+                  <option value="TG">Togo</option>
+                  <option value="TK">Tokelau</option>
+                  <option value="TO">Tonga</option>
+                  <option value="TT">Trinidad e Tobago</option>
+                  <option value="TA">Tristan da Cunha</option>
+                  <option value="TN">Tunisia</option>
+                  <option value="TR">Turchia</option>
+                  <option value="TM">Turkmenistan</option>
+                  <option value="TV">Tuvalu</option>
+                  <option value="UA">Ucraina</option>
+                  <option value="UG">Uganda</option>
+                  <option value="HU">Ungheria</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="UZ">Uzbekistan</option>
+                  <option value="VU">Vanuatu</option>
+                  <option value="VE">Venezuela</option>
+                  <option value="VN">Vietnam</option>
+                  <option value="WF">Wallis e Futuna</option>
+                  <option value="YE">Yemen</option>
+                  <option value="ZM">Zambia</option>
+                  <option value="ZW">Zimbabwe</option>
+              </select>
+            </div>
+          </div>
+          <div class="dona-campo"><label class="dona-etichetta" for="cellulare">Cellulare <span class="dona-facoltativo">(facoltativo)</span></label><input class="dona-input" type="tel" id="cellulare" name="cellulare" autocomplete="tel" inputmode="tel"></div>
+
+          <!-- Consensi: stessi due punti del modulo Myosotis. DA AGGIORNARE: il link all'informativa
+               deve puntare al PDF ufficiale (oggi è dentro la pagina dona.cottolengo.org). -->
+          <fieldset class="dona-campo dona-consensi">
+            <legend class="dona-etichetta">Privacy</legend>
+            <label class="dona-spunta"><input type="checkbox" name="privacy" id="privacy" required><span>Dichiaro di aver preso visione dell'<a href="https://dona.cottolengo.org/" target="_blank" rel="noopener">informativa privacy<span class="sr-only"> (si apre in una nuova scheda)</span></a> di Piccola Casa della Divina Provvidenza e Fondazione Cottolengo Solidale ETS.</span></label>
+          </fieldset>
+          <fieldset class="dona-campo">
+            <legend class="dona-etichetta dona-etichetta--testo">Vuoi ricevere aggiornamenti sulle attività del Cottolengo tramite newsletter, SMS, WhatsApp, altri strumenti digitali o posta?</legend>
+            <div class="dona-scelte dona-scelte--due dona-scelte--compatte">
+              <label class="dona-scelta"><input type="radio" name="comunicazioni" value="si" required><span>Sì</span></label>
+              <label class="dona-scelta"><input type="radio" name="comunicazioni" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+
+        </section>
+
+        <!-- ===== Sezione 3: pagamento ===== -->
+        <section class="dona-passo" id="passo-3" data-passo="3" aria-labelledby="passo-3-titolo">
+          <h2 class="dona-passo__titolo" id="passo-3-titolo"><span class="dona-passo__num" aria-hidden="true">3</span>Metodo di pagamento</h2>
+
+          <fieldset class="dona-campo">
+            <legend class="dona-etichetta">Come vuoi pagare?</legend>
+            <div class="dona-metodi">
+              <label class="dona-metodo"><input type="radio" name="metodo" value="carta" required><span class="dona-metodo__nome">Carta di credito</span></label>
+              <label class="dona-metodo"><input type="radio" name="metodo" value="paypal"><span class="dona-metodo__nome">PayPal</span></label>
+              <label class="dona-metodo"><input type="radio" name="metodo" value="satispay"><span class="dona-metodo__nome">Satispay</span></label>
+              <label class="dona-metodo"><input type="radio" name="metodo" value="bonifico"><span class="dona-metodo__nome">Bonifico bancario</span></label>
+              <label class="dona-metodo"><input type="radio" name="metodo" value="bollettino"><span class="dona-metodo__nome">Bollettino postale</span></label>
+            </div>
+          </fieldset>
+
+          <div class="dona-riepilogo-fine">
+            <h3>Riepilogo</h3>
+            <dl class="dona-dati">
+              <div><dt>Importo</dt><dd data-riepilogo="importo">100&nbsp;€</dd></div>
+              <div><dt>Frequenza</dt><dd data-riepilogo="frequenza">Una tantum</dd></div>
+              <div><dt>Destinazione</dt><dd>Opere di Carità</dd></div>
+              <div><dt>Intestatario</dt><dd data-riepilogo="intestatario">—</dd></div>
+            </dl>
+          </div>
+
+          <div class="dona-azioni dona-azioni--fine">
+            <button class="dona-btn dona-btn--primario dona-btn--conferma" type="submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg>
+              <span>Dona <span data-riepilogo="importo">100&nbsp;€</span></span>
+            </button>
+          </div>
+          <p class="dona-avviso-fine" id="dona-avviso-fine" role="status" hidden><strong>Prototipo:</strong> qui si aprirebbe il pagamento sicuro sulla piattaforma Myosotis. Nessun dato è stato inviato.</p>
+        </section>
+      </form>
+
+      <!-- ===== Riepilogo laterale (su telefono: in alto, sopra il modulo) ===== -->
+      <aside class="dona-lato" aria-label="Riepilogo della donazione">
+        <div class="dona-lato__scheda">
+          <p class="dona-lato__titolo">Riepilogo</p>
+          <p class="dona-lato__importo"><span data-riepilogo="importo">100&nbsp;€</span> <span class="dona-lato__frequenza" data-riepilogo="frequenza">Una tantum</span></p>
+          <p class="dona-lato__destinazione">Per le Opere di Carità</p>
+          <p class="dona-lato__costo" data-riepilogo="costo">Dopo la detrazione ti costa 70&nbsp;€</p>
+          <ul class="dona-garanzie">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg><span><strong>Pagamento protetto</strong> su connessione cifrata.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Ricevuta</strong> valida per le detrazioni fiscali.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><strong>Fondazione Cottolengo Solidale ETS</strong>, ente del Terzo Settore.</span></li>
+          </ul>
+        </div>
+        <div class="dona-lato__aiuto">
+          <p><strong>Hai bisogno di aiuto?</strong></p>
+          <p>Ufficio Raccolta Fondi<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+
+<footer class="footer" id="contatti">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
+    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14 — 10152 Torino<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
+    <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong>IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
+    <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
+  </div>
+  <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a></p></div>
+</footer>
+
+
+<script src="js/nav.js?v=102"></script>
+<script src="js/dona-pagina.js?v=102"></script>
+</body>
+</html>

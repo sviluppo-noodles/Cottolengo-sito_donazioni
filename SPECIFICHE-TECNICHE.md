@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=100` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=102` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
@@ -296,6 +296,33 @@ Verifica del 13/10/2026: altezza, margine e larghezza della cornice identici all
 ## Pulsanti di donazione verso Myosotis (dal 20/10/2026, decisione 56)
 
 Ogni riquadro di donazione è `div.dona-card.dona-link#dona` con testo (`.dona-link__testo`) e un solo link `a.dona-link__btn` (alto 64 px, testo 21 px), `target="_blank"` e `rel="noopener"`. Nessun modulo né importo sul nostro sito. L'attributo `data-modulo` indica quale modulo dedicato Myosotis va collegato. Indirizzo provvisorio: `https://dona.cottolengo.org/`. Dona in memoria: `/in-memoria/`. In WordPress i campi della pagina sono: titolo, testo, testo del pulsante e indirizzo del modulo.
+
+## Pagina Dona (dona.html, dal 21/10/2026, decisioni 60 e 61) — PROTOTIPO
+
+Pagina unica con tre sezioni numerate (`.dona-passo` e `.dona-passo__num`, cerchio blu notte da 34 px). Stile "da banca", con le classi `.dona-*` in fondo a `css/style.css`.
+
+**Colori.**
+
+- Fondo `#F4F7F9`.
+- Bordi `#C9D4DB` (sottile) e `#8FA3AE` (campi).
+- Errori `#B42318`.
+
+**Forme e misure.**
+
+- Raggio: 6 px per campi e pulsanti, 8–10 px per le schede.
+- Pubblico anziano, quindi misure grandi:
+  - etichette 17 px;
+  - campi alti 54 px, testo 18 px;
+  - scelte a pulsante 54 px, importi 60 px;
+  - metodi di pagamento 60 px;
+  - pulsante "Dona" 60 px, testo 19 px.
+- Riepilogo laterale largo 320 px, fisso mentre si scorre. Sotto gli 896 px va sopra il modulo, compatto.
+
+**Script `js/dona-pagina.js`.**
+
+- Gestisce il riepilogo, la detrazione (`PERC_DETRAZIONE = 0.30`, da confermare) e il passaggio da privato ad azienda.
+- Controlla i campi al pulsante "Dona" e mostra l'elenco degli errori in cima al modulo.
+- Il modulo non invia nulla.
 
 ## SEO tecnico
 

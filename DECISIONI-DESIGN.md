@@ -936,6 +936,112 @@ Erano già così Missioni internazionali (`/`) e Dona in memoria (`/in-memoria/`
 
 **Da chiedere al Cottolengo.** Servono le informazioni fiscali specifiche per le imprese, cioè la deducibilità secondo l'art. 83 del Codice del Terzo Settore, da scrivere vicino al pulsante. Va chiesto anche se le ricevute per le aziende si richiedono da Myosotis o all'ufficio.
 
+## 60. Pagina "Dona" (dona.html): prototipo del modulo Myosotis con stile "da banca" (21/10/2026)
+
+**Richiesta di Fulvio.** Rifare dentro il nostro sito la pagina di donazione di Myosotis (dona.cottolengo.org), impaginata come il sito. Il pulsante "Dona ora" dell'header deve portare a questa pagina. Lo stile deve essere serio e sicuro, "da banca", meno giocoso del resto del sito. La pagina servirà poi come modello da passare a Myosotis, anche in Figma.
+
+**Nessun dato inventato.** Passaggi, campi e testi sono quelli del modulo Myosotis attuale:
+
+- tipo di donazione: "Donazione libera, per le Opere di Carità";
+- ricorrenza: singola oppure continuativa (mensile, trimestrale, annuale);
+- importi: 50, 100 e 200 €, più un importo libero;
+- tipo di donatore: individuo oppure organizzazione;
+- dati richiesti, se individuo: nome, cognome, email, codice fiscale, indirizzo, civico, CAP, comune, provincia, nazione, cellulare;
+- dati richiesti, se organizzazione: ragione sociale e partita IVA, al posto di nome, cognome e codice fiscale;
+- due consensi: informativa privacy e comunicazioni;
+- metodi di pagamento: carta di credito, PayPal, Satispay, bonifico bancario, bollettino postale.
+
+**È un prototipo.** Il modulo non invia nessun dato. Un riquadro in alto lo dichiara e all'ultimo passaggio compare l'avviso "qui si aprirebbe il pagamento sicuro". Non ci sono campi per i dati della carta: quelli restano sulla pagina di pagamento della piattaforma.
+
+**Modelli copiati.**
+
+- **Checkout di Stripe e delle banche online:**
+  - fondo grigio chiarissimo, schede bianche con bordo sottile;
+  - angoli di 6–10 px, non a pillola;
+  - pulsanti rettangolari blu notte, con il lucchetto su "Dona";
+  - nessun cuore, badge o colore caldo.
+- **Moduli di donazione delle grandi ONG:**
+  - **tre passaggi numerati** (Donazione, I tuoi dati, Pagamento);
+  - riepilogo sempre visibile: a lato su computer, in alto su telefono;
+  - riquadro con il costo dopo la detrazione;
+  - contatti per chi ha bisogno di aiuto.
+- **Regole di Baymard Institute** per i moduli:
+  - una sola colonna di campi, salvo gruppi che vanno insieme (nome e cognome, indirizzo e civico, CAP, comune e provincia);
+  - etichette sopra il campo, sempre visibili;
+  - scelte a pulsanti invece delle tendine (frequenza, importo, tipo di donatore);
+  - errori chiari vicino al campo e un elenco in alto, con link a ogni campo da correggere;
+  - "(facoltativo)" scritto solo sul campo facoltativo.
+
+**Migliorie rispetto al modulo Myosotis attuale**, tutte senza aggiungere campi:
+
+- passaggi numerati invece di una pagina lunga;
+- importo e riepilogo sempre in vista;
+- maiuscole automatiche per codice fiscale e provincia;
+- tastiera numerica per CAP, partita IVA e importo;
+- `autocomplete`, così il browser compila i campi da solo;
+- controllo di codice fiscale (16 caratteri), partita IVA (11 cifre) e CAP italiano (5 cifre);
+- Italia come nazione predefinita, in cima all'elenco;
+- privacy con una casella da spuntare;
+- comunicazioni con Sì/No senza preselezione, come richiede il GDPR;
+- per le aziende non compare la detrazione IRPEF, che vale solo per le persone fisiche;
+- il tasto Invio in un campo porta al passaggio successivo invece di inviare.
+
+**Accessibilità.**
+
+- Il passaggio corrente è indicato con `aria-current="step"`; il focus va sul titolo del nuovo passaggio.
+- Errori con `aria-invalid` e messaggio collegato al campo.
+- Campi alti 50 px con testo a 17 px, così l'iPhone non ingrandisce la pagina.
+- Verifiche: axe, 0 violazioni; HTML valido; nessuno scorrimento orizzontale da 320 a 1440 px.
+
+**Da confermare.**
+
+- **Detrazione del 30%** (art. 83 c. 1 D.Lgs. 117/2017, persone fisiche) e il testo del riquadro: su Myosotis il testo ha segnaposti ancora vuoti.
+- **Link all'informativa privacy:** oggi rimanda a dona.cottolengo.org, va collegato al PDF ufficiale.
+- **Importo minimo:** oggi è 1 €.
+- **Importo preselezionato:** oggi è 100 €, quello centrale; su Myosotis nessun importo è preselezionato.
+
+**Tutti i pulsanti "Dona ora" dell'header** (17 pagine) portano ora a `dona.html`. I pulsanti nei riquadri delle singole pagine continuano invece a portare a Myosotis (decisione 56).
+
+## 61. Pagina Dona: una sola pagina, niente passaggi, testo più grande (21/10/2026)
+
+**Perché.** Fulvio ha fatto notare che il modulo Myosotis è una pagina unica e che i tre passaggi della decisione 60 li avevamo aggiunti noi. La parola d'ordine è **semplicità**: il pubblico è in gran parte anziano.
+
+**Cosa cambia rispetto alla decisione 60.**
+
+- **Pagina unica.** Tutto il modulo è visibile e si compila scorrendo. Non ci sono passaggi nascosti né pulsanti "Continua" e "Indietro": non c'è niente da ricordare né pagine in cui perdersi.
+- **Tre sezioni numerate** con un cerchio blu notte: 1 La tua donazione, 2 I tuoi dati, 3 Metodo di pagamento. L'ordine dà comunque la sensazione di un percorso guidato e sicuro.
+- **Un solo pulsante**, in fondo: "Dona 100 €", con il lucchetto. L'importo nel pulsante si aggiorna con la scelta.
+- **Controllo dei campi solo quando si preme "Dona".** In cima al modulo compare l'elenco degli errori; ogni voce porta al campo da correggere. Anche ogni campo sbagliato è segnato in rosso, con la spiegazione sotto. Il messaggio sparisce mentre si scrive la correzione, non quando si esce dal campo: così la pagina non si sposta mentre si clicca altrove.
+- **Il tasto Invio dentro un campo non fa partire la donazione:** si dona solo premendo il pulsante.
+- **Per Myosotis il cambio è solo grafico:** campi, ordine e funzionamento sono già quelli del loro modulo.
+
+**Più grande, per chi vede meno bene.**
+
+- Etichette: 17 px in grassetto.
+- Campi: alti 54 px, testo a 18 px.
+- Importi: pulsanti da 60 px, testo a 21 px.
+- Metodi di pagamento: righe da 60 px.
+- Casella della privacy: 26 px.
+- Pulsante "Dona": alto 60 px, testo a 19 px; su telefono è largo quanto lo schermo.
+- Testi di aiuto e note: almeno 15 px.
+
+**Resta come nella decisione 60.**
+
+- Lo stile "da banca".
+- Il riepilogo a lato su computer; su telefono va in alto.
+- Le migliorie ai campi e la detrazione da confermare.
+- È ancora un prototipo: il modulo non invia dati.
+
+**Verifiche.**
+
+- axe: 0 violazioni.
+- HTML valido.
+- Nessuno scorrimento orizzontale da 320 a 1920 px.
+- Prova completa a 1440 e 390 px:
+  - premendo "Dona" a modulo vuoto compaiono 12 errori, e il focus va sull'elenco;
+  - con il modulo compilato compare l'avviso finale;
+  - nessun errore JavaScript.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

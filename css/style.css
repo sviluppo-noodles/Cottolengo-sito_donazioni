@@ -2823,3 +2823,303 @@ fieldset { border: none; }
 @media (max-width: 45em) {
   .hero__btn { width: 100%; min-width: 0; }
 }
+
+/* ==========================================================
+   PAGINA DONA (dona.html) — decisione 60, PROTOTIPO per Myosotis
+   Stile "da banca", più sobrio del resto del sito: fondo grigio
+   chiarissimo, schede bianche con bordo sottile, angoli 6–10 px,
+   pulsanti rettangolari blu notte, niente cuori, badge o colori caldi.
+   Modello: i checkout di Stripe e delle banche online, e i moduli di
+   donazione delle grandi ONG (sezioni numerate + riepilogo a lato).
+   Decisione 61: pagina unica, niente passaggi nascosti; testo e campi
+   più grandi del solito perché il pubblico è in gran parte anziano.
+   Regole UX (Baymard): una colonna di campi, etichette sopra il campo,
+   scelte a pulsanti invece delle tendine, errori chiari e vicini al campo.
+   ========================================================== */
+.dona-pagina {
+  --d-bordo: #C9D4DB;
+  --d-bordo-forte: #8FA3AE;
+  --d-fondo: #F4F7F9;
+  --d-raggio: 8px;
+  --d-errore: #B42318;
+  background: var(--d-fondo);
+  padding-block: var(--s-7) var(--s-8);
+}
+.dona-pagina__inner { max-width: 1080px; }
+.dona-prototipo {
+  margin: 0 0 var(--s-6);
+  padding: 0.75rem 1rem;
+  border: 1px dashed var(--d-bordo-forte);
+  border-radius: var(--d-raggio);
+  background: #fff;
+  color: var(--grigio-testo);
+  font-size: 0.9375rem;
+}
+.dona-pagina__testa h1 {
+  color: var(--blu-notte);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.dona-pagina__testa { margin-bottom: var(--s-6); }
+.dona-pagina__testa p { margin-top: 0.5rem; color: var(--grigio-testo); font-size: 1.0625rem; }
+
+/* ----- griglia: modulo + riepilogo ----- */
+.dona-pagina__griglia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 2rem;
+  align-items: start;
+}
+.dona-modulo {
+  background: #fff;
+  border: 1px solid var(--d-bordo);
+  border-radius: 10px;
+  padding: 2rem 2.25rem 2.25rem;
+}
+.dona-passo + .dona-passo { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--d-bordo); }
+.dona-passo__titolo { display: flex; align-items: center; gap: 0.75rem; color: var(--blu-notte); font-size: 1.5rem; line-height: 1.25; margin-bottom: 1.5rem; }
+.dona-passo__num {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--blu-notte);
+  color: #fff;
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+}
+.dona-passo__intro { margin: -0.75rem 0 1.5rem; color: var(--grigio-testo); font-size: 1rem; }
+
+/* ----- campi ----- */
+.dona-campo { border: 0; margin: 0 0 1.35rem; padding: 0; min-width: 0; }
+.dona-campo--interno { margin: 1rem 0 0; }
+.dona-etichetta {
+  display: block;
+  margin-bottom: 0.45rem;
+  padding: 0;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.dona-etichetta--leggera { font-weight: 400; color: var(--grigio-testo); }
+.dona-etichetta--testo { font-weight: 400; font-size: 1rem; color: var(--ink); }
+.dona-facoltativo { font-weight: 400; color: var(--grigio-testo); }
+.dona-aiuto { margin: -0.15rem 0 0.45rem; color: var(--grigio-testo); font-size: 0.9375rem; line-height: 1.4; }
+.dona-input {
+  width: 100%;
+  height: 54px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--d-bordo-forte);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.125rem;           /* 18 px: leggibile e niente zoom automatico su iPhone */
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.dona-input:hover { border-color: var(--grigio-testo); }
+.dona-input:focus { outline: none; border-color: var(--blu-notte); box-shadow: 0 0 0 3px rgba(0, 59, 87, 0.18); }
+.dona-input[aria-invalid="true"] { border-color: var(--d-errore); box-shadow: 0 0 0 1px var(--d-errore); }
+.dona-input--maiuscolo { text-transform: uppercase; }
+.dona-input--maiuscolo::placeholder { text-transform: none; }
+.dona-input::placeholder { color: #7A8D97; }
+.dona-select { position: relative; }
+.dona-select select { appearance: none; padding-right: 2.5rem; cursor: pointer; }
+.dona-select::after {
+  content: "";
+  position: absolute; right: 1rem; top: 50%;
+  width: 8px; height: 8px;
+  border-right: 2px solid var(--blu-notte); border-bottom: 2px solid var(--blu-notte);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+.dona-valuta { position: relative; max-width: 220px; }
+.dona-valuta .dona-input { padding-right: 2.25rem; font-variant-numeric: tabular-nums; }
+.dona-valuta__simbolo { position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--grigio-testo); font-size: 1.0625rem; }
+.dona-fisso {
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  border-radius: 6px;
+  background: var(--d-fondo);
+  color: var(--ink);
+  font-size: 1rem;
+}
+.dona-riga { display: grid; gap: 0 1rem; }
+.dona-riga--2 { grid-template-columns: 1fr 1fr; }
+.dona-riga--indirizzo { grid-template-columns: minmax(0, 1fr) 120px; }
+.dona-riga--citta { grid-template-columns: 120px minmax(0, 1fr) 110px; }
+
+/* ----- scelte a pulsante (frequenza, importo, tipo donatore) ----- */
+.dona-scelte { display: grid; gap: 0.6rem; }
+.dona-scelte--due { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dona-scelte--tre { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.dona-scelte--compatte { max-width: 280px; }
+.dona-scelta { position: relative; display: block; cursor: pointer; }
+.dona-scelta input, .dona-metodo input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.dona-scelta span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--d-bordo-forte);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  text-align: center;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.dona-scelta--importo span { min-height: 60px; font-size: 1.3125rem; font-variant-numeric: tabular-nums; }
+.dona-scelta:hover span { border-color: var(--blu-notte); }
+.dona-scelta input:checked + span {
+  border-color: var(--blu-notte);
+  background: var(--blu-notte);
+  color: #fff;
+}
+.dona-scelta input:focus-visible + span,
+.dona-metodo input:focus-visible ~ .dona-metodo__nome { outline: 3px solid var(--azzurro); outline-offset: 2px; }
+.dona-sottoscelta { margin-top: 1rem; }
+.dona-sottoscelta .dona-scelta input:checked + span { background: #E6EEF2; color: var(--blu-notte); box-shadow: inset 0 0 0 1px var(--blu-notte); }
+
+/* ----- detrazione ----- */
+.dona-fiscale {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--blu-notte);
+  border-radius: 0 6px 6px 0;
+  background: var(--d-fondo);
+}
+.dona-fiscale__riga { color: var(--ink); font-size: 1.0625rem; line-height: 1.5; }
+.dona-fiscale__riga strong { font-variant-numeric: tabular-nums; }
+.dona-fiscale__nota { margin-top: 0.4rem; color: var(--grigio-testo); font-size: 0.9375rem; line-height: 1.45; }
+
+/* ----- spunta privacy ----- */
+.dona-spunta { display: flex; gap: 0.75rem; align-items: flex-start; cursor: pointer; font-size: 1.0625rem; line-height: 1.5; color: var(--ink); }
+.dona-spunta input { flex: none; width: 26px; height: 26px; margin: 0.1rem 0 0; accent-color: var(--blu-notte); cursor: pointer; }
+.dona-spunta a { color: var(--azzurro-scuro); text-decoration: underline; }
+
+/* ----- metodi di pagamento ----- */
+.dona-metodi { display: grid; border: 1px solid var(--d-bordo-forte); border-radius: 6px; overflow: hidden; }
+.dona-metodo { position: relative; display: block; cursor: pointer; }
+.dona-metodo + .dona-metodo { border-top: 1px solid var(--d-bordo); }
+.dona-metodo__nome {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 60px;
+  padding: 0.6rem 1rem;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
+  background: #fff;
+}
+.dona-metodo__nome::before {
+  content: "";
+  flex: none;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--d-bordo-forte);
+  background: #fff;
+}
+.dona-metodo:hover .dona-metodo__nome { background: var(--d-fondo); }
+.dona-metodo input:checked ~ .dona-metodo__nome { background: #E6EEF2; }
+.dona-metodo input:checked ~ .dona-metodo__nome::before { border: 7px solid var(--blu-notte); }
+
+/* ----- riepilogo finale ----- */
+.dona-riepilogo-fine { margin: 0.5rem 0 1.5rem; }
+.dona-riepilogo-fine h3 { font-size: 1.0625rem; color: var(--ink); margin-bottom: 0.5rem; }
+.dona-dati { margin: 0; border-top: 1px solid var(--d-bordo); }
+.dona-dati div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--d-bordo); font-size: 1.0625rem; }
+.dona-dati dt { color: var(--grigio-testo); }
+.dona-dati dd { margin: 0; color: var(--ink); font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ----- pulsanti: rettangolari, niente rimbalzi ----- */
+.dona-azioni { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.75rem; }
+.dona-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 60px;
+  padding: 0 2rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.dona-btn--primario { background: var(--blu-notte); color: #fff; min-width: 200px; }
+.dona-btn--primario:hover { background: #002A3F; }
+.dona-btn--secondario { background: #fff; color: var(--blu-notte); border-color: var(--d-bordo-forte); }
+.dona-btn--secondario:hover { border-color: var(--blu-notte); }
+.dona-btn:focus-visible { outline: 3px solid var(--azzurro); outline-offset: 2px; }
+.dona-btn--conferma { min-width: 280px; font-variant-numeric: tabular-nums; }
+
+/* ----- errori ----- */
+.dona-errori {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--d-errore);
+  border-left-width: 4px;
+  border-radius: 6px;
+  background: #FEF3F2;
+  color: var(--ink);
+  font-size: 1rem;
+}
+.dona-errori:focus { outline: none; }
+.dona-errori ul { margin: 0.4rem 0 0 1.1rem; padding: 0; }
+.dona-errori a { color: var(--d-errore); text-decoration: underline; }
+.dona-errore { margin: 0.4rem 0 0; color: var(--d-errore); font-size: 0.9375rem; font-weight: 700; }
+.dona-avviso-fine {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 6px;
+  background: #E6EEF2;
+  color: var(--blu-notte);
+  font-size: 0.9375rem;
+}
+
+/* ----- riepilogo laterale ----- */
+.dona-lato { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1rem; }
+.dona-lato__scheda { background: #fff; border: 1px solid var(--d-bordo); border-radius: 10px; padding: 1.5rem; }
+.dona-lato__titolo { color: var(--grigio-testo); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.dona-lato__importo { margin-top: 0.4rem; color: var(--blu-notte); font-size: 2.25rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.dona-lato__frequenza { display: block; margin-top: 0.3rem; font-size: 1rem; font-weight: 400; color: var(--ink); }
+.dona-lato__destinazione { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--d-bordo); color: var(--ink); font-size: 1rem; }
+.dona-lato__costo { margin-top: 0.25rem; color: var(--grigio-testo); font-size: 0.9375rem; }
+.dona-garanzie { list-style: none; margin: 1.25rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--d-bordo); display: grid; gap: 0.8rem; }
+.dona-garanzie li { display: flex; gap: 0.65rem; align-items: flex-start; color: var(--grigio-testo); font-size: 0.9375rem; line-height: 1.45; }
+.dona-garanzie svg { flex: none; margin-top: 1px; color: var(--blu-notte); }
+.dona-garanzie strong { color: var(--ink); }
+.dona-lato__aiuto { padding: 0 0.25rem; color: var(--grigio-testo); font-size: 0.9375rem; line-height: 1.55; }
+.dona-lato__aiuto strong { color: var(--ink); }
+.dona-lato__aiuto a { color: var(--azzurro-scuro); }
+
+@media (max-width: 56em) {
+  .dona-pagina { padding-top: var(--s-6); }
+  .dona-pagina__griglia { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  /* su telefono il riepilogo va in alto, compatto, e le garanzie in fondo */
+  .dona-lato { position: static; order: -1; }
+  .dona-lato__scheda { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 0 1rem; padding: 1rem 1.15rem; }
+  .dona-lato__titolo { grid-column: 1 / -1; }
+  .dona-lato__importo { font-size: 1.75rem; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+  .dona-lato__frequenza { display: inline; margin: 0; }
+  .dona-lato__destinazione, .dona-lato__costo { grid-column: 1 / -1; }
+  .dona-garanzie, .dona-lato__aiuto { display: none; }
+  .dona-modulo { padding: 1.5rem 1.25rem 1.75rem; }
+}
+@media (max-width: 36em) {
+  .dona-riga--2, .dona-riga--indirizzo { grid-template-columns: minmax(0, 1fr); }
+  .dona-riga--citta { grid-template-columns: 100px minmax(0, 1fr); }
+  .dona-riga--citta .dona-campo:last-child { grid-column: 1 / -1; max-width: 120px; }
+  .dona-btn { width: 100%; min-width: 0; }
+  .dona-passo__titolo { font-size: 1.3125rem; }
+  .dona-modulo { padding: 1.25rem 1rem 1.5rem; border-radius: 8px; }
+}
