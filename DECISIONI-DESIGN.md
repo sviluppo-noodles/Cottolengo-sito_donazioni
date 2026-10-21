@@ -1050,6 +1050,12 @@ Visto che porta a una pagina del sito, si apre **nella stessa scheda**. Ci si to
 
 I pulsanti dei riquadri delle pagine interne continuano a portare a Myosotis (decisione 56).
 
+## 63. Per le aziende: il riquadro sale sulla copertina come nelle altre pagine (21/10/2026)
+
+Su richiesta di Fulvio, il riquadro "Dona come azienda" torna a stare a cavallo tra copertina e testo, come in tutte le altre pagine. Si annulla la posizione "sotto la copertina" della decisione 59 (classe `.project-sidebar--sotto` tolta). La coerenza tra le pagine vale più dell'eccezione.
+
+**Effetto sulla foto.** Su computer il riquadro copre parte del gruppo a destra (la donna e l'infermiera). L'uomo in primo piano resta visibile. Con la foto attuale non si può spostare il gruppo: l'immagine è quasi tutta in larghezza e non c'è margine. Se serve, si può valutare una foto con le persone a sinistra.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

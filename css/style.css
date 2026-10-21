@@ -2025,9 +2025,6 @@ fieldset { border: none; }
    (angoli arrotondati, testata azzurra, importi e frequenza a pulsanti
    separati). Qui cambiano solo la posizione (fisso a lato mentre si scorre),
    l'ombra e il campo "altro importo" a tutta larghezza, perché la colonna è stretta. */
-/* Aziende (decisione 59): nella copertina le persone occupano tutta la metà
-   destra, quindi il riquadro parte sotto la foto invece di salirci sopra. */
-.project-sidebar--sotto { margin-top: var(--s-8); }
 .project-sidebar .project-donation {
   position: sticky;
   top: 98px;
