@@ -8,7 +8,6 @@
   const form = document.getElementById('dona-modulo');
   if (!form) return;
 
-  const PERC_DETRAZIONE = 0.30;          // DA CONFERMARE con il Cottolengo
   const MIN = 1, MAX = 100000;
   const libero = document.getElementById('importo-libero');
   const liberoErr = document.getElementById('importo-libero-errore');
@@ -43,21 +42,11 @@
     const testoImporto = n ? euro(n) : '—';
     document.querySelectorAll('[data-riepilogo="importo"]').forEach(e => { e.textContent = testoImporto; });
     document.querySelectorAll('[data-riepilogo="frequenza"]').forEach(e => { e.textContent = frequenzaTesto(); });
-    const recupero = n ? Math.round(n * PERC_DETRAZIONE * 100) / 100 : 0;
-    const costo = n ? Math.round((n - recupero) * 100) / 100 : 0;
-    document.getElementById('fiscale-costo').textContent = n ? euro(costo) : '—';
-    document.getElementById('fiscale-recupero').textContent = n ? euro(recupero) : '—';
-    document.querySelectorAll('[data-riepilogo="costo"]').forEach(e => {
-      e.textContent = n ? `Dopo la detrazione ti costa ${euro(costo)}` : '';
-    });
     const org = val('tipo-donatore') === 'organizzazione';
     const nome = org ? form.elements['ragione-sociale'].value.trim()
       : `${form.elements.nome.value.trim()} ${form.elements.cognome.value.trim()}`.trim();
     document.querySelectorAll('[data-riepilogo="intestatario"]').forEach(e => { e.textContent = nome || '—'; });
     periodicita.hidden = val('ricorrenza') !== 'continuativa';
-    // detrazione IRPEF: solo per le persone fisiche
-    document.getElementById('dona-fiscale').hidden = org;
-    document.querySelectorAll('.dona-lato__costo').forEach(e => { e.hidden = org || !n; });
   }
 
   /* importo libero e importi proposti si escludono a vicenda */

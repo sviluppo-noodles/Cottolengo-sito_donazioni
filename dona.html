@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#0097D8">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=104">
+  <link rel="stylesheet" href="css/style.css?v=105">
 </head>
 <body class="page-dona">
 
@@ -179,12 +179,9 @@
             </div>
           </fieldset>
 
-          <!-- DA CONFERMARE con il Cottolengo: percentuale (30% per le persone fisiche,
-               art. 83 c. 1 D.Lgs. 117/2017) e testo. Su Myosotis il testo ha segnaposti
-               ##IMPORTO## ##PERCENTUALE## ##DETRAZIONE## ancora vuoti. -->
+          <!-- Testo del Cottolengo (22/10/2026, decisione 64): niente calcolo della detrazione. -->
           <div class="dona-fiscale" id="dona-fiscale">
-            <p class="dona-fiscale__riga">Dopo la detrazione fiscale del 30% la tua donazione ti costa <strong id="fiscale-costo">70&nbsp;€</strong>: recuperi <strong id="fiscale-recupero">30&nbsp;€</strong>.</p>
-            <p class="dona-fiscale__nota">Per ottenere la ricevuta inserisci indirizzo e codice fiscale qui sotto. Detrazione per le persone fisiche (art.&nbsp;83 D.Lgs.&nbsp;117/2017).</p>
+            <p class="dona-fiscale__riga">Per ottenere la ricevuta di donazione inserisci indirizzo e codice fiscale qui sotto. La tua donazione può usufruire dei benefici fiscali ai sensi dell’art.&nbsp;83 D.Lgs.&nbsp;117/2017.</p>
           </div>
 
         </section>
@@ -192,7 +189,7 @@
         <!-- ===== Sezione 2: dati del donatore ===== -->
         <section class="dona-passo" id="passo-2" data-passo="2" aria-labelledby="passo-2-titolo">
           <h2 class="dona-passo__titolo" id="passo-2-titolo"><span class="dona-passo__num" aria-hidden="true">2</span>I tuoi dati</h2>
-          <p class="dona-passo__intro">Servono per intestarti la ricevuta valida ai fini fiscali. Tutti i campi sono obbligatori, salvo dove indicato.</p>
+          <p class="dona-passo__intro">Servono per intestarti la ricevuta di donazione. Tutti i campi sono obbligatori, salvo dove indicato.</p>
 
           <fieldset class="dona-campo">
             <legend class="dona-etichetta">Doni come</legend>
@@ -215,7 +212,7 @@
           <div class="dona-campo"><label class="dona-etichetta" for="email">Email</label><p class="dona-aiuto" id="email-aiuto">Ti inviamo qui la conferma della donazione.</p><input class="dona-input" type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-aiuto"></div>
 
           <div class="dona-gruppo" data-per="individuo">
-            <div class="dona-campo"><label class="dona-etichetta" for="codice-fiscale">Codice fiscale</label><p class="dona-aiuto" id="cf-aiuto">È necessario per la detrazione fiscale.</p><input class="dona-input dona-input--maiuscolo" type="text" id="codice-fiscale" name="codice-fiscale" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" required aria-describedby="cf-aiuto" data-formato="cf"></div>
+            <div class="dona-campo"><label class="dona-etichetta" for="codice-fiscale">Codice fiscale</label><p class="dona-aiuto" id="cf-aiuto">È necessario per la ricevuta di donazione.</p><input class="dona-input dona-input--maiuscolo" type="text" id="codice-fiscale" name="codice-fiscale" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" required aria-describedby="cf-aiuto" data-formato="cf"></div>
           </div>
           <div class="dona-gruppo" data-per="organizzazione" hidden>
             <div class="dona-campo"><label class="dona-etichetta" for="partita-iva">Partita IVA</label><input class="dona-input" type="text" id="partita-iva" name="partita-iva" inputmode="numeric" autocomplete="off" maxlength="11" required data-formato="piva"></div>
@@ -552,10 +549,9 @@
           <p class="dona-lato__titolo">Riepilogo</p>
           <p class="dona-lato__importo"><span data-riepilogo="importo">100&nbsp;€</span> <span class="dona-lato__frequenza" data-riepilogo="frequenza">Una tantum</span></p>
           <p class="dona-lato__destinazione">Per le Opere di Carità</p>
-          <p class="dona-lato__costo" data-riepilogo="costo">Dopo la detrazione ti costa 70&nbsp;€</p>
           <ul class="dona-garanzie">
             <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg><span><strong>Pagamento protetto</strong> su connessione cifrata.</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Ricevuta</strong> valida per le detrazioni fiscali.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Ricevuta di donazione</strong> per i benefici fiscali.</span></li>
             <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><strong>Fondazione Cottolengo Solidale ETS</strong>, ente del Terzo Settore.</span></li>
           </ul>
         </div>
@@ -580,7 +576,7 @@
 </footer>
 
 
-<script src="js/nav.js?v=104"></script>
-<script src="js/dona-pagina.js?v=104"></script>
+<script src="js/nav.js?v=105"></script>
+<script src="js/dona-pagina.js?v=105"></script>
 </body>
 </html>

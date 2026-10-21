@@ -1061,6 +1061,25 @@ Su richiesta di Fulvio, il riquadro "Dona come azienda" torna a stare a cavallo 
 
 **Riquadro più basso.** Sempre su richiesta di Fulvio, qui il riquadro sale meno sulla copertina: `margin-top: clamp(-230px, -16vw, -170px)`, contro `clamp(-390px, -31vw, -320px)` delle altre pagine (classe `.project-sidebar--bassa`). Così sta tutto sul paesaggio e le persone restano libere. Su tablet e telefono resta la regola comune.
 
+## 64. Pagina Dona: testi fiscali del Cottolengo, niente calcolo della detrazione (22/10/2026)
+
+Il Cottolengo ha chiesto queste modifiche prima di mandare la pagina a NP Solutions (Myosotis). Valgono per tutti i moduli di donazione.
+
+1. **Riepilogo:** tolta la riga "Dopo la detrazione ti costa 70 €".
+2. **La tua donazione:** tolto il calcolo "Dopo la detrazione fiscale del 30% la tua donazione ti costa 70 €: recuperi 30 €". Il riquadro ora dice solo: "Per ottenere la ricevuta di donazione inserisci indirizzo e codice fiscale qui sotto. La tua donazione può usufruire dei benefici fiscali ai sensi dell'art. 83 D.Lgs. 117/2017." Il riquadro è visibile sia ai privati sia alle aziende.
+3. **I tuoi dati:** "Servono per intestarti la ricevuta di donazione. Tutti i campi sono obbligatori, salvo dove indicato."
+
+**Per coerenza con queste modifiche**, cambiati anche due testi che parlavano di detrazione:
+
+- sotto il codice fiscale: "È necessario per la ricevuta di donazione";
+- nel riepilogo laterale: "Ricevuta di donazione per i benefici fiscali".
+
+**Codice.** In `js/dona-pagina.js` è stato tolto il calcolo della detrazione (`PERC_DETRAZIONE`). Il punto "detrazione del 30% da confermare" della decisione 60 non serve più.
+
+**Metodi di pagamento.** Silvia verifica che ci siano tutti.
+
+Gli altri riquadri del sito non contengono calcoli della detrazione. Dicono solo "possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs. 117/2017)", quindi non sono stati toccati.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

@@ -246,7 +246,7 @@ L'ordine delle voci è l'ordine delle slide. Con una sola voce attiva il carosel
 
 ## Versione dei file (cache del browser)
 
-Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=104` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
+Tutte le pagine caricano CSS e JS con **lo stesso numero di versione** (`?v=105` dal 14/10/2026). A ogni modifica di `css/style.css` o di un file in `js/` si aumenta il numero **in tutte le pagine insieme** (`tools/verifica-sito.py` segnala versioni diverse). In WordPress lo gestirà `wp_enqueue_style/script` con il numero di versione del tema.
 
 ## Pagina Chi siamo: documenti da scaricare
 
@@ -320,7 +320,7 @@ Pagina unica con tre sezioni numerate (`.dona-passo` e `.dona-passo__num`, cerch
 
 **Script `js/dona-pagina.js`.**
 
-- Gestisce il riepilogo, la detrazione (`PERC_DETRAZIONE = 0.30`, da confermare) e il passaggio da privato ad azienda.
+- Gestisce il riepilogo e il passaggio da privato ad azienda. Nessun calcolo della detrazione (decisione 64).
 - Controlla i campi al pulsante "Dona" e mostra l'elenco degli errori in cima al modulo.
 - Il modulo non invia nulla.
 
