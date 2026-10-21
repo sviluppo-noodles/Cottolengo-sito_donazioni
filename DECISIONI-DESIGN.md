@@ -1090,7 +1090,7 @@ Gli altri riquadri del sito non contengono calcoli della detrazione. Dicono solo
 
 **Modifiche, approvate da Fulvio.**
 
-- **Testo delle colonne a 16 px**, interlinea 1,7 (provata a 1,55, poi Fulvio ha chiesto più aria tra le righe). Sotto i 16 px non si scende, perché il pubblico è anziano.
+- **Testo delle colonne a 16 px**, interlinea 1,9 (provate 1,55 e 1,7, poi Fulvio ha chiesto ancora più aria tra le righe). Sotto i 16 px non si scende, perché il pubblico è anziano.
 - **Riga finale a 15 px**: copyright, Privacy Policy, Cookie Policy.
 - **Titoli delle colonne invariati a 19,2 px.** L'azzurro sul blu notte ha un contrasto di 4:1, valido solo per il testo grande (grassetto da 18,7 px in su). Rimpicciolirli li porterebbe sotto la soglia WCAG.
 - **IBAN su una riga sola** (`.footer__iban`, `white-space: nowrap`). La colonna "Dona con bonifico" è un po' più larga: colonne `1.1fr 1fr 1.3fr 1fr`.
