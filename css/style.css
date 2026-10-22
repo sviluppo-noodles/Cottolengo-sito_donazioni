@@ -1324,7 +1324,8 @@ fieldset { border: none; }
    non ci starebbero: diventano una fila che scorre (vedi media query). */
 .modi .section-head { margin-bottom: var(--s-6); }
 .modi .section-intro, .who .section-intro, .recapiti .section-intro { max-width: none; text-wrap: balance; }   /* una riga su desktop; su telefono va a capo bilanciato, mai con due parole sole */
-.section-intro .frase { display: inline-block; text-wrap: balance; }   /* se il testo va a capo, va a capo tra le due frasi (dopo i due punti) */
+.section-intro .frase { display: inline-block; text-wrap: balance; }
+.who .section-intro { max-width: 46rem; margin-inline: auto; }   /* testo del Cottolengo più lungo (decisione 67): righe da circa 75 caratteri */   /* se il testo va a capo, va a capo tra le due frasi (dopo i due punti) */
 .fila-schede {
   --colonne: 5;
   list-style: none;
@@ -2949,6 +2950,7 @@ fieldset { border: none; }
   color: var(--ink);
   font-size: 1rem;
 }
+.dona-fisso__nota { display: block; margin-top: 0.35rem; color: var(--grigio-testo); font-size: 1rem; line-height: 1.5; }   /* testo del Cottolengo (decisione 68) */
 .dona-riga { display: grid; gap: 0 1rem; }
 .dona-riga--2 { grid-template-columns: 1fr 1fr; }
 .dona-riga--indirizzo { grid-template-columns: minmax(0, 1fr) 120px; }

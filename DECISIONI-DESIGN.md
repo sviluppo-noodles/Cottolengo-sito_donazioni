@@ -1140,6 +1140,23 @@ Ogni voce resta intera quando la riga va a capo.
 - Nessuno scorrimento orizzontale da 320 px.
 - Il modulo funziona come prima.
 
+## 67. Home: nuovo testo sopra le quattro aree (22/10/2026)
+
+**Testo fornito dal Cottolengo.**
+
+- **Titolo:** "Scegli dove fare la differenza". Prima era "Chi aiuti con il tuo gesto".
+- **Testo:** "Il tuo aiuto può sostenere quattro grandi aree di intervento: Cura, Accoglienza, Educazione e Missioni internazionali. Scegli quella che ti sta più a cuore. Il Cottolengo destinerà la tua donazione ai progetti e alle necessità più urgenti all'interno dell'area scelta."
+
+Il testo chiarisce che la donazione va all'area scelta, il punto che la sezione Trasparenza della richiesta al cliente chiedeva di confermare.
+
+**Impaginazione.** Il testo è più lungo di prima, quindi le righe sono limitate a 46rem, cioè circa 75 caratteri; prima la riga era libera. Le due frasi lunghe vanno a capo in modo bilanciato: su computer il testo sta su quattro righe centrate.
+
+## 68. Pagina Dona: spiegazione della donazione libera (22/10/2026)
+
+Nella pagina Dona, sotto "Donazione libera · Per le Opere di Carità", c'è ora il testo richiesto da Fulvio: "Sostieni il Cottolengo e lascia che sia l'ente a destinare la tua donazione dove c'è più bisogno." Sta dentro lo stesso riquadro grigio, in grigio a 16 px.
+
+Spiega in modo semplice cosa vuol dire "donazione libera". È coerente con il testo della home sulle quattro aree (decisione 67): chi sceglie un'area dona per quella, chi fa la donazione libera lascia scegliere al Cottolengo.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
