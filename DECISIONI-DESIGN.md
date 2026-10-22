@@ -1151,11 +1151,22 @@ Il testo chiarisce che la donazione va all'area scelta, il punto che la sezione 
 
 **Impaginazione.** Il testo è più lungo di prima, quindi le righe sono limitate a 46rem, cioè circa 75 caratteri; prima la riga era libera. Le due frasi lunghe vanno a capo in modo bilanciato: su computer il testo sta su quattro righe centrate.
 
+**Ritocco chiesto da Fulvio.** L'interlinea passa da 1,65 a 1,45, perché per un testo di quattro righe a 21 px la spaziatura era troppo ampia. I nomi delle quattro aree sono in grassetto blu notte, così si leggono a colpo d'occhio e rimandano alle schede sotto.
+
 ## 68. Pagina Dona: spiegazione della donazione libera (22/10/2026)
 
 Nella pagina Dona, sotto "Donazione libera · Per le Opere di Carità", c'è ora il testo richiesto da Fulvio: "Sostieni il Cottolengo e lascia che sia l'ente a destinare la tua donazione dove c'è più bisogno." Sta dentro lo stesso riquadro grigio, in grigio a 16 px.
 
 Spiega in modo semplice cosa vuol dire "donazione libera". È coerente con il testo della home sulle quattro aree (decisione 67): chi sceglie un'area dona per quella, chi fa la donazione libera lascia scegliere al Cottolengo.
+
+## 69. Home: nuovo titolo e testo della sezione dei modi di aiutare (22/10/2026)
+
+**Testo fornito dal Cottolengo**, al posto di quello provvisorio:
+
+- **Titolo:** "Ci sono tanti modi per esserci". Prima era "Come fare del bene".
+- **Testo:** "Dal 5×1000 al volontariato, ogni forma di sostegno contribuisce a portare avanti la missione del Cottolengo."
+
+Le schede sotto non cambiano.
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 

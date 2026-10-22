@@ -1325,7 +1325,8 @@ fieldset { border: none; }
 .modi .section-head { margin-bottom: var(--s-6); }
 .modi .section-intro, .who .section-intro, .recapiti .section-intro { max-width: none; text-wrap: balance; }   /* una riga su desktop; su telefono va a capo bilanciato, mai con due parole sole */
 .section-intro .frase { display: inline-block; text-wrap: balance; }
-.who .section-intro { max-width: 46rem; margin-inline: auto; }   /* testo del Cottolengo più lungo (decisione 67): righe da circa 75 caratteri */   /* se il testo va a capo, va a capo tra le due frasi (dopo i due punti) */
+.who .section-intro { max-width: 46rem; margin-inline: auto; line-height: 1.45; }   /* testo del Cottolengo più lungo (decisione 67): righe da circa 75 caratteri, interlinea più compatta */
+.who .section-intro strong { color: var(--blu-notte); font-weight: 700; }   /* nomi delle quattro aree in evidenza */   /* se il testo va a capo, va a capo tra le due frasi (dopo i due punti) */
 .fila-schede {
   --colonne: 5;
   list-style: none;
