@@ -1231,6 +1231,21 @@ La copertina di Educazione era già la foto vera dei bambini seduti in cerchio n
 
 **File vecchi.** `cura-assistenza-anziani-cottolengo-960/1920` non sono più usati. Restano nella cartella finché non si decide di eliminarli.
 
+## 74. Home: foto vere anche nelle quattro schede delle aree (23/10/2026)
+
+Le schede della sezione "Scegli dove fare la differenza" usano ora le stesse foto vere delle copertine delle aree (decisioni 70–73), al posto delle immagini generate con l'AI. Una di queste, quella delle Missioni, aveva anche il marchio "Ps" di Photoshop visibile in un angolo.
+
+| Scheda | Foto | Ritaglio 4:3 |
+| --- | --- | --- |
+| Cura | suora con l'ospite in carrozzina | 1.365 × 1.024 dalla parte sinistra: suora e ospite |
+| Accoglienza | laboratorio di pittura | foto intera (è già 4:3) |
+| Educazione | cortile della Scuola Cottolengo | 1.255 × 941 centrato, con la scritta "Scuola Cottolengo" |
+| Missioni | bambini con le suore | foto intera |
+
+**File.** In `assets/img/chi-aiuti/` le versioni da 1.200 × 900 e 800 × 600 px, come prima.
+
+**File vecchi.** Le immagini AI non sono più usate. Restano nella cartella finché non si decide di eliminarle.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
