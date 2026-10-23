@@ -1168,6 +1168,52 @@ Spiega in modo semplice cosa vuol dire "donazione libera". È coerente con il te
 
 Le schede sotto non cambiano.
 
+## 70. Missioni internazionali: prima foto vera del Cottolengo in copertina (23/10/2026)
+
+**La foto.** Al posto dell'immagine provvisoria (932 px, troppo piccola) c'è una foto vera mandata da Fulvio: bambini di una missione del Cottolengo in Africa con tre suore, davanti alla scuola, che fanno il pollice in su. È la prima foto reale del sito e va nella direzione chiesta al Cottolengo: foto vere invece che generate con l'AI (vedi `claude/richieste-contenuti-cliente.md`).
+
+**File.**
+
+- `assets/img/pagine/missioni-cottolengo-bambini-suore-1482.jpg` e `.webp`;
+- `assets/img/pagine/missioni-cottolengo-bambini-suore-960.jpg` e `.webp`, per il telefono.
+
+**Inquadratura.** `50% 32%`: la foto è verticale rispetto alla copertina, quindi viene tagliata sopra e sotto, e così restano visibili i volti delle suore e dei bambini.
+
+**Limiti.**
+
+- L'originale è largo 1.482 px, meno dei 1.920 consigliati: sugli schermi molto grandi è leggermente meno nitida.
+- È una foto di gruppo che riempie tutta la larghezza, quindi il titolo e il riquadro "Dona per le missioni" coprono una parte dei bambini.
+
+Se il Cottolengo ha la stessa foto a risoluzione più alta, o una foto con più spazio libero ai lati, conviene sostituirla.
+
+**Consenso.** Vanno confermate le liberatorie per i minori ritratti.
+
+**File vecchi.** I file `missioni-internazionali-cottolengo-1600.jpg` e `-932.webp` non sono più usati. Restano nella cartella finché non si decide di eliminarli.
+
+## 71. Educazione: foto vera della Scuola Cottolengo, versione migliore (23/10/2026)
+
+La copertina di Educazione era già la foto vera dei bambini seduti in cerchio nel cortile della Scuola Cottolengo. Fulvio ne ha mandato una versione migliore: più grande (1.672 × 941 px invece di 1.600 × 898) e con colori più puliti e vivaci.
+
+**File nuovi.** `assets/img/pagine/educazione-scuola-cottolengo-1672.jpg/.webp` e `-960.jpg/.webp`, per il telefono.
+
+**File vecchi.** `educazione-cottolengo-1600/960` non sono più usati. Restano nella cartella finché non si decide di eliminarli.
+
+**Da sapere.** La foto è del periodo Covid: diversi bambini portano la mascherina. Conviene chiedere al Cottolengo se ne ha una più recente. Vanno confermate anche le liberatorie per i minori.
+
+## 72. Accoglienza: foto vera del laboratorio di pittura (23/10/2026)
+
+**La foto.** Al posto dell'immagine generata con l'AI c'è una foto vera mandata da Fulvio: una suora del Cottolengo aiuta un'ospite anziana a dipingere, durante un laboratorio all'aperto. Racconta bene l'accoglienza: cura, vicinanza e attività insieme.
+
+**File.** `assets/img/pagine/accoglienza-laboratorio-cottolengo-1448.jpg/.webp` e `-960.jpg/.webp`, per il telefono. Dimensioni originali: 1.448 × 1.086 px.
+
+**Inquadratura.** `50% 33%`, per tenere in vista i volti dell'ospite e della suora. Si è provata anche la foto specchiata, ma la versione originale funziona meglio: su computer l'ospite resta a sinistra del riquadro di donazione, la suora a cavallo.
+
+**Limiti.** Come per Missioni, la foto è meno larga dei 1.920 px consigliati, ed è in formato 4:3, quindi viene tagliata sopra e sotto.
+
+**Consenso.** Vanno confermate le liberatorie delle persone ritratte.
+
+**File vecchi.** `accoglienza-cottolengo-1600/960` non sono più usati. Restano nella cartella finché non si decide di eliminarli.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
