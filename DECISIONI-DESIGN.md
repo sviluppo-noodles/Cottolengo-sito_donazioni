@@ -1214,6 +1214,23 @@ La copertina di Educazione era già la foto vera dei bambini seduti in cerchio n
 
 **File vecchi.** `accoglienza-cottolengo-1600/960` non sono più usati. Restano nella cartella finché non si decide di eliminarli.
 
+## 73. Cura: foto vera della suora con gli ospiti (23/10/2026)
+
+**La foto.** Al posto dell'immagine generata con l'AI (le mani dell'operatrice e dell'anziana) c'è una foto vera mandata da Fulvio: una suora del Cottolengo sorride a un ospite in carrozzina durante un laboratorio, con altri ospiti al tavolo. Mostra la cura come presenza e relazione, coerente con il testo "non solo terapie, ma presenza, ascolto e dignità".
+
+**File.** `assets/img/pagine/cura-suora-ospiti-cottolengo-1536.jpg/.webp` e `-960.jpg/.webp`, per il telefono. Dimensioni originali: 1.536 × 1.024 px.
+
+**Inquadratura e riquadro.**
+
+- Inquadratura `50% 60%`, cioè più in basso del solito, per far salire il volto dell’ospite sopra il riquadro di donazione su computer (1440 px). Sugli schermi molto larghi una parte del volto resta sotto il riquadro: è il compromesso con una foto di gruppo in formato 3:2.
+- La foto **non è specchiata**: la suora resta a sinistra e l'ospite al centro.
+- Il riquadro "Dona per la cura" sale meno sulla foto (`.project-sidebar--bassa`, come nella pagina Aziende), così su computer si vede il volto dell'ospite in carrozzina.
+- Sono state provate quattro varianti: originale o specchiata, riquadro normale o basso. Questa è quella che copre meno le persone.
+
+**Consenso.** Vanno confermate le liberatorie delle persone ritratte.
+
+**File vecchi.** `cura-assistenza-anziani-cottolengo-960/1920` non sono più usati. Restano nella cartella finché non si decide di eliminarli.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
