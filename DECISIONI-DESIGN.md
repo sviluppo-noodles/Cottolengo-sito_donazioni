@@ -1305,6 +1305,18 @@ Preso dai moduli di donazione su Stripe (esempio analizzato: Blender Foundation)
 - Nella pagina Dona la casella dice «informativa privacy di Piccola Casa della Divina Provvidenza e Fondazione Cottolengo Solidale ETS», mentre l'informativa elenca **tre titolari** (anche Fondazione Cottolengo ONLUS): da allineare.
 - L'informativa donatori non parla delle comunicazioni facoltative (newsletter, SMS, WhatsApp, posta) chieste nel modulo: da verificare con l'ufficio privacy.
 
+## 79. Raccolte solidali: testo della fascia in home riscritto (26/10/2026)
+
+Rivisto alla luce della sintesi Nielsen Norman Group e di Donare 3.0. Grafica invariata (decisione 20), cambia solo il testo.
+
+- **Titolo:** «Crea una raccolta solidale» → **«Festeggia facendo del bene»**: dice subito cosa ci guadagna chi la apre.
+- **Testo:** «Un compleanno, un anniversario, una corsa: apri la tua pagina di **raccolta fondi** e chiedi ad amici e parenti di donare **al posto dei regali**. Le donazioni vanno **direttamente al Cottolengo**.»
+  - Esempi concreti per il nostro pubblico (anniversari, compleanni) e per quello in crescita (sport, Donare 3.0).
+  - «Raccolta fondi» in italiano: la capiscono tutti. Niente «crowdfunding» o «fundraising» nei testi visibili, sono parole che il pubblico anziano spesso non conosce.
+  - Dove vanno i soldi: è la domanda che frena di più (Nielsen), sia chi organizza sia chi dona.
+- **Pulsante:** «Crea la tua raccolta» → **«Scopri come funziona»**: porta alla pagina che spiega, quindi deve dirlo (azioni prevedibili). Tornerà «Crea la tua raccolta» quando Myosotis attiverà le raccolte e il pulsante aprirà davvero la creazione.
+- **Allineati:** sottotitolo della pagina Raccolte solidali, paragrafo «Cos'è una raccolta solidale» (ora dice «raccolta fondi personale» e che i soldi non vanno a chi organizza), titolo e descrizione per Google e condivisioni, descrizione della voce nel menu.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
