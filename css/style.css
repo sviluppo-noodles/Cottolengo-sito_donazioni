@@ -3306,3 +3306,11 @@ fieldset { border: none; }
   .tabella-cookie td:nth-child(2) { width: 45%; }
   .tabella-cookie td:nth-child(n+3) { white-space: nowrap; }
 }
+
+/* ==========================================================
+   Decisione 82: galleria di foto vere con didascalia (pagina Dona un kit di vestiti)
+   ========================================================== */
+.galleria-foto { list-style: none; margin: var(--s-6) 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+.galleria-foto figure { margin: 0; }
+.galleria-foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+.galleria-foto figcaption { margin-top: 0.5rem; color: var(--grigio-testo); font-size: 0.9375rem; line-height: 1.4; }

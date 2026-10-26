@@ -1330,6 +1330,28 @@ La pagina segue lo schema delle linee guida (sintesi Nielsen Norman Group, requi
 
 **Non inventato, da chiedere a Cottolengo e Myosotis:** se aprire una raccolta costa qualcosa; se chi dona su una raccolta riceve la ricevuta per le detrazioni; importo minimo; se si può scegliere un'area (Cura, Accoglienza…); quanto dura una raccolta; esempi veri di raccolte passate da raccontare (con consenso). Quando arrivano le risposte si può aggiungere una sezione «Domande frequenti».
 
+## 81. Raccolte solidali in home: le feste e lo sport insieme (26/10/2026)
+
+Aggiorna la decisione 79. Donare 3.0 indica gli eventi sportivi come il canale delle raccolte personali che cresce di più, quindi lo sport va detto anche in home. Va detto però in modo coerente: con «Festeggia» e «al posto dei regali» una corsa non c'entrava.
+
+- **Titolo:** «Festeggia facendo del bene» → **«Una festa o una sfida che fa del bene»**: comprende entrambe le occasioni.
+- **Testo:** «Un compleanno, un anniversario, una corsa o una camminata: apri la tua pagina di raccolta fondi e chiedi ad amici e parenti di donare, **al posto dei regali o per sostenere la tua impresa**. Le donazioni vanno direttamente al Cottolengo.» Ogni occasione ha il suo motivo per donare. Corsa e camminata sono sfide alla portata di tutti, anche dei più anziani.
+- Allineati: sottotitolo della pagina Raccolte solidali, descrizione per Google e condivisioni, descrizione della voce nel menu («Una festa o una sfida sportiva: apri la tua raccolta fondi per il Cottolengo.»).
+
+## 82. Nuova pagina «Vestiti e una doccia calda» in «Come aiutarci» (26/10/2026)
+
+Ripresa della pagina «Dona un indumento» del vecchio sito donazioni (donazioni.cottolengo.org, 11/05/2020, campagna Covid-19): testi, numeri, importi e foto vere vengono da lì. File: `dona-un-indumento.html` (stesso nome della vecchia pagina, utile anche per Google).
+
+- **Perché:** mostra in modo concreto una delle cose che il Cottolengo fa ogni giorno. È ciò che chiedono le linee guida: bisogno chiaro, risposta operativa, numeri, foto vere, un'idea del valore del dono. Per il nostro pubblico, che dona «per un bisogno» (Donare 3.0), è molto forte.
+- **Destinazione (indicazione di Fulvio):** le donazioni vanno alle **donazioni generali** del Cottolengo, non a un fondo solo per i vestiti. La pagina lo dice chiaramente in una sezione propria («Dove va la tua donazione – Aiuti tutto il Cottolengo») e nel riquadro Dona; gli importi sono presentati come equivalenza («Per darti un'idea, 25 € valgono un kit»). Pulsante «Dona ora» verso l'indirizzo generico dona.cottolengo.org, con `data-modulo="dona-un-indumento"` per sapere da dove arriva il dono.
+- **Nome:** «Vestiti e una doccia calda» (menu: «Vestiti e docce») invece di «Dona un indumento» o «Dona un kit»: non si portano vestiti e il dono non compra solo kit (azioni prevedibili, fondo ≠ progetto).
+- **Struttura** (come le pagine delle aree): il bisogno; cosa facciamo (240 adulti e 3.000 prestazioni al mese, 130 bambini e 1.560 kit); tre foto con didascalia; cosa c'è in un kit; 25 / 100 / 250 € in kit; dove va la donazione; tre passaggi per donare; «Vuoi portare dei vestiti? Scrivi prima a…» (così chi vuole portare abiti sa cosa fare, senza promettere nulla).
+- **Foto:** le sei foto del vecchio sito, scattate dal telefono nel 2020 (guardaroba, operatori con mascherina, di spalle). Copertina 1600 e 960 px (16:10), tre foto in galleria 800 × 600 (4:3), JPG e WebP, metadati tolti. Non usata l'immagine di condivisione del vecchio sito: è una foto di repertorio (uomo anziano in bianco e nero), contraria alle linee guida.
+- **Menu «Come aiutarci»:** nuova voce «Vestiti e docce» dopo «Dona in memoria», in tutte le pagine.
+- Nuova regola CSS `.galleria-foto` (griglia di foto con didascalia). CSS v=116.
+
+**Da confermare con il Cottolengo:** se il servizio è ancora attivo, dove si trova e chi lo gestisce; numeri di oggi (persone, kit, prestazioni); se 25 € per kit è ancora giusto; se accettano vestiti portati di persona; consenso per le foto. Fino ad allora la pagina dice «Numeri e importi della campagna del 2020, da aggiornare».
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SITO DI PROVA: non deve comparire su Google (testi provvisori, segnaposti "00 €",
+       indirizzo non definitivo). TOGLIERE questa riga al lancio sul dominio definitivo. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Vestiti e una doccia calda | Come aiuta il Cottolengo</title>
+  <meta name="description" content="Vestiti, intimo e una doccia calda: ogni mese il Cottolengo aiuta così 240 adulti e 130 bambini. Per darti un'idea, 25 € valgono un kit.">
+  <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
+       MANCANO di proposito canonical, og:url e og:image: richiedono URL assoluti e il dominio
+       definitivo non è ancora confermato (vedi SPECIFICHE-TECNICHE.md, "SEO tecnico"). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Donazioni Cottolengo">
+  <meta property="og:title" content="Vestiti e una doccia calda | Come aiuta il Cottolengo">
+  <meta property="og:description" content="Vestiti, intimo e una doccia calda: ogni mese il Cottolengo aiuta così 240 adulti e 130 bambini. Per darti un'idea, 25 € valgono un kit.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vestiti e una doccia calda | Come aiuta il Cottolengo">
+  <meta name="twitter:description" content="Vestiti, intimo e una doccia calda: ogni mese il Cottolengo aiuta così 240 adulti e 130 bambini. Per darti un'idea, 25 € valgono un kit.">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png" sizes="150x133" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#0097D8">
+  <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=116">
+</head>
+<body class="page-project-detail">
+
+<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
+           segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
+           5×1000, Lasciti e Aziende hanno una voce propria e una pagina dedicata,
+           su richiesta del Cottolengo.
+           Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
+           di 6 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
+      <ul class="nav__list">
+        <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
+        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+            Progetti
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-chi-aiutiamo">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="cura.html"
+                       data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
+                <li><a class="nav__mega__voce" href="accoglienza.html"
+                       data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
+                <li><a class="nav__mega__voce" href="educazione.html"
+                       data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
+                <li><a class="nav__mega__voce" href="missioni-internazionali.html"
+                       data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
+            Come aiutarci
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-aiutarci">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="dona.html"
+                       data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
+                <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
+                       data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
+                <li><a class="nav__mega__voce" href="dona-in-memoria.html"
+                       data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
+                <li><a class="nav__mega__voce" href="dona-un-indumento.html" aria-current="page"
+                       data-desc="Vestiti e una doccia calda per chi è in difficoltà: per darti un'idea, 25 € valgono un kit.">Vestiti e docce</a></li>
+                <li><a class="nav__mega__voce" href="crowdfunding.html"
+                       data-desc="Una festa o una sfida sportiva: apri la tua raccolta fondi per il Cottolengo.">Raccolte solidali</a></li>
+                <li><a class="nav__mega__voce" href="volontariato.html"
+                       data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
+        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
+        <li><a href="aziende.html" class="nav__link">Aziende</a></li>
+      </ul>
+    </nav>
+
+    <a href="dona.html" class="btn btn--header">
+      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
+      Dona ora
+    </a>
+    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ CURA ============
+     Area di "Chi aiutiamo": pagina con testo e modulo di donazione dedicato (causale = nome dell'area). Stessa struttura delle pagine di progetto.
+     TESTI E FOTO PROVVISORI, da validare con il Cottolengo. -->
+<!-- ============ DONA UN KIT DI VESTITI ============
+     Decisione 82. Ripresa della pagina «Dona un indumento» del vecchio sito donazioni
+     (donazioni.cottolengo.org, 11/05/2020, campagna emergenza Covid-19): testi, numeri, importi e foto
+     vengono da lì. NOME: «Vestiti e una doccia calda» (menu: «Vestiti e docce») invece di «Dona un
+     indumento»: non si portano vestiti e il dono non compra solo kit (azioni prevedibili, fondo ≠ progetto).
+     DESTINAZIONE (Fulvio, 26/10/2026): le donazioni di questa pagina vanno alle donazioni generali del
+     Cottolengo, non a un fondo solo per i vestiti. La pagina serve a mostrare in modo concreto una delle
+     cose che il Cottolengo fa; i 25 € = 1 kit sono un'equivalenza per capire il valore del dono
+     (linee guida: fondo ≠ progetto, va detto chiaramente).
+     DA CONFERMARE con il Cottolengo: se il servizio è ancora attivo e dove si trova; numeri di oggi;
+     25 € per kit; se accettano anche vestiti portati di persona.
+     Le persone nelle foto sono volontari/operatori ripresi di spalle o con la mascherina (foto del 2020). -->
+<main id="contenuto">
+  <section class="project-cover" aria-labelledby="project-title">
+    <picture><source type="image/webp" srcset="assets/img/pagine/dona-un-indumento-cottolengo-960.webp 960w, assets/img/pagine/dona-un-indumento-cottolengo-1600.webp 1600w" sizes="100vw"><img class="project-cover__image" src="assets/img/pagine/dona-un-indumento-cottolengo-1600.jpg" srcset="assets/img/pagine/dona-un-indumento-cottolengo-960.jpg 960w, assets/img/pagine/dona-un-indumento-cottolengo-1600.jpg 1600w" sizes="100vw" width="1600" height="1000" alt="Un volontario sistema maglioni e vestiti sugli scaffali del guardaroba del Cottolengo"></picture>
+    <div class="project-cover__shade" aria-hidden="true"></div>
+    <div class="container project-cover__inner">
+      <div class="project-cover__title">
+        <h1 id="project-title">Vestiti e una doccia calda</h1>
+        <p>Vestiti, intimo e una doccia calda per chi è in difficoltà. Con il tuo dono il Cottolengo aiuta anche così.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-page" aria-label="Presentazione">
+    <div class="container project-page__grid">
+      <article class="project-copy">
+        <div class="project-article-content">
+          <p class="chi-occhiello">Il bisogno</p>
+          <h2 id="bisogno">Vestirsi con dignità</h2>
+          <p>Al Cottolengo arrivano uomini italiani e stranieri, tra i 25 e i 65 anni, che non hanno vestiti adatti né un posto dove lavarsi. Hanno bisogno di <strong>indumenti intimi, scarpe, abiti caldi per l'inverno</strong>, di una doccia e della possibilità di radersi.</p>
+
+          <p class="chi-occhiello">Cosa facciamo</p>
+          <h2 id="cosa-facciamo">Vestiti e una doccia calda</h2>
+          <p>Ogni mese <strong>240 adulti</strong> ricevono abiti e possono fare una doccia calda: in tutto <strong>3.000 prestazioni</strong>.</p>
+          <p>Per i più piccoli, <strong>130 bambini</strong> ricevono ogni mese <strong>1.560 kit</strong> con abiti, scarpe, giocattoli e materiale per la scuola.</p>
+          <p>Il servizio funziona anche grazie ai volontari.</p>
+        </div>
+        <ul class="galleria-foto">
+          <li><figure><picture><source type="image/webp" srcset="assets/img/pagine/dona-un-indumento-guardaroba-800.webp"><img src="assets/img/pagine/dona-un-indumento-guardaroba-800.jpg" width="800" height="600" loading="lazy" alt="Un'operatrice piega e prepara i vestiti da consegnare"></picture><figcaption>Si preparano i vestiti da consegnare.</figcaption></figure></li>
+          <li><figure><picture><source type="image/webp" srcset="assets/img/pagine/dona-un-indumento-bambini-800.webp"><img src="assets/img/pagine/dona-un-indumento-bambini-800.jpg" width="800" height="600" loading="lazy" alt="Un armadio con magliette e vestiti per bambini, piegati per taglia"></picture><figcaption>Abiti per i bambini.</figcaption></figure></li>
+          <li><figure><picture><source type="image/webp" srcset="assets/img/pagine/dona-un-indumento-scarpe-800.webp"><img src="assets/img/pagine/dona-un-indumento-scarpe-800.jpg" width="800" height="600" loading="lazy" alt="Una scatola piena di scarpe e sandali per bambini"></picture><figcaption>Scarpe per i più piccoli.</figcaption></figure></li>
+        </ul>
+        <div class="project-article-content">
+          <p class="chi-occhiello">Il tuo dono</p>
+          <h2 id="kit">Cosa c'è in un kit</h2>
+          <ul>
+            <li><strong>abbigliamento invernale</strong>;</li>
+            <li><strong>indumenti intimi</strong>;</li>
+            <li><strong>una doccia</strong>, con shampoo e lamette in confezioni monouso.</li>
+          </ul>
+        </div>
+        <ul class="impatti">
+          <li class="impatti__voce"><span class="impatti__cifra">25&nbsp;€</span><span class="impatti__testo">valgono 1 kit: vestiti, intimo e una doccia calda per una persona</span></li>
+          <li class="impatti__voce"><span class="impatti__cifra">100&nbsp;€</span><span class="impatti__testo">valgono 4 kit</span></li>
+          <li class="impatti__voce"><span class="impatti__cifra">250&nbsp;€</span><span class="impatti__testo">valgono 10 kit</span></li>
+        </ul>
+        <p class="impatti__nota">Per darti un'idea del valore del tuo dono. Numeri e importi della campagna del 2020, da aggiornare con il Cottolengo.</p>
+        <div class="project-article-content">
+          <p class="chi-occhiello">Dove va la tua donazione</p>
+          <h2 id="destinazione">Aiuti tutto il Cottolengo</h2>
+          <p>La tua donazione va al Cottolengo, che la usa <strong>per tutti i suoi modi di aiutare le persone</strong>: vestiti e docce, ma anche cure, accoglienza, scuola e missioni, <strong>dove c'è più bisogno</strong> in quel momento.</p>
+          <p>Questa pagina ti racconta uno dei tanti servizi che il tuo dono rende possibili.</p>
+          <p class="chi-occhiello">Come donare</p>
+          <h2 id="come-fare">Bastano tre passaggi</h2>
+        </div>
+        <ol class="cpm-passi passi-verticali" aria-labelledby="come-fare">
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">1</span>
+            <h3>Premi “Dona ora”</h3>
+            <p>Si apre in una nuova scheda la pagina di donazione ufficiale del Cottolengo, <strong>dona.cottolengo.org</strong>.</p>
+          </li>
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">2</span>
+            <h3>Scegli l'importo e la frequenza</h3>
+            <p>Per darti un'idea, 25&nbsp;€ valgono un kit. Puoi donare una volta sola oppure ogni mese.</p>
+          </li>
+          <li class="cpm-passo">
+            <span class="cpm-passo__num" aria-hidden="true">3</span>
+            <h3>Completa il pagamento in sicurezza</h3>
+            <p>Ricevi la ricevuta per le detrazioni fiscali.</p>
+          </li>
+        </ol>
+        <div class="project-article-content">
+          <p><strong>Vuoi portare dei vestiti?</strong> Prima di passare scrivi a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a> o chiama lo <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a>: ti diciamo cosa serve e dove consegnarli.</p>
+        </div>
+      </article>
+
+      <div class="project-sidebar">
+        <!-- Solo pulsante (decisione 56). Donazione generale (vedi commento in cima): indirizzo generico,
+             non il vecchio modulo dona.cottolengo.org/dona-un-indumento/. data-modulo serve a sapere
+             da quale pagina arriva il dono, se Myosotis lo permette. -->
+        <div class="dona-card project-donation dona-link" id="dona" aria-labelledby="dona-title">
+          <div class="dona-card__head">
+            <h2 id="dona-title">Sostieni il Cottolengo</h2>
+          </div>
+          <div class="dona-card__body">
+            <p class="dona-link__testo">Per darti un'idea: <strong>25&nbsp;€ valgono un kit</strong> di vestiti, intimo e una doccia calda. Il Cottolengo usa il tuo dono dove c'è più bisogno.</p>
+            <a class="btn btn--dona dona-link__btn" href="https://dona.cottolengo.org/" target="_blank" rel="noopener" data-modulo="dona-un-indumento">
+              <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+              Dona ora<span class="sr-only"> (si apre in una nuova scheda)</span>
+            </a>
+            <p class="dona-sicura"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/><circle cx="12" cy="15.5" r="1.6" fill="#fff"/></svg><span><strong>Donazione sicura.</strong> Completi il dono sulla pagina ufficiale del Cottolengo, <span class="nowrap">dona.cottolengo.org</span>.</span></p>
+            <p class="dona-card__fiscal">Tutte le donazioni a Fondazione Cottolengo Solidale ETS possono usufruire dei vantaggi fiscali previsti dal Codice del Terzo Settore (D.Lgs.&nbsp;117/2017).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contatti">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
+    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14<br>10152 Torino<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
+    <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong class="footer__iban">IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
+    <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
+  </div>
+  <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="privacy.html">Privacy Policy</a> · <a href="cookie.html">Cookie Policy</a></p></div>
+</footer>
+
+<aside class="sticky-dona" id="sticky-dona" aria-label="Donazione rapida"><a href="#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></aside>
+
+<script src="js/nav.js?v=116"></script>
+</body>
+</html>
