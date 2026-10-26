@@ -1310,12 +1310,25 @@ Preso dai moduli di donazione su Stripe (esempio analizzato: Blender Foundation)
 Rivisto alla luce della sintesi Nielsen Norman Group e di Donare 3.0. Grafica invariata (decisione 20), cambia solo il testo.
 
 - **Titolo:** «Crea una raccolta solidale» → **«Festeggia facendo del bene»**: dice subito cosa ci guadagna chi la apre.
-- **Testo:** «Un compleanno, un anniversario, una corsa: apri la tua pagina di **raccolta fondi** e chiedi ad amici e parenti di donare **al posto dei regali**. Le donazioni vanno **direttamente al Cottolengo**.»
-  - Esempi concreti per il nostro pubblico (anniversari, compleanni) e per quello in crescita (sport, Donare 3.0).
+- **Testo:** «Un compleanno, un anniversario, una ricorrenza importante: apri la tua pagina di **raccolta fondi** e chiedi ad amici e parenti di donare **al posto dei regali**. Le donazioni vanno **direttamente al Cottolengo**.»
+  - Esempi concreti per il nostro pubblico (compleanni, anniversari, ricorrenze). «Una corsa» è stata tolta dalla home (26/10): con «festeggia» e «al posto dei regali» non c'entrava. Lo sport resta spiegato nella pagina Raccolte solidali.
   - «Raccolta fondi» in italiano: la capiscono tutti. Niente «crowdfunding» o «fundraising» nei testi visibili, sono parole che il pubblico anziano spesso non conosce.
   - Dove vanno i soldi: è la domanda che frena di più (Nielsen), sia chi organizza sia chi dona.
 - **Pulsante:** «Crea la tua raccolta» → **«Scopri come funziona»**: porta alla pagina che spiega, quindi deve dirlo (azioni prevedibili). Tornerà «Crea la tua raccolta» quando Myosotis attiverà le raccolte e il pulsante aprirà davvero la creazione.
 - **Allineati:** sottotitolo della pagina Raccolte solidali, paragrafo «Cos'è una raccolta solidale» (ora dice «raccolta fondi personale» e che i soldi non vanno a chi organizza), titolo e descrizione per Google e condivisioni, descrizione della voce nel menu.
+
+## 80. Pagina Raccolte solidali più completa e chiara (26/10/2026)
+
+La pagina segue lo schema delle linee guida (sintesi Nielsen Norman Group, requisiti in `claude/requisiti-nng-donazioni.md`): che cos'è, come funziona, per quali occasioni, dove vanno i soldi, cosa fare dopo.
+
+- **Cos'è – «Una raccolta fondi tutta tua».** Spiega che è una raccolta fondi personale aperta da chi organizza, non dal Cottolengo. Le parole inglesi compaiono **una volta sola, tra parentesi o spiegate**: *personal fundraising* e *crowdfunding* («raccolta fatta da tante persone»). Così chi le ha sentite le riconosce e chi non le conosce capisce. Un esempio concreto e dichiarato come tale: i 70 anni con figli e nipoti, vicino al nostro pubblico.
+- **Come funziona – «Bastano tre passaggi».** Gli stessi riquadri numerati delle pagine delle aree: apri la tua pagina, condividi il link, amici e parenti donano. Sotto, chi aiuta: email e telefono dell'Ufficio Raccolta Fondi.
+- **Per quali occasioni – «Feste, ricorrenze e sfide».** Compleanni e anniversari; matrimoni, battesimi, comunioni e cresime; pensione o traguardo di lavoro; sport e sfide (qui la corsa ha senso, Donare 3.0).
+- **Dove vanno i soldi – «Le donazioni vanno al Cottolengo».** Non passano da chi organizza; il Cottolengo le usa per le sue opere **dove c'è più bisogno** (fondo, non progetto singolo: linee guida, punto «fondo ≠ progetto»). Ogni raccolta è verificata dal Cottolengo.
+- **«Vuoi sostenere la raccolta di qualcuno?»**: si dona dal link ricevuto (tolto «cerca la raccolta»: non sappiamo se la piattaforma avrà una ricerca).
+- Le ancore di prima (`#cos-e`, `#crea`, `#occasioni`, `#sport`, `#come-funziona`, `#raccolte`) restano.
+
+**Non inventato, da chiedere a Cottolengo e Myosotis:** se aprire una raccolta costa qualcosa; se chi dona su una raccolta riceve la ricevuta per le detrazioni; importo minimo; se si può scegliere un'area (Cura, Accoglienza…); quanto dura una raccolta; esempi veri di raccolte passate da raccontare (con consenso). Quando arrivano le risposte si può aggiungere una sezione «Domande frequenti».
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
