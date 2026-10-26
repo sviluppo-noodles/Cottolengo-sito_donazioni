@@ -1292,6 +1292,19 @@ Preso dai moduli di donazione su Stripe (esempio analizzato: Blender Foundation)
 
 **PROTOTIPO.** I pulsanti sono solo testo nei colori dei servizi: quelli definitivi saranno i pulsanti ufficiali forniti dalla piattaforma di pagamento. **Da verificare con Myosotis:** se supportano Apple Pay, Google Pay e Satispay come pagamento rapido, anche per le donazioni continuative; se il portafoglio può passare anche l'indirizzo (serve per la ricevuta); come si chiede il codice fiscale dopo il pagamento.
 
+## 78. Pagine Privacy Policy e Cookie Policy (26/10/2026)
+
+- **`privacy.html`**: informativa ufficiale per i donatori (102BIS, ver. 1.0 del 15/09/2025). **`cookie.html`**: Cookie Policy ufficiale (108, ver. 6.0 del 10/02/2023). Testi riportati senza modifiche; cambia solo l'impaginazione: titoli per sezione, elenchi, telefoni ed email cliccabili. Unica correzione: il refuso «àòi» → «ai» nella Cookie Policy.
+- **PDF scaricabili** sotto il titolo («Scarica il PDF»), in `assets/docs/`.
+- Colonna di testo stretta per leggere bene; in fondo un riquadro con il contatto dell'ufficio privacy.
+- **Tabella dei cookie:** su PC si allarga oltre la colonna di testo, così la finalità si legge su poche righe; su telefono ogni cookie diventa una scheda, senza tabella da scorrere di lato.
+- **Collegamenti:** «Privacy Policy» e «Cookie Policy» nel footer di tutte le pagine (prima erano link vuoti); nella pagina Dona la casella dell'informativa e la riga «Donando accetti l'informativa privacy» ora aprono `privacy.html` in una nuova scheda (prima puntavano a dona.cottolengo.org).
+
+**Da segnalare al Cottolengo:**
+- L'elenco dei cookie è quello del **vecchio sito donazioni** (YouTube, Facebook, PayPal, Brevo, Scribd, dominio donazioni.cottolengo.org). Il nuovo sito oggi non installa nessun cookie: l'elenco va aggiornato con chi gestirà il sito definitivo (Myosotis), dopo aver deciso gli strumenti di misura e il banner del consenso.
+- Nella pagina Dona la casella dice «informativa privacy di Piccola Casa della Divina Provvidenza e Fondazione Cottolengo Solidale ETS», mentre l'informativa elenca **tre titolari** (anche Fondazione Cottolengo ONLUS): da allineare.
+- L'informativa donatori non parla delle comunicazioni facoltative (newsletter, SMS, WhatsApp, posta) chieste nel modulo: da verificare con l'ufficio privacy.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SITO DI PROVA: non deve comparire su Google (testi provvisori, segnaposti "00 €",
+       indirizzo non definitivo). TOGLIERE questa riga al lancio sul dominio definitivo. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Informativa privacy per i donatori | Cottolengo</title>
+  <meta name="description" content="Come la Piccola Casa della Divina Provvidenza e le Fondazioni Cottolengo trattano i dati personali di chi dona: titolari, finalità, conservazione e diritti.">
+  <!-- Condivisione social (Open Graph / Twitter Card): titolo e descrizione = <title> e meta description.
+       MANCANO di proposito canonical, og:url e og:image: richiedono URL assoluti e il dominio
+       definitivo non è ancora confermato (vedi SPECIFICHE-TECNICHE.md, "SEO tecnico"). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Donazioni Cottolengo">
+  <meta property="og:title" content="Informativa privacy per i donatori | Cottolengo">
+  <meta property="og:description" content="Come la Piccola Casa della Divina Provvidenza e le Fondazioni Cottolengo trattano i dati personali di chi dona: titolari, finalità, conservazione e diritti.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Informativa privacy per i donatori | Cottolengo">
+  <meta name="twitter:description" content="Come la Piccola Casa della Divina Provvidenza e le Fondazioni Cottolengo trattano i dati personali di chi dona: titolari, finalità, conservazione e diritti.">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/Logo-CUORE-PCDP-e1705392560644.png" sizes="150x133" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#0097D8">
+  <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=115">
+</head>
+<body class="page-project-detail">
+
+<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo-link" aria-label="Donazioni Cottolengo — home">
+      <img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="header__logo">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <!-- MENU PRINCIPALE — struttura decisa il 13/10/2026 (vedi ARCHITETTURA-CONTENUTI.md):
+           segue le domande di chi arriva: chi siete, chi aiutate, come posso aiutare.
+           5×1000, Lasciti e Aziende hanno una voce propria e una pagina dedicata,
+           su richiesta del Cottolengo.
+           Contatti: nel footer e nella pagina Chi siamo. In WordPress: un menu
+           di 6 voci, due con pannello (voci con descrizione nel campo "descrizione"). -->
+      <ul class="nav__list">
+        <li><a href="chi-siamo.html" class="nav__link">Chi siamo</a></li>
+        <!-- Chi aiutiamo: le quattro aree (stessi titoli e descrizioni delle schede in home). Ogni voce porta alla pagina dell'area con il modulo di donazione. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-chi-aiutiamo">
+            Progetti
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-chi-aiutiamo">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="cura.html"
+                       data-desc="Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.">Cura</a></li>
+                <li><a class="nav__mega__voce" href="accoglienza.html"
+                       data-desc="Una casa e una famiglia per persone con disabilità e per chi non ha più nessuno.">Accoglienza</a></li>
+                <li><a class="nav__mega__voce" href="educazione.html"
+                       data-desc="Scuola, sostegno a distanza e aiuto alle famiglie, perché ogni bambino possa crescere.">Educazione</a></li>
+                <li><a class="nav__mega__voce" href="missioni-internazionali.html"
+                       data-desc="Cure, scuola e accoglienza nelle missioni del Cottolengo in Africa, America Latina e Asia.">Missioni internazionali</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Assistenza, cure mediche e vicinanza per anziani fragili e malati, ogni giorno.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
+        <li class="nav__item--dropdown">
+          <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
+            Come aiutarci
+            <svg class="nav__caret" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__mega" id="menu-aiutarci">
+            <div class="container nav__mega__inner">
+              <ul class="nav__mega__voci">
+                <li><a class="nav__mega__voce" href="dona.html"
+                       data-desc="Scegli tu l'importo e se donare una volta sola oppure ogni mese.">Donazione libera</a></li>
+                <li><a class="nav__mega__voce" href="sostegno-a-distanza.html"
+                       data-desc="Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.">Sostegno a distanza</a></li>
+                <li><a class="nav__mega__voce" href="dona-in-memoria.html"
+                       data-desc="Ricorda una persona cara con un gesto d'amore che continua a vivere.">Dona in memoria</a></li>
+                <li><a class="nav__mega__voce" href="crowdfunding.html"
+                       data-desc="Trasforma un compleanno, un traguardo o una sfida in una raccolta per gli ospiti della Piccola Casa.">Raccolte solidali</a></li>
+                <li><a class="nav__mega__voce" href="volontariato.html"
+                       data-desc="Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.">Volontariato</a></li>
+              </ul>
+              <div class="nav__mega__testo">
+                <p class="nav__mega__desc" aria-live="polite">Scegli tu l'importo e se donare una volta sola oppure ogni mese.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
+        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
+        <li><a href="aziende.html" class="nav__link">Aziende</a></li>
+      </ul>
+    </nav>
+
+    <a href="dona.html" class="btn btn--header">
+      <svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" transform="translate(2 0) scale(0.85)" fill="currentColor"/></svg>
+      Dona ora
+    </a>
+    <button class="header__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ PRIVACY POLICY ============
+     Testo dell'informativa ufficiale per i donatori (102BIS, ver. 1.0 del 15/09/2025),
+     riportato senza modifiche: cambia solo l'impaginazione (titoli, elenchi).
+     Il PDF originale è in assets/docs/. Non copre cookie e strumenti di misura del sito:
+     servirà una Cookie Policy a parte (vedi richieste al cliente). -->
+<main id="contenuto">
+  <section class="project-page pagina-legale" aria-labelledby="privacy-title">
+    <div class="container project-page__grid">
+      <article class="project-copy">
+        <div class="project-article-content">
+          <p class="chi-occhiello">Privacy Policy</p>
+          <h1 class="pagina-legale__titolo" id="privacy-title">Informativa per i donatori</h1>
+          <p class="pagina-legale__versione">Piccola Casa della Divina Provvidenza · Informativa donatori 102BIS, versione 1.0 del 15/09/2025 · <a href="assets/docs/informativa-privacy-donatori-cottolengo-2025.pdf" download>Scarica il PDF</a> (196&nbsp;KB)</p>
+
+          <h2>A. Categorie di dati</h2>
+          <p>Oggetto del trattamento possono essere i suoi dati personali quali dati identificativi, dati anagrafici, dati di contatto e dati contabili.</p>
+
+          <h2>B. Titolare del trattamento</h2>
+          <ol>
+            <li><strong>Piccola Casa della Divina Provvidenza</strong>, Via S.G. Cottolengo, 14 - 10152 Torino, Partita IVA 01538340017, contattabile telefonicamente allo <a href="tel:+390115225610">011.5225610</a> o alla mail <a href="mailto:ufficioprivacy@cottolengo.org">ufficioprivacy@cottolengo.org</a>;</li>
+            <li><strong>Fondazione Cottolengo ONLUS</strong>, Via S.G. Cottolengo, 14 - 10152 Torino, Partita IVA/CF 97656390016, contattabile telefonicamente allo <a href="tel:+390115225610">011.5225610</a> o alla mail <a href="mailto:ufficioprivacy@cottolengo.org">ufficioprivacy@cottolengo.org</a>;</li>
+            <li><strong>Fondazione Cottolengo Solidale ETS</strong>, Via S.G. Cottolengo, 14 - 10152 Torino, Partita IVA/CF 97905980013, contattabile telefonicamente allo <a href="tel:+390115225610">011.5225610</a> o alla mail <a href="mailto:ufficioprivacy@cottolengo.org">ufficioprivacy@cottolengo.org</a>.</li>
+          </ol>
+
+          <h2>C. Fonte dei dati personali</h2>
+          <p>I dati personali in possesso del Titolare sono raccolti direttamente presso l’interessato.</p>
+
+          <h2>D. Finalità di trattamento dei dati e base giuridica</h2>
+          <p>Il trattamento dei Suoi dati, raccolti ed archiviati in relazione alla donazione da Lei effettuata, ha come base giuridica:</p>
+          <ul>
+            <li><strong>Finalità connesse ad obblighi di legge:</strong> adempimento di obblighi contabili (Art. 6.1, lett. C) GDPR);</li>
+            <li><strong>Finalità connesse alla gestione della donazione/offerta in favore dei diversi Titolari:</strong> adempimento degli obblighi contabili e fiscali; comunicazione dei suoi dati ad eventuali partner del Titolare per lo svolgimento di adempimenti contrattuali e/o precontrattuali (Art. 6.1, lett. B) GDPR).</li>
+          </ul>
+
+          <h2>E. Destinatari dei dati</h2>
+          <p>Nei limiti pertinenti alle finalità, i Suoi dati potranno essere comunicati, se del caso, ad altri soggetti connessi alle attività di trattamento, interni ed esterni al Titolare, quali dipendenti ed assimilati, collaboratori, liberi professionisti, compagnie assicurative, intermediari assicurativi, commercialista, software house; studi legali, partner tecnici, istituti bancari, società di trasporto. I Suoi dati non saranno in alcun modo oggetto di diffusione.</p>
+
+          <h2>F. Trasferimento dei dati verso Paesi terzi</h2>
+          <p>I dati raccolti non sono oggetto di trasferimento verso paesi terzi al di fuori dello Spazio Economico Europeo.</p>
+
+          <h2>G. Periodo di conservazione</h2>
+          <p>I dati raccolti verranno conservati per un arco di tempo non superiore al conseguimento delle finalità per le quali sono trattati (“principio di limitazione della conservazione”, art.5, GDPR) o in base alle scadenze previste dalle norme di legge. La verifica sulla obsolescenza dei dati conservati in relazione alle finalità per cui sono stati raccolti viene effettuata periodicamente.</p>
+
+          <h2>H. Diritti dell’interessato</h2>
+          <p>L’interessato ha sempre diritto a richiedere al Titolare l’accesso ai Suoi dati, la rettifica o la cancellazione degli stessi, la limitazione del trattamento o la possibilità di opporsi al trattamento, di richiedere la portabilità dei dati, di revocare il consenso al trattamento facendo valere questi e gli altri diritti previsti dal GDPR tramite semplice comunicazione al Titolare. L’interessato può proporre reclamo anche a un’autorità di controllo.</p>
+
+          <h2>I. Obbligo di comunicare i dati</h2>
+          <p>Per le finalità sopra indicate, la comunicazione di dati personali è un requisito obbligatorio, salvo che per le finalità basate sul consenso per le quali la comunicazione dei dati è facoltativa e un suo rifiuto non comprometterà in alcun modo l’erogazione del servizio.</p>
+
+          <h2>J. Modalità di trattamento dei dati</h2>
+          <p>I dati personali da Lei forniti, formeranno oggetto di operazioni di trattamento nel rispetto della normativa sopracitata e degli obblighi di riservatezza cui è ispirata l'attività del Titolare. I dati verranno trattati sia con strumenti informatici sia su supporti cartacei sia su ogni altro tipo di supporto idoneo (es. sistemi in cloud, sistemi di archiviazione e conservazione sostitutiva digitale), nel rispetto di adeguate misure tecniche ed organizzative di sicurezza previste dal GDPR.</p>
+
+          <h2>K. Dati di contatto del D.P.O.</h2>
+          <p>Il titolare ha provveduto alla nomina del D.P.O. contattabile via mail all’indirizzo <a href="mailto:cottolengo@segnalazionidpo.it">cottolengo@segnalazionidpo.it</a>.</p>
+
+          <h2>L. Processi decisionali automatizzati</h2>
+          <p>Non sono previsti processi decisionali automatizzati.</p>
+
+          <div class="pagina-legale__contatto">
+            <p><strong>Domande sui tuoi dati?</strong> Scrivi a <a href="mailto:ufficioprivacy@cottolengo.org">ufficioprivacy@cottolengo.org</a> o chiama lo <a href="tel:+390115225610">011&nbsp;522&nbsp;5610</a>.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contatti">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand"><img src="assets/img/logo-bianco.png" width="370" height="87" alt="Cottolengo" class="footer__logo"><p>Piccola Casa della Divina Provvidenza.<br>Accanto agli ultimi, dal 1828.</p></div>
+    <div class="footer__col"><h3>Contatti</h3><address>Ufficio Progetti e Raccolta Fondi<br>Via Cottolengo, 14<br>10152 Torino<br><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address></div>
+    <div class="footer__col"><h3>Dona con bonifico</h3><p>Fondazione Cottolengo Solidale<br>Ente del Terzo Settore<br>IBAN: <strong class="footer__iban">IT42 W030 4801 00000000 0097137</strong><br>Cod. Fiscale: 97905980013<br>C/C postale n. 1072743170</p></div>
+    <div class="footer__col"><h3>Link utili</h3><ul><li><a href="https://assistenza.cottolengo.org/" target="_blank" rel="noopener noreferrer">Assistenza e cura delle fragilità</a></li><li><a href="https://www.ospedalecottolengo.it/" target="_blank" rel="noopener noreferrer">Ospedale Cottolengo</a></li><li><a href="https://scuolacottolengo.org/" target="_blank" rel="noopener noreferrer">Scuole Cottolengo</a></li><li><a href="https://suore.cottolengo.org/" target="_blank" rel="noopener noreferrer">Suore S.G.B. Cottolengo</a></li><li><a href="https://www.cottolengo.org/visite-alla-piccola-casa/" target="_blank" rel="noopener noreferrer">Visita il Cottolengo</a></li></ul></div>
+  </div>
+  <div class="container footer__bottom"><p>© Piccola Casa della Divina Provvidenza — Cottolengo · <a href="privacy.html">Privacy Policy</a> · <a href="cookie.html">Cookie Policy</a></p></div>
+</footer>
+
+<aside class="sticky-dona" id="sticky-dona" aria-label="Donazione rapida"><a href="index.html#dona" class="btn btn--dona"><svg class="icon-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>Dona ora</a></aside>
+
+
+<script src="js/nav.js?v=115"></script>
+</body>
+</html>

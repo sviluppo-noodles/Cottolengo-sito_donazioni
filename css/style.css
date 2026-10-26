@@ -3268,3 +3268,41 @@ fieldset { border: none; }
 .dona-grazie__azioni { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
 .dona-grazie__azioni .dona-btn { flex: 1 1 12rem; min-width: 0; padding: 0 1.25rem; }
 .dona-oppure + .dona-fiscale { margin-top: 1.25rem; }
+
+/* ==========================================================
+   Decisione 78: pagine Privacy Policy e Cookie Policy
+   Testi ufficiali del Cottolengo, impaginati per la lettura:
+   colonna stretta, titoli, PDF scaricabile.
+   ========================================================== */
+.pagina-legale .project-page__grid { grid-template-columns: minmax(0, 46rem); }
+.pagina-legale .project-copy { max-width: 46rem; padding-bottom: clamp(3rem, 6vw, 5rem); }
+.pagina-legale__titolo { margin: 0.25rem 0 0.75rem; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; color: var(--blu-notte); }
+.pagina-legale__versione { margin: 0 0 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #DCE3E8; color: var(--grigio-testo); font-size: 1rem; }
+.pagina-legale h3 { margin: 1.5rem 0 0.5rem; font-size: 1.1875rem; color: var(--ink); }
+.pagina-legale ol, .pagina-legale ul { padding-left: 1.4rem; }
+.pagina-legale li { margin-bottom: 0.6rem; }
+.pagina-legale__contatto { margin-top: 2.5rem; padding: 1.25rem 1.5rem; background: #F4F7F9; border-radius: 8px; }
+.pagina-legale__contatto p { margin: 0; }
+
+.tabella-cookie { margin: 1rem 0 2rem; overflow-x: auto; }
+.tabella-cookie table { width: 100%; border-collapse: collapse; font-size: 1rem; line-height: 1.45; }
+.tabella-cookie th, .tabella-cookie td { padding: 0.75rem 0.65rem; border-bottom: 1px solid #DCE3E8; text-align: left; vertical-align: top; }
+.tabella-cookie thead th { background: #F4F7F9; color: var(--ink); font-size: 0.9375rem; }
+.tabella-cookie tbody th { font-weight: 700; white-space: nowrap; }
+.tabella-cookie code { font-family: inherit; }
+@media (max-width: 45em) {
+  /* su telefono ogni cookie diventa una scheda: niente tabella da scorrere di lato */
+  .tabella-cookie thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tabella-cookie table, .tabella-cookie tbody, .tabella-cookie tr, .tabella-cookie th, .tabella-cookie td { display: block; }
+  .tabella-cookie tr { margin-bottom: 1rem; padding: 0.75rem 1rem; border: 1px solid #DCE3E8; border-radius: 8px; }
+  .tabella-cookie th, .tabella-cookie td { padding: 0.3rem 0; border: 0; white-space: normal; }
+  .tabella-cookie tbody th { font-size: 1.125rem; }
+  .tabella-cookie td::before { content: attr(data-label) ": "; font-weight: 700; color: var(--grigio-testo); }
+}
+@media (min-width: 45.01em) {
+  /* su PC la tabella esce dalla colonna di testo: la finalità ha spazio per leggersi bene */
+  .pagina-legale .project-page__grid > * { min-width: 0; }
+  .tabella-cookie { width: min(68rem, calc(100vw - 4rem)); }
+  .tabella-cookie td:nth-child(2) { width: 45%; }
+  .tabella-cookie td:nth-child(n+3) { white-space: nowrap; }
+}
