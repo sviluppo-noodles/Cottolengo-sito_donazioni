@@ -1268,6 +1268,18 @@ Nasce da una revisione critica di home e pagina Dona, pensata soprattutto per ch
 
 Non toccato: il riepilogo su telefono che scorre via con la pagina e i testi introduttivi centrati su telefono (da valutare dopo).
 
+## 76. Pagina Dona: codice fiscale e indirizzo solo per chi vuole la ricevuta (26/10/2026)
+
+Prima un privato vedeva undici campi, anche se non voleva la ricevuta. Ogni campo in più è un punto in cui si può abbandonare, soprattutto su telefono (tastiera che copre lo schermo, pagina lunga, errori di battitura). La sintesi Nielsen Norman Group chiede di domandare solo i dati che servono e di spiegare perché.
+
+- Dopo nome, email e cellulare c'è la domanda **«Vuoi la ricevuta per detrarre la donazione dalle tasse?» Sì / No**. È obbligatoria e **nessuna risposta è già scelta**: il pubblico è in gran parte sopra i 50 anni e la detrazione interessa a molti, quindi la persona deve decidere in modo consapevole e non accorgersi dopo di aver perso la ricevuta.
+- Con **Sì** compaiono codice fiscale (o partita IVA per le aziende), indirizzo e nazione, con la riga «Questi dati servono per intestarti la ricevuta». Con **No** si passa direttamente a privacy e pagamento: 4 campi invece di 11 (3 invece di 10 per le aziende).
+- Il cellulare (facoltativo) è salito vicino all'email, con gli altri contatti.
+- Il box fiscale nella sezione 1 (testo del Cottolengo) ora dice di rispondere «Sì» alla domanda sulla ricevuta.
+- Stessa cosa su telefono e su PC.
+
+**Da decidere con il Cottolengo:** se l'indirizzo serve anche senza ricevuta (ringraziamenti per posta, notiziario cartaceo) si può chiedere comunque come facoltativo; quali dati servono davvero per la ricevuta e per la comunicazione all'Agenzia delle Entrate (da verificare con Cottolengo e Myosotis); a cosa serve il cellulare, per spiegarlo accanto al campo. Il modulo definitivo lo costruisce Myosotis.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

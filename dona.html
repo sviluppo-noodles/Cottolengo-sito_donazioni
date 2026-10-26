@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#0097D8">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=112">
+  <link rel="stylesheet" href="css/style.css?v=113">
 </head>
 <body class="page-dona">
 
@@ -116,7 +116,7 @@
 
           <!-- Testo del Cottolengo (22/10/2026, decisione 64): niente calcolo della detrazione. -->
           <div class="dona-fiscale" id="dona-fiscale">
-            <p class="dona-fiscale__riga">Per ottenere la ricevuta di donazione inserisci indirizzo e codice fiscale qui sotto. La tua donazione può usufruire dei benefici fiscali ai sensi dell’art.&nbsp;83 D.Lgs.&nbsp;117/2017.</p>
+            <p class="dona-fiscale__riga">Per ottenere la ricevuta di donazione rispondi «Sì» alla domanda sulla ricevuta qui sotto e inserisci indirizzo e codice fiscale. La tua donazione può usufruire dei benefici fiscali ai sensi dell’art.&nbsp;83 D.Lgs.&nbsp;117/2017.</p>
           </div>
 
         </section>
@@ -124,7 +124,7 @@
         <!-- ===== Sezione 2: dati del donatore ===== -->
         <section class="dona-passo" id="passo-2" data-passo="2" aria-labelledby="passo-2-titolo">
           <h2 class="dona-passo__titolo" id="passo-2-titolo"><span class="dona-passo__num" aria-hidden="true">2</span>I tuoi dati</h2>
-          <p class="dona-passo__intro">Servono per intestarti la ricevuta di donazione. Tutti i campi sono obbligatori, salvo dove indicato.</p>
+          <p class="dona-passo__intro">Tutti i campi sono obbligatori, salvo dove indicato.</p>
 
           <fieldset class="dona-campo">
             <legend class="dona-etichetta">Doni come</legend>
@@ -145,9 +145,24 @@
           </div>
 
           <div class="dona-campo"><label class="dona-etichetta" for="email">Email</label><p class="dona-aiuto" id="email-aiuto">Ti inviamo qui la conferma della donazione.</p><input class="dona-input" type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-aiuto"></div>
+          <div class="dona-campo"><label class="dona-etichetta" for="cellulare">Cellulare <span class="dona-facoltativo">(facoltativo)</span></label><input class="dona-input" type="tel" id="cellulare" name="cellulare" autocomplete="tel" inputmode="tel"></div>
+
+          <!-- Decisione 76: i dati fiscali si chiedono solo a chi vuole la ricevuta.
+               Nessuna risposta già scelta: la persona decide in modo consapevole. -->
+          <fieldset class="dona-campo">
+            <legend class="dona-etichetta">Vuoi la ricevuta per detrarre la donazione dalle tasse?</legend>
+            <div class="dona-scelte dona-scelte--due dona-scelte--compatte">
+              <label class="dona-scelta"><input type="radio" name="ricevuta" value="si" required><span>Sì</span></label>
+              <label class="dona-scelta"><input type="radio" name="ricevuta" value="no"><span>No</span></label>
+            </div>
+            <p class="dona-errore" id="ricevuta-errore" hidden>Scegli «Sì» o «No».</p>
+          </fieldset>
+
+          <div class="dona-ricevuta" id="dona-ricevuta" hidden>
+            <p class="dona-ricevuta__intro">Questi dati servono per intestarti la ricevuta.</p>
 
           <div class="dona-gruppo" data-per="individuo">
-            <div class="dona-campo"><label class="dona-etichetta" for="codice-fiscale">Codice fiscale</label><p class="dona-aiuto" id="cf-aiuto">È necessario per la ricevuta di donazione.</p><input class="dona-input dona-input--maiuscolo" type="text" id="codice-fiscale" name="codice-fiscale" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" required aria-describedby="cf-aiuto" data-formato="cf"></div>
+            <div class="dona-campo"><label class="dona-etichetta" for="codice-fiscale">Codice fiscale</label><input class="dona-input dona-input--maiuscolo" type="text" id="codice-fiscale" name="codice-fiscale" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" required data-formato="cf"></div>
           </div>
           <div class="dona-gruppo" data-per="organizzazione" hidden>
             <div class="dona-campo"><label class="dona-etichetta" for="partita-iva">Partita IVA</label><input class="dona-input" type="text" id="partita-iva" name="partita-iva" inputmode="numeric" autocomplete="off" maxlength="11" required data-formato="piva"></div>
@@ -425,7 +440,7 @@
               </select>
             </div>
           </div>
-          <div class="dona-campo"><label class="dona-etichetta" for="cellulare">Cellulare <span class="dona-facoltativo">(facoltativo)</span></label><input class="dona-input" type="tel" id="cellulare" name="cellulare" autocomplete="tel" inputmode="tel"></div>
+          </div><!-- /dona-ricevuta -->
 
           <!-- Consensi: stessi due punti del modulo Myosotis. DA AGGIORNARE: il link all'informativa
                deve puntare al PDF ufficiale (oggi è dentro la pagina dona.cottolengo.org). -->
@@ -515,7 +530,7 @@
 </footer>
 
 
-<script src="js/nav.js?v=112"></script>
-<script src="js/dona-pagina.js?v=112"></script>
+<script src="js/nav.js?v=113"></script>
+<script src="js/dona-pagina.js?v=113"></script>
 </body>
 </html>

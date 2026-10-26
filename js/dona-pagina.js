@@ -98,16 +98,21 @@
     libero.value = ''; segnaCampo(libero, false); liberoErr.hidden = true;
   }));
 
-  /* ---------- privato / azienda: mostra solo i campi giusti ---------- */
+  /* ---------- campi visibili: privato / azienda e ricevuta sì / no (decisione 76) ----------
+     Codice fiscale (o partita IVA) e indirizzo compaiono solo se si vuole la ricevuta:
+     chi non la vuole compila molti meno campi, cosa che conta soprattutto su telefono. */
+  const boxRicevuta = document.getElementById('dona-ricevuta');
   function tipoDonatore() {
     const tipo = val('tipo-donatore');
-    form.querySelectorAll('.dona-gruppo').forEach(g => {
-      const attivo = g.dataset.per === tipo;
-      g.hidden = !attivo;
-      g.querySelectorAll('input').forEach(i => { i.disabled = !attivo; if (!attivo) segnaCampo(i, false); });
+    const conRicevuta = val('ricevuta') === 'si';
+    boxRicevuta.hidden = !conRicevuta;
+    form.querySelectorAll('.dona-gruppo').forEach(g => { g.hidden = g.dataset.per !== tipo; });
+    form.querySelectorAll('.dona-gruppo input, .dona-ricevuta input, .dona-ricevuta select').forEach(i => {
+      const attivo = !i.closest('[hidden]');
+      i.disabled = !attivo;
+      if (!attivo) segnaCampo(i, false);
     });
   }
-  form.querySelectorAll('input[name="tipo-donatore"]').forEach(r => r.addEventListener('change', tipoDonatore));
 
   /* maiuscole automatiche per codice fiscale e provincia */
   form.querySelectorAll('.dona-input--maiuscolo').forEach(i => i.addEventListener('input', () => {
@@ -174,6 +179,9 @@
       segnaCampo(el, !!t, t);
       if (t) errori.push({ el, t });
     });
+    const noRicevuta = !val('ricevuta');
+    segnaGruppo('ricevuta', 'ricevuta-errore', noRicevuta);
+    if (noRicevuta) errori.push({ el: form.querySelector('input[name="ricevuta"]'), t: 'Dicci se vuoi la ricevuta per le detrazioni.' });
     const noPrivacy = !form.elements.privacy.checked;
     segnaGruppo('privacy', 'privacy-errore', noPrivacy);
     if (noPrivacy) errori.push({ el: form.elements.privacy, t: 'Spunta la casella dell’informativa privacy.' });
@@ -201,7 +209,7 @@
   /* tutto si aggiorna mentre si compila: riepilogo, metodi, pulsante e,
      se l'elenco degli errori è aperto, anche l'elenco (senza spostare la pagina) */
   function dopoModifica(e) {
-    if (e && e.target.name === 'tipo-donatore') tipoDonatore();
+    if (e && (e.target.name === 'tipo-donatore' || e.target.name === 'ricevuta')) tipoDonatore();
     aggiorna();
     if (!box.hidden) controlla(false);
   }

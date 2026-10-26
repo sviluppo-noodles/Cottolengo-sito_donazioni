@@ -3202,3 +3202,10 @@ fieldset { border: none; }
   .btn--header::after { content: ""; position: absolute; inset: -6px -4px; }
   .header__burger::after { content: ""; position: absolute; inset: -4px; }
 }
+
+/* ==========================================================
+   Decisione 76: dati fiscali solo per chi vuole la ricevuta
+   ========================================================== */
+.dona-ricevuta { margin-top: 0.25rem; }
+.dona-ricevuta[hidden] { display: none; }
+.dona-ricevuta__intro { margin: 0 0 1rem; color: var(--grigio-testo); font-size: 1rem; }
