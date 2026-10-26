@@ -1280,6 +1280,18 @@ Prima un privato vedeva undici campi, anche se non voleva la ricevuta. Ogni camp
 
 **Da decidere con il Cottolengo:** se l'indirizzo serve anche senza ricevuta (ringraziamenti per posta, notiziario cartaceo) si può chiedere comunque come facoltativo; quali dati servono davvero per la ricevuta e per la comunicazione all'Agenzia delle Entrate (da verificare con Cottolengo e Myosotis); a cosa serve il cellulare, per spiegarlo accanto al campo. Il modulo definitivo lo costruisce Myosotis.
 
+## 77. Pagina Dona: «Dona in un tocco» con Apple Pay / Google Pay, PayPal e Satispay (26/10/2026)
+
+Preso dai moduli di donazione su Stripe (esempio analizzato: Blender Foundation): i pagamenti rapidi stanno in cima, prima dei campi. Su telefono chi ha il portafoglio digitale dona con un tocco e l'impronta, senza scrivere nulla: nome ed email li passa il portafoglio o il conto.
+
+- Subito dopo importo e frequenza: **«Dona in un tocco»** con tre pulsanti grandi: **Apple Pay** (su iPhone, iPad e Safari) **oppure Google Pay** (altrove: il pulsante cambia da solo), **PayPal**, **Satispay** (molto usato in Italia, qui ben visibile e non nascosto tra gli «altri metodi»). Su telefono uno sotto l'altro, su PC in fila.
+- Sotto: «Donando accetti l'informativa privacy», poi la riga **«oppure inserisci i tuoi dati»** che porta al modulo di sempre. Il box fiscale del Cottolengo è passato sotto questa riga, perché riguarda il modulo.
+- **Ricevuta dopo il pagamento:** chi dona in un tocco vede «Grazie per la tua donazione!» e la domanda «Vuoi la ricevuta per detrarre la donazione dalle tasse?» con il solo codice fiscale e due pulsanti: «Voglio la ricevuta» / «No, grazie». Chi non la vuole ha già finito.
+- Senza un importo valido i pulsanti non partono: compare l'errore sull'importo.
+- Non copiato dall'esempio Stripe: testi piccoli e grigi, il pulsante «Link» (sconosciuto in Italia), «Salva le mie informazioni», il linguaggio da negozio («ordine»), le scritte in inglese.
+
+**PROTOTIPO.** I pulsanti sono solo testo nei colori dei servizi: quelli definitivi saranno i pulsanti ufficiali forniti dalla piattaforma di pagamento. **Da verificare con Myosotis:** se supportano Apple Pay, Google Pay e Satispay come pagamento rapido, anche per le donazioni continuative; se il portafoglio può passare anche l'indirizzo (serve per la ricevuta); come si chiede il codice fiscale dopo il pagamento.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

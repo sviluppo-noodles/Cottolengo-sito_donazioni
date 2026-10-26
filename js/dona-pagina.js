@@ -93,9 +93,11 @@
   libero.addEventListener('input', () => {
     if (libero.value.trim()) form.querySelectorAll('input[name="importo-proposto"]').forEach(r => { r.checked = false; });
     segnaCampo(libero, false); liberoErr.hidden = true;
+    if (libero.value.trim()) segnaGruppo('importo', 'importo-errore', false);
   });
   form.querySelectorAll('input[name="importo-proposto"]').forEach(r => r.addEventListener('change', () => {
     libero.value = ''; segnaCampo(libero, false); liberoErr.hidden = true;
+    segnaGruppo('importo', 'importo-errore', false);
   }));
 
   /* ---------- campi visibili: privato / azienda e ricevuta sì / no (decisione 76) ----------
@@ -227,6 +229,61 @@
   form.addEventListener('keydown', e => {
     if (e.key === 'Enter' && e.target.matches('input:not([type=radio]):not([type=checkbox])')) e.preventDefault();
   });
+
+  /* ---------- pagamento rapido (decisione 77) ----------
+     Un solo pulsante "portafoglio": Apple Pay su iPhone, iPad e Safari, Google Pay altrove
+     (come fanno le piattaforme di pagamento). Prima serve un importo valido; dopo il
+     pagamento si chiede, solo a chi la vuole, il codice fiscale per la ricevuta. */
+  const ua = navigator.userAgent;
+  const apple = /iPhone|iPad|iPod/.test(ua) || (/Safari/.test(ua) && /Macintosh/.test(ua) && !/Chrome|Chromium|Edg|Firefox/.test(ua));
+  const portafoglio = apple ? 'Apple Pay' : 'Google Pay';
+  document.querySelectorAll('[data-portafoglio]').forEach(e => { e.textContent = portafoglio; });
+
+  const grazie = document.getElementById('dona-grazie');
+  const grazieForm = document.getElementById('grazie-ricevuta');
+  const grazieFatto = document.getElementById('grazie-fatto');
+  const grazieCf = document.getElementById('grazie-cf');
+  const grazieErr = document.getElementById('grazie-cf-errore');
+  let tastoRapido = null;
+
+  form.querySelectorAll('[data-rapido]').forEach(btn => btn.addEventListener('click', () => {
+    const n = importo();
+    if (!n) {
+      segnaGruppo('importo', 'importo-errore', true);
+      const primo = form.querySelector('input[name="importo-proposto"]');
+      primo.focus(); primo.scrollIntoView({ block: 'center' });
+      return;
+    }
+    segnaGruppo('importo', 'importo-errore', false);
+    tastoRapido = btn;
+    const metodo = btn.dataset.rapido === 'portafoglio' ? portafoglio : btn.dataset.rapido;
+    grazie.querySelector('[data-grazie-importo]').textContent =
+      euro(n) + (val('ricorrenza') === 'continuativa' ? ' ' + frequenzaTesto().toLowerCase() : '');
+    grazie.querySelector('[data-grazie-metodo]').textContent = metodo;
+    grazieForm.hidden = false; grazieFatto.hidden = true;
+    grazieCf.value = ''; grazieErr.hidden = true; grazieCf.removeAttribute('aria-invalid');
+    if (grazie.showModal) grazie.showModal(); else grazie.setAttribute('open', '');
+    document.getElementById('grazie-titolo').focus();
+  }));
+
+  grazieCf.addEventListener('input', () => {
+    const p = grazieCf.selectionStart; grazieCf.value = grazieCf.value.toUpperCase(); grazieCf.setSelectionRange(p, p);
+    grazieErr.hidden = true; grazieCf.removeAttribute('aria-invalid');
+  });
+  grazieForm.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!/^[A-Z0-9]{16}$/.test(grazieCf.value.trim())) {
+      grazieErr.hidden = false; grazieCf.setAttribute('aria-invalid', 'true'); grazieCf.focus();
+      return;
+    }
+    grazieForm.hidden = true; grazieFatto.hidden = false;
+    grazieFatto.querySelector('button').focus();
+  });
+  function chiudiGrazie() {
+    if (grazie.close) grazie.close(); else grazie.removeAttribute('open');
+  }
+  grazie.querySelectorAll('[data-grazie-chiudi]').forEach(b => b.addEventListener('click', chiudiGrazie));
+  grazie.addEventListener('close', () => { if (tastoRapido) tastoRapido.focus(); });
 
   tipoDonatore();
   aggiorna();

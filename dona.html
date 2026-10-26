@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#0097D8">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=113">
+  <link rel="stylesheet" href="css/style.css?v=114">
 </head>
 <body class="page-dona">
 
@@ -113,6 +113,23 @@
               <p class="dona-errore" id="importo-libero-errore" hidden>Inserisci un importo intero da 1 a 100.000&nbsp;€.</p>
             </div>
           </fieldset>
+
+          <!-- Decisione 77: pagamento rapido, come i moduli Stripe. Chi ha il portafoglio sul telefono
+               (Apple Pay su iPhone, Google Pay su Android) o PayPal/Satispay dona senza scrivere nulla:
+               nome ed email arrivano dal portafoglio o dal conto. Il codice fiscale per la ricevuta
+               si chiede DOPO il pagamento. PROTOTIPO: dipende da cosa permette Myosotis; i pulsanti
+               definitivi saranno quelli ufficiali forniti dalla piattaforma di pagamento. -->
+          <div class="dona-rapido" role="group" aria-labelledby="rapido-titolo">
+            <p class="dona-etichetta" id="rapido-titolo">Dona in un tocco</p>
+            <p class="dona-aiuto" id="rapido-aiuto">Nome ed email li passa il tuo telefono o il tuo conto: non devi scrivere nulla. Se vuoi la ricevuta per le detrazioni, te la chiediamo subito dopo.</p>
+            <div class="dona-rapido__pulsanti">
+              <button type="button" class="dona-rapido__btn dona-rapido__btn--portafoglio" data-rapido="portafoglio" aria-describedby="rapido-aiuto">Dona con <span data-portafoglio>Google Pay</span></button>
+              <button type="button" class="dona-rapido__btn dona-rapido__btn--paypal" data-rapido="PayPal" aria-describedby="rapido-aiuto">Dona con PayPal</button>
+              <button type="button" class="dona-rapido__btn dona-rapido__btn--satispay" data-rapido="Satispay" aria-describedby="rapido-aiuto">Dona con Satispay</button>
+            </div>
+            <p class="dona-rapido__privacy">Donando accetti l’<a href="https://dona.cottolengo.org/" target="_blank" rel="noopener">informativa privacy<span class="sr-only"> (si apre in una nuova scheda)</span></a>.</p>
+          </div>
+          <p class="dona-oppure"><span>oppure inserisci i tuoi dati</span></p>
 
           <!-- Testo del Cottolengo (22/10/2026, decisione 64): niente calcolo della detrazione. -->
           <div class="dona-fiscale" id="dona-fiscale">
@@ -530,7 +547,28 @@
 </footer>
 
 
-<script src="js/nav.js?v=113"></script>
-<script src="js/dona-pagina.js?v=113"></script>
+
+      <!-- Decisione 77: dopo il pagamento rapido (prototipo) -->
+      <dialog class="dona-grazie" id="dona-grazie" aria-labelledby="grazie-titolo">
+        <h2 class="dona-grazie__titolo" id="grazie-titolo" tabindex="-1">Grazie per la tua donazione!</h2>
+        <p class="dona-grazie__testo"><span data-grazie-importo>100 €</span> con <span data-grazie-metodo>PayPal</span>. Ti abbiamo mandato la conferma per email.</p>
+        <p class="dona-grazie__prototipo"><strong>Prototipo:</strong> nessun pagamento è stato fatto.</p>
+        <form class="dona-grazie__ricevuta" id="grazie-ricevuta" novalidate>
+          <p class="dona-etichetta">Vuoi la ricevuta per detrarre la donazione dalle tasse?</p>
+          <label class="dona-etichetta dona-etichetta--leggera" for="grazie-cf">Inserisci il tuo codice fiscale</label>
+          <input class="dona-input dona-input--maiuscolo" type="text" id="grazie-cf" name="grazie-cf" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" aria-describedby="grazie-cf-errore">
+          <p class="dona-errore" id="grazie-cf-errore" hidden>Il codice fiscale ha 16 caratteri.</p>
+          <div class="dona-grazie__azioni">
+            <button class="dona-btn dona-btn--primario" type="submit">Voglio la ricevuta</button>
+            <button class="dona-btn dona-btn--secondario" type="button" data-grazie-chiudi>No, grazie</button>
+          </div>
+        </form>
+        <div class="dona-grazie__fatto" id="grazie-fatto" hidden>
+          <p class="dona-grazie__testo">Perfetto, ti mandiamo la ricevuta per email.</p>
+          <button class="dona-btn dona-btn--primario" type="button" data-grazie-chiudi>Chiudi</button>
+        </div>
+      </dialog>
+<script src="js/nav.js?v=114"></script>
+<script src="js/dona-pagina.js?v=114"></script>
 </body>
 </html>

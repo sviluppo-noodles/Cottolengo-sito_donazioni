@@ -3209,3 +3209,62 @@ fieldset { border: none; }
 .dona-ricevuta { margin-top: 0.25rem; }
 .dona-ricevuta[hidden] { display: none; }
 .dona-ricevuta__intro { margin: 0 0 1rem; color: var(--grigio-testo); font-size: 1rem; }
+
+/* ==========================================================
+   Decisione 77: "Dona in un tocco" (pagamento rapido) e grazie
+   I pulsanti definitivi saranno quelli ufficiali della piattaforma
+   di pagamento; qui sono solo testo nei colori dei servizi.
+   ========================================================== */
+.dona-rapido { margin: 1.75rem 0 0; }
+.dona-rapido__pulsanti { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+.dona-rapido__btn {
+  min-height: 60px;
+  padding: 0 0.75rem;
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+.dona-rapido__btn:hover { filter: brightness(0.92); }
+.dona-rapido__btn:focus-visible { outline: 3px solid var(--azzurro); outline-offset: 2px; }
+.dona-rapido__btn--portafoglio { background: #000; color: #fff; }
+.dona-rapido__btn--paypal { background: #FFC439; color: #00205B; }
+.dona-rapido__btn--satispay { background: #D8352F; color: #fff; }
+.dona-rapido__privacy { margin: 0.75rem 0 0; color: var(--grigio-testo); font-size: 0.9375rem; }
+.dona-oppure { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 0; color: var(--grigio-testo); font-size: 1rem; }
+.dona-oppure::before, .dona-oppure::after { content: ""; flex: 1; border-top: 1px solid var(--d-bordo); }
+@media (max-width: 36em) {
+  .dona-rapido__pulsanti { grid-template-columns: minmax(0, 1fr); }
+  .dona-rapido__btn { font-size: 1.1875rem; }
+}
+
+.dona-grazie {
+  /* il dialogo sta fuori da .dona-pagina: servono le stesse variabili */
+  --d-bordo: #C9D4DB;
+  --d-bordo-forte: #8FA3AE;
+  --d-fondo: #F4F7F9;
+  --d-raggio: 8px;
+  --d-errore: #B42318;
+  margin: auto;
+  width: min(32rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  padding: 2rem 1.75rem;
+  border: 0;
+  border-radius: var(--d-raggio);
+  color: var(--ink);
+  box-shadow: 0 20px 60px rgba(0, 32, 50, 0.3);
+}
+.dona-grazie::backdrop { background: rgba(0, 32, 50, 0.55); }
+.dona-grazie__titolo { margin: 0 0 0.75rem; font-size: 1.625rem; color: var(--blu-notte); outline: none; }
+.dona-grazie__testo { margin: 0 0 1rem; font-size: 1.125rem; }
+.dona-grazie__prototipo { margin: 0 0 1.5rem; padding: 0.6rem 0.85rem; background: var(--d-fondo); border-radius: 6px; font-size: 0.9375rem; color: var(--grigio-testo); }
+.dona-grazie__ricevuta { padding-top: 1.25rem; border-top: 1px solid var(--d-bordo); }
+.dona-grazie__ricevuta[hidden], .dona-grazie__fatto[hidden] { display: none; }
+.dona-grazie__ricevuta .dona-input { margin-top: 0.35rem; }
+.dona-grazie__azioni { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+.dona-grazie__azioni .dona-btn { flex: 1 1 12rem; min-width: 0; padding: 0 1.25rem; }
+.dona-oppure + .dona-fiscale { margin-top: 1.25rem; }
