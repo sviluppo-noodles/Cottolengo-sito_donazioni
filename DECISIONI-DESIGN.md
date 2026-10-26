@@ -1359,6 +1359,13 @@ Il testo dopo i tre riquadri numerati era attaccato all'ultimo riquadro (segnala
 - Regola generale: dopo i riquadri dei passaggi il testo che segue parte 2rem più in basso (pagina Raccolte solidali, «Se hai bisogno di una mano…»).
 - «Vuoi portare dei vestiti?» è un argomento a parte: ora sta in un riquadro grigio chiaro, 3rem sotto i passaggi, così si capisce che non è il quarto passaggio. Classe `.nota-riquadro`. CSS v=117.
 
+## 84. «Kit» spiegato dove non c'è contesto (26/10/2026)
+
+Nel menu e nella descrizione per Google «25 € valgono un kit» non si capiva: chi legge non sa ancora cos'è il kit (segnalato da Fulvio).
+- Menu «Vestiti e docce»: «Vestiti, intimo e una doccia calda per chi è in difficoltà: scopri come il Cottolengo aiuta anche così.»
+- Descrizione per Google e condivisioni: «…Per darti un'idea, con 25 € una persona riceve vestiti, intimo e una doccia.»
+- Dentro la pagina «kit» resta: lì è spiegato dalla sezione «Cosa c'è in un kit» e nel riquadro Dona.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
