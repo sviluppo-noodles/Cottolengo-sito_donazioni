@@ -1366,6 +1366,14 @@ Nel menu e nella descrizione per Google «25 € valgono un kit» non si capiva:
 - Descrizione per Google e condivisioni: «…Per darti un'idea, con 25 € una persona riceve vestiti, intimo e una doccia.»
 - Dentro la pagina «kit» resta: lì è spiegato dalla sezione «Cosa c'è in un kit» e nel riquadro Dona.
 
+## 85. Home, scheda Cura: foto della fisioterapia (26/10/2026)
+
+Nella scheda «Cura» di «Scegli dove fare la differenza» la foto della suora con gli ospiti (che resta come copertina della pagina Cura) è sostituita da una foto fornita da Fulvio: un fisioterapista segue un uomo anziano negli esercizi di riabilitazione, con gli elettrodi sulla gamba. Mostra la cura sanitaria in modo concreto e distingue la scheda Cura da quella di Accoglienza, che ha già una suora con un'ospite.
+- File: `assets/img/chi-aiuti/cura-cottolengo-fisioterapia-riabilitazione-800.jpg` e `-1200.jpg` (4:3, come le altre schede).
+- Alt: «Un fisioterapista aiuta un uomo anziano negli esercizi di riabilitazione a letto, con gli elettrodi per la stimolazione sulla gamba».
+- Le foto precedenti restano nella cartella; da eliminare solo su conferma.
+- Da verificare con il Cottolengo: provenienza della foto e consenso della persona ritratta.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
