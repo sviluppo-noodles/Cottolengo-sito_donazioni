@@ -2250,15 +2250,19 @@ fieldset { border: none; }
   overflow: hidden;
 }
 /* CTA azzurro a tutta larghezza, ancorato in fondo alla card */
+/* Decisione 75: i pulsanti delle schede sono SECONDARI (contorno), così
+   l'unica azione piena e azzurra della pagina resta "Dona". Le schede portano
+   a una pagina da leggere, non direttamente alla donazione. */
 .proj-card__cta {
   margin-top: auto;
   align-self: stretch;
   justify-content: center;
   padding-inline: 1.4rem;
-  background: var(--azzurro);
-  color: #fff;
+  background: #fff;
+  color: var(--azzurro-scuro);
+  box-shadow: inset 0 0 0 2px var(--azzurro-scuro);
 }
-.proj-card__cta:hover { background: var(--blu-notte); color: #fff; border-color: var(--blu-notte); }
+.proj-card__cta:hover { background: var(--blu-notte); color: #fff; box-shadow: inset 0 0 0 2px var(--blu-notte); }
 .proj-card__cta span[aria-hidden] { font-size: 1.15rem; transition: transform var(--transizione); }
 .proj-card__cta:hover span[aria-hidden] { transform: translateX(3px); }
 
@@ -2995,8 +2999,8 @@ fieldset { border: none; }
 .dona-fiscale {
   margin: 0 0 1.5rem;
   padding: 1rem 1.1rem;
-  border-left: 3px solid var(--blu-notte);
-  border-radius: 0 6px 6px 0;
+  border: 1px solid var(--d-bordo);   /* decisione 75: riquadro intero, niente riga laterale */
+  border-radius: 6px;
   background: var(--d-fondo);
 }
 .dona-fiscale__riga { color: var(--ink); font-size: 1.0625rem; line-height: 1.5; }
@@ -3122,8 +3126,11 @@ fieldset { border: none; }
 }
 @media (max-width: 36em) {
   .dona-riga--2, .dona-riga--indirizzo { grid-template-columns: minmax(0, 1fr); }
-  .dona-riga--citta { grid-template-columns: 100px minmax(0, 1fr); }
-  .dona-riga--citta .dona-campo:last-child { grid-column: 1 / -1; max-width: 120px; }
+  /* decisione 75: su telefono CAP, comune e provincia uno sotto l'altro,
+     così anche il messaggio d'errore sta su una riga */
+  .dona-riga--citta { grid-template-columns: minmax(0, 1fr); }
+  .dona-riga--citta .dona-campo:first-child,
+  .dona-riga--citta .dona-campo:last-child { max-width: 11rem; }
   .dona-btn { width: 100%; min-width: 0; }
   .dona-passo__titolo { font-size: 1.3125rem; }
   .dona-modulo { padding: 1.25rem 1rem 1.5rem; border-radius: 8px; }
@@ -3165,4 +3172,33 @@ fieldset { border: none; }
 }
 @media (max-width: 30em) {
   .checkout-torna { display: none; }               /* su telefono si torna dal logo e dal footer */
+}
+
+/* ==========================================================
+   Decisione 75 (revisione del 26/10/2026)
+   ========================================================== */
+/* gruppi di scelte con errore: bordo rosso sul posto, non solo nell'elenco */
+.dona-campo--errore .dona-scelta span,
+.dona-campo--errore .dona-metodi { border-color: var(--d-errore); box-shadow: 0 0 0 1px var(--d-errore); }
+.dona-campo--errore .dona-spunta input { outline: 2px solid var(--d-errore); outline-offset: 2px; }
+/* metodi di pagamento: una riga su cosa succede dopo */
+.dona-metodo__nome { flex-wrap: wrap; row-gap: 0.15rem; }
+.dona-metodo__nota {
+  flex-basis: 100%;
+  padding-left: calc(24px + 0.85rem);   /* allineata al nome, dopo il pallino */
+  margin-top: -0.2rem;
+  color: var(--grigio-testo);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.dona-metodo__nome::before { align-self: center; }
+.dona-metodi__avviso { margin-top: 0.6rem; }
+.dona-metodo[hidden] { display: none; }
+/* telefono: "Dona ora" dell'header e menu restano delle misure di UNICEF
+   (decisione 55) ma l'area di tocco invisibile arriva a 44 px */
+@media (max-width: 45em) {
+  .btn--header, .header__burger { position: relative; }
+  .btn--header::after { content: ""; position: absolute; inset: -6px -4px; }
+  .header__burger::after { content: ""; position: absolute; inset: -4px; }
 }

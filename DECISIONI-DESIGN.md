@@ -1246,6 +1246,28 @@ Le schede della sezione "Scegli dove fare la differenza" usano ora le stesse fot
 
 **File vecchi.** Le immagini AI non sono più usate. Restano nella cartella finché non si decide di eliminarle.
 
+## 75. Revisione UX: ogni «Dona» porta alla pagina Dona, errori e pagamenti più chiari (26/10/2026)
+
+Nasce da una revisione critica di home e pagina Dona, pensata soprattutto per chi dona da telefono (la maggioranza, secondo Donare 3.0) e per un pubblico in gran parte sopra i 50 anni. I contenuti non ancora completi (cifre, link provvisori) restano come sono: non sono errori.
+
+**Home**
+- **Tutti i pulsanti «Dona» portano a `dona.html`:** pulsante accanto alla bambina, «Dona ora» fisso in basso su telefono, «Donazione libera» nel menu di tutte le pagine, slide di Natale. Prima alcuni portavano a `#dona`, cioè a un punto della pagina che non c'è più. Su Myosotis diventeranno i moduli dedicati.
+- **Il carosello apre con la donazione:** l'ordine ora è pasto, Natale, 5×1000, lasciti. La prima cosa che si vede è un gesto concreto e immediato. Il 5×1000 è una firma, non una donazione, e arriva dopo. «Dona un pasto» porta a `dona.html?causale=pasti`, che mostra «Dona un pasto · Per le mense del Cottolengo» (nel prototipo; su Myosotis sarà un modulo dedicato).
+- **Pulsanti delle quattro schede secondari:** «Scopri e dona» ora è bianco con bordo blu. Così il pulsante pieno «Dona ora» resta il più evidente della pagina e non compete con quattro pulsanti uguali.
+
+**Pagina Dona**
+- **«Una tantum» diventa «Una volta sola»:** parola più comune.
+- **Ogni metodo di pagamento dice cosa succede dopo:** «Paghi subito sulla pagina protetta», «Ricevi IBAN e causale…». Per bonifico e bollettino il pulsante finale dice «Ricevi i dati per il bonifico» / «Ricevi i dati del bollettino», perché non si paga in quel momento.
+- **Con «Continuativa» il bollettino sparisce,** con una riga che lo spiega: non si può usare per donazioni ripetute.
+- **Newsletter facoltativa:** non è più obbligatorio rispondere (non c'era l'obbligo nel modulo vecchio).
+- **Errori:** l'elenco in alto si aggiorna mentre si correggono i dati; importo, metodo e privacy hanno il bordo rosso e il messaggio sul posto; i messaggi sono brevi («Inserisci il CAP.») e stanno su una riga anche su telefono. Se si passa da privato ad azienda, gli errori dei campi nascosti spariscono.
+- **Provincia senza esempio «TO»:** sembrava già compilata.
+- **Su telefono** CAP e provincia vanno uno sotto l'altro, larghi abbastanza da leggere quello che si scrive.
+- **Box della detrazione** con bordo leggero invece della striscia laterale colorata.
+- **Aree di tocco di 44 px** per «Dona ora» nell'header e per il menu su telefono, senza cambiare le dimensioni visibili.
+
+Non toccato: il riepilogo su telefono che scorre via con la pagina e i testi introduttivi centrati su telefono (da valutare dopo).
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
@@ -1275,7 +1297,7 @@ Se il Cottolengo preferisce comunque l'azzurro del logo anche su titoli e pulsan
 ## Punti aperti
 
 - **Foto definitive per la hero** dal Cottolengo, secondo le misure delle specifiche. Facoltativa una versione verticale 9:16 per telefono.
-- **Testi delle slide** da validare con il cliente. Il dato "oltre 110.000 pasti" viene dalla scheda progetto; il vecchio banner diceva 97.000.
+- **Testi delle slide** da validare con il cliente. Il dato "oltre 110.000 pasti" viene dalla scheda progetto; il vecchio banner diceva 97.000. Anche «5 ambiti» e «4 aree» vanno resi coerenti (contenuto da completare).
 - **Pagina Family Cottolengo:** decidere se usare anche lì la nuova nota fiscale.
 - **Etichette piccole** ("il più scelto", pillole delle schede): oggi sono sotto i 12 px. Proposta di portarle a 13 px.
 - **Schede progetto:** al passaggio del mouse si sollevano ancora. Valutare lo stesso ingrandimento morbido dei pulsanti.

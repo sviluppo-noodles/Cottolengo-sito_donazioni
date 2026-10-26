@@ -25,7 +25,7 @@
   <meta name="theme-color" content="#0097D8">
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=111">
+  <link rel="stylesheet" href="css/style.css?v=112">
 </head>
 <body class="page-dona">
 
@@ -76,14 +76,14 @@
 
           <div class="dona-campo">
             <span class="dona-etichetta" id="destinazione-etichetta">Destinazione</span>
-            <p class="dona-fisso" aria-labelledby="destinazione-etichetta">Donazione libera · <strong>Per le Opere di Carità</strong><span class="dona-fisso__nota">Sostieni il Cottolengo e lascia che sia l’ente a destinare la tua donazione dove c’è più bisogno.</span></p>
+            <p class="dona-fisso" aria-labelledby="destinazione-etichetta"><span data-destinazione="tipo">Donazione libera</span> · <strong data-destinazione="nome">Per le Opere di Carità</strong><span class="dona-fisso__nota" data-destinazione="nota">Sostieni il Cottolengo e lascia che sia l’ente a destinare la tua donazione dove c’è più bisogno.</span></p>
             <input type="hidden" name="causale" value="donazione-libera">
           </div>
 
           <fieldset class="dona-campo">
             <legend class="dona-etichetta">Frequenza</legend>
             <div class="dona-scelte dona-scelte--due">
-              <label class="dona-scelta"><input type="radio" name="ricorrenza" value="singola" checked><span>Una tantum</span></label>
+              <label class="dona-scelta"><input type="radio" name="ricorrenza" value="singola" checked><span>Una volta sola</span></label>
               <label class="dona-scelta"><input type="radio" name="ricorrenza" value="continuativa"><span>Continuativa</span></label>
             </div>
             <div class="dona-sottoscelta" id="periodicita" hidden>
@@ -103,6 +103,7 @@
               <label class="dona-scelta dona-scelta--importo"><input type="radio" name="importo-proposto" value="100" checked><span>100&nbsp;€</span></label>
               <label class="dona-scelta dona-scelta--importo"><input type="radio" name="importo-proposto" value="200"><span>200&nbsp;€</span></label>
             </div>
+            <p class="dona-errore" id="importo-errore" hidden>Scegli un importo oppure scrivine uno.</p>
             <div class="dona-campo dona-campo--interno">
               <label class="dona-etichetta dona-etichetta--leggera" for="importo-libero">Oppure inserisci un altro importo</label>
               <div class="dona-valuta">
@@ -159,7 +160,7 @@
           <div class="dona-riga dona-riga--citta">
             <div class="dona-campo"><label class="dona-etichetta" for="cap">CAP</label><input class="dona-input" type="text" id="cap" name="cap" inputmode="numeric" autocomplete="postal-code" maxlength="5" required data-formato="cap"></div>
             <div class="dona-campo"><label class="dona-etichetta" for="comune">Comune</label><input class="dona-input" type="text" id="comune" name="comune" autocomplete="address-level2" required></div>
-            <div class="dona-campo"><label class="dona-etichetta" for="provincia">Provincia</label><input class="dona-input dona-input--maiuscolo" type="text" id="provincia" name="provincia" autocomplete="address-level1" maxlength="2" placeholder="TO" required></div>
+            <div class="dona-campo"><label class="dona-etichetta" for="provincia">Provincia</label><input class="dona-input dona-input--maiuscolo" type="text" id="provincia" name="provincia" autocomplete="address-level1" maxlength="2" required></div>
           </div>
           <div class="dona-campo">
             <label class="dona-etichetta" for="nazione">Nazione</label>
@@ -431,11 +432,13 @@
           <fieldset class="dona-campo dona-consensi">
             <legend class="dona-etichetta">Privacy</legend>
             <label class="dona-spunta"><input type="checkbox" name="privacy" id="privacy" required><span>Dichiaro di aver preso visione dell'<a href="https://dona.cottolengo.org/" target="_blank" rel="noopener">informativa privacy<span class="sr-only"> (si apre in una nuova scheda)</span></a> di Piccola Casa della Divina Provvidenza e Fondazione Cottolengo Solidale ETS.</span></label>
+            <p class="dona-errore" id="privacy-errore" hidden>Spunta la casella per continuare.</p>
           </fieldset>
           <fieldset class="dona-campo">
-            <legend class="dona-etichetta dona-etichetta--testo">Vuoi ricevere aggiornamenti sulle attività del Cottolengo tramite newsletter, SMS, WhatsApp, altri strumenti digitali o posta?</legend>
+            <!-- Facoltativa (decisione 75): non blocca la donazione; senza risposta vale "No". -->
+            <legend class="dona-etichetta dona-etichetta--testo">Vuoi ricevere aggiornamenti sulle attività del Cottolengo tramite newsletter, SMS, WhatsApp, altri strumenti digitali o posta? <span class="dona-facoltativo">(facoltativo)</span></legend>
             <div class="dona-scelte dona-scelte--due dona-scelte--compatte">
-              <label class="dona-scelta"><input type="radio" name="comunicazioni" value="si" required><span>Sì</span></label>
+              <label class="dona-scelta"><input type="radio" name="comunicazioni" value="si"><span>Sì</span></label>
               <label class="dona-scelta"><input type="radio" name="comunicazioni" value="no"><span>No</span></label>
             </div>
           </fieldset>
@@ -448,21 +451,25 @@
 
           <fieldset class="dona-campo">
             <legend class="dona-etichetta">Come vuoi pagare?</legend>
-            <div class="dona-metodi">
-              <label class="dona-metodo"><input type="radio" name="metodo" value="carta" required><span class="dona-metodo__nome">Carta di credito</span></label>
-              <label class="dona-metodo"><input type="radio" name="metodo" value="paypal"><span class="dona-metodo__nome">PayPal</span></label>
-              <label class="dona-metodo"><input type="radio" name="metodo" value="satispay"><span class="dona-metodo__nome">Satispay</span></label>
-              <label class="dona-metodo"><input type="radio" name="metodo" value="bonifico"><span class="dona-metodo__nome">Bonifico bancario</span></label>
-              <label class="dona-metodo"><input type="radio" name="metodo" value="bollettino"><span class="dona-metodo__nome">Bollettino postale</span></label>
+            <div class="dona-metodi" id="dona-metodi">
+              <label class="dona-metodo"><input type="radio" name="metodo" value="carta" required aria-describedby="m-carta"><span class="dona-metodo__nome">Carta di credito<span class="dona-metodo__nota" id="m-carta">Paghi subito sulla pagina protetta.</span></span></label>
+              <label class="dona-metodo"><input type="radio" name="metodo" value="paypal" aria-describedby="m-paypal"><span class="dona-metodo__nome">PayPal<span class="dona-metodo__nota" id="m-paypal">Accedi al tuo conto PayPal e confermi.</span></span></label>
+              <label class="dona-metodo"><input type="radio" name="metodo" value="satispay" aria-describedby="m-satispay"><span class="dona-metodo__nome">Satispay<span class="dona-metodo__nota" id="m-satispay">Confermi il pagamento dall’app Satispay.</span></span></label>
+              <label class="dona-metodo" data-metodo-differito><input type="radio" name="metodo" value="bonifico" aria-describedby="m-bonifico"><span class="dona-metodo__nome">Bonifico bancario<span class="dona-metodo__nota" id="m-bonifico">Ricevi IBAN e causale e lo fai dalla tua banca.</span></span></label>
+              <label class="dona-metodo" data-metodo-differito data-solo-singola><input type="radio" name="metodo" value="bollettino" aria-describedby="m-bollettino"><span class="dona-metodo__nome">Bollettino postale<span class="dona-metodo__nota" id="m-bollettino">Ricevi i dati del bollettino e lo paghi in posta o online.</span></span></label>
             </div>
+            <!-- DA CONFERMARE con Myosotis: quali metodi accettano la donazione continuativa.
+                 Per ora si nasconde solo il bollettino, che non può ripetersi da solo. -->
+            <p class="dona-aiuto dona-metodi__avviso" id="metodi-continuativa" hidden>Il bollettino postale non è disponibile per la donazione continuativa.</p>
+            <p class="dona-errore" id="metodo-errore" hidden>Scegli come vuoi pagare.</p>
           </fieldset>
 
           <div class="dona-riepilogo-fine">
             <h3>Riepilogo</h3>
             <dl class="dona-dati">
               <div><dt>Importo</dt><dd data-riepilogo="importo">100&nbsp;€</dd></div>
-              <div><dt>Frequenza</dt><dd data-riepilogo="frequenza">Una tantum</dd></div>
-              <div><dt>Destinazione</dt><dd>Opere di Carità</dd></div>
+              <div><dt>Frequenza</dt><dd data-riepilogo="frequenza">Una volta sola</dd></div>
+              <div><dt>Destinazione</dt><dd data-destinazione="breve">Opere di Carità</dd></div>
               <div><dt>Intestatario</dt><dd data-riepilogo="intestatario">—</dd></div>
             </dl>
           </div>
@@ -470,7 +477,7 @@
           <div class="dona-azioni dona-azioni--fine">
             <button class="dona-btn dona-btn--primario dona-btn--conferma" type="submit">
               <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg>
-              <span>Dona <span data-riepilogo="importo">100&nbsp;€</span></span>
+              <span data-pulsante-testo>Dona <span data-riepilogo="importo">100&nbsp;€</span></span>
             </button>
           </div>
           <p class="dona-avviso-fine" id="dona-avviso-fine" role="status" hidden><strong>Prototipo:</strong> qui si aprirebbe il pagamento sicuro sulla piattaforma Myosotis. Nessun dato è stato inviato.</p>
@@ -481,8 +488,8 @@
       <aside class="dona-lato" aria-label="Riepilogo della donazione">
         <div class="dona-lato__scheda">
           <p class="dona-lato__titolo">Riepilogo</p>
-          <p class="dona-lato__importo"><span data-riepilogo="importo">100&nbsp;€</span> <span class="dona-lato__frequenza" data-riepilogo="frequenza">Una tantum</span></p>
-          <p class="dona-lato__destinazione">Per le Opere di Carità</p>
+          <p class="dona-lato__importo"><span data-riepilogo="importo">100&nbsp;€</span> <span class="dona-lato__frequenza" data-riepilogo="frequenza">Una volta sola</span></p>
+          <p class="dona-lato__destinazione" data-destinazione="nome">Per le Opere di Carità</p>
           <ul class="dona-garanzie">
             <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="11" rx="2.5" fill="currentColor"/></svg><span><strong>Pagamento protetto</strong> su connessione cifrata.</span></li>
             <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Ricevuta di donazione</strong> per i benefici fiscali.</span></li>
@@ -508,7 +515,7 @@
 </footer>
 
 
-<script src="js/nav.js?v=111"></script>
-<script src="js/dona-pagina.js?v=111"></script>
+<script src="js/nav.js?v=112"></script>
+<script src="js/dona-pagina.js?v=112"></script>
 </body>
 </html>
