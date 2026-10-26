@@ -1295,7 +1295,7 @@ Preso dai moduli di donazione su Stripe (esempio analizzato: Blender Foundation)
 ## 78. Pagine Privacy Policy e Cookie Policy (26/10/2026)
 
 - **`privacy.html`**: informativa ufficiale per i donatori (102BIS, ver. 1.0 del 15/09/2025). **`cookie.html`**: Cookie Policy ufficiale (108, ver. 6.0 del 10/02/2023). Testi riportati senza modifiche; cambia solo l'impaginazione: titoli per sezione, elenchi, telefoni ed email cliccabili. Unica correzione: il refuso «àòi» → «ai» nella Cookie Policy.
-- **PDF scaricabili** sotto il titolo («Scarica il PDF»), in `assets/docs/`.
+- **Niente PDF da scaricare** (deciso il 26/10): per legge basta la pagina, e un PDF sarebbe una seconda copia da tenere allineata (quello dei cookie avrebbe l'elenco vecchio). Sotto il titolo restano numero di versione e data del documento ufficiale. Se il Cottolengo lo chiede, il link si rimette in un minuto.
 - Colonna di testo stretta per leggere bene; in fondo un riquadro con il contatto dell'ufficio privacy.
 - **Tabella dei cookie:** su PC si allarga oltre la colonna di testo, così la finalità si legge su poche righe; su telefono ogni cookie diventa una scheda, senza tabella da scorrere di lato.
 - **Collegamenti:** «Privacy Policy» e «Cookie Policy» nel footer di tutte le pagine (prima erano link vuoti); nella pagina Dona la casella dell'informativa e la riga «Donando accetti l'informativa privacy» ora aprono `privacy.html` in una nuova scheda (prima puntavano a dona.cottolengo.org).
