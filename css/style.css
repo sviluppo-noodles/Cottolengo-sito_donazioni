@@ -3314,3 +3314,10 @@ fieldset { border: none; }
 .galleria-foto figure { margin: 0; }
 .galleria-foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
 .galleria-foto figcaption { margin-top: 0.5rem; color: var(--grigio-testo); font-size: 0.9375rem; line-height: 1.4; }
+
+/* Decisione 83: respiro dopo i riquadri dei passaggi. Il testo che segue non si attacca
+   all'ultimo riquadro; un argomento a parte («Vuoi portare dei vestiti?») sta in un riquadro grigio. */
+.cpm-passi + .project-article-content { margin-top: var(--s-6); }
+.cpm-passi + .nota-riquadro { margin-top: var(--s-7); }
+.nota-riquadro { padding: 1.25rem 1.5rem; background: #F4F7F9; border-radius: 8px; }
+.nota-riquadro p { margin: 0; }

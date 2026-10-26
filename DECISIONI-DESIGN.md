@@ -1352,6 +1352,13 @@ Ripresa della pagina «Dona un indumento» del vecchio sito donazioni (donazioni
 
 **Da confermare con il Cottolengo:** se il servizio è ancora attivo, dove si trova e chi lo gestisce; numeri di oggi (persone, kit, prestazioni); se 25 € per kit è ancora giusto; se accettano vestiti portati di persona; consenso per le foto. Fino ad allora la pagina dice «Numeri e importi della campagna del 2020, da aggiornare».
 
+## 83. Più respiro dopo i riquadri dei passaggi (26/10/2026)
+
+Il testo dopo i tre riquadri numerati era attaccato all'ultimo riquadro (segnalato da Fulvio sulla pagina Vestiti e docce).
+
+- Regola generale: dopo i riquadri dei passaggi il testo che segue parte 2rem più in basso (pagina Raccolte solidali, «Se hai bisogno di una mano…»).
+- «Vuoi portare dei vestiti?» è un argomento a parte: ora sta in un riquadro grigio chiaro, 3rem sotto i passaggi, così si capisce che non è il quarto passaggio. Classe `.nota-riquadro`. CSS v=117.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
