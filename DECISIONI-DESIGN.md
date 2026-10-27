@@ -1452,6 +1452,13 @@ Foto fornita da Fulvio: tre giovani camminano insieme sorridendo in un ambiente 
 - Alt: «Tre giovani camminano insieme sorridendo in un ambiente luminoso del Cottolengo».
 - Da verificare con il Cottolengo: consenso delle persone ritratte.
 
+## 95. Pagina Volontariato: galleria di foto vere (27/10/2026)
+
+Stessa impaginazione delle pagine delle aree, prima di «Come iniziare». Colore (bianchi neutri al 70%) e contrasto uniformati.
+- **Foto grande:** una giovane abbraccia sorridendo un'ospite in carrozzina. «Un abbraccio vale più di tante parole.»
+- **Sotto:** un'operatrice accompagna a braccetto un'ospite in corridoio («Una passeggiata insieme, a braccetto.»); un operatore aiuta un ospite in carrozzina a usare uno schermo touch («Anche la tecnologia aiuta a stare insieme.»).
+- Nelle didascalie e negli alt nessuno è chiamato «volontario»: non sappiamo se sono volontari o operatori. Da verificare con il Cottolengo, insieme al consenso.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
