@@ -1459,6 +1459,18 @@ Stessa impaginazione delle pagine delle aree, prima di «Come iniziare». Colore
 - **Sotto:** un'operatrice accompagna a braccetto un'ospite in corridoio («Una passeggiata insieme, a braccetto.»); un operatore aiuta un ospite in carrozzina a usare uno schermo touch («Anche la tecnologia aiuta a stare insieme.»).
 - Nelle didascalie e negli alt nessuno è chiamato «volontario»: non sappiamo se sono volontari o operatori. Da verificare con il Cottolengo, insieme al consenso.
 
+## 96. Le foto vere vengono dal Cottolengo (27/10/2026)
+
+Fulvio conferma che tutte le foto vere inserite nelle decisioni 85–95 (Cura, Educazione, Accoglienza, Missioni internazionali, Volontariato, Raccolte solidali, schede della home e copertine) sono **fornite dal Cottolengo**. La provenienza è quindi confermata: le note «da verificare la provenienza» in quelle decisioni sono superate. Resta buona pratica che il Cottolengo confermi di avere il consenso delle persone ritratte (soprattutto minori) per l'uso sul sito.
+
+## 97. Testamento solidale: l'ingresso della Piccola Casa in copertina (27/10/2026)
+
+La foto di repertorio (coppia di anziani con una consulente) è sostituita da una foto vera fornita dal Cottolengo: l'ingresso della Piccola Casa in via Cottolengo 14 a Torino, con la targa «Piccola Casa della Divina Provvidenza». Un lascito è lasciare qualcosa che dura: la casa nata dalla Provvidenza e ancora aperta lo racconta senza parlare di morte. Sobria, adatta a un tema delicato, riconoscibile per i torinesi.
+- Ingrandita da Fulvio con Topaz (2400 px). Colore: bianchi neutri al 70%, leggero schiarimento, saturazione +8% (era un po' grigia).
+- File `assets/img/pagine/lasciti-cottolengo-piccola-casa-ingresso-960/1600` (3:2, JPG e WebP), fuoco 45% 45%: su PC la targa resta visibile accanto al titolo; su telefono si vedono i due portoni e la targa.
+- Alt: «L'ingresso della Piccola Casa della Divina Provvidenza a Torino, in via Cottolengo 14, con la targa sulla facciata».
+- La copertina della pagina Aziende resta da sostituire: serve una foto di persone che lavorano insieme (volontariato d'impresa).
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
