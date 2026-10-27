@@ -1428,6 +1428,14 @@ Foto fornita da Fulvio: una giovane volontaria sorride e parla con gli ospiti an
 - In preparazione la galleria nella pagina (come Cura ed Educazione): pronta la foto delle due donne che si salutano nella sala (`volontariato-cottolengo-ospiti-saluto`), mancano come file l'uomo con la volontaria al tavolo e la fisioterapia.
 - Da verificare con il Cottolengo: consenso delle persone ritratte.
 
+## 92. Pagina Accoglienza: galleria di foto vere (27/10/2026)
+
+Stessa impaginazione di Cura ed Educazione, dopo «Dove arriva il tuo aiuto». Colore corretto (bianchi resi neutri al 70%).
+- **Foto grande:** un'ospite sorridente infila perline al laboratorio, con un'operatrice. «Al laboratorio, ogni giorno qualcosa da creare.»
+- **Sotto:** due ospiti che si salutano con affetto nella sala, una con un ausilio per stare in piedi («Le relazioni sono il cuore della casa.»); un ospite anziano al tavolo con il giornale e una volontaria che lo abbraccia («Nessuno resta solo.»), taglio spostato a destra per tenere entrambi i volti.
+- Le due foto delle persone erano state proposte anche per il Volontariato: usate solo qui, che è la pagina giusta. I file `volontariato-cottolengo-ospiti-saluto-*` (già pubblicati, non usati) restano in cartella; da eliminare solo su conferma.
+- Da verificare con il Cottolengo: consenso delle persone ritratte.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
