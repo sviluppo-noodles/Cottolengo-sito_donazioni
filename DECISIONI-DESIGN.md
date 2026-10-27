@@ -1475,8 +1475,16 @@ La foto di repertorio (coppia di anziani con una consulente) è sostituita da un
 
 Foto vera fornita dal Cottolengo: una fisioterapista sorridente segue una paziente negli esercizi con la palla, nella palestra di riabilitazione. Sostituisce in copertina la foto delle infermiere al letto (decisione 90), che resta nella scheda Cura della home.
 - **Capovolta orizzontalmente** su richiesta di Fulvio: così il volto della fisioterapista sta al centro, tra il titolo e il riquadro Dona. Con il ribaltamento le scritte piccole sullo sfondo (marca del lettino, braccialetto) risultano a specchio, ma non si leggono nella copertina.
-- File `assets/img/pagine/cura-cottolengo-fisioterapia-palestra-960/1600` (3:2, JPG e WebP), fuoco 55% 35%. Bianchi neutri al 70%.
+- File `assets/img/pagine/cura-cottolengo-fisioterapia-palestra-960/1600` (3:2, JPG e WebP), fuoco 55% 12%: la testa resta intera anche sugli schermi molto larghi (corretto dopo la segnalazione di Fulvio). Bianchi neutri al 70%.
 - Alt: «Una fisioterapista sorridente segue una paziente negli esercizi di riabilitazione con la palla, nella palestra del Cottolengo».
+
+## 99. Cura: copertina con il medico e l'ospite in carrozzina (27/10/2026)
+
+Provata la foto della fisioterapia (decisione 98), poi scelta questa, fornita dal Cottolengo: un medico in camice si china verso un'ospite in carrozzina che lo guarda sorridendo, nel corridoio arancione. Due persone che si guardano: la relazione di cura si sente di più, ed è più calda. I volti restano interi su schermo largo, portatile e telefono.
+- **Colore** (richiesta di Fulvio): bianchi resi neutri (via la leggera dominante fredda), curva a S leggera per il contrasto, vibrance sui colori spenti, un filo di calore nei mezzitoni.
+- File `assets/img/pagine/cura-cottolengo-medico-ospite-carrozzina-960/1600` (3:2, JPG e WebP), fuoco 45% 15%.
+- Alt: «Un medico in camice si china verso un'ospite in carrozzina che lo guarda sorridendo, in un corridoio luminoso del Cottolengo».
+- Le foto della fisioterapia (`cura-cottolengo-fisioterapia-palestra-*`, già pubblicate) restano in cartella e possono tornare in galleria.
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
