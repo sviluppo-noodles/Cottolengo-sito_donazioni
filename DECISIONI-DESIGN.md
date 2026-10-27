@@ -1471,6 +1471,13 @@ La foto di repertorio (coppia di anziani con una consulente) è sostituita da un
 - Alt: «L'ingresso della Piccola Casa della Divina Provvidenza a Torino, in via Cottolengo 14, con la targa sulla facciata».
 - La copertina della pagina Aziende resta da sostituire: serve una foto di persone che lavorano insieme (volontariato d'impresa).
 
+## 98. Cura: copertina con la fisioterapia in palestra (27/10/2026)
+
+Foto vera fornita dal Cottolengo: una fisioterapista sorridente segue una paziente negli esercizi con la palla, nella palestra di riabilitazione. Sostituisce in copertina la foto delle infermiere al letto (decisione 90), che resta nella scheda Cura della home.
+- **Capovolta orizzontalmente** su richiesta di Fulvio: così il volto della fisioterapista sta al centro, tra il titolo e il riquadro Dona. Con il ribaltamento le scritte piccole sullo sfondo (marca del lettino, braccialetto) risultano a specchio, ma non si leggono nella copertina.
+- File `assets/img/pagine/cura-cottolengo-fisioterapia-palestra-960/1600` (3:2, JPG e WebP), fuoco 55% 35%. Bianchi neutri al 70%.
+- Alt: «Una fisioterapista sorridente segue una paziente negli esercizi di riabilitazione con la palla, nella palestra del Cottolengo».
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
