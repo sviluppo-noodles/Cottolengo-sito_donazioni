@@ -3350,9 +3350,10 @@ fieldset { border: none; }
 .faq {
   background: var(--azzurro-chiarissimo); padding-block: var(--s-sezione);
   /* Apertura morbida (decisione 103, js/nav.js → initFaq): la voce si allunga e spinge giù
-     le altre con una curva ease-in-out dolce; si chiude un po' più in fretta. */
-  --faq-durata: 420ms;
-  --faq-curva: cubic-bezier(0.45, 0, 0.25, 1);
+     le altre con la decelerazione esponenziale consigliata dalla skill impeccable
+     (parte decisa, si posa piano); si chiude più in fretta. */
+  --faq-durata: 450ms;
+  --faq-curva: cubic-bezier(0.16, 1, 0.3, 1);
   --faq-aperta: #F5FAFE;           /* velatura della voce aperta (tra bianco e azzurro chiarissimo) */
 }
 .faq .section-head { margin-bottom: var(--s-7); }

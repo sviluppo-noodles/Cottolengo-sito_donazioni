@@ -234,8 +234,9 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
 /* ---------- Domande frequenti: apertura e chiusura morbide (decisione 103) ----------
    <details> nativo resta la base (funziona senza JavaScript). Qui si anima
    l'altezza della scheda dal valore attuale a quello finale: il pannello
-   si allunga e spinge giù le domande sotto, con curva ease-in-out dolce.
-   Apertura 420 ms, chiusura 320 ms (si esce più in fretta di come si entra).
+   si allunga e spinge giù le domande sotto, con la decelerazione
+   esponenziale consigliata dalla skill impeccable (niente rimbalzi).
+   Apertura 450 ms, chiusura 300 ms (si esce più in fretta di come si entra).
    Il testo arriva con una leggera dissolvenza appena dopo l'inizio.
    Un secondo clic a metà animazione riparte dal punto in cui si trova.
    Con "riduci movimento": niente movimento, solo una dissolvenza breve. */
@@ -243,8 +244,8 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
   const gruppi = document.querySelectorAll('.faq__gruppo');
   if (!gruppi.length || !('animate' in Element.prototype)) return;
   const ridotto = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const CURVA = 'cubic-bezier(0.45, 0, 0.25, 1)';
-  const APRI = 420, CHIUDI = 320;
+  const CURVA = 'cubic-bezier(0.16, 1, 0.3, 1)';
+  const APRI = 450, CHIUDI = 300;
 
   gruppi.forEach(d => {
     const titolo = d.querySelector('summary');
