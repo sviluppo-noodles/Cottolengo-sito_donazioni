@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=123">
+  <link rel="stylesheet" href="css/style.css?v=128">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -88,7 +88,7 @@
             </div>
           </div>
         </li>
-        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Lasciti. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
+        <!-- Come aiutarci: tutti i modi di aiutare tranne 5×1000 e Testamento solidale. ogni voce ha la sua pagina; Donazione libera porta al modulo della home. -->
         <li class="nav__item--dropdown">
           <button class="nav__link nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-aiutarci">
             Come aiutarci
@@ -117,7 +117,7 @@
           </div>
         </li>
         <li><a href="cinque-per-mille.html" class="nav__link">5×1000</a></li>
-        <li><a href="testamento-solidale.html" class="nav__link">Lasciti</a></li>
+        <li><a href="testamento-solidale.html" class="nav__link">Testamento solidale</a></li>
         <li><a href="aziende.html" class="nav__link">Aziende</a></li>
       </ul>
     </nav>
@@ -415,7 +415,7 @@
             <h3 class="proj-card__title"><a href="sostegno-a-distanza.html">Sostegno a distanza</a></h3>
             <p class="proj-card__copy">Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.</p>
             <p class="proj-card__nota">Oppure chiama <a href="tel:+393488989163">348&nbsp;8989163</a>, Sr Mary Soshiyat</p>
-            <a class="btn proj-card__cta" href="sostegno-a-distanza.html">Scopri come aderire</a>
+            <a class="btn proj-card__cta" href="sostegno-a-distanza.html">Come aderire</a>
           </div>
         </article>
       </li>
@@ -495,75 +495,81 @@
 </section>
 
 <!-- ============ DOMANDE FREQUENTI ============
-     Decisione 102: fascia a fisarmonica come sul sito attuale del Cottolengo, prima della trasparenza
-     (chi ha deciso di donare trova le risposte quando le cerca). <details> nativo: funziona anche
-     senza JavaScript e con lettori di schermo. RISPOSTE PROVVISORIE: le parti sottolineate
-     (.da-confermare) vanno verificate con il Cottolengo. -->
+     Decisioni 102-103 e 106: domande scritte con le parole del donatore e allineate al modulo,
+     in tre momenti (prima, mentre, dopo); ogni domanda risponde a un requisito di
+     claude/requisiti-nng-donazioni.md (indicato nel commento). Una domanda = una voce: un solo
+     clic per leggere la risposta. <details> nativo: funziona senza JavaScript.
+     In WordPress: CPT «faq» con tassonomia «momento» (prima / mentre / dopo).
+     RISPOSTE PROVVISORIE: le parti sottolineate (.da-confermare) vanno verificate con il Cottolengo. -->
 <section class="faq" id="domande-frequenti" aria-labelledby="faq-title">
   <div class="container">
     <header class="section-head">
       <h2 id="faq-title">Domande frequenti</h2>
-      <p class="section-intro">Le risposte ai dubbi più comuni prima di donare.</p>
+      <p class="section-intro">Prima di donare è giusto avere tutte le risposte.</p>
     </header>
     <div class="faq__lista">
-    <details class="faq__gruppo">
-      <summary><span>Donazione regolare</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-      <div class="faq__corpo">
-        <h3>Come funziona la donazione regolare?</h3>
-        <p>Nel modulo di donazione scegli «Continuativa», poi ogni quanto donare (ogni mese, ogni tre mesi o una volta l’anno) e l’importo. <span class="da-confermare">L’importo viene addebitato in automatico: non devi fare altro.</span></p>
-        <h3>Perché è utile donare con regolarità?</h3>
-        <p>Un aiuto che arriva con regolarità permette di programmare cure e assistenza nel tempo, non solo nelle emergenze.</p>
-        <h3>In che giorno avviene l’addebito?</h3>
-        <p><span class="da-confermare">Nello stesso giorno della prima donazione, ogni mese, ogni tre mesi o ogni anno, secondo la frequenza che hai scelto.</span></p>
-      </div>
-    </details>
-    <details class="faq__gruppo">
-      <summary><span>Donazione singola</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-      <div class="faq__corpo">
-        <h3>Come posso donare una volta sola?</h3>
-        <p>Nel modulo scegli «Una volta sola», l’importo e come pagare: carta di credito, PayPal, Satispay, Apple Pay o Google Pay. Puoi anche fare un bonifico: IBAN IT42 W030 4801 00000000 0097137.</p>
-        <h3>Devo scrivere nome e cognome?</h3>
-        <p>Con Apple Pay, Google Pay, PayPal o Satispay no: nome ed email li passa il tuo telefono o il tuo conto. Se vuoi la ricevuta per le tasse, ti chiediamo i dati subito dopo.</p>
-        <h3>Il pagamento è sicuro?</h3>
-        <p>Sì: paghi su una pagina protetta. <span class="da-confermare">I dati della tua carta non vengono mai conservati dal Cottolengo.</span></p>
-      </div>
-    </details>
-    <details class="faq__gruppo">
-      <summary><span>Come usiamo la donazione</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-      <div class="faq__corpo">
-        <h3>A cosa serve la mia donazione?</h3>
-        <p>Sostiene le opere di carità della Piccola Casa: cura, educazione, accoglienza e missioni.</p>
-        <h3>Come posso sapere come vengono usati i fondi?</h3>
-        <p>Qui sotto, in «Dove va la tua donazione», trovi come vengono impiegati i fondi raccolti. <span class="da-confermare">I dati completi sono nel bilancio sociale.</span></p>
-        <h3>Posso scegliere a cosa destinare il mio dono?</h3>
-        <p><span class="da-confermare">Sì: nel modulo di donazione puoi indicare un’area, per esempio la cura degli anziani o le missioni. Se non scegli, il tuo dono va dove serve di più.</span></p>
-      </div>
-    </details>
-    <details class="faq__gruppo">
-      <summary><span>Durata, revoca, modifica</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-      <div class="faq__corpo">
-        <h3>Posso cambiare l’importo o interrompere la donazione regolare?</h3>
-        <p><span class="da-confermare">Sì, quando vuoi, senza costi.</span> Chiama lo <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a> o scrivi a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>.</p>
-        <h3>Quanto dura la donazione regolare?</h3>
-        <p><span class="da-confermare">Finché non decidi di interromperla.</span></p>
-        <h3>Se cambio carta o conto, cosa devo fare?</h3>
-        <p><span class="da-confermare">Basta una telefonata o un’email: aggiorniamo noi i dati, senza interrompere la donazione.</span></p>
-      </div>
-    </details>
-    <details class="faq__gruppo">
-      <summary><span>Benefici fiscali</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-      <div class="faq__corpo">
-        <h3>Posso detrarre la donazione dalle tasse?</h3>
-        <p>Sì, la donazione può usufruire dei benefici fiscali previsti dall’art.&nbsp;83 del D.Lgs.&nbsp;117/2017. <span class="da-confermare">Puoi detrarre il 30% di quanto doni (fino a 30.000&nbsp;€ l’anno) oppure dedurlo dal reddito nel limite del 10%.</span></p>
-        <h3>Come ricevo la ricevuta?</h3>
-        <p>Quando doni, rispondi «Sì» alla domanda sulla ricevuta e inserisci indirizzo e codice fiscale: la ricevuta arriva per email.</p>
-        <h3>Cosa devo conservare per la dichiarazione dei redditi?</h3>
-        <p><span class="da-confermare">La ricevuta che ti mandiamo per email. Se doni ogni mese, a inizio anno ricevi anche il riepilogo di tutte le donazioni dell’anno precedente.</span></p>
-      </div>
-    </details>
+      <h3 class="faq__gruppo-titolo" id="faq-prima">Prima di donare</h3>
+      <!-- Requisiti 10 e 13: fondo ≠ progetto. Testo del Cottolengo (sopra le quattro aree). -->
+      <details class="faq__gruppo">
+        <summary><span>Se scelgo un’area, il dono va a un solo progetto?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>No: sostieni tutta l’area che hai scelto, per esempio la Cura. Il Cottolengo destina la tua donazione ai progetti e alle necessità più urgenti all’interno di quell’area.</p></div>
+      </details>
+      <!-- Requisito 11: donazione libera. Testo della pagina Dona. -->
+      <details class="faq__gruppo">
+        <summary><span>E se non scelgo un’area?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>È la donazione libera, per le Opere di Carità: lasci che sia il Cottolengo a destinare la tua donazione dove c’è più bisogno. Qui sotto vedi come vengono usati i fondi raccolti.</p></div>
+      </details>
+      <!-- Requisito 4: credibilità verificabile. Ente e codice fiscale dal footer. -->
+      <details class="faq__gruppo">
+        <summary><span>Chi riceve la mia donazione?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>La Fondazione Cottolengo Solidale ETS, codice fiscale 97905980013, <span class="da-confermare">che sostiene le opere della Piccola Casa della Divina Provvidenza</span>. Bilanci e documenti sono nella pagina <a href="chi-siamo.html#documenti">Chi siamo</a>.</p></div>
+      </details>
+      <h3 class="faq__gruppo-titolo" id="faq-mentre">Mentre doni</h3>
+      <!-- Requisito 12: singola e continuativa distinte, con le stesse parole del modulo. -->
+      <details class="faq__gruppo">
+        <summary><span>Posso donare una volta sola o con regolarità?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>Tutte e due. Nel modulo scegli «Una volta sola» oppure «Continuativa»; con la continuativa decidi tu se donare ogni mese, ogni tre mesi o una volta l’anno. <span class="da-confermare">L’importo viene addebitato in automatico.</span></p></div>
+      </details>
+      <!-- Requisito 15: passaggio esterno annunciato; sicurezza del pagamento. -->
+      <details class="faq__gruppo">
+        <summary><span>Dove pago? È sicuro?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>Paghi sulla pagina ufficiale e protetta del Cottolengo, <strong>dona.cottolengo.org</strong>, con carta di credito, PayPal, Satispay, Apple Pay o Google Pay. Se preferisci, puoi fare un bonifico: IBAN IT42 W030 4801 00000000 0097137.</p></div>
+      </details>
+      <!-- Requisito 14: perché chiediamo email e telefono. -->
+      <details class="faq__gruppo">
+        <summary><span>Perché mi chiedete email e cellulare?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>L’email serve per mandarti la conferma della donazione e, se la chiedi, la ricevuta. Il cellulare è facoltativo: <span class="da-confermare">lo usiamo solo se c’è un problema con il pagamento.</span></p></div>
+      </details>
+      <!-- Requisito 5: parole comuni (non «revoca»). Pubblico anziano: telefono. -->
+      <details class="faq__gruppo">
+        <summary><span>Posso cambiare l’importo o smettere di donare?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p><span class="da-confermare">Sì, quando vuoi e senza costi.</span> Chiama lo <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a> o scrivi a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>.</p></div>
+      </details>
+      <h3 class="faq__gruppo-titolo" id="faq-dopo">Dopo aver donato</h3>
+      <!-- Requisito 16: esito, ringraziamento, riepilogo, ricevuta. -->
+      <details class="faq__gruppo">
+        <summary><span>Cosa succede dopo che ho donato?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>Ti arriva subito un’email di conferma con il riepilogo della donazione. <span class="da-confermare">Nei giorni seguenti ricevi anche il ringraziamento del Cottolengo.</span></p></div>
+      </details>
+      <!-- Requisito 7: ricevuta chiara. Testi della pagina Dona. -->
+      <details class="faq__gruppo">
+        <summary><span>Come ricevo la ricevuta per le tasse?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>Quando doni, rispondi «Sì» alla domanda sulla ricevuta e inserisci indirizzo e codice fiscale: la ricevuta arriva per email. <span class="da-confermare">Se doni con regolarità, a inizio anno ricevi anche il riepilogo delle donazioni dell’anno precedente.</span></p></div>
+      </details>
+      <!-- Requisito 7: benefici fiscali. Articolo di legge dalla pagina Dona. -->
+      <details class="faq__gruppo">
+        <summary><span>Quanto posso detrarre?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__corpo"><p>La donazione può usufruire dei benefici fiscali previsti dall’art.&nbsp;83 del D.Lgs.&nbsp;117/2017. <span class="da-confermare">Puoi detrarre il 30% di quanto doni, fino a 30.000&nbsp;€ l’anno, oppure dedurlo dal reddito nel limite del 10%.</span></p></div>
+      </details>
     </div>
-    <p class="faq__nota">Non trovi la risposta? Chiama lo <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a> o scrivi a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>.</p>
-    <p class="impatti__nota faq__provvisorio">Risposte provvisorie: le parti sottolineate sono da confermare con il Cottolengo.</p>
+    <div class="faq__chiusura">
+      <p class="faq__nota">Non trovi la risposta? Chiama lo <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a> o scrivi a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>.</p>
+      <a class="btn btn--dona faq__btn" href="dona.html">
+        <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
+        Dona ora
+      </a>
+      <p class="impatti__nota faq__provvisorio">Risposte provvisorie: le parti sottolineate sono da confermare con il Cottolengo.</p>
+    </div>
   </div>
 </section>
 
@@ -752,7 +758,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=123"></script>
-<script src="js/nav.js?v=123"></script>
+<script src="js/main.js?v=128"></script>
+<script src="js/nav.js?v=128"></script>
 </body>
 </html>

@@ -1584,7 +1584,7 @@ fieldset { border: none; }
   .numbers__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* 72.5em = 1160px: con sei voci (Chi siamo, Progetti, Come aiutarci, 5×1000, Lasciti, Aziende)
+/* 72.5em = 1160px: con sei voci (Chi siamo, Progetti, Come aiutarci, 5×1000, Testamento solidale, Aziende)
    + logo + "Dona ora", sotto questa larghezza
    la riga non ci sta e il menu passa all'hamburger invece di andare a capo. */
 @media (max-width: 72.5em) {
@@ -3357,6 +3357,22 @@ fieldset { border: none; }
   --faq-aperta: #F5FAFE;           /* velatura della voce aperta (tra bianco e azzurro chiarissimo) */
 }
 .faq .section-head { margin-bottom: var(--s-7); }
+/* Titoli dei tre momenti (prima, mentre, dopo), decisione 107: DENTRO il pannello,
+   come fasce azzurro chiarissimo allineate alle domande. Fuori dal pannello,
+   allineati a sinistra sotto un titolo centrato, restavano sospesi nel vuoto e
+   sbilanciavano la sezione (skill impeccable, guida layout: si raggruppa per
+   vicinanza e contenitore, un solo asse di allineamento). */
+.faq__gruppo-titolo {
+  padding: var(--s-3) var(--s-6);
+  background: var(--azzurro-chiarissimo); color: var(--azzurro-scuro);   /* 4,6:1 */
+  /* Gerarchia netta (decisione 108): titolo del momento 24px su PC e 22px su telefono,
+     domande 20/19px, risposte 19/18px. Prima titolo e domanda erano 19 e 20px:
+     quasi uguali, sembrava un errore. Come nel resto del sito la gerarchia si
+     costruisce alzando i titoli, non abbassando il testo. */
+  font-size: 1.5rem; font-weight: 700; line-height: 1.25;
+  border-bottom: 1px solid var(--bordo);
+}
+.faq__gruppo + .faq__gruppo-titolo { border-top: 1px solid var(--bordo); }
 .faq__lista {
   max-width: 56rem; margin: 0 auto;
   background: var(--bianco); border: 1px solid var(--bordo); border-radius: var(--r-2);
@@ -3387,17 +3403,56 @@ fieldset { border: none; }
 /* il pannello taglia ciò che sporge: l'anello del focus sta dentro la riga */
 .faq__gruppo summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -5px; border-radius: var(--r-2); }
 .faq__corpo { padding: 0 var(--s-6) var(--s-6); }
-.faq__corpo h3 { font-size: var(--t-body); font-weight: 700; color: var(--blu-notte); line-height: 1.35; }
-.faq__corpo p + h3 { margin-top: var(--s-5); }
-.faq__corpo p { margin-top: var(--s-2); color: var(--grigio-testo); line-height: 1.6; max-width: 62ch; }
+.faq__corpo p { color: var(--grigio-testo); line-height: 1.6; max-width: 62ch; }
 .faq__corpo a, .faq__nota a { color: var(--azzurro-scuro); font-weight: 700; }
-.faq__nota { text-align: center; margin-top: var(--s-6); font-size: var(--t-body); color: var(--grigio-testo); }
-.faq__provvisorio { text-align: center; }
+/* chiusura: chi ha sciolto il dubbio può donare subito (requisito 3) */
+.faq__chiusura { text-align: center; margin-top: var(--s-7); }
+.faq__nota { font-size: var(--t-body); color: var(--grigio-testo); }
+.faq__btn { margin-top: var(--s-5); width: auto !important; display: inline-flex; min-width: 16rem; justify-content: center; }
+.faq__provvisorio { margin-top: var(--s-5); }
 @media (max-width: 40em) {
   .faq__gruppo summary { font-size: 1.1875rem; padding-inline: var(--s-5) var(--s-4); gap: var(--s-4); }
   .faq__corpo { padding-inline: var(--s-5); }
+  .faq__gruppo-titolo { padding-inline: var(--s-5); font-size: var(--t-h3); }
 }
 @media (prefers-reduced-motion: reduce) { .faq__icona, .faq__gruppo { transition: none; } }
 
 /* Selezione del testo nei colori del sito (non il blu di sistema) */
 ::selection { background: var(--azzurro-chiaro); color: var(--blu-notte); }
+
+/* =====================================================================
+   SCALA TIPOGRAFICA — sei misure, sei ruoli (decisione 109)
+   Fulvio: «non voglio usare molteplici dimensioni». In home c'erano 17 misure
+   diverse su PC (20,8 · 20 · 19,2 · 19 px… quasi uguali). Ora solo:
+     1 Titolo pagina    --t-hero  38 → 62 px  hero, carosello, grandi cifre
+     2 Titolo sezione   --t-h2    30 → 42 px  titoli h2
+     3 Titolo blocco    --t-h3    22 / 24 px  titoli delle schede, momenti FAQ, voci del grafico
+     4 Testo in evidenza --t-lead 21 px       introduzioni, sottotitoli, Dona della hero
+     5 Testo            --t-body  18 / 19 px  paragrafi, domande, pulsanti
+     6 Piccolo          --t-small 16 px       note, etichette, didascalie (sotto i 16 non si scende)
+   PASSO 1: vale per gli elementi della HOME. Questo blocco sta in fondo e
+   prevale sulle regole precedenti; al passo 2 (altre pagine) le misure
+   verranno riportate nelle regole originali e il blocco sparirà.
+   ===================================================================== */
+:root { --t-h3: 1.5rem; --t-small: 1rem; }
+@media (max-width: 45em) { :root { --t-h3: 1.375rem; --t-body: 1.125rem; } }
+
+/* 1 · titolo pagina */
+.cpm-slide__title, .numbers__value, .legend-row__num { font-size: var(--t-hero); }
+/* 2 · titolo sezione */
+.fascia-invito h2 { font-size: var(--t-h2); }
+/* 3 · titolo blocco */
+.faq__gruppo-titolo, .proj-card__title, .proj-card--compatta .proj-card__title,
+.legend-row__text strong { font-size: var(--t-h3); }
+/* 4 · testo in evidenza */
+.hero__sub, .cpm-slide__sub { font-size: var(--t-lead); }
+/* 5 · testo */
+/* il pulsante dell'intestazione resta com'è: header e footer passano alla scala al passo 2 */
+.btn:not(.btn--header), .btn--dona:not(.btn--header), .cpm-slide__cta, .proj-card__cta, .faq__gruppo summary,
+.legend-row__text p, .proj-card__copy, .faq__corpo p, .faq__nota { font-size: var(--t-body); }
+/* 6 · piccolo */
+.numbers__label, .cpm-slide__tag, .partners__title, .partners__etichetta,
+.proj-card__nota, .impatti__nota, .where__note { font-size: var(--t-small); }
+.partners__title { font-weight: 600; }   /* era 300: troppo sottile a 16 px */
+/* eccezione voluta: il Dona della hero è l'azione principale della home, testo in evidenza */
+.btn.dona-link__btn { font-size: var(--t-lead); }

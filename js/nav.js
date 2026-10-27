@@ -180,6 +180,15 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
   elementi = elementi.filter(el => !elementi.some(altro => altro !== el && altro.contains(el)));
   // già in vista all'apertura: si vede subito
   elementi = elementi.filter(el => el.getBoundingClientRect().top >= soglia());
+  // aperta da un link con àncora (es. index.html#domande-frequenti): il browser salta
+  // alla sezione solo a caricamento finito, quindi la sezione di arrivo e ciò che la
+  // precede restano subito visibili, senza comparire a pagina già ferma (decisione 104)
+  let bersaglio = null;
+  try { bersaglio = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+  if (bersaglio) {
+    elementi = elementi.filter(el => !(bersaglio.contains(el) ||
+      (el.compareDocumentPosition(bersaglio) & Node.DOCUMENT_POSITION_FOLLOWING)));
+  }
   if (!elementi.length) return;
 
   const PASSO = 90;       // ms tra un elemento e il successivo nella stessa fila

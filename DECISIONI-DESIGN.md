@@ -1526,6 +1526,84 @@ Richiesta di Fulvio: apertura morbida che spinge giù le altre domande, seguendo
 - Il controllo automatico della skill segnala «padding stretto» sulla sezione e sul pannello: è un falso positivo, perché le righe vanno volutamente da bordo a bordo e hanno il loro padding interno.
 - CSS e JS passano a `?v=123` (curva della skill).
 
+## 104. Link con àncora: la sezione di arrivo è già visibile (27/10/2026)
+
+Segnalazione di Fulvio: aprendo `index.html#domande-frequenti` la sezione «arrivava» durante il caricamento. Il browser salta all'àncora solo a pagina caricata (circa 0,6 s), quando l'animazione di comparsa allo scorrimento (`initRivela`) ha già nascosto la sezione, che poi ricompariva con la dissolvenza a pagina ferma.
+- In `initRivela`, se l'indirizzo ha un'àncora, la sezione di arrivo e tutto ciò che la precede non vengono nascosti: chi arriva da un link vede subito il contenuto. Le sezioni sotto continuano a comparire allo scorrimento.
+- Verificato su telefono e PC con `#domande-frequenti` e `#trasparenza`, e senza àncora (comportamento invariato).
+
+## 105. Menu: «Testamento solidale» al posto di «Lasciti» (27/10/2026)
+
+Segnalazione di Fulvio: la stessa pagina aveva due nomi, «Lasciti» nel menu e «Testamento solidale» in home, nel titolo della pagina e nel carosello. Chi cerca la voce vista in home non la ritrova nel menu.
+- La voce del menu ora è «Testamento solidale» in tutte le pagine (anche nel menu a tendina del telefono). È anche la dicitura indicata dal Cottolengo nella sintesi delle criticità.
+- Supera la scelta della decisione 17 («Lasciti» perché più corto). Il menu su PC ci sta ancora su una riga fino a 1161 px, poi passa all'hamburger come prima; verificato a 1161 e 1440 px.
+- «Lascito» resta nei testi come parola comune («anche un piccolo lascito…»).
+- CSS e JS passano a `?v=124`.
+
+## 106. Domande frequenti conformate ai requisiti (27/10/2026)
+
+Analisi di Fulvio: la sezione è importante, va conformata alle regole di `claude/requisiti-nng-donazioni.md`. La prima versione ricopiava le categorie del vecchio sito (Donazione regolare, Donazione singola…), cioè argomenti dell'ente e non domande del donatore, e lasciava fuori i requisiti ancora aperti.
+- **Tre momenti del donatore** al posto delle categorie: *Prima di donare*, *Mentre doni*, *Dopo aver donato*. Ogni domanda è una voce che si apre con un solo clic (prima servivano due passaggi: gruppo, poi domanda).
+- **Ogni domanda risponde a un requisito**, indicato in un commento nel codice:
+  - fondo ≠ progetto (10, 13): «Se scelgo un'area, il dono va a un solo progetto?», con il testo del Cottolengo sopra le quattro aree. È il compito 3 del test con utenti;
+  - donazione libera (11), con il testo della pagina Dona e il rimando al grafico qui sotto;
+  - credibilità (4): «Chi riceve la mia donazione?», con l'ente, il codice fiscale e il link ai bilanci in Chi siamo;
+  - singola e continuativa (12), con le stesse parole del modulo («Una volta sola», «Continuativa»);
+  - passaggio esterno e sicurezza (15): «Dove pago? È sicuro?», con dona.cottolengo.org, i metodi di pagamento e l'IBAN;
+  - perché email e cellulare (14): era tra i punti «Da fare»;
+  - cosa succede dopo (16): conferma per email e riepilogo;
+  - ricevuta e detrazioni (7).
+- **Parole comuni (5):** «Durata, revoca, modifica» → «Posso cambiare l'importo o smettere di donare?». Tolto «Donazione regolare», che non coincideva con «Continuativa» del modulo.
+- **Azione finale (3):** in fondo «Non trovi la risposta?» con telefono ed email e il pulsante «Dona ora» verso la pagina Dona: chi ha sciolto un dubbio può donare subito, anche su PC dove non c'è la barra fissa.
+- Verificato su telefono e PC: domande a capo su due righe al massimo (la prima accorciata), animazione e tastiera funzionanti.
+- **Costo:** dieci domande allungano la home (chiuse, circa tre schermate di telefono). Se in futuro ne servono di più, meglio una pagina dedicata e in home solo quelle di *Prima di donare*.
+- In WordPress: CPT «faq» con tassonomia «momento» (prima, mentre, dopo).
+- CSS e JS passano a `?v=125`.
+
+## 107. Domande frequenti: i titoli dei tre momenti dentro il pannello (27/10/2026)
+
+Fulvio: i titoli sopra i blocchi erano «sbilanciati e nel vuoto». Diagnosi con la skill impeccable (guida *layout*):
+- **due assi in conflitto:** titolo della sezione centrato, titoli dei gruppi allineati a sinistra;
+- **titoli staccati dal loro contenuto:** galleggiavano sul fondo azzurro chiarissimo, fuori dal pannello a cui appartengono;
+- **tre pannelli separati più tre titoli:** sei elementi per dire «un elenco diviso in tre momenti».
+
+Provate tre soluzioni (schermate in `screenshot-102/variante-A/B/C`): A, tre pannelli con il titolo in una fascia in alto; B, un solo pannello con i tre titoli come fasce interne; C, un solo elenco senza titoli. Scelta la **B**: la skill chiede di raggruppare per vicinanza e contenitore senza trasformare ogni gruppo in un componente isolato. Un solo pannello e un solo asse: titoli e domande partono dalla stessa linea. I tre momenti restano leggibili; la C li perdeva.
+- Fasce in azzurro chiarissimo, testo azzurro scuro 19 px in grassetto (4,6:1), linee sottili sopra e sotto.
+- Restano titoli `h3`, quindi i lettori di schermo trovano i tre gruppi.
+- Il controllo automatico della skill (sezione layout) segnala solo il solito falso positivo sul padding della sezione.
+- CSS e JS passano a `?v=126`.
+
+## 108. Domande frequenti: gerarchia netta tra titoli e domande (27/10/2026)
+
+Fulvio: titoli dei momenti e domande sembravano di dimensioni diverse. Misurati: titolo 19 px, domanda 20 px su PC; 19 e 19 px su telefono. Erano quasi uguali, una differenza che sembra un errore (la skill impeccable chiede scarti di misura evidenti).
+- Titoli dei momenti: **24 px su PC, 22 px su telefono**, in grassetto azzurro scuro. Domande 20/19 px blu notte, risposte 19/18 px. Tre livelli ben distinti.
+- Come nel resto del sito, la gerarchia nasce alzando i titoli e non abbassando il testo: domande e risposte restano grandi per il pubblico anziano.
+- Allineamento: si restano a sinistra. Provata la versione centrata (`screenshot-102/titoli-centrati-*`): si può difendere esteticamente, ma su PC allontana i titoli dall'inizio delle domande e reintroduce due allineamenti nel pannello. Decisione finale a Fulvio.
+- CSS e JS passano a `?v=127`.
+
+## 109. Home: una scala tipografica di sei misure (27/10/2026)
+
+Fulvio: «in home le dimensioni dei font hanno una regola? Non voglio usare molteplici dimensioni». Misurate le dimensioni in pagina: **17 misure diverse su PC**, molte quasi uguali tra loro (20,8 · 20 · 19,2 · 19 px; 16,8 · 16 · 15,2 · 14 px). Il CSS di tutto il sito ha circa 190 dichiarazioni di dimensione. La regola nei token c'era, ma le singole sezioni la scavalcavano.
+
+Ora la home usa **sei misure, una per ruolo**:
+
+| Ruolo | Token | PC / telefono | Dove |
+|---|---|---|---|
+| 1 Titolo pagina | `--t-hero` | 62 / 38 px | titolo della hero, titoli del carosello, grandi cifre (numeri, percentuali) |
+| 2 Titolo sezione | `--t-h2` | 42 / 30 px | titoli h2 di tutte le sezioni |
+| 3 Titolo blocco | `--t-h3` | 24 / 22 px | titoli delle schede, momenti delle domande frequenti, voci del grafico |
+| 4 Testo in evidenza | `--t-lead` | 21 px | introduzioni, sottotitoli, pulsante Dona della hero |
+| 5 Testo | `--t-body` | 19 / 18 px | paragrafi, domande, pulsanti, link |
+| 6 Piccolo | `--t-small` | 16 px | note, etichette, didascalie, partner |
+
+- Nessun testo sotto i 16 px: note e etichette erano a 14 px, sono salite a 16.
+- Il pulsante Dona della hero è l'unico pulsante a 21 px: è l'azione principale della home.
+- Titolo «Partner» da 15 px leggerissimo (300) a 16 px semigrassetto: a quel peso non si leggeva.
+- **Come è fatto (passo 1):** blocco «SCALA TIPOGRAFICA» in fondo a `css/style.css`, che prevale sulle regole precedenti degli elementi della home. Header e footer, comuni a tutte le pagine, non sono ancora toccati (il pulsante «Dona ora» dell'intestazione resta com'era). **Passo 2:** estendere la scala alle altre pagine un gruppo alla volta e riportare le misure nelle regole originali, poi togliere il blocco. Per WordPress va consegnata la versione del passo 2, non questa.
+- Verificato su PC (1440, 1280, 1160, 1024, 768 px) e telefono: nessun testo esce dai pulsanti e nessuno scorrimento orizzontale.
+- **Difetto trovato e corretto:** nelle schede «Ci sono tanti modi per esserci», «Scopri come aderire» stava a 4 px dal bordo del pulsante (c'era anche prima della scala). Diventa «Come aderire», come «Come firmare» e «Come fare» accanto.
+- CSS e JS passano a `?v=128`.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
