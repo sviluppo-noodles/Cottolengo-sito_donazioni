@@ -1403,6 +1403,23 @@ Stessa impaginazione della pagina Cura (decisione 87), dopo l'elenco «Dove arri
 - Non usata la foto del cortile: è già copertina della pagina e scheda in home.
 - Da verificare con il Cottolengo: consenso, soprattutto perché ci sono minori (volti in gran parte di spalle o mossi).
 
+## 89. Accoglienza: foto vera delle famiglie in giardino, in home e in copertina (27/10/2026)
+
+Foto fornita da Fulvio: due mamme con i loro figli siedono in giardino e parlano con una suora. Sostituisce la foto del laboratorio di pittura (decisione 72) sia nella scheda «Accoglienza» della home sia nella copertina della pagina Accoglienza. Racconta meglio «una casa e una famiglia»: famiglie, bambini, accoglienza di persone di origini diverse.
+- Colore: dominante calda leggera dei bianchi corretta per il 70% (resta il calore estivo della luce).
+- File: copertina `assets/img/pagine/accoglienza-cottolengo-famiglie-giardino-960/1600` (3:2, JPG e WebP, fuoco 50% 45%); scheda home `assets/img/chi-aiuti/accoglienza-cottolengo-famiglie-giardino-800/1200.jpg` (4:3).
+- Alt: «Due mamme con i loro figli siedono in giardino e parlano con una suora del Cottolengo».
+- Le foto precedenti restano nella cartella; da eliminare solo su conferma.
+- Da verificare con il Cottolengo: consenso delle persone ritratte, ci sono minori.
+
+## 90. Cura: foto delle infermiere al letto in home e in copertina (27/10/2026)
+
+Su indicazione di Fulvio la foto delle due infermiere al letto di un ospite (decisione 86, stessa correzione del colore) diventa la foto di Cura nella scheda della home (al posto della fisioterapia, decisione 85) e nella copertina della pagina Cura (al posto della suora con gli ospiti).
+- Copertina: 3:2, 960 e 1600 px, JPG e WebP, fuoco 50% 30% (volti delle infermiere sopra il titolo). Il riquadro Dona resta più basso (decisione 73).
+- Alt: «Due infermiere sorridono a un ospite anziano a letto e gli tengono le mani».
+- **Galleria della pagina Cura** riordinata per non ripetere la copertina: foto grande l'operatrice con l'ospite in poltrona; sotto il corridoio e la suora con gli ospiti durante un laboratorio (ex copertina, foto vera). Didascalia nuova: «Una suora tra gli ospiti, durante un laboratorio.»
+- Le foto precedenti restano nella cartella.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
