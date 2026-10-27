@@ -1481,8 +1481,8 @@ Foto vera fornita dal Cottolengo: una fisioterapista sorridente segue una pazien
 ## 99. Cura: copertina con il medico e l'ospite in carrozzina (27/10/2026)
 
 Provata la foto della fisioterapia (decisione 98), poi scelta questa, fornita dal Cottolengo: un medico in camice si china verso un'ospite in carrozzina che lo guarda sorridendo, nel corridoio arancione. Due persone che si guardano: la relazione di cura si sente di più, ed è più calda. I volti restano interi su schermo largo, portatile e telefono.
-- **Colore** (richiesta di Fulvio): bianchi resi neutri (via la leggera dominante fredda), curva a S leggera per il contrasto, vibrance sui colori spenti, un filo di calore nei mezzitoni.
-- File `assets/img/pagine/cura-cottolengo-medico-ospite-carrozzina-960/1600` (3:2, JPG e WebP), fuoco 45% 15%.
+- **Colore:** usata la versione corretta da Fulvio (più calda e luminosa), al posto della correzione automatica.
+- File `assets/img/pagine/cura-cottolengo-medico-ospite-carrozzina-960/1536` (3:2, JPG e WebP; 1536 px è la misura della versione di Fulvio, non ingrandita), fuoco 45% 15%.
 - Alt: «Un medico in camice si china verso un'ospite in carrozzina che lo guarda sorridendo, in un corridoio luminoso del Cottolengo».
 - Le foto della fisioterapia (`cura-cottolengo-fisioterapia-palestra-*`, già pubblicate) restano in cartella e possono tornare in galleria.
 
