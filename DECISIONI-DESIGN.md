@@ -1436,6 +1436,22 @@ Stessa impaginazione di Cura ed Educazione, dopo «Dove arriva il tuo aiuto». C
 - Le due foto delle persone erano state proposte anche per il Volontariato: usate solo qui, che è la pagina giusta. I file `volontariato-cottolengo-ospiti-saluto-*` (già pubblicati, non usati) restano in cartella; da eliminare solo su conferma.
 - Da verificare con il Cottolengo: consenso delle persone ritratte.
 
+## 93. Pagina Missioni internazionali: galleria di foto vere (27/10/2026)
+
+Stessa impaginazione di Cura, Educazione e Accoglienza, dopo «Dove arriva il tuo aiuto».
+- **Foto grande:** bambini di una scuola delle missioni in Africa che sorridono e si abbracciano nel cortile. «Sorrisi nel cortile di una scuola delle missioni.»
+- **Sotto:** due suore con ragazzi con disabilità che dipingono bottiglie («Un laboratorio creativo in una casa delle missioni.», taglio che toglie metà del tavolo vuoto); bambini piccoli in divisa azzurra davanti alla scuola («I più piccoli, pronti per la scuola.»).
+- **Colore e contrasto uniformati** (richiesta di Fulvio): bianchi resi neutri (via la dominante gialla della foto dei bambini in divisa e quella fredda del cortile), livelli allungati e luminosità media allineata, così le tre foto, di fonti e qualità diverse, stanno bene insieme.
+- Le foto dei bambini sono piccole all'origine (932 e 1152 px): solo versione 800; su PC la foto grande è un po' morbida. Se il Cottolengo ha gli originali più grandi, vanno sostituite.
+- Didascalie senza nomi di Paesi: non sappiamo dove sono state scattate. Da chiedere al Cottolengo luogo e consenso (ci sono minori).
+
+## 94. Raccolte solidali: foto vera di tre giovani in copertina (27/10/2026)
+
+Foto fornita da Fulvio: tre giovani camminano insieme sorridendo in un ambiente luminoso. Sostituisce la copertina precedente (ospiti e suore che festeggiano). Le raccolte personali parlano soprattutto ai più giovani e alla voglia di fare qualcosa insieme (Donare 3.0): la foto lo dice subito.
+- File `assets/img/pagine/raccolte-solidali-cottolengo-giovani-960/1600` (3:2, JPG e WebP), fuoco 50% 8% (volti, anche quello della ragazza in alto). Bianchi resi neutri al 70%.
+- Alt: «Tre giovani camminano insieme sorridendo in un ambiente luminoso del Cottolengo».
+- Da verificare con il Cottolengo: consenso delle persone ritratte.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
