@@ -1512,6 +1512,20 @@ Richiesta di Fulvio, sul modello del sito attuale del Cottolengo: cinque gruppi 
 - In fondo: «Non trovi la risposta?» con telefono e email di infodonazioni, e la nota «Risposte provvisorie».
 - CSS e JS passano a `?v=121`.
 
+## 103. Domande frequenti: apertura morbida e pannello unico (27/10/2026)
+
+Richiesta di Fulvio: apertura morbida che spinge giù le altre domande, con ease-in e out, seguendo la skill di design (impeccable: guida *animate* e *craft floor*).
+- **Movimento** (`js/nav.js → initFaq`): `<details>` resta la base (senza JavaScript si apre di colpo, ma funziona). Con JavaScript si anima l'altezza della voce dal valore attuale a quello finale, così il pannello si allunga e le voci sotto scendono insieme. Curva ease-in-out dolce `cubic-bezier(0.45, 0, 0.25, 1)` (variabili `--faq-durata`, `--faq-curva`). Apertura 420 ms, nella fascia 300–500 ms che la skill indica per i cambi di layout; chiusura 320 ms, perché si esce più in fretta di come si entra. Il testo arriva con una dissolvenza e una discesa di 8 px, 60 ms dopo l'inizio; in chiusura sfuma prima che la voce si richiuda. La freccia gira con la stessa durata e curva. Un secondo clic a metà animazione riparte dal punto in cui si trova, senza scatti. Funziona anche con la tastiera (Invio, Spazio). Con «riduci movimento» non c'è spostamento, solo una dissolvenza di 150 ms.
+- **Design rivisto con la skill:**
+  - cinque schede staccate → un solo pannello bianco con le voci separate da una linea sottile; la skill sconsiglia file di schede uguali come contenitore di comodo, e un elenco unico si legge meglio;
+  - tolta la barra azzurra a sinistra (la skill vieta bordi colorati laterali oltre 1 px su schede ed elenchi): la voce aperta si riconosce dal titolo azzurro, dalla freccia piena girata e da una velatura azzurra leggerissima (`--faq-aperta`);
+  - righe alte 80 px; tra il titolo e la prima domanda ora c'è meno distanza, e la risposta appartiene visivamente alla sua voce;
+  - la fascia compare allo scorrimento come un blocco unico, non scheda per scheda (la skill sconsiglia di trasformare ogni sezione in un elenco a cascata);
+  - anello del focus dentro la riga, perché il pannello taglia ciò che sporge;
+  - selezione del testo nei colori del sito, non nel blu di sistema (`::selection`, tutto il sito).
+- Il controllo automatico della skill segnala «padding stretto» sulla sezione e sul pannello: è un falso positivo, perché le righe vanno volutamente da bordo a bordo e hanno il loro padding interno.
+- CSS e JS passano a `?v=122`.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

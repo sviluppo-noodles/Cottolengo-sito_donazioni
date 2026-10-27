@@ -169,7 +169,7 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
     '.chi-colonna > *', '.chi-affiancato > *', '.chi-citazione .container',
     '.fascia-invito .container > *', '.partners__title', '.partners__gruppo',
     '.project-article-content > *', '.proj-grid > *', '.modulo-incorporato__nota',
-    '.galleria-foto > li', '.impatti__voce', '.impatti__nota', '.faq__gruppo',
+    '.galleria-foto > li', '.impatti__voce', '.impatti__nota', '.faq__lista',
   ];
   const ESCLUSI = '.header, .footer, .cpm-banner, .hero, .project-cover, .project-sidebar, form, .dona-card, .sticky-dona';
 
@@ -229,6 +229,68 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
 
   // in stampa niente resta nascosto
   window.addEventListener('beforeprint', () => elementi.forEach(el => { el.classList.add('is-entrato'); fine(el); }));
+})();
+
+/* ---------- Domande frequenti: apertura e chiusura morbide (decisione 103) ----------
+   <details> nativo resta la base (funziona senza JavaScript). Qui si anima
+   l'altezza della scheda dal valore attuale a quello finale: il pannello
+   si allunga e spinge giù le domande sotto, con curva ease-in-out dolce.
+   Apertura 420 ms, chiusura 320 ms (si esce più in fretta di come si entra).
+   Il testo arriva con una leggera dissolvenza appena dopo l'inizio.
+   Un secondo clic a metà animazione riparte dal punto in cui si trova.
+   Con "riduci movimento": niente movimento, solo una dissolvenza breve. */
+(function initFaq() {
+  const gruppi = document.querySelectorAll('.faq__gruppo');
+  if (!gruppi.length || !('animate' in Element.prototype)) return;
+  const ridotto = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const CURVA = 'cubic-bezier(0.45, 0, 0.25, 1)';
+  const APRI = 420, CHIUDI = 320;
+
+  gruppi.forEach(d => {
+    const titolo = d.querySelector('summary');
+    const corpo = d.querySelector('.faq__corpo');
+    let altezza = null, testo = null;
+
+    function pulisci() {
+      d.style.overflow = '';
+      d.classList.remove('is-chiusura');
+      altezza = testo = null;
+    }
+
+    titolo.addEventListener('click', e => {
+      e.preventDefault();
+      const chiusa = !d.open || d.classList.contains('is-chiusura');
+      const da = d.offsetHeight;            // altezza attuale, anche a metà animazione
+      if (altezza) altezza.cancel();
+      if (testo) testo.cancel();
+
+      if (ridotto.matches) {
+        d.classList.remove('is-chiusura');
+        d.open = chiusa;
+        if (chiusa) corpo.animate({ opacity: [0, 1] }, { duration: 150, easing: 'ease-out' });
+        return;
+      }
+
+      d.style.overflow = 'hidden';
+      if (chiusa) {
+        d.classList.remove('is-chiusura');
+        d.open = true;
+        const a = d.offsetHeight;
+        altezza = d.animate({ height: [da + 'px', a + 'px'] }, { duration: APRI, easing: CURVA });
+        testo = corpo.animate(
+          { opacity: [0, 1], transform: ['translateY(-0.5rem)', 'none'] },
+          { duration: APRI - 60, delay: 60, easing: CURVA, fill: 'backwards' });
+        altezza.onfinish = pulisci;
+      } else {
+        d.classList.add('is-chiusura');     // la freccia gira subito, insieme al pannello
+        const bordi = d.offsetHeight - d.clientHeight;
+        const a = titolo.offsetHeight + bordi;
+        altezza = d.animate({ height: [da + 'px', a + 'px'] }, { duration: CHIUDI, easing: CURVA });
+        testo = corpo.animate({ opacity: [1, 0] }, { duration: CHIUDI * 0.6, easing: 'ease-in', fill: 'forwards' });
+        altezza.onfinish = () => { d.open = false; testo.cancel(); pulisci(); };
+      }
+    });
+  });
 })();
 
 /* ---------- Copia codice fiscale 5x1000 (uno o più pulsanti, su qualsiasi pagina) ---------- */
