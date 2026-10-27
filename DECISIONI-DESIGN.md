@@ -1488,10 +1488,11 @@ Provata la foto della fisioterapia (decisione 98), poi scelta questa, fornita da
 
 ## 100. Aziende: ritratto di san Giuseppe Benedetto Cottolengo su fondo azzurro in copertina (27/10/2026)
 
-Soluzione scelta da Fulvio in attesa di foto di volontariato d'impresa: la foto di repertorio (professionisti in riunione) è sostituita dal ritratto disegnato del fondatore su fondo azzurro, la stessa immagine della slide di Natale del carosello (`assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-960/1920`, nessun file nuovo). Tono istituzionale e riconoscibile, adatto a un pubblico di imprese; il fondo azzurro è il colore del marchio.
-- Fuoco 75% 32%: il volto resta sopra il riquadro «Dona come azienda» su schermo largo, PC e telefono.
+Soluzione scelta da Fulvio in attesa di foto di volontariato d'impresa: la foto di repertorio (professionisti in riunione) è sostituita dal ritratto disegnato del fondatore su fondo azzurro, la stessa immagine della slide di Natale del carosello (`assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-960/1920`). Tono istituzionale e riconoscibile, adatto a un pubblico di imprese; il fondo azzurro è il colore del marchio.
+- Prima versione (non specchiata): fuoco 75% 32%, il volto resta sopra il riquadro «Dona come azienda» su schermo largo, PC e telefono.
 - Alt: «Ritratto di san Giuseppe Benedetto Cottolengo, fondatore della Piccola Casa della Divina Provvidenza, su fondo azzurro».
-- La stessa immagine compare nel carosello (slide di Natale): non è un problema, anche il carosello è provvisorio (Fulvio).
+- **Specchiata in orizzontale (richiesta di Fulvio, 27/10):** nuovi file `assets/img/pagine/aziende-cottolengo-ritratto-fondatore-960/1920` (.jpg e .webp). Il ritratto ora sta a sinistra e guarda verso il testo; fuoco 25% 32%. Su PC il titolo «Per le aziende» passa sopra il mento e il colletto, il volto resta libero.
+- La stessa immagine (non specchiata) compare nel carosello (slide di Natale): non è un problema, anche il carosello è provvisorio (Fulvio).
 - Da sostituire quando arrivano foto di volontariato d'impresa (decisione 97). Le vecchie immagini `aziende-cottolengo-*` restano in cartella.
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
