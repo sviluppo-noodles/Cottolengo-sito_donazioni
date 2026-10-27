@@ -1495,6 +1495,23 @@ Soluzione scelta da Fulvio in attesa di foto di volontariato d'impresa: la foto 
 - La stessa immagine (non specchiata) compare nel carosello (slide di Natale): non è un problema, anche il carosello è provvisorio (Fulvio).
 - Da sostituire quando arrivano foto di volontariato d'impresa (decisione 97). Le vecchie immagini `aziende-cottolengo-*` restano in cartella.
 
+## 101. Le foto delle pagine progetto compaiono allo scorrimento come il resto (27/10/2026)
+
+Segnalazione di Fulvio: nelle pagine delle aree (Cura, Educazione, Accoglienza, Missioni, Volontariato) testi e passaggi comparivano con la leggera dissolvenza dallo scorrimento, le foto della galleria no, ed erano già ferme al loro posto.
+- Aggiunte all'animazione di comparsa (`js/nav.js`, `initRivela`): le foto della galleria (`.galleria-foto > li`, una dopo l'altra con il solito passo di 90 ms) e, per coerenza, gli esempi di impatto (`.impatti__voce`, `.impatti__nota`).
+- Restano valide le regole di sempre: ciò che è già in vista all'apertura compare subito, con «riduci movimento» o senza JavaScript tutto resta visibile.
+- CSS e JS passano a `?v=120` in tutte le pagine.
+
+## 102. Home: fascia «Domande frequenti» a fisarmonica (27/10/2026)
+
+Richiesta di Fulvio, sul modello del sito attuale del Cottolengo: cinque gruppi (Donazione regolare, Donazione singola, Come usiamo la donazione, Durata, revoca, modifica, Benefici fiscali) che si aprono con un clic e mostrano domande e risposte.
+- **Posizione:** dopo la fascia delle raccolte solidali e prima di «Dove va la tua donazione» (scelta di Fulvio tra le due proposte). Segue l'ordine perché → cosa → come: chi ha già deciso di donare trova i dubbi pratici proprio lì, e la risposta su come si usano i fondi rimanda al grafico subito sotto.
+- **Aspetto:** fondo azzurro chiarissimo (stacca dalla fascia azzurra sopra e dalla sezione bianca sotto), schede bianche con barra azzurra a sinistra come nel sito attuale, freccia in un cerchio che diventa azzurro pieno e si gira quando il gruppo è aperto. Righe alte almeno 72 px, titoli dei gruppi 20 px in grassetto, risposte 19 px.
+- **Tecnica:** `<details>`/`<summary>` nativi: si aprono anche senza JavaScript, con tastiera e lettori di schermo; più gruppi possono restare aperti insieme. Le schede compaiono allo scorrimento come il resto (`.faq__gruppo` in `initRivela`).
+- **Contenuti PROVVISORI** (Fulvio: «inventale al momento»): due-tre domande per gruppo. Ciò che è già nel sito (metodi di pagamento, IBAN, ricevuta per email, art. 83 D.Lgs. 117/2017, frequenze del modulo, contatti) è scritto normalmente; tutto il resto è sottolineato a tratteggio (`.da-confermare`) e va verificato con il Cottolengo: addebito automatico e data, conservazione dei dati della carta, scelta della destinazione, modifica e interruzione senza costi, percentuali di detrazione e deduzione, riepilogo annuale.
+- In fondo: «Non trovi la risposta?» con telefono e email di infodonazioni, e la nota «Risposte provvisorie».
+- CSS e JS passano a `?v=121`.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:

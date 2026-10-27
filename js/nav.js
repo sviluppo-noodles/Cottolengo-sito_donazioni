@@ -169,6 +169,7 @@ document.querySelectorAll('.nav__mega').forEach(function initMegaMenu(mega) {
     '.chi-colonna > *', '.chi-affiancato > *', '.chi-citazione .container',
     '.fascia-invito .container > *', '.partners__title', '.partners__gruppo',
     '.project-article-content > *', '.proj-grid > *', '.modulo-incorporato__nota',
+    '.galleria-foto > li', '.impatti__voce', '.impatti__nota', '.faq__gruppo',
   ];
   const ESCLUSI = '.header, .footer, .cpm-banner, .hero, .project-cover, .project-sidebar, form, .dona-card, .sticky-dona';
 
