@@ -3336,3 +3336,6 @@ fieldset { border: none; }
   .galleria-foto--principale { gap: 0.75rem; }
   .galleria-foto--principale > li:first-child img { aspect-ratio: 3 / 2; }
 }
+/* Decisione 88: se dopo la foto grande ce n'è una sola, va a tutta larghezza ma più bassa (panoramica). */
+.galleria-foto--principale > li:nth-child(2):last-child { grid-column: 1 / -1; }
+.galleria-foto--principale > li:nth-child(2):last-child img { aspect-ratio: 21 / 9; }

@@ -1393,6 +1393,16 @@ Le tre foto in fila su PC sembravano francobolli (240 px): non si vedevano volti
 - **Niente carosello** sul telefono: i caroselli mostrano quasi solo la prima immagine (Nielsen Norman Group) e il pubblico anziano scorre poco di lato; il risparmio di spazio sarebbe minimo.
 - Classe `.galleria-foto--principale`, riusabile nelle altre pagine. CSS v=118.
 
+## 88. Pagina Educazione: galleria di foto vere (27/10/2026)
+
+Stessa impaginazione della pagina Cura (decisione 87), dopo l'elenco «Dove arriva il tuo aiuto».
+- **Foto grande (scelta di Fulvio):** la classe, con i bambini ai banchi e tre insegnanti. Era scura e un po' calda: bianchi resi neutri e immagine schiarita.
+- **Sotto:** la palestra durante l'educazione fisica, tagliata a sinistra per tenere l'insegnante.
+- **Accanto alla palestra:** il corridoio colorato con un'insegnante che sorride tra i bambini (dominante fredda tolta). Ora l'impaginazione è identica a Cura. Regola di riserva rimasta nel CSS: se dopo la foto grande ce n'è una sola, va a tutta larghezza ma più bassa (21:9).
+- Didascalie: «In classe: ogni bambino seguito da vicino.», «In palestra, si cresce anche giocando.», «Un'insegnante tra i bambini, nei corridoi colorati della scuola.» Alt descrittivi. File `assets/img/pagine/educazione-cottolengo-*` (4:3, 800 e 1200 px, JPG e WebP). CSS v=119.
+- Non usata la foto del cortile: è già copertina della pagina e scheda in home.
+- Da verificare con il Cottolengo: consenso, soprattutto perché ci sono minori (volti in gran parte di spalle o mossi).
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
