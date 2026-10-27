@@ -3321,3 +3321,18 @@ fieldset { border: none; }
 .cpm-passi + .nota-riquadro { margin-top: var(--s-7); }
 .nota-riquadro { padding: 1.25rem 1.5rem; background: #F4F7F9; border-radius: 8px; }
 .nota-riquadro p { margin: 0; }
+
+/* ==========================================================
+   Decisione 87: galleria con foto principale. La prima foto è grande
+   (larga quanto il testo), le altre due affiancate sotto, anche su telefono:
+   si vedono bene volti e gesti e la pagina resta corta. Niente carosello,
+   perché nasconderebbe le foto dopo la prima.
+   ========================================================== */
+.galleria-foto--principale { grid-template-columns: 1fr 1fr; }
+.galleria-foto--principale > li:first-child { grid-column: 1 / -1; }
+.galleria-foto--principale > li:first-child img { aspect-ratio: 16 / 9; object-position: 50% 40%; }
+.galleria-foto--principale > li:first-child figcaption { font-size: 1rem; }
+@media (max-width: 36em) {
+  .galleria-foto--principale { gap: 0.75rem; }
+  .galleria-foto--principale > li:first-child img { aspect-ratio: 3 / 2; }
+}

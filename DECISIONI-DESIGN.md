@@ -1374,6 +1374,25 @@ Nella scheda «Cura» di «Scegli dove fare la differenza» la foto della suora 
 - Le foto precedenti restano nella cartella; da eliminare solo su conferma.
 - Da verificare con il Cottolengo: provenienza della foto e consenso della persona ritratta.
 
+## 86. Pagina Cura: galleria di foto vere (27/10/2026)
+
+Tre foto vere fornite da Fulvio, nella pagina Cura dopo l'elenco «Dove arriva il tuo aiuto» e prima degli esempi d'impatto, con la stessa galleria della pagina Vestiti e docce (decisione 82): su PC tre in fila, su telefono una sotto l'altra, con didascalia.
+
+- **Foto:** operatrice con un'ospite in poltrona nella stanza; due infermiere al letto di un ospite; operatore con un'ospite in carrozzina nel corridoio.
+- **Colore:** bilanciamento sui bianchi (pareti, lenzuola, camici) per togliere le dominanti, soprattutto quella fredda/azzurra della foto del corridoio; luminosità allineata (corridoio schiarito, foto al letto appena scurita) perché stiano bene insieme.
+- **Formato:** 4:3 come le altre gallerie, 800 e 1200 px, JPG e WebP, metadati tolti. File `assets/img/pagine/cura-cottolengo-*`.
+- **Didascalie** solo su ciò che si vede, senza nomi di luoghi: «Accanto a ogni ospite, ogni giorno.», «Cure e vicinanza al letto di chi è fragile.», «Una passeggiata insieme, nei corridoi della casa.» Alt descrittivi.
+- Le altre due foto mostrate da Fulvio (fisioterapia in palestra, suora che medica un ragazzo) non sono arrivate come file: da aggiungere quando arrivano.
+- Da verificare con il Cottolengo: consenso delle persone ritratte.
+
+## 87. Galleria della pagina Cura: una foto grande e due affiancate (27/10/2026)
+
+Le tre foto in fila su PC sembravano francobolli (240 px): non si vedevano volti e gesti. Confrontate due versioni (A: tre in fila; B: una grande e due sotto).
+- **Scelta B, anche su telefono.** La prima foto (le due infermiere al letto, la più espressiva) è larga quanto il testo; le altre due affiancate sotto, con didascalia.
+- **Su PC** la foto grande è panoramica (16:9) per non allungare troppo: galleria alta circa 710 px. **Su telefono** la foto grande è 3:2 e le due piccole affiancate: la galleria passa da circa 900 a 470 px, quindi la pagina si accorcia.
+- **Niente carosello** sul telefono: i caroselli mostrano quasi solo la prima immagine (Nielsen Norman Group) e il pubblico anziano scorre poco di lato; il risparmio di spazio sarebbe minimo.
+- Classe `.galleria-foto--principale`, riusabile nelle altre pagine. CSS v=118.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
