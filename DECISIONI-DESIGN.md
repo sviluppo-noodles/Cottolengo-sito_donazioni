@@ -1420,6 +1420,14 @@ Su indicazione di Fulvio la foto delle due infermiere al letto di un ospite (dec
 - **Galleria della pagina Cura** riordinata per non ripetere la copertina: foto grande l'operatrice con l'ospite in poltrona; sotto il corridoio e la suora con gli ospiti durante un laboratorio (ex copertina, foto vera). Didascalia nuova: «Una suora tra gli ospiti, durante un laboratorio.»
 - Le foto precedenti restano nella cartella.
 
+## 91. Volontariato: foto vera in copertina (27/10/2026)
+
+Foto fornita da Fulvio: una giovane volontaria sorride e parla con gli ospiti anziani in carrozzina, durante un'attività all'aperto. Sostituisce la copertina provvisoria (collage di volti). Mostra il volontariato in modo concreto e parla anche ai più giovani (Donare 3.0).
+- File `assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-960/1600` (3:2, JPG e WebP), fuoco 40% 30% (volto della volontaria).
+- Alt: «Una giovane volontaria sorride e parla con gli ospiti anziani in carrozzina, durante un'attività all'aperto».
+- In preparazione la galleria nella pagina (come Cura ed Educazione): pronta la foto delle due donne che si salutano nella sala (`volontariato-cottolengo-ospiti-saluto`), mancano come file l'uomo con la volontaria al tavolo e la fisioterapia.
+- Da verificare con il Cottolengo: consenso delle persone ritratte.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
