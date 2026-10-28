@@ -1887,3 +1887,13 @@ Domanda di Fulvio: sul telefono le schede che scorrono a sinistra sono il modo m
 Fulvio: mettere anche le docce. La descrizione della voce le citava già, ma si vede solo su computer al passaggio del mouse: scelto di cambiare il nome della voce, che si vede ovunque.
 - Voce del menu «Come aiutarci» in tutte le pagine: «Dona vestiti e una doccia».
 - Per coerenza (nome nel menu = titolo della pagina, come per Testamento solidale) cambiano anche titolo della pagina, `<title>` e anteprime social: «Dona vestiti e una doccia». L'indirizzo `dona-un-indumento.html` non cambia.
+
+## 129. Telefono: niente scatole, «Chi aiuti» con foto grande e «Tanti modi» a righe (28/10/2026)
+
+Fulvio: le righe della decisione 127 sembravano «campate in aria». Il problema era la scatolina con bordo e ombra attorno a ogni riga, che sul telefono galleggia sul fondo. Guardati su iPhone 13 i siti di UNICEF, AIRC, Emergency e MSF. Valutazione con la skill impeccable: per le aree il modello UNICEF (foto sopra, testo sotto), per i modi il modello AIRC (righe).
+- **Per tutti, fino a 720 px:** niente bordo, ombra né fondo bianco: i contenuti poggiano sul fondo della sezione. Il link d'azione diventa testo azzurro con freccia disegnata (SVG, non un carattere), e tutto il blocco resta toccabile.
+- **«Chi aiuti» (4 aree, home e Chi siamo):** blocchi uno sotto l'altro, foto 4:3 a tutta larghezza con angoli arrotondati, poi titolo, testo e «Scopri e dona →»; 40 px tra un blocco e l'altro. Circa 400 px per blocco, quattro blocchi in circa due schermate. È il momento emotivo della pagina: foto grandi.
+- **«Ci sono tanti modi» (5 modi):** righe con foto quadrata di 104 px a sinistra, centrata in altezza; linee sottili tra le righe e in fondo; 20 px sopra e sotto. Righe da circa 195 px. È la scelta pratica: le opzioni si confrontano a colpo d'occhio.
+- **Dall'esempio UNICEF non presi:** l'etichetta in maiuscoletto sopra il titolo (vietata dalla skill), il pulsante pieno sotto ogni blocco (farebbe concorrenza al «Dona ora», decisione 75), il riquadro azzurro sfalsato dietro la foto.
+- Foto delle aree: `sizes` torna a 92vw su telefono (ora sono grandi).
+- Tablet e computer invariati. CSS e JS passano a `?v=142`.

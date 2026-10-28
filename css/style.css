@@ -3622,17 +3622,19 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .fascia-invito p.fascia-invito__testo { margin-inline: 0; text-wrap: pretty; }
 }
 
-/* ============ DECISIONE 127: su telefono le schede diventano righe ============
-   Fino a 720 px le file di schede («Chi aiuti», «Ci sono tanti modi», Chi siamo)
-   non scorrono più di lato: righe una sotto l'altra, foto quadrata a sinistra,
-   titolo, testo e link a destra. Tutte le opzioni si vedono scorrendo in verticale
-   (skill impeccable, adapt: una colonna, impilare invece di affiancare).
-   Tutta la riga è toccabile: il link in fondo si allarga a coprire la scheda. */
+/* ============ DECISIONI 127 e 129: su telefono le schede non scorrono più di lato ============
+   Fino a 720 px. Nessuna scatola né ombra: i contenuti poggiano sul fondo della sezione.
+   - «Chi aiuti» (.fila-schede--quattro): blocchi uno sotto l'altro, foto grande 4:3
+     sopra, poi titolo, testo e link (riferimento: unicef.it su telefono).
+   - «Ci sono tanti modi» e le altre file: righe con foto quadrata a sinistra e
+     linee sottili tra una riga e l'altra (riferimento: airc.it su telefono).
+   Il link d'azione è testo azzurro con freccia e si allarga a coprire tutto il
+   blocco: si tocca ovunque. Skill impeccable, adapt: una colonna, impilare. */
 @media (max-width: 45em) {
   .fila-schede {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 0;
     overflow: visible;
     scroll-snap-type: none;
     padding: 0;
@@ -3641,44 +3643,64 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .fila-schede__item { flex: none; }
   .fila-schede .proj-card {
     position: relative;
-    display: grid;
-    grid-template-columns: 6.5rem 1fr;
-    align-items: start;
-    gap: 0.9rem;
-    padding: 0.75rem;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
   }
-  .fila-schede .proj-card:hover { transform: none; }
-  .fila-schede .proj-card__media,
-  .fila-schede--quattro .proj-card__media {
-    aspect-ratio: 1 / 1;
-    border-radius: calc(var(--r-2) - 0.25rem);
-  }
-  .fila-schede .proj-card .proj-card__body { padding: 0.15rem 0.25rem 0.1rem 0; gap: 0.4rem; }
+  .fila-schede .proj-card:hover { transform: none; box-shadow: none; }
+  .fila-schede .proj-card__media { border-radius: calc(var(--r-2) - 4px); }
+  .fila-schede .proj-card:hover .proj-card__media img { transform: none; }
+  .fila-schede .proj-card .proj-card__body { padding: 0; gap: 0.45rem; }
   .fila-schede .proj-card .proj-card__title { text-wrap: balance; }
   .fila-schede .proj-card .proj-card__copy { -webkit-line-clamp: unset; display: block; }
-  /* il pulsante diventa link di testo: la riga intera è il bersaglio */
-  .fila-schede .proj-card .proj-card__cta {
-    position: static;
-    align-self: flex-start;
-    min-height: 0;
-    margin-top: 0.15rem;
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    color: var(--azzurro-scuro);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 2px;
-  }
-  .fila-schede .proj-card .proj-card__cta::after { content: ""; position: absolute; inset: 0; border-radius: var(--r-2); }
+
+  /* link d'azione: testo azzurro con freccia disegnata (maschera SVG) */
   .fila-schede .proj-card .proj-card__cta,
   .fila-schede .proj-card .proj-card__cta:hover,
   .fila-schede .proj-card .proj-card__cta:active,
   .fila-schede .proj-card .proj-card__cta.is-rimbalzo { transform: none; animation: none; }
+  .fila-schede .proj-card .proj-card__cta {
+    position: static;
+    align-self: flex-start;
+    gap: 0.5rem;
+    min-height: 0;
+    margin-top: 0.2rem;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--azzurro-scuro);
+  }
+  .fila-schede .proj-card .proj-card__cta::before {
+    content: "";
+    order: 2;
+    width: 1.25em; height: 0.75em;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 12'%3E%3Cpath d='M1 6h17M13 1l5 5-5 5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 12'%3E%3Cpath d='M1 6h17M13 1l5 5-5 5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .fila-schede .proj-card .proj-card__cta::after { content: ""; position: absolute; inset: 0; }
   .fila-schede .proj-card .proj-card__cta:hover { background: none; color: var(--blu-notte); box-shadow: none; }
-  .fila-schede .proj-card:active { background: var(--azzurro-chiarissimo); }
   .fila-schede .proj-card .proj-card__cta:focus-visible { outline: none; }
-  .fila-schede .proj-card .proj-card__cta:focus-visible::after { outline: 3px solid var(--focus); outline-offset: 2px; }
-  .fila-schede .proj-card__title a { position: relative; z-index: 1; }
+  .fila-schede .proj-card .proj-card__cta:focus-visible::after { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 6px; }
+  .fila-schede .proj-card__title a,
   .fila-schede .proj-card__nota { position: relative; z-index: 1; }
+
+  /* «Chi aiuti»: foto grande sopra, blocchi ben distanziati */
+  .fila-schede--quattro { row-gap: 2.5rem; }
+  .fila-schede--quattro .proj-card { display: flex; flex-direction: column; gap: 1rem; }
+  .fila-schede--quattro .proj-card__media { aspect-ratio: 4 / 3; }
+
+  /* «Ci sono tanti modi»: righe con linee sottili */
+  .fila-schede:not(.fila-schede--quattro) .fila-schede__item { border-top: 1px solid rgba(0, 59, 87, 0.14); }
+  .fila-schede:not(.fila-schede--quattro) .fila-schede__item:last-child { border-bottom: 1px solid rgba(0, 59, 87, 0.14); }
+  .fila-schede:not(.fila-schede--quattro) .proj-card {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.25rem;
+  }
+  .fila-schede:not(.fila-schede--quattro) .proj-card__media { aspect-ratio: 1 / 1; }
 }
