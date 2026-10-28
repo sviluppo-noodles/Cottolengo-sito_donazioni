@@ -1816,6 +1816,17 @@ Fulvio: nel carosello c'era ancora «Il loro futuro è la tua eredità più gran
 - **Sottotitolo** (visibile su PC; sul telefono è nascosto come in tutte le slide): «Anche un piccolo lascito conta, e puoi sempre modificarlo o revocarlo: ti spieghiamo come fare.» La revocabilità è un fatto già scritto nella pagina Testamento solidale e toglie il timore più comune. Il pulsante resta «Scopri come fare».
 - Nel sito non c'è più nessuna occorrenza di «Il loro futuro» né di «resta per sempre».
 
+## 126. «Vestiti e docce» diventa «Dona un vestito» (28/10/2026)
+
+Fulvio: chiamalo «Dona un vestito». Rischio segnalato: la decisione 82 aveva scartato «Dona un indumento» perché fa pensare di dover portare dei vestiti, mentre la pagina chiede un'offerta (25 € = un kit) che va alle donazioni generali. Scelta di Fulvio: nome diretto, più una frase chiara sotto il titolo.
+- **Voce del menu «Come aiutarci»** in tutte le pagine: «Dona un vestito».
+- **Pagina** (`dona-un-indumento.html`, l'indirizzo non cambia): titolo «Dona un vestito», `<title>` e anteprime social «Dona un vestito | Cottolengo».
+- **Sotto il titolo:** «Vestiti, intimo e una doccia calda per chi è in difficoltà. Non serve portare abiti: si dona con un'offerta, che il Cottolengo usa dove c'è più bisogno.» Azione prevedibile e fondo ≠ progetto detti subito.
+- Il titolo interno della sezione («Vestiti e una doccia calda») resta, perché descrive il servizio.
+- **Aggiornamento (28/10, Fulvio): si possono anche portare vestiti.** La frase sotto il titolo diventa «Vestiti, intimo e una doccia calda per chi è in difficoltà. Puoi fare un'offerta, che il Cottolengo usa dove c'è più bisogno, oppure portare dei vestiti.» Resta il riquadro «Vuoi portare dei vestiti?» dopo i passi della donazione, che dice di scrivere o chiamare prima di passare (così nessuno arriva con abiti che non servono). Nessun link dalla frase al riquadro, per non togliere peso al pulsante «Dona ora».
+- **Attenzione:** la pagina attuale del Cottolengo (donazioni.cottolengo.org/dona-un-indumento-emergenza-covid-19/) non parla di consegna di vestiti; va confermato col Cottolengo dove e cosa si accetta.
+- **Per WordPress:** il vecchio indirizzo `/dona-un-indumento-emergenza-covid-19/` va reindirizzato (301) alla nuova pagina.
+
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 
 Chi visita il sito di un ente benefico si fa tre domande, in quest'ordine:
