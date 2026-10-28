@@ -3176,8 +3176,25 @@ fieldset { border: none; }
 @media (max-width: 45em) {
   .footer--checkout { padding-bottom: 1.5rem; }   /* niente barra Dona fissa su questa pagina */
 }
+/* Decisione 130: su telefono nella barra restano logo e "← Torna al sito";
+   "Pagamento sicuro" scende come prima riga del modulo (.dona-sicuro-tel). */
+.checkout-torna { display: inline-flex; align-items: center; gap: 0.45rem; }
+.checkout-torna__freccia { display: none; flex: none; }
+.dona-sicuro-tel { display: none; }
 @media (max-width: 30em) {
-  .checkout-torna { display: none; }               /* su telefono si torna dal logo e dal footer */
+  .checkout-sicuro { display: none; }
+  .checkout-torna { margin-left: auto; white-space: nowrap; min-height: 44px; }
+  .checkout-torna__freccia { display: block; }
+  .dona-sicuro-tel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1.25rem;
+    color: var(--azzurro-scuro);
+    font-size: var(--t-small);
+    font-weight: 700;
+  }
+  .dona-sicuro-tel svg { flex: none; }
 }
 
 /* ==========================================================

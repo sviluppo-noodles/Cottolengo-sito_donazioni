@@ -1897,3 +1897,12 @@ Fulvio: le righe della decisione 127 sembravano «campate in aria». Il problema
 - **Dall'esempio UNICEF non presi:** l'etichetta in maiuscoletto sopra il titolo (vietata dalla skill), il pulsante pieno sotto ogni blocco (farebbe concorrenza al «Dona ora», decisione 75), il riquadro azzurro sfalsato dietro la foto.
 - Foto delle aree: `sizes` torna a 92vw su telefono (ora sono grandi).
 - Tablet e computer invariati. CSS e JS passano a `?v=142`.
+
+## 130. Pagina Dona su telefono: «Torna al sito» sempre visibile (28/10/2026)
+
+Fulvio: sul telefono nella pagina Dona non c'è «Torna al sito», è un problema? Valutazione: sì, piccolo. Sotto i 480 px era nascosto (decisione 66) e si tornava solo dal logo o dal footer in fondo al modulo. Molti donatori sopra i 50 anni non sanno che il logo porta alla home: chi cambia idea si sente in trappola e chiude. In un checkout si toglie il menu ma resta sempre una via d'uscita visibile. Rimetterlo accanto a «Pagamento sicuro» non era possibile: a 390 px andavano a capo entrambi.
+- **Barra blu sul telefono (fino a 480 px):** logo a sinistra, «← Torna al sito» a destra (freccia SVG, area di tocco 44 px), su una riga anche a 320 px.
+- **«Pagamento sicuro»** con il lucchetto diventa la prima riga del modulo, sopra «1 · La tua donazione». Le garanzie sotto il pulsante Dona restano.
+- **Tablet e computer:** invariati (lucchetto, «Pagamento sicuro» e «Torna al sito» nella barra).
+- **Da segnalare a Myosotis**, che farà la pagina vera su dona.cottolengo.org.
+- CSS e JS passano a `?v=143`.
