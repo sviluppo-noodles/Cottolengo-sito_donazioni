@@ -13,7 +13,7 @@
    ========================================================== */
 
 /* ---------- Hamburger e tendine del menu ----------
-   Hamburger: apre/chiude il menu sotto 72.5em; aria-expanded e aria-label
+   Hamburger: apre/chiude il menu sotto 75em (1200 px); aria-expanded e aria-label
    sono aggiornati a OGNI chiusura (pulsante, scelta di una voce, Esc).
    Tendine: una sola aperta alla volta; si chiudono con un clic fuori o
    con Esc (il focus torna sulla voce del menu). Esc chiude prima la

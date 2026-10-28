@@ -11,7 +11,7 @@
    Testi e spazi in rem, breakpoint in em: se l'utente ingrandisce il carattere
    predefinito del browser (comune tra gli over 60), testi e impaginazione
    crescono insieme e il menu passa all'hamburger prima di andare a capo.
-   72.5em = 1160px (menu → hamburger) · 75em = 1200px (schede in fila) · 63.75em = 1020px · 61.25em = 980px · 45em = 720px · 38.75em = 620px ·
+   75em = 1200px (menu → hamburger, decisione 118; schede in fila) · 63.75em = 1020px · 61.25em = 980px · 45em = 720px · 38.75em = 620px ·
    35em = 560px · 30em = 480px (con carattere predefinito 16px). */
 
 /* ---------- Caratteri: Helvetica in tutto il sito ----------
@@ -354,13 +354,18 @@ select:focus-visible, [tabindex]:focus-visible {
 }
 
 .header__logo { height: 52px; width: auto; display: block; }
+@media (min-width: 75.0625em) { .btn--header { margin-left: 1rem; } }   /* solo con il menu in riga: stacco tra voci e Dona */
 
 .nav { margin-left: auto; }
 
 .nav__list {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  /* Decisione 112: voci più vicine (24 px tra un testo e l'altro, prima 37) e più
+     stacco dal pulsante Dona (circa 50 px). Prima tutto era a 37-39 px: logo, voci
+     e pulsante avevano lo stesso ritmo e il menu non si leggeva come un gruppo
+     (skill impeccable: gruppi stretti, separazioni generose). */
+  gap: 0.2rem;
   list-style: none;
 }
 
@@ -375,7 +380,7 @@ select:focus-visible, [tabindex]:focus-visible {
   font-size: 1.08rem;               /* 17px: nella fascia 16–18 dei menu leggibili */
   line-height: 1.2;                 /* link e pulsanti del menu alti uguali */
   min-height: 44px;                 /* area di tocco/clic minima consigliata */
-  padding: 0.6rem 0.95rem 0.75rem;
+  padding: 0.6rem 0.65rem 0.75rem;
   white-space: nowrap;
   background: none;
   border: none;
@@ -388,7 +393,7 @@ select:focus-visible, [tabindex]:focus-visible {
 .nav__link::after {
   content: "";
   position: absolute;
-  inset-inline: 0.95rem;
+  inset-inline: 0.65rem;
   bottom: 0;
   height: 5px;
   border-radius: 3px;
@@ -1584,10 +1589,10 @@ fieldset { border: none; }
   .numbers__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* 72.5em = 1160px: con sei voci (Chi siamo, Progetti, Come aiutarci, 5×1000, Testamento solidale, Aziende)
+/* 75em = 1200px (era 72,5em = 1160px fino alla decisione 118): con sei voci (Chi siamo, Progetti, Come aiutarci, 5×1000, Testamento solidale, Aziende)
    + logo + "Dona ora", sotto questa larghezza
    la riga non ci sta e il menu passa all'hamburger invece di andare a capo. */
-@media (max-width: 72.5em) {
+@media (max-width: 75em) {
   .nav__link::after { height: 2.5px; }    /* menu a tendina: sottolineatura a metà spessore (5px su desktop) */
   :root { --header-h: 64px; }
   .header__logo { height: 44px; }
@@ -2769,7 +2774,7 @@ fieldset { border: none; }
    2. Carosello: foto a tutto schermo, testo bianco sovrapposto in basso su
       una sfumatura scura, titolo più piccolo. Niente zoom.
    ========================================================== */
-@media (max-width: 72.5em) {
+@media (max-width: 75em) {
   .header__burger { order: -1; margin-left: -11px; margin-right: 0; }
   .btn--header { margin-left: auto; }
 }
@@ -3114,14 +3119,15 @@ fieldset { border: none; }
 @media (max-width: 56em) {
   .dona-pagina { padding-top: var(--s-6); }
   .dona-pagina__griglia { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
-  /* su telefono il riepilogo va in alto, compatto, e le garanzie in fondo */
-  .dona-lato { position: static; order: -1; }
-  .dona-lato__scheda { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 0 1rem; padding: 1rem 1.15rem; }
-  .dona-lato__titolo { grid-column: 1 / -1; }
-  .dona-lato__importo { font-size: 1.75rem; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
-  .dona-lato__frequenza { display: inline; margin: 0; }
-  .dona-lato__destinazione, .dona-lato__costo { grid-column: 1 / -1; }
-  .dona-garanzie, .dona-lato__aiuto { display: none; }
+  /* Decisione 110: su telefono il modulo viene PRIMA. Il riepilogo in alto mostrava
+     «100 € · Una volta sola» prima che la persona avesse scelto qualcosa, spingeva
+     giù la prima domanda e poi scorreva via comunque. Il riepilogo resta dove serve:
+     in fondo al modulo («Riepilogo» e pulsante «Dona 100 €»). Sotto il modulo, subito
+     dopo il pulsante, restano le garanzie (pagamento sicuro) e il telefono per aiuto. */
+  .dona-lato { position: static; }
+  .dona-lato__titolo, .dona-lato__importo, .dona-lato__destinazione, .dona-lato__costo { display: none; }
+  .dona-lato__scheda { padding: 1rem 1.15rem; }
+  .dona-garanzie { margin-top: 0; padding-top: 0; border-top: 0; }
   .dona-modulo { padding: 1.5rem 1.25rem 1.75rem; }
 }
 @media (max-width: 36em) {
@@ -3420,14 +3426,40 @@ fieldset { border: none; }
 /* Selezione del testo nei colori del sito (non il blu di sistema) */
 ::selection { background: var(--azzurro-chiaro); color: var(--blu-notte); }
 
+/* Link alle domande frequenti sotto il Dona della hero (decisione 111):
+   testo normale (scala: testo), subordinato al pulsante; il link è l'unica parte in grassetto. */
+.hero__dubbio { margin-top: var(--s-4); font-size: var(--t-body); color: var(--grigio-testo); }
+.hero__dubbio a { color: var(--azzurro-scuro); font-weight: 700; text-underline-offset: 0.18em; }
+.hero__dubbio a:hover { color: var(--blu-notte); }
+.hero__dubbio a { white-space: nowrap; }   /* il link non si spezza a metà */
+@media (max-width: 45em) { .hero__dubbio { text-align: center; } }   /* sotto il pulsante a tutta larghezza */
+.faq { scroll-margin-top: var(--header-h); }   /* arrivando dal link il titolo non finisce sotto l'intestazione */
+
+/* Schede in fila: titoli e testi allineati (decisione 113).
+   Titoli delle schede a 21 px (misura 4 della scala, non una misura nuova):
+   a 24 px «Missioni internazionali» (257 px) non entrava nella scheda da 285 px.
+   Così i quattro titoli delle aree stanno su una riga da tablet in su e i testi
+   partono alla stessa altezza. Nelle cinque schede di «Ci sono tanti modi per
+   esserci», più strette, alcuni titoli vanno comunque su due righe: sopra i
+   1200 px tutti riservano due righe, così anche lì i testi partono alla stessa
+   altezza (su tablet e telefono i titoli stanno su una riga e non serve). */
+.proj-card__title { font-weight: 700; }
+/* Decisione 116: nelle cinque schede strette (sopra i 1200 px) i titoli vanno su una riga:
+   misura 5 della scala (19 px, grassetto azzurro). «Sostegno a distanza» occupa
+   184 px su 187 disponibili: è il titolo più lungo ammesso (regola in verifica-sito.py). La gerarchia col testo
+   (19 px normale, grigio) resta data da grassetto e colore. */
+@media (min-width: 75.0625em) {
+  .fila-schede:not(.fila-schede--quattro) .proj-card__title { font-size: var(--t-body); }
+}
+
 /* =====================================================================
    SCALA TIPOGRAFICA — sei misure, sei ruoli (decisione 109)
    Fulvio: «non voglio usare molteplici dimensioni». In home c'erano 17 misure
    diverse su PC (20,8 · 20 · 19,2 · 19 px… quasi uguali). Ora solo:
      1 Titolo pagina    --t-hero  38 → 62 px  hero, carosello, grandi cifre
      2 Titolo sezione   --t-h2    30 → 42 px  titoli h2
-     3 Titolo blocco    --t-h3    22 / 24 px  titoli delle schede, momenti FAQ, voci del grafico
-     4 Testo in evidenza --t-lead 21 px       introduzioni, sottotitoli, Dona della hero
+     3 Titolo blocco    --t-h3    22 / 24 px  momenti FAQ, voci del grafico
+     4 Testo in evidenza --t-lead 21 px       introduzioni, sottotitoli, titoli delle schede, Dona della hero
      5 Testo            --t-body  18 / 19 px  paragrafi, domande, pulsanti
      6 Piccolo          --t-small 16 px       note, etichette, didascalie (sotto i 16 non si scende)
    PASSO 1: vale per gli elementi della HOME. Questo blocco sta in fondo e
@@ -3442,10 +3474,9 @@ fieldset { border: none; }
 /* 2 · titolo sezione */
 .fascia-invito h2 { font-size: var(--t-h2); }
 /* 3 · titolo blocco */
-.faq__gruppo-titolo, .proj-card__title, .proj-card--compatta .proj-card__title,
-.legend-row__text strong { font-size: var(--t-h3); }
+.faq__gruppo-titolo, .legend-row__text strong { font-size: var(--t-h3); }
 /* 4 · testo in evidenza */
-.hero__sub, .cpm-slide__sub { font-size: var(--t-lead); }
+.hero__sub, .cpm-slide__sub, .proj-card__title, .proj-card--compatta .proj-card__title { font-size: var(--t-lead); }
 /* 5 · testo */
 /* il pulsante dell'intestazione resta com'è: header e footer passano alla scala al passo 2 */
 .btn:not(.btn--header), .btn--dona:not(.btn--header), .cpm-slide__cta, .proj-card__cta, .faq__gruppo summary,
@@ -3456,3 +3487,137 @@ fieldset { border: none; }
 .partners__title { font-weight: 600; }   /* era 300: troppo sottile a 16 px */
 /* eccezione voluta: il Dona della hero è l'azione principale della home, testo in evidenza */
 .btn.dona-link__btn { font-size: var(--t-lead); }
+
+/* =====================================================================
+   SCALA TIPOGRAFICA — passo 1b (decisione 117): intestazione, piè di pagina
+   e INTERLINEA. Fulvio: «interlinea compresa, uniformità nell'impaginazione».
+   Tre interlinee, una per famiglia di ruoli (prima ce n'erano nove: 1 · 1,05 ·
+   1,15 · 1,2 · 1,3 · 1,45 · 1,5 · 1,65 · 1,9):
+     --lh-titolo 1,1   titoli grandi (hero, carosello, h2)
+     --lh-blocco 1,25  titoli di blocco, titoli delle schede, domande, pulsanti,
+                       voci di menu, etichette (righe singole o brevi)
+     --lh-testo  1,6   tutto il testo da leggere (paragrafi, introduzioni,
+                       schede, note, piè di pagina)
+   Le grandi cifre (numeri, percentuali) stanno a 1: sono una riga sola.
+   ===================================================================== */
+:root { --lh-titolo: 1.1; --lh-blocco: 1.25; --lh-testo: 1.6; }
+
+body { line-height: var(--lh-testo); }
+.hero h1, .cpm-slide__title, h2 { line-height: var(--lh-titolo); }
+.numbers__value, .legend-row__num { line-height: 1; }
+h3, .proj-card__title, .faq__gruppo-titolo, .faq__gruppo summary, .btn,
+.nav__link, .nav__mega__voce, .cpm-slide__tag, .numbers__label,
+.partners__title, .partners__etichetta, .legend-row__text strong { line-height: var(--lh-blocco); }
+p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy,
+.legend-row__text p, .faq__corpo p, .faq__nota, .impatti__nota, .where__note,
+.nav__mega__desc, .footer__col ul, .footer__bottom { line-height: var(--lh-testo); }
+
+/* misure di intestazione e piè di pagina sulla scala */
+.cpm-slide__cf strong { font-size: var(--t-h3); }                 /* codice fiscale del 5×1000: era 28 px */
+.nav__link { font-size: var(--t-small); }                         /* decisione 118: 16 px (era 17,3; per un giorno 19) */
+.nav__mega__voce { font-size: var(--t-body); }                    /* era 17 px */
+.nav__mega__desc { font-size: var(--t-lead); }                    /* era 20 px */
+.footer h3 { font-size: var(--t-body); }                          /* era 19,2 px */
+.footer__bottom { font-size: var(--t-small); }                    /* era 15 px */
+/* Piè di pagina arioso (decisione 118). Ogni riga (indirizzo, IBAN, link) è
+   una voce di elenco: interlinea 1,6 come il resto del sito, e l'aria viene dallo
+   SPAZIO tra le voci, non da un'interlinea diversa (skill impeccable: gruppi
+   stretti, separazioni generose). Passo di riga 36 px (prima 30), uguale in
+   tutte le colonne: le righe affiancate restano allineate. Più margine sopra e
+   tra le colonne, titoli staccati dalle voci. */
+.footer { padding-block: var(--s-8) 0; }
+.footer__grid { column-gap: var(--s-7); padding-bottom: var(--s-8); }
+.footer h3 { margin-bottom: var(--s-4); }
+.footer__righe, .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; padding: 0; margin: 0; }
+.footer__righe li, .footer__col li { line-height: var(--lh-testo); }
+.footer__brand p { line-height: var(--lh-testo); margin-top: var(--s-2); }
+.footer__bottom { padding-block: var(--s-5); }
+
+@media (min-width: 75.0625em) {
+  .btn--header { font-size: var(--t-body); }
+  .nav__list { gap: 0.5rem; }   /* decisione 118: con le voci a 16 px c'è spazio, 29 px tra un testo e l'altro */
+}   /* era 17 px; su telefono resta 16 (misura «piccolo») */
+@media (max-width: 75em) { .nav__link { font-size: var(--t-lead); } }        /* menu a tendina del telefono: era 19,2 px */
+
+/* =====================================================================
+   Decisione 119 — via la bambina e la pennellata; correzioni dalla critica
+   ===================================================================== */
+/* Apertura senza foto: titolo a sinistra, testo e Dona a destra (su PC);
+   tutto in colonna su tablet e telefono. Nessun vuoto lasciato dalla foto. */
+.hero { padding-block: var(--s-sezione); }
+.hero__main { display: block; }
+.hero__text {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  column-gap: var(--s-8);
+  align-items: start;
+  padding-bottom: 0;
+}
+.hero__text h1 { grid-column: 1; grid-row: 1 / span 2; }
+.hero__sub { grid-column: 2; margin-top: 0; }
+.hero__azione { grid-column: 2; }
+@media (max-width: 63.75em) {
+  .hero { padding-block: var(--s-7); }
+  .hero__text { display: flex; flex-direction: column; }
+  .hero__sub { margin-top: 1.3rem; }
+}
+
+/* Correzione 1: sul telefono la barra «Dona ora» non deve coprire Privacy e
+   Cookie (la decisione 118 aveva azzerato lo spazio in fondo al piè di pagina). */
+@media (max-width: 45em) {
+  .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+/* Correzione 2: pulsanti sempre a 19 px in grassetto, anche sul telefono.
+   Bianco su azzurro dà 3,3:1: è a norma solo come testo grande (≥ 18,66 px in
+   grassetto). A 18 px non lo era. */
+.btn:not(.btn--header), .btn--dona:not(.btn--header), .cpm-slide__cta, .proj-card__cta { font-size: 1.1875rem; }
+/* Correzione 3: titoli del piè di pagina in azzurro chiaro (azzurro su blu notte
+   dava 3,6:1, sotto la soglia del testo normale). */
+.footer h3 { color: var(--azzurro-chiaro); }
+
+
+/* Decisione 121: carosello con foto vere. Sul telefono le foto vere sono più
+   chiare e piene di dettagli delle immagini di campagna: titoli a 30 px (misura
+   «titolo sezione»; a 38 px il titolo del 5×1000 andava su 6 righe e usciva
+   dalla sfumatura) e sfumatura scura più alta dietro il testo. */
+@media (max-width: 45em) {
+  .cpm-slide__title { font-size: var(--t-h2); }
+  .cpm-slide::after {
+    background: linear-gradient(0deg, rgba(0, 28, 42, 0.94) 0%, rgba(0, 28, 42, 0.85) 38%, rgba(0, 28, 42, 0.5) 62%, rgba(0, 28, 42, 0) 82%);
+  }
+}
+
+/* Decisione 122: introduzioni di sezione con una misura sola, come chiede la
+   skill (65–75 caratteri per riga): al massimo 65ch di larghezza, centrate,
+   righe bilanciate, al massimo due righe su PC (testo entro 140 caratteri,
+   controllo 8 di tools/verifica-sito.py). Niente righe spezzate a mano. */
+.section-intro, .modi .section-intro, .who .section-intro, .recapiti .section-intro {
+  max-width: 65ch; margin-inline: auto; text-wrap: balance; line-height: var(--lh-testo);
+}
+
+/* Decisione 123 (skill impeccable, adattamento al telefono): sul telefono le
+   intestazioni di sezione (titolo + introduzione) sono allineate a sinistra,
+   sullo stesso asse delle schede e del testo che seguono. Centrate su 3–4 righe
+   l'occhio doveva cercare l'inizio di ogni riga. Su PC restano centrate
+   (introduzioni di al massimo due righe, decisione 122). */
+@media (max-width: 45em) {
+  .section-head, .section-head h2, .section-intro,
+  .modi .section-intro, .who .section-intro, .recapiti .section-intro { text-align: left; }
+  .section-intro, .modi .section-intro, .who .section-intro, .recapiti .section-intro { margin-inline: 0; text-wrap: pretty; }   /* a sinistra righe piene: il bilanciamento le accorciava tutte */
+  .faq__chiusura, .faq__nota { text-align: left; }
+}
+
+/* Decisione 124: fascia «Una festa o una sfida che fa del bene» con le regole
+   delle introduzioni. Testo di al massimo 140 caratteri, peso NORMALE (prima tutto
+   in grassetto: faticoso), larghezza 65ch. Per poter usare il peso normale il fondo
+   passa all'azzurro scuro: bianco su #0075B0 = 5:1 (sull'azzurro #0097D8 era 3,3:1,
+   a norma solo per il testo grande in grassetto). Sul telefono a sinistra come le
+   altre intestazioni (decisione 123). */
+.fascia-invito { background: linear-gradient(120deg, var(--azzurro-scuro) 0%, #00618F 100%); }
+.fascia-invito__testo, .fascia-invito p.fascia-invito__testo {
+  font-weight: 400; max-width: 65ch; margin-inline: auto; text-wrap: balance; line-height: var(--lh-testo);
+}
+@media (max-width: 45em) {
+  .fascia-invito, .fascia-invito h2, .fascia-invito__testo { text-align: left; }
+  .fascia-invito p.fascia-invito__testo { margin-inline: 0; text-wrap: pretty; }
+}

@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=128">
+  <link rel="stylesheet" href="css/style.css?v=140">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -152,14 +152,16 @@
      La prima slide carica l'immagine subito (fetchpriority="high"), le altre
      in differita. Una sola slide → niente pallini né autoplay. -->
 <section class="cpm-banner" id="cpm-banner" aria-roledescription="carosello" aria-label="Campagne in evidenza">
+  <!-- Decisione 121: foto vere del Cottolengo in tutte le slide (prima: immagini da campagna). -->
   <div class="cpm-track" id="cpm-track" aria-live="off">
 
     <!-- Slide 1 · campagna Dona un pasto (prima dal 26/10/2026, decisione 75: il carosello apre con la donazione) -->
-    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="1 di 4: dona un pasto" style="--fuoco: 50% 40%">
-      <img class="cpm-slide__img"
-           src="assets/img/hero/dona-un-pasto-cottolengo-1600.jpg"
-           srcset="assets/img/hero/dona-un-pasto-cottolengo-960.jpg 960w, assets/img/hero/dona-un-pasto-cottolengo-1600.jpg 1600w"
-           sizes="100vw" width="1600" height="898" alt="Mani di una persona anziana che tengono un piatto vuoto" fetchpriority="high">
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="1 di 4: dona un pasto" style="--fuoco: 75% 40%; --fuoco-telefono: 70% 40%">
+      <picture><source type="image/webp" srcset="assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-960.webp 960w, assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-1536.webp 1536w" sizes="100vw"><img class="cpm-slide__img"
+           src="assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-1536.jpg"
+           srcset="assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-960.jpg 960w, assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-1536.jpg 1536w"
+           sizes="100vw" width="1536" height="1024"
+           alt="Una suora sorride a un ospite in carrozzina seduto a tavola in una casa del Cottolengo" fetchpriority="high"></picture>
       <div class="container cpm-slide__inner">
         <div class="cpm-slide__text">
           <p class="cpm-slide__tag">Campagna</p>
@@ -176,12 +178,12 @@
          Immagine su fondo azzurro (ritratto di san Giuseppe Benedetto Cottolengo):
          cpm-slide--azzurra usa una sfumatura più leggera e l'occhiello bianco,
          perché la pillola azzurra sparirebbe sul fondo dello stesso colore. -->
-    <div class="cpm-slide cpm-slide--azzurra" role="group" aria-roledescription="slide" aria-label="2 di 4: speciale Natale" style="--fuoco: 72% 35%; --fuoco-telefono: 100% 30%">
-      <img class="cpm-slide__img"
-           src="assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-1920.jpg"
-           srcset="assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-960.jpg 960w, assets/img/hero/natale-cottolengo-san-giuseppe-benedetto-1920.jpg 1920w"
-           sizes="100vw" width="1920" height="1080"
-           alt="Ritratto di san Giuseppe Benedetto Cottolengo, fondatore della Piccola Casa della Divina Provvidenza" loading="lazy">
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="2 di 4: speciale Natale" style="--fuoco: 80% 30%; --fuoco-telefono: 75% 30%">
+      <picture><source type="image/webp" srcset="assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-960.webp 960w, assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-1920.webp 1920w" sizes="100vw"><img class="cpm-slide__img"
+           src="assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-1920.jpg"
+           srcset="assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-960.jpg 960w, assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-1920.jpg 1920w"
+           sizes="100vw" width="1920" height="1280"
+           alt="Un'ospite sorridente lavora con le perline accanto a un'operatrice in un laboratorio del Cottolengo" loading="lazy"></picture>
       <div class="container cpm-slide__inner">
         <div class="cpm-slide__text">
           <p class="cpm-slide__tag">Speciale Natale</p>
@@ -198,12 +200,12 @@
          Foto su fondo bianco con testo vero (non dentro l'immagine): leggibile a
          ogni misura, tradotto dai lettori di schermo e indicizzato da Google.
          cpm-slide--luce: velatura bianca e testo scuro. -->
-    <div class="cpm-slide cpm-slide--luce cpm-slide--chiara" id="cinquepermille" role="group" aria-roledescription="slide" aria-label="3 di 4: 5 per mille" style="--fuoco: 72% 50%; --fuoco-telefono: 80% 45%">
-      <img class="cpm-slide__img"
-           src="assets/img/hero/5-per-mille-cottolengo-mani-generazioni-1920.jpg"
-           srcset="assets/img/hero/5-per-mille-cottolengo-mani-generazioni-960.jpg 960w, assets/img/hero/5-per-mille-cottolengo-mani-generazioni-1920.jpg 1920w"
-           sizes="100vw" width="1920" height="1080"
-           alt="Le mani di un bambino, di un adulto e di un anziano una sopra l'altra" loading="lazy">
+    <div class="cpm-slide" id="cinquepermille" role="group" aria-roledescription="slide" aria-label="3 di 4: 5 per mille" style="--fuoco: 60% 25%; --fuoco-telefono: 55% 25%">
+      <picture><source type="image/webp" srcset="assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-960.webp 960w, assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-1600.webp 1600w" sizes="100vw"><img class="cpm-slide__img"
+           src="assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-1600.jpg"
+           srcset="assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-960.jpg 960w, assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-1600.jpg 1600w"
+           sizes="100vw" width="1600" height="1067"
+           alt="Un medico del Cottolengo parla con un ospite anziano in carrozzina" loading="lazy"></picture>
       <div class="container cpm-slide__inner">
         <div class="cpm-slide__text">
           <p class="cpm-slide__tag">5×1000</p>
@@ -222,21 +224,17 @@
     <!-- Slide 4 · lasciti / testamento solidale
          Foto su fondo bianco: cpm-slide--luce usa testo scuro e una velatura
          bianca al posto della sfumatura blu notte. -->
-    <div class="cpm-slide cpm-slide--luce cpm-slide--chiara" role="group" aria-roledescription="slide" aria-label="4 di 4: testamento solidale" style="--fuoco: 85% 30%; --fuoco-telefono: 50% 50%">
-      <!-- su telefono un ritaglio dedicato: nell'originale nonno e nipote sono piccoli, sul bordo destro -->
-      <picture>
-        <source media="(max-width: 45em)" srcset="assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-telefono-800.jpg 800w, assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-telefono-1200.jpg 1200w" sizes="100vw">
-        <img class="cpm-slide__img"
-           src="assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-1920.jpg"
-           srcset="assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-960.jpg 960w, assets/img/hero/testamento-solidale-cottolengo-nonno-nipote-1920.jpg 1920w"
-           sizes="100vw" width="1920" height="1080"
-           alt="Un nonno sorridente porta sulle spalle il nipote che saluta felice" loading="lazy">
-      </picture>
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="4 di 4: testamento solidale" style="--fuoco: 60% 35%; --fuoco-telefono: 60% 35%">
+      <picture><source type="image/webp" srcset="assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-960.webp 960w, assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-1920.webp 1920w" sizes="100vw"><img class="cpm-slide__img"
+           src="assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-1920.jpg"
+           srcset="assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-960.jpg 960w, assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-1920.jpg 1920w"
+           sizes="100vw" width="1920" height="1280"
+           alt="Bambini e insegnanti camminano sorridenti nel corridoio colorato di una scuola del Cottolengo" loading="lazy"></picture>
       <div class="container cpm-slide__inner">
         <div class="cpm-slide__text">
           <p class="cpm-slide__tag">Lasciti solidali</p>
-          <h2 class="cpm-slide__title">Il loro futuro è la tua eredità più grande</h2>
-          <p class="cpm-slide__sub">Sostieni il Cottolengo con il testamento solidale: anche un piccolo lascito resta per sempre.</p>
+          <h2 class="cpm-slide__title">Il tuo testamento può accogliere chi verrà domani</h2>
+          <p class="cpm-slide__sub">Anche un piccolo lascito conta, e puoi sempre modificarlo o revocarlo: ti spieghiamo come fare.</p>
           <div class="cpm-slide__azioni">
             <a class="btn cpm-slide__cta" href="testamento-solidale.html">Scopri come fare</a>
           </div>
@@ -258,10 +256,10 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" aria-labelledby="hero-title">
-  <!-- ===== Riga principale: bambina (sx), testo e pulsante Dona (dx) — decisioni 57 e 58 ===== -->
+  <!-- ===== Riga principale: titolo (sx), testo e pulsante Dona (dx) — decisione 119 ===== -->
   <div class="container hero__main">
 
-    <picture><source type="image/webp" srcset="assets/img/bambina-900.webp 900w, assets/img/bambina-1472.webp 1472w" sizes="(max-width: 63.75em) 480px, 45vw"><img class="hero__bg-photo" src="assets/img/bambina.png" width="1472" height="982" alt="" aria-hidden="true"></picture>
+    <!-- Decisione 119: tolta la bambina (foto da archivio, non rappresenta gli ospiti del Cottolengo). -->
 
     <div class="hero__text">
       <h1 id="hero-title">Fare bene fa bene al cuore.</h1>
@@ -280,6 +278,9 @@
           <svg class="icon-heart" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.6 4.7 5 4.1c2-.4 4 .5 5 2.2C11 4.6 13 3.7 15 4.1c3.4.6 4.7 4.5 3 7.7-2.5 4.3-10 9.2-10 9.2z" fill="currentColor"/></svg>
           Dona ora
         </a>
+        <!-- Decisione 111: rassicurazione per chi esita, subordinata al pulsante (link di testo,
+             non un secondo pulsante). Porta alle domande frequenti, che finiscono con «Dona ora». -->
+        <p class="hero__dubbio">Hai un dubbio? <a href="#domande-frequenti">Leggi le domande frequenti</a></p>
       </div>
     </div>
 
@@ -322,8 +323,9 @@
   <div class="container">
     <header class="section-head">
       <h2 id="who-title">Scegli dove fare la differenza</h2>
-      <!-- Testo del Cottolengo (22/10/2026, decisione 67) -->
-      <p class="section-intro"><span class="frase">Il tuo aiuto può sostenere quattro grandi aree di intervento: <strong>Cura</strong>, <strong>Accoglienza</strong>, <strong>Educazione</strong> e <strong>Missioni internazionali</strong>.</span> <span class="frase">Scegli quella che ti sta più a cuore. Il Cottolengo destinerà la tua donazione ai progetti e alle necessità più urgenti all’interno dell’area scelta.</span></p>
+      <!-- Testo del Cottolengo (decisione 67), accorciato con la decisione 122: tolto l'elenco
+           delle aree (sono i titoli delle schede subito sotto), resta la destinazione all'area. -->
+      <p class="section-intro">Scegli l’area che ti sta più a cuore: il Cottolengo destinerà la tua donazione ai progetti e alle necessità più urgenti di quell’area.</p>
     </header>
 
     <ul class="fila-schede fila-schede--quattro">
@@ -408,13 +410,13 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="sostegno-a-distanza.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/adozioni-a-distanza-con-cottolengo-scheda-800.jpg" width="800" height="500" alt="Bambine e bambini sostenuti con il sostegno a distanza" loading="lazy">
+              <img src="assets/img/sostegno-a-distanza-cottolengo-bambini-missione-scheda-800.jpg" width="800" height="500" alt="Bambini sorridenti in divisa scolastica in una missione del Cottolengo" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
             <h3 class="proj-card__title"><a href="sostegno-a-distanza.html">Sostegno a distanza</a></h3>
-            <p class="proj-card__copy">Accompagna la crescita di un bambino: scuola, cibo e cure, mese dopo mese.</p>
-            <p class="proj-card__nota">Oppure chiama <a href="tel:+393488989163">348&nbsp;8989163</a>, Sr Mary Soshiyat</p>
+            <p class="proj-card__copy">Accompagna la crescita di un bambino: scuola, cibo e cure, ogni mese.</p>
+            <!-- Decisione 114: il cellulare di Sr Mary resta nella pagina Sostegno a distanza, non in home. -->
             <a class="btn proj-card__cta" href="sostegno-a-distanza.html">Come aderire</a>
           </div>
         </article>
@@ -428,7 +430,7 @@
           </div>
           <div class="proj-card__body">
             <h3 class="proj-card__title"><a href="cinque-per-mille.html">5×1000</a></h3>
-            <p class="proj-card__copy">Una firma nella dichiarazione dei redditi vale cure e accoglienza per tanti. Non ti costa un euro.</p>
+            <p class="proj-card__copy">La tua firma diventa cure e accoglienza. A&nbsp;te non costa nulla.</p>
             <a class="btn proj-card__cta" href="cinque-per-mille.html">Come firmare</a>
           </div>
         </article>
@@ -437,7 +439,7 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="dona-in-memoria.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/adotta-un-nonno-a-tachina-scheda-800.jpg" width="800" height="500" alt="Il sorriso di un anziano accolto in una casa del Cottolengo" loading="lazy">
+              <img src="assets/img/dona-in-memoria-cottolengo-ospite-volontaria-scheda-800.jpg" width="800" height="500" alt="Un ospite anziano e una volontaria sorridenti, abbracciati, sotto il ritratto del Cottolengo" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
@@ -451,12 +453,12 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="testamento-solidale.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/testamento-solidale-cottolengo-nonno-nipote-scheda-800.jpg" width="800" height="500" alt="Un nonno sorridente porta sulle spalle il nipote" loading="lazy">
+              <img src="assets/img/testamento-solidale-cottolengo-piccola-casa-scheda-800.jpg" width="800" height="500" alt="L'ingresso della Piccola Casa della Divina Provvidenza, in via Cottolengo 14 a Torino" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
             <h3 class="proj-card__title"><a href="testamento-solidale.html">Testamento solidale</a></h3>
-            <p class="proj-card__copy">Il loro futuro è la tua eredità più grande. Un lascito, anche piccolo, resta per sempre.</p>
+            <p class="proj-card__copy">Un lascito, anche piccolo, aiuta ad accogliere chi verrà domani.</p>
             <a class="btn proj-card__cta" href="testamento-solidale.html">Scopri di più</a>
           </div>
         </article>
@@ -465,12 +467,12 @@
         <article class="proj-card proj-card--compatta">
           <div class="proj-card__media">
             <a class="proj-card__media-link" href="volontariato.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/adotta-un-ospite-con-cottolengo-scheda-800.jpg" width="800" height="500" alt="Volontari e ospiti insieme al Cottolengo" loading="lazy">
+              <img src="assets/img/volontariato-cottolengo-abbraccio-ospite-scheda-800.jpg" width="800" height="500" alt="Una volontaria abbraccia un'ospite in carrozzina" loading="lazy">
             </a>
           </div>
           <div class="proj-card__body">
             <h3 class="proj-card__title"><a href="volontariato.html">Volontariato</a></h3>
-            <p class="proj-card__copy">Dona il tuo tempo: al fianco degli ospiti, nelle attività e negli eventi della Piccola Casa.</p>
+            <p class="proj-card__copy">Dona il tuo tempo: stai accanto agli ospiti della Piccola Casa.</p>
             <a class="btn proj-card__cta" href="volontariato.html">Diventa volontario</a>
           </div>
         </article>
@@ -489,7 +491,8 @@
          pulsante prevedibile (porta alla pagina che spiega; diventerà "Crea la tua raccolta" quando
          Myosotis attiverà le raccolte). -->
     <h2 id="raccolte-title">Una festa o una sfida che fa del bene</h2>
-    <p>Un compleanno, un anniversario, una corsa o una camminata: apri la tua pagina di raccolta fondi e chiedi ad amici e parenti di donare, al posto dei regali o per sostenere la tua impresa. Le donazioni vanno direttamente al Cottolengo.</p>
+    <!-- Decisione 124: stessa regola delle introduzioni (max 140 caratteri, peso normale). -->
+    <p class="fascia-invito__testo">Per un compleanno o una corsa, apri la tua raccolta fondi: amici e parenti donano al posto dei regali e le donazioni vanno al Cottolengo.</p>
     <a class="btn btn--dona fascia-invito__btn" href="crowdfunding.html">Scopri come funziona</a>
   </div>
 </section>
@@ -578,12 +581,11 @@
   <div class="container">
     <header class="section-head">
       <h2 id="where-title">Dove va la tua donazione</h2>
-      <p class="section-intro">Vogliamo che tu sappia sempre come viene usato il tuo aiuto.<br>
-      Ecco come vengono impiegati i fondi raccolti.<sup>*</sup></p>
+      <p class="section-intro">Vogliamo che tu sappia sempre come viene usato il tuo aiuto. Ecco come vengono impiegati i fondi raccolti.<sup>*</sup></p>
     </header>
 
     <div class="where__layout">
-      <img class="where__brush" src="assets/img/pennello-800.png" width="800" height="677" loading="lazy" decoding="async" alt="" aria-hidden="true">
+      <!-- Decisione 119: tolta la pennellata decorativa. -->
       <div class="donut" role="img" aria-label="Grafico a torta: 84% ai progetti di assistenza, 10% al funzionamento delle case, 6% alla raccolta fondi">
         <!-- ciambella SVG: si disegna progressivamente quando la sezione entra in vista
              (circonferenza r=145.5 → 914.2; i segmenti sono frazioni di essa via --len) -->
@@ -718,21 +720,25 @@
     <div class="footer__col">
       <h3>Contatti</h3>
       <address>
-        Ufficio Progetti e Raccolta Fondi<br>
-        Via Cottolengo, 14<br>10152 Torino<br>
-        <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a><br>
-        <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a><br>
-      <a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></address>
+        <ul class="footer__righe">
+          <li>Ufficio Progetti e Raccolta Fondi</li>
+          <li>Via Cottolengo, 14</li>
+          <li>10152 Torino</li>
+          <li><a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a></li>
+          <li><a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a></li>
+          <li><a class="footer__tutti" href="chi-siamo.html#recapiti">Tutti i contatti</a></li>
+        </ul>
+      </address>
     </div>
     <div class="footer__col">
       <h3>Dona con bonifico</h3>
-      <p>
-        Fondazione Cottolengo Solidale<br>
-        Ente del Terzo Settore<br>
-        IBAN: <strong class="footer__iban">IT42 W030 4801 00000000 0097137</strong><br>
-        Cod. Fiscale: 97905980013<br>
-        C/C postale n. 1072743170
-      </p>
+      <ul class="footer__righe">
+        <li>Fondazione Cottolengo Solidale</li>
+        <li>Ente del Terzo Settore</li>
+        <li>IBAN: <strong class="footer__iban">IT42 W030 4801 00000000 0097137</strong></li>
+        <li>Cod. Fiscale: 97905980013</li>
+        <li>C/C postale n. 1072743170</li>
+      </ul>
     </div>
     <div class="footer__col">
       <h3>Link utili</h3>
@@ -758,7 +764,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=128"></script>
-<script src="js/nav.js?v=128"></script>
+<script src="js/main.js?v=140"></script>
+<script src="js/nav.js?v=140"></script>
 </body>
 </html>

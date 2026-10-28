@@ -1591,7 +1591,7 @@ Ora la home usa **sei misure, una per ruolo**:
 |---|---|---|---|
 | 1 Titolo pagina | `--t-hero` | 62 / 38 px | titolo della hero, titoli del carosello, grandi cifre (numeri, percentuali) |
 | 2 Titolo sezione | `--t-h2` | 42 / 30 px | titoli h2 di tutte le sezioni |
-| 3 Titolo blocco | `--t-h3` | 24 / 22 px | titoli delle schede, momenti delle domande frequenti, voci del grafico |
+| 3 Titolo blocco | `--t-h3` | 24 / 22 px | momenti delle domande frequenti, voci del grafico (titoli delle schede passati alla misura 4, decisione 113) |
 | 4 Testo in evidenza | `--t-lead` | 21 px | introduzioni, sottotitoli, pulsante Dona della hero |
 | 5 Testo | `--t-body` | 19 / 18 px | paragrafi, domande, pulsanti, link |
 | 6 Piccolo | `--t-small` | 16 px | note, etichette, didascalie, partner |
@@ -1603,6 +1603,218 @@ Ora la home usa **sei misure, una per ruolo**:
 - Verificato su PC (1440, 1280, 1160, 1024, 768 px) e telefono: nessun testo esce dai pulsanti e nessuno scorrimento orizzontale.
 - **Difetto trovato e corretto:** nelle schede «Ci sono tanti modi per esserci», «Scopri come aderire» stava a 4 px dal bordo del pulsante (c'era anche prima della scala). Diventa «Come aderire», come «Come firmare» e «Come fare» accanto.
 - CSS e JS passano a `?v=128`.
+
+## 110. Pagina Dona su telefono: prima il modulo, il riepilogo in fondo (28/10/2026)
+
+Fulvio: su telefono il modulo di donazione si apriva con il riepilogo, ed è scorretto. Valutazione: ha ragione. Supera la regola «riepilogo in alto su telefono» delle decisioni precedenti, che la decisione 75 aveva già segnalato come da valutare.
+- **Mostrava scelte non ancora fatte:** «100 € · Una volta sola · Per le Opere di Carità» compariva prima che la persona avesse toccato qualcosa, come se avesse già deciso.
+- **Spingeva giù la prima domanda** (requisito 2: accesso al dono subito visibile).
+- **Non restava in vista:** scorreva via con la pagina, quindi non dava neanche il vantaggio del «riepilogo sempre visibile» che ha su computer.
+- Il riepilogo serve **al momento di confermare**, e lì c'è già: blocco «Riepilogo» in fondo al modulo e pulsante «Dona 100 €».
+
+Ora su telefono la pagina parte da «1 · La tua donazione». Sotto il pulsante Dona restano le garanzie (pagamento protetto, ricevuta, ente del Terzo settore) e «Hai bisogno di aiuto?» con telefono ed email: rassicurano proprio mentre si conferma (requisito 15). Prima su telefono erano nascoste. Su computer non cambia niente: il riepilogo resta fisso a lato.
+- CSS e JS passano a `?v=129`.
+
+## 111. Home: link alle domande frequenti sotto il Dona della hero (28/10/2026)
+
+Proposta di Fulvio, valutata con la skill impeccable e i requisiti NN/g.
+- **Perché sì:** la skill chiede di rassicurare nei momenti ad alta posta in gioco, e ammette un'azione principale con una o due secondarie. Chi esita trova subito le risposte invece di uscire: metà delle donazioni perse dipende da problemi d'uso, in testa l'uso dei soldi poco chiaro. Il giro si chiude perché le domande frequenti finiscono con «Dona ora», e sul telefono la barra Dona resta sempre visibile.
+- **Rischio valutato:** chi stava per donare può distrarsi. È basso, perché il link resta nella stessa pagina, il Dona è sempre a portata di mano e chi è convinto clicca il pulsante grande.
+- **Condizioni rispettate:**
+  - link di testo e non secondo pulsante (requisito 2: niente messaggi in concorrenza);
+  - testo che ha senso anche da solo: «Hai un dubbio? **Leggi le domande frequenti**»;
+  - subito sotto il pulsante, in misura «testo» della scala (19/18 px), grigio, con solo il link in grassetto azzurro scuro sottolineato.
+- Su telefono è centrato sotto il pulsante a tutta larghezza, su due righe, e il link non si spezza.
+- Il link porta a `#domande-frequenti` con lo scorrimento morbido; il titolo della sezione non finisce sotto l'intestazione (`scroll-margin-top`).
+- **Da misurare dopo il lancio:** clic sul link e donazioni di chi l'ha cliccato.
+- CSS e JS passano a `?v=130`.
+
+## 112. Intestazione: voci del menu più vicine (28/10/2026)
+
+Fulvio: le voci del menu si possono avvicinare? Misurato: tra una voce e l'altra 37 px, dal logo alla prima voce 39 px, dall'ultima voce al pulsante Dona 39 px. Tutto con lo stesso ritmo, quindi il menu non si leggeva come un gruppo e il Dona non si staccava. La skill impeccable (guida *layout* e *craft floor*) chiede gruppi stretti e separazioni generose, con contrasto tra intervalli piccoli e grandi.
+- **Tra le voci: 24 px.** Margine interno di ogni voce da 0,95 a 0,65 rem per lato, distanza tra le voci 0,2 rem. La linea sotto la voce attiva segue il nuovo margine.
+- **Dall'ultima voce al pulsante Dona: 50 px.** In più 1 rem a sinistra del pulsante, solo quando il menu è in riga (sopra i 1160 px).
+- **Dal logo alla prima voce:** 67 px a 1440, 34 px a 1161: resta più largo dello spazio tra le voci.
+- L'area di clic resta alta 44 px, e ogni voce resta larga almeno quanto il suo testo più 20 px.
+- Il menu a tendina non cambia. Telefono e tablet (menu a hamburger) non cambiano.
+- In più resta spazio libero nella riga: in futuro si può valutare di abbassare la soglia dell'hamburger (oggi 1160 px).
+- CSS e JS passano a `?v=131`.
+
+## 113. Schede della home: titoli su una riga e testi allineati (28/10/2026)
+
+Fulvio: nelle quattro aree i titoli devono stare su una riga e i testi occupare gli stessi spazi. Misurato: a 24 px «Missioni internazionali» occupa 257 px, nella scheda da 285 px ne restano 243. Andava a capo e spingeva il testo 30 px più in basso delle altre schede.
+- **Titoli delle schede a 21 px**, la misura 4 della scala («testo in evidenza»), in grassetto 700. Non è una misura nuova: le misure restano sei. A 24 px il titolo non ci stava senza ridurre i margini interni sotto il minimo.
+- **Quattro aree:** titoli su una riga a tutte le larghezze (1920, 1440, 1280, 1024, 768, 390 px). I testi partono alla stessa altezza.
+- **«Ci sono tanti modi per esserci»** (cinque schede più strette): «Sostegno a distanza» e «Testamento solidale» non stanno su una riga neanche a 21 px. Sopra i 1200 px, dove le schede sono in griglia, tutti i titoli riservano due righe, così i testi partono alla stessa altezza. Su tablet e telefono stanno su una riga e la riserva non c'è.
+- I pulsanti erano già allineati in basso.
+- Aggiornata la tabella della decisione 109: «titoli delle schede» passano dalla misura 3 alla 4.
+- CSS e JS passano a `?v=132`.
+
+## 114. Home: tolto il cellulare di Sr Mary dalla scheda Sostegno a distanza (28/10/2026)
+
+Fulvio: è giusto che ci sia già lì il numero della suora? Valutazione: no.
+- **Impaginazione:** era l'unica scheda con un contenuto in più. La faceva più alta e spostava il pulsante.
+- **Azioni in concorrenza:** due inviti nella stessa scheda (chiamare oppure «Come aderire»), contro la regola «un'azione per scheda».
+- **Riservatezza:** è il cellulare di una persona, messo nella pagina più vista del sito.
+- La richiesta del Cottolengo (contatto diretto al posto del modulo) riguarda la pagina Sostegno a distanza, dove il numero resta, con l'email `adozioni@cottolengo.org`.
+- **Altro difetto visibile in questa fila, non risolto perché dipende dalle foto:** le immagini non sono omogenee. 5×1000, Testamento solidale e Volontariato sono figure scontornate su bianco, Sostegno a distanza e Dona in memoria sono foto piene. Servono foto vere coerenti (già nelle richieste al Cottolengo).
+
+## 115. «Ci sono tanti modi per esserci»: foto vere al posto delle immagini di campagna (28/10/2026)
+
+Fulvio: al posto delle immagini ritagliate da campagna pubblicitaria usiamo foto vere del Cottolengo, tranne il 5×1000, che resta con la sua immagine di campagna. Le nuove foto vengono dalle foto fornite dal Cottolengo (decisione 96), ritagliate in 16:10 a 800 × 500 come le altre schede. Nessuna ripete le foto delle quattro aree subito sopra.
+- **Sostegno a distanza:** bambini sorridenti in divisa in una missione (`sostegno-a-distanza-cottolengo-bambini-missione-scheda-800.jpg`). Prima: immagine di campagna con la scritta «Da oggi, loro sono di famiglia. La tua.».
+- **Dona in memoria:** un ospite anziano e una volontaria sotto il ritratto del Cottolengo (`dona-in-memoria-cottolengo-ospite-volontaria-scheda-800.jpg`). Prima: ritratto in bianco e nero.
+- **Testamento solidale:** l'ingresso della Piccola Casa in via Cottolengo 14, la stessa foto della copertina della pagina (`testamento-solidale-cottolengo-piccola-casa-scheda-800.jpg`). Prima: nonno e nipote scontornati su bianco.
+- **Volontariato:** una volontaria abbraccia un'ospite in carrozzina (`volontariato-cottolengo-abbraccio-ospite-scheda-800.jpg`). Prima: gruppo scontornato su bianco.
+- Alt riscritti su ciò che si vede.
+- **Risultato:** quattro foto piene e vere più il 5×1000. La fila è omogenea, salvo il 5×1000, che resta un'immagine diversa per scelta.
+- Le vecchie immagini (`adozioni-a-distanza-…`, `adotta-un-nonno-…`, `testamento-solidale-cottolengo-nonno-nipote-…`, `adotta-un-ospite-…`) restano nella cartella: si cancellano solo con conferma.
+- **Da verificare col Cottolengo:** il consenso delle persone ritratte, già nella lista delle richieste.
+
+## 116. Schede: una regola per titoli e testi, e nuovo testo per il Testamento solidale (28/10/2026)
+
+Fulvio: «Il loro futuro è la tua eredità più grande. Un lascito, anche piccolo, resta per sempre» non ha senso: non si capisce chi sia «loro», e «resta per sempre» non dice cosa fa il lascito. Inoltre «Testamento solidale» e «Sostegno a distanza» vanno a capo: serve una regola, con le skill.
+- **Nuovo testo:** «Un lascito nel testamento, anche piccolo, aiuta ad accogliere chi verrà domani.» Dice cosa si fa, cosa produce, e lega il lascito alla continuità della cura. La prima versione proposta, «Ricorda il Cottolengo nel tuo testamento: …», era di 104 caratteri: nella scheda stretta andava su 6 righe e l'ultima era tagliata.
+- **Titoli delle cinque schede strette (sopra i 1200 px): 19 px**, misura 5 della scala, in grassetto azzurro: ora stanno su una riga. «Sostegno a distanza» occupa 184 px su 187. La gerarchia col testo (19 px normale, grigio) resta data da peso e colore. Tolta la riserva di due righe della decisione 113. Su tablet e telefono restano a 21 px su una riga.
+- **La regola** (skill impeccable: «prova il testo vero a ogni larghezza e correggi ciò che esce»): titolo di scheda su una riga e testo entro 5 righe, a ogni larghezza. Si traduce in lunghezze massime:
+  - schede delle quattro aree: titolo **max 23 caratteri**;
+  - schede strette (fila da cinque): titolo **max 19 caratteri**;
+  - testo di ogni scheda: **max 100 caratteri**.
+  Se un testo nuovo supera il limite si accorcia il testo, non il carattere. Il controllo è automatico in `tools/verifica-sito.py` (controllo 7). Per WordPress: limite di caratteri sui campi ACF «titolo breve» e «testo breve» della scheda.
+- Verificato a 1440, 1024, 768 e 390 px: tutti i titoli su una riga, nessun testo tagliato.
+- **Stessa frase, ancora da correggere:** il titolo della slide del carosello sui lasciti, «Il loro futuro è la tua eredità più grande». Da riscrivere quando si rivede il carosello, che è provvisorio.
+- CSS e JS passano a `?v=133`.
+
+## 117. Home: scala completata (intestazione e piè di pagina) e tre interlinee (28/10/2026)
+
+Fulvio: tutti i font della home sono a posto secondo le skill? Interlinea compresa, uniformità nell'impaginazione. Controllo con le verifiche della skill impeccable (craft floor, *Type*: scala con scarti evidenti, misura di riga 65–75 caratteri, titoli bilanciati).
+- **Dimensioni, prima:** il contenuto rispettava le sei misure, salvo il codice fiscale del 5×1000 nel carosello (28 px). Intestazione, menu a tendina e piè di pagina erano ancora fuori scala (17,3 · 17 · 20 · 19,2 · 15 px).
+- **Dimensioni, ora:** in tutta la home solo 62/38 · 42/30 · 24/22 · 21 · 19/18 · 16 px.
+  - Voci del menu: da 17,3 a **19 px**. Il menu sta ancora su una riga fino a 1161 px. (Superato dalla decisione 118: 16 px.)
+  - Voci del menu a tendina: 19 px; descrizioni: 21 px.
+  - Menu a hamburger: da 19,2 a 21 px.
+  - Pulsante Dona dell'intestazione: 19 px su PC. Su telefono resta 16, cioè la misura «piccolo»: l'intestazione del telefono è alta 60 px.
+  - Titoli del piè di pagina: 19 px. Riga del copyright: da 15 a 16 px.
+  - Codice fiscale del 5×1000: 24 px.
+- **Interlinea, prima:** nove valori diversi (1 · 1,05 · 1,15 · 1,2 · 1,3 · 1,45 · 1,5 · 1,65 · 1,9).
+- **Interlinea, ora: tre, una per famiglia di ruoli** (token in `css/style.css`):
+  - `--lh-titolo` **1,1**: hero, carosello, titoli h2;
+  - `--lh-blocco` **1,25**: titoli di blocco e delle schede, domande, pulsanti, voci di menu, etichette;
+  - `--lh-testo` **1,6**: tutto il testo da leggere (paragrafi, introduzioni, schede, note, piè di pagina);
+  - le grandi cifre (numeri e percentuali) a 1, perché sono una riga sola.
+- **Piè di pagina:** l'interlinea 1,9 della decisione 65 passa a 1,6 come il resto. (Lo spazio tra le voci è stato aggiunto con la decisione 118.)
+- Misura di riga dei testi lunghi: 47–69 caratteri su PC, 33 su telefono. Titoli con `text-wrap: balance`.
+- Verificato su PC e telefono: nessuno scorrimento laterale, intestazione alta 76 px su PC e 60 su telefono, menu su una riga a 1161, 1280 e 1440 px.
+- Come la 109, è un blocco in fondo al CSS (passo 1b). Il passo 2 porta scala e interlinee nelle altre pagine e nelle regole originali.
+- CSS e JS passano a `?v=134`.
+
+## 118. Piè di pagina arioso e menu con più spazio (28/10/2026)
+
+Fulvio: il piè di pagina lo voglio arioso; il menu così sembra non avere spazio. Valutazione con la skill impeccable (guida *layout*: gruppi stretti, separazioni generose; ritmo da intervalli piccoli e grandi).
+- **Menu, il problema:** con le voci a 19 px (decisione 117) logo, menu e pulsante occupavano 1135 px su 1200, e restavano 65 px liberi in tutta la riga.
+- **Menu, la soluzione:**
+  - voci a **16 px** (misura «piccolo» della scala; erano 17,3 fino alla 117, poi 19), in grassetto bianco su azzurro: leggibili, e il menu torna a essere un elemento di servizio, non in gara col contenuto;
+  - 29 px tra le voci, 50 px prima del pulsante Dona, 83 px dal logo su PC;
+  - il menu a hamburger scatta sotto i **1200 px** (era 1160), così il menu in riga ha sempre almeno 44 px dal logo;
+  - il pulsante Dona dell'intestazione resta a 19 px: è l'azione principale.
+- **Piè di pagina:**
+  - ogni riga (indirizzo, telefono, IBAN, codice fiscale, link) diventa una voce di elenco in tutte le pagine (`.footer__righe`, HTML aggiornato in 19 pagine);
+  - interlinea 1,6 come il resto del sito; l'aria viene da **0,65 rem di spazio tra le voci**, per un passo di riga di 36 px (prima 30);
+  - le righe delle colonne affiancate restano allineate (verificato: 556, 592, 628 px in tutte e tre le colonne);
+  - più margine sopra (4 rem), tra le colonne (3 rem) e sotto i titoli.
+- La pagina Dona ha il suo piè di pagina ridotto (decisione 66) e non cambia.
+- CSS e JS passano a `?v=135`.
+
+## 119. Tolte la bambina e la pennellata; corretti due errori della scala (28/10/2026)
+
+Dopo la critica della home con la skill impeccable (due valutazioni indipendenti: revisione di design e misure automatiche), Fulvio: la bambina e la pennellata sono parti inutili che distraggono. Sono pubblicitarie, vendono ma non rappresentano.
+- **Bambina in apertura tolta.** Era un ritaglio da archivio: non è un ospite del Cottolengo, contraddice il requisito «foto autentiche e informative» e sul telefono occupava circa 230 px tra il Dona e i numeri senza dire nulla. Ora l'apertura è solo testo: su PC il titolo «Fare bene fa bene al cuore.» a sinistra e il testo con il Dona a destra; su tablet e telefono tutto in colonna. I file `bambina-*` restano in cartella (si cancellano solo con conferma).
+- **Pennellata dietro il grafico «Dove va la tua donazione» tolta.** Era solo decorativa.
+- **Errore 1, introdotto con la decisione 118:** sul telefono la barra «Dona ora» copriva Privacy e Cookie Policy in fondo alla pagina (link a 815 px, barra da 770). Ripristinato lo spazio in fondo al piè di pagina: ora i link finiscono a 739 px.
+- **Errore 2, introdotto con la decisione 109:** sul telefono i pulsanti erano scesi a 18 px. Il bianco sull'azzurro (3,3:1) è a norma solo per il testo grande (almeno 18,66 px in grassetto). Ora i pulsanti sono sempre a 19 px.
+- **Titoli del piè di pagina:** da azzurro su blu notte (3,6:1) ad azzurro chiaro.
+- **Dopo le correzioni:** axe sul telefono non trova violazioni WCAG A/AA.
+- Restano aperti dalla critica (P1), da fare uno alla volta:
+  - le due aperture in competizione (carosello che scorre da solo e apertura con il titolo);
+  - numeri e nomi incoerenti (110.000 contro 97.000 pasti, 5 ambiti contro 4 aree, «Progetti» contro aree);
+  - aree di tocco sotto i 44 px sul telefono (Dona in alto, menu, pallini, link del piè di pagina);
+  - il link per saltare al contenuto («Vai al modulo di donazione» porta a un pulsante);
+  - la pagina che finisce in modo freddo dopo i loghi.
+- CSS e JS passano a `?v=136`.
+
+## 120. «Ci sono tanti modi per esserci»: testi di lunghezza simile (28/10/2026)
+
+Fulvio: in questa sezione i testi devono avere un numero di battute simile a «Dona in memoria» (68). Prima andavano da 68 a 98 caratteri: le schede sembravano piene in modo diverso.
+- **Sostegno a distanza** (69): «Accompagna la crescita di un bambino: scuola, cibo e cure, ogni mese.»
+- **5×1000** (62): «La tua firma diventa cure e accoglienza. A te non costa nulla.» Il riferimento alla dichiarazione dei redditi è già nel titolo 5×1000 e nella pagina. Spazio unificatore in «A te», così la «A» non resta da sola a fine riga.
+- **Dona in memoria** (68): invariato.
+- **Testamento solidale** (64): «Un lascito, anche piccolo, aiuta ad accogliere chi verrà domani.»
+- **Volontariato** (63): «Dona il tuo tempo: stai accanto agli ospiti della Piccola Casa.»
+- Cambiano solo i testi delle schede in home. Le descrizioni nel menu «Come aiutarci» e nelle pagine restano quelle complete.
+- **Regola aggiunta al controllo 7 di `tools/verifica-sito.py`:** nella stessa fila di schede i testi differiscono al massimo di 12 caratteri. Le quattro aree vanno da 79 a 90 e sono dentro la regola.
+- Nota: a parità di caratteri le righe possono variare di una per come vanno a capo le parole. Su PC oggi le schede hanno 3 o 4 righe, e i pulsanti restano comunque allineati in basso.
+
+## 121. Carosello con foto vere del Cottolengo (28/10/2026, in prova)
+
+Fulvio: nel carosello mettiamo immagini reali, meno pubblicitarie; mettile fra quelle che hai, voglio vedere l'effetto. Tutte e quattro le slide passano da immagini di campagna (mani con il piatto, ritratto disegnato su azzurro, mani di tre generazioni, nonno e nipote scontornati) a foto fornite dal Cottolengo. Nessuna ripete le foto delle schede della home.
+- **Pasto:** una suora sorride a un ospite a tavola. Foto `cura-suora-ospiti` specchiata, così la suora sta a destra, lontana dal testo.
+- **Natale:** un'ospite al laboratorio delle perline con un'operatrice (originale 2000 px).
+- **5×1000:** un medico con un ospite anziano in carrozzina (la foto della copertina di Cura).
+- **Lasciti:** bambini e insegnanti nel corridoio colorato di una scuola (originale 2000 px).
+- **Tutte le slide hanno ora lo stesso stile:** foto piena, sfumatura scura, testo bianco. Le varianti «azzurra» e «luce» non si usano più in home. File in `assets/img/hero/carosello-*` (960 e 1536/1600/1920 px, JPG e WebP). Le vecchie immagini restano in cartella.
+- **Telefono:**
+  - titoli delle slide a 30 px, misura «titolo sezione»: a 38 px il titolo del 5×1000 andava su 6 righe e usciva dalla sfumatura;
+  - sfumatura scura più alta, perché le foto vere sono più chiare e piene di dettagli.
+- **Limiti da valutare guardandole:**
+  - su PC nella slide del pasto l'ospite resta sotto il testo e si vede soprattutto la suora;
+  - nella slide di Natale il volto dell'ospite è dietro il testo;
+  - nessuna foto mostra davvero un pasto o una mensa: servirebbe una foto della mensa;
+  - il titolo dei lasciti («Il loro futuro…») va riscritto, come già notato nella decisione 116.
+- CSS e JS passano a `?v=137`.
+
+## 122. Introduzioni di sezione: una misura sola, al massimo due righe (28/10/2026)
+
+Fulvio: il testo sotto «Scegli dove fare la differenza» sembrava un'epigrafe: quattro righe centrate, spezzate a mano. Allargarlo a tutta la pagina avrebbe dato righe da circa 110 caratteri; la skill impeccable chiede 65–75 caratteri per riga, e righe più lunghe fanno perdere l'occhio a chi va a capo. Il problema era la lunghezza: il testo ripeteva i nomi delle quattro aree, che sono i titoli delle schede subito sotto.
+- **Nuovo testo (134 caratteri):** «Scegli l'area che ti sta più a cuore: il Cottolengo destinerà la tua donazione ai progetti e alle necessità più urgenti di quell'area.» Resta la frase del Cottolengo sulla destinazione all'area, cioè il requisito «fondo ≠ progetto». Tolti l'elenco delle aree e il grassetto.
+- **Regola per tutte le introduzioni di sezione:**
+  - larghezza massima 65ch, centrate, righe bilanciate (`text-wrap: balance`), interlinea 1,6;
+  - **al massimo 140 caratteri**, cioè due righe su PC;
+  - **nessun a capo forzato.**
+- Tolto il `<br>` dall'introduzione di «Dove va la tua donazione».
+- «Ci sono tanti modi per esserci» prima era una riga sola di 108 caratteri, troppo lunga: ora va su due righe.
+- Controllo automatico: `tools/verifica-sito.py`, controllo 8 (lunghezza e `<br>`).
+- **Risultato:** in home tutte le introduzioni stanno su una o due righe su PC; sul telefono, a 350 px, su 2–4 righe.
+- CSS e JS passano a `?v=138`.
+
+## 123. Telefono: intestazioni di sezione allineate a sinistra (28/10/2026)
+
+Fulvio: sul telefono usa le regole della skill, allineamento a sinistra va bene. Skill impeccable, guida *adapt* (dal PC al telefono) e *craft floor*: testo centrato solo per una o due righe; oltre, l'occhio deve cercare l'inizio di ogni riga. Sul telefono le introduzioni andavano su 3–4 righe centrate.
+- **Sotto i 720 px** titolo della sezione e introduzione sono allineati a sinistra, sullo stesso asse delle schede e del testo che seguono. Lo stesso vale per la chiusura delle domande frequenti («Non trovi la risposta?»).
+- **Introduzioni a sinistra con `text-wrap: pretty`** al posto del bilanciamento: con il bilanciamento tutte le righe venivano accorciate e il bordo destro era frastagliato.
+- Su PC non cambia nulla: centrate, al massimo due righe (decisione 122).
+- CSS e JS passano a `?v=139`.
+
+## 124. Fascia «Una festa o una sfida che fa del bene» con le regole delle introduzioni (28/10/2026)
+
+Fulvio: anche qui soffriamo degli stessi problemi. Il testo era di 228 caratteri, centrato, tutto in grassetto bianco sull'azzurro: su PC 3 righe lunghe, sul telefono 8 righe centrate.
+- **Nuovo testo (137 caratteri):** «Per un compleanno o una corsa, apri la tua raccolta fondi: amici e parenti donano al posto dei regali e le donazioni vanno al Cottolengo.» Restano gli elementi della decisione 79:
+  - cosa si fa: aprire una raccolta fondi, detto in chiaro;
+  - le occasioni: compleanno e corsa;
+  - come funziona: amici e parenti donano al posto dei regali;
+  - dove vanno i soldi: al Cottolengo.
+  Tolto «direttamente», che era ancora da confermare con Myosotis.
+- **Peso normale** al posto del grassetto, larghezza massima 65ch, righe bilanciate: su PC sono 2 righe.
+- **Fondo da azzurro ad azzurro scuro** (sfumatura #0075B0 → #00618F). Il testo bianco su #0097D8 era a 3,3:1, a norma solo come testo grande in grassetto; su azzurro scuro è a 5:1 e il testo può avere peso normale. axe: nessuna violazione, su PC e sul telefono.
+- **Sul telefono** titolo, testo e pulsante sono allineati a sinistra, come le altre intestazioni (decisione 123).
+- Il controllo 8 di `tools/verifica-sito.py` vale anche per il testo delle fasce d'invito (`.fascia-invito__testo`).
+- CSS e JS passano a `?v=140`.
+
+## 125. Carosello, slide Lasciti: nuovo titolo e sottotitolo (28/10/2026)
+
+Fulvio: nel carosello c'era ancora «Il loro futuro è la tua eredità più grande / Sostieni il Cottolengo con il testamento solidale: anche un piccolo lascito resta per sempre». È la frase già giudicata senza senso nella decisione 116: non si capisce chi sia «loro», e «resta per sempre» non dice cosa fa il lascito.
+- **Titolo:** «Il tuo testamento può accogliere chi verrà domani». Stesso concetto della scheda Testamento solidale (decisione 116), detto in modo concreto.
+- **Sottotitolo** (visibile su PC; sul telefono è nascosto come in tutte le slide): «Anche un piccolo lascito conta, e puoi sempre modificarlo o revocarlo: ti spieghiamo come fare.» La revocabilità è un fatto già scritto nella pagina Testamento solidale e toglie il timore più comune. Il pulsante resta «Scopri come fare».
+- Nel sito non c'è più nessuna occorrenza di «Il loro futuro» né di «resta per sempre».
 
 ## Nota per il cliente: perché prima "chi aiutiamo" e poi "come aiutarci"
 

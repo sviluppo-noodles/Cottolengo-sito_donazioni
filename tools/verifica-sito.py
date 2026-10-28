@@ -16,7 +16,17 @@ Controlli:
      che puntano a ID esistenti (gli ID creati dal JS sono elencati sotto);
   4. link interni verso pagine e frammenti esistenti;
   5. immagini, script e fogli di stile locali presenti su disco;
-  6. un solo numero di versione ?v= per CSS e JS in tutto il sito.
+  6. un solo numero di versione ?v= per CSS e JS in tutto il sito;
+  7. regola delle schede (decisione 116): titolo su UNA riga e testo entro
+     5 righe in ogni larghezza. Misurato sulla scheda più stretta:
+       - schede delle quattro aree: titolo max 23 caratteri, testo max 100;
+       - schede strette (fila-schede da cinque): titolo max 19
+         caratteri, testo max 100.
+     Se un testo nuovo supera il limite si accorcia il testo, non il carattere.
+     In più (decisione 120): nella stessa fila i testi hanno lunghezze simili,
+     al massimo 12 caratteri di differenza tra il più corto e il più lungo.
+  8. introduzioni di sezione e testo delle fasce d'invito (decisioni 122, 124): al massimo 140 caratteri, cioè
+     due righe da 65ch su PC, e niente <br> per andare a capo a mano.
 Esce con codice 1 se trova errori.
 """
 import glob
@@ -149,6 +159,36 @@ def main():
             versioni.setdefault(v, set()).add(p)
     if len(versioni) > 1:
         errori.append('versioni ?v= diverse: ' + '; '.join(f'v={v}: {len(ps)} pagine' for v, ps in versioni.items()))
+
+    # 7. regola delle schede: lunghezza di titoli e testi
+    import html as _html
+    for p in pagine:
+        for classi_fila, fila in re.findall(r'<(?:ul|ol|div) class="(fila-schede[^"]*)"(.*?)</(?:ul|ol|div)>\s*(?:</div>|<p|<a|$)', sorgenti[p], re.S):
+            max_t = 23 if 'fila-schede--quattro' in classi_fila else 19
+            lunghezze = []
+            for corpo in re.findall(r'<article class="proj-card[^"]*"(.*?)</article>', fila, re.S):
+                t = re.search(r'class="proj-card__title"[^>]*>(.*?)</h3>', corpo, re.S)
+                c = re.search(r'class="proj-card__copy"[^>]*>(.*?)</p>', corpo, re.S)
+                if not t:
+                    continue
+                titolo = _html.unescape(re.sub(r'<[^>]+>', '', t.group(1))).strip()
+                testo = _html.unescape(re.sub(r'<[^>]+>', '', c.group(1))).strip() if c else ''
+                if len(titolo) > max_t:
+                    errori.append(f'{p}: titolo di scheda troppo lungo ({len(titolo)} > {max_t} caratteri): "{titolo}"')
+                if len(testo) > 100:
+                    errori.append(f'{p}: testo di scheda troppo lungo ({len(testo)} > 100 caratteri): "{testo[:40]}…"')
+                lunghezze.append(len(testo))
+            if lunghezze and max(lunghezze) - min(lunghezze) > 12:
+                errori.append(f'{p}: testi della fila «{classi_fila}» troppo diversi: da {min(lunghezze)} a {max(lunghezze)} caratteri (max 12 di differenza)')
+
+    # 8. introduzioni di sezione: lunghezza e niente a capo forzati
+    for p in pagine:
+        for m in re.finditer(r'<p class="(?:section-intro|fascia-invito__testo)"[^>]*>(.*?)</p>', sorgenti[p], re.S):
+            testo = ' '.join(_html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).split())
+            if len(testo) > 140:
+                errori.append(f'{p}: introduzione di sezione troppo lunga ({len(testo)} > 140 caratteri): "{testo[:40]}…"')
+            if '<br' in m.group(1):
+                errori.append(f'{p}: introduzione di sezione con a capo forzato (<br>): "{testo[:40]}…"')
 
     print(f'{len(pagine)} pagine controllate, versione ?v={",".join(versioni) or "-"}')
     if errori:
