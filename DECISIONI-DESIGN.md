@@ -1915,3 +1915,21 @@ Fulvio: nei progetti, almeno su telefono, il Dona deve esserci anche in fondo: u
 - **Barra fissa:** il codice passa in `js/nav.js` (caricato da tutte le pagine) e lascia `main.js`. Si nasconde quando è in vista un altro Dona grande (riquadro, blocco di chiusura, hero campagne della home); nelle pagine senza riquadro resta sempre visibile.
 - **Dove porta la barra:** nelle pagine con riquadro va direttamente alla stessa donazione del riquadro (nuova scheda, `data-posizione="barra"`); nelle altre alla pagina Dona (`dona.html`, prima `index.html#dona`). Eccezione Raccolte solidali: la barra dice «Dona ora» e quindi porta alla pagina Dona, non a «Crea la tua raccolta».
 - CSS e JS passano a `?v=144`.
+
+## 132. Home: l'apertura dice la missione, non uno slogan (28/10/2026)
+
+Fulvio: secondo lo studio NN/g la prima cosa che chi dona cerca è cosa fa l'ente (62%), quindi il testo iniziale va studiato bene. Valutazione: il titolo «Fare bene fa bene al cuore.» era uno slogan sul donatore, senza informazioni sul Cottolengo (requisito 7: niente formule vaghe); il testo diceva per chi ma non come, dove e «senza distinzioni». Scritte tre proposte sulla missione ufficiale (cottolengo.org/la-mission); Fulvio sceglie la B, nella posizione attuale sotto il carosello.
+- **Titolo:** «Una casa e una cura per chi è più fragile.»
+- **Testo:** «Il Cottolengo accoglie anziani, persone con disabilità, malati e bambini, senza distinzioni: a Torino, in Italia e nelle missioni. Il tuo dono va dove c'è più bisogno.» Cosa fa, per chi, dove e come si usa il dono (requisiti 1, 3, 7).
+- **Tolti:** lo slogan (può restare nelle campagne, es. slide di Natale) e «Bastano 35 € per offrire 7 pasti caldi» (dato da confermare). «Dal 1828» resta nella fascia dei numeri (data da confermare: altri documenti dicono 1832).
+- **Posizione, misurata:** il testo è ben leggibile, ma non è nel primo schermo. iPhone 13: si vede solo il titolo sul bordo in basso; iPhone SE: titolo tagliato; portatile 1366 × 768: titolo tagliato; schermo 1920 × 1080: titolo e testo visibili in fondo. Con il nuovo titolo, anche chi vede solo quello capisce cosa fa il Cottolengo. Resta aperto il punto della critica sulle due aperture in concorrenza (carosello che scorre da solo + apertura).
+
+## 133. Telefono: l'apertura prima del carosello (28/10/2026)
+
+Fulvio, dopo le misure della decisione 132: sul telefono l'apertura va prima del carosello. Valutazione: il carosello occupava circa 470 px su 664 visibili e dell'apertura si vedeva solo il bordo del titolo. Abbassarlo avrebbe ridotto la foto a una striscia; fermare lo scorrimento da solo non riportava il testo nel primo schermo.
+- **Fino a 720 px:** primo schermo = titolo «Una casa e una cura per chi è più fragile.», testo sulla missione, «Dona ora» e «Hai un dubbio?». Il carosello comincia subito sotto: su iPhone 13 se ne vede il bordo in fondo, così invita a scorrere.
+- **Tablet e computer:** ordine invariato (carosello, poi apertura).
+- **Tecnica:** solo ordine visivo (`main.home-main` in colonna flessibile, `.hero` con `order: -1`); nel codice il carosello resta prima. Apertura con margini più stretti in alto (40 px) come prima fascia della pagina.
+- Lo scorrimento automatico del carosello resta com'è (non richiesto).
+- **Da tenere presente col Cottolengo:** nei periodi di campagna forte (5×1000 in primavera) potrebbero volere la campagna per prima anche sul telefono; basta togliere la regola.
+- CSS e JS passano a `?v=145`.

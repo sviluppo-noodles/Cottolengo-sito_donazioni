@@ -3738,3 +3738,13 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .dona-chiusura__btn { width: 100%; }
   .dona-chiusura .dona-sicura { margin: 0; }
 }
+
+/* ============ DECISIONE 133: su telefono l'apertura prima del carosello ============
+   Fino a 720 px il primo schermo mostra titolo, testo sulla missione e «Dona ora»
+   (decisione 132); il carosello delle campagne viene subito dopo. Su tablet e
+   computer l'ordine non cambia. Solo ordine visivo: nel codice il carosello resta
+   prima, le due sezioni sono indipendenti. */
+@media (max-width: 45em) {
+  main.home-main { display: flex; flex-direction: column; }
+  .home-main > .hero { order: -1; padding-block: 2.5rem 3rem; min-height: 0; }
+}
