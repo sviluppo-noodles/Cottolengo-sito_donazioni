@@ -1906,3 +1906,12 @@ Fulvio: sul telefono nella pagina Dona non c'è «Torna al sito», è un problem
 - **Tablet e computer:** invariati (lucchetto, «Pagamento sicuro» e «Torna al sito» nella barra).
 - **Da segnalare a Myosotis**, che farà la pagina vera su dona.cottolengo.org.
 - CSS e JS passano a `?v=143`.
+
+## 131. Pagine con riquadro di donazione: il Dona anche in fondo al testo; barra fissa riparata (28/10/2026)
+
+Fulvio: nei progetti, almeno su telefono, il Dona deve esserci anche in fondo: uno scorre, legge e alla fine lo trova lì. Valutazione con la skill impeccable e i requisiti: ha ragione. Il momento della decisione è la fine del testo; la critica della home aveva già segnalato la pagina che «finisce in modo freddo». Ripetere lo stesso pulsante non è un secondo messaggio (decisione 56).
+- **Difetto trovato:** la barra fissa «Dona ora» era comandata da `main.js`, che carica solo la home. **In tutte le altre pagine non compariva mai**, su telefono e tablet. Inoltre nelle pagine delle aree portava a `#dona`, cioè riportava in cima al riquadro: due tocchi e un salto.
+- **Blocco di chiusura** (`.dona-chiusura`) in fondo al testo, su telefono e tablet fino a 980 px (dove il riquadro sale in cima), dopo una linea sottile: lo stesso pulsante del riquadro («Dona per la cura», «Adotta un ospite», «Crea la tua raccolta»…, stesso indirizzo e stesso `data-modulo`, con `data-posizione="fondo"`) e «Donazione sicura». Nessuna frase in più, per non suonare retorici. Su computer è nascosto: il riquadro resta a lato. Pagine: Cura, Accoglienza, Educazione, Missioni, Dona vestiti e una doccia, Family, Testamento solidale, Aziende, Raccolte solidali, Dona in memoria.
+- **Barra fissa:** il codice passa in `js/nav.js` (caricato da tutte le pagine) e lascia `main.js`. Si nasconde quando è in vista un altro Dona grande (riquadro, blocco di chiusura, hero campagne della home); nelle pagine senza riquadro resta sempre visibile.
+- **Dove porta la barra:** nelle pagine con riquadro va direttamente alla stessa donazione del riquadro (nuova scheda, `data-posizione="barra"`); nelle altre alla pagina Dona (`dona.html`, prima `index.html#dona`). Eccezione Raccolte solidali: la barra dice «Dona ora» e quindi porta alla pagina Dona, non a «Crea la tua raccolta».
+- CSS e JS passano a `?v=144`.

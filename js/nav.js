@@ -323,3 +323,28 @@ function abilitaCopia(btn, codice) {
 
 // pulsanti con il codice fiscale nell'attributo data-copy
 document.querySelectorAll('.btn--copy[data-copy]').forEach(b => abilitaCopia(b, b.dataset.copy));
+
+
+/* ---------- Barra "Dona ora" fissa su telefono e tablet (decisione 131) ----------
+   Prima stava in main.js, caricato solo dalla home: nelle altre pagine la barra
+   restava nascosta. Si nasconde quando è in vista un altro pulsante Dona grande:
+   il riquadro di donazione (#dona), il Dona in fondo al testo (.dona-chiusura)
+   o la hero campagne della home. Nelle pagine senza questi elementi resta sempre visibile. */
+(function initStickyDona() {
+  const barra = document.getElementById('sticky-dona');
+  if (!barra) return;
+  const mostra = v => {
+    barra.classList.toggle('visible', v);
+    barra.setAttribute('aria-hidden', String(!v));
+    barra.inert = !v;   // nascosta: il suo pulsante non riceve il Tab
+  };
+  const bersagli = [document.getElementById('dona'), document.getElementById('cpm-banner'),
+                    ...document.querySelectorAll('.dona-chiusura')].filter(Boolean);
+  if (!bersagli.length || !('IntersectionObserver' in window)) { mostra(true); return; }
+  const inVista = new Map();
+  const oss = new IntersectionObserver(voci => {
+    voci.forEach(v => inVista.set(v.target, v.isIntersecting && v.target.offsetParent !== null));
+    mostra(![...inVista.values()].some(Boolean));
+  }, { threshold: 0.05 });
+  bersagli.forEach(el => oss.observe(el));
+})();

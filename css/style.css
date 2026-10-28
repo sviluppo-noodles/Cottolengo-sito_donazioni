@@ -3721,3 +3721,20 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   }
   .fila-schede:not(.fila-schede--quattro) .proj-card__media { aspect-ratio: 1 / 1; }
 }
+
+/* ============ DECISIONE 131: il Dona anche in fondo al testo ============
+   Su telefono e tablet (fino a 980 px, dove il riquadro di donazione sale in cima)
+   chi finisce di leggere ritrova lo stesso pulsante del riquadro, con «Donazione sicura».
+   Su computer è nascosto: il riquadro resta a lato mentre si scorre. */
+.dona-chiusura { display: none; }
+@media (max-width: 61.25em) {
+  .dona-chiusura {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: var(--s-5);
+    padding-top: var(--s-6);
+    border-top: 1px solid rgba(0, 59, 87, 0.14);
+  }
+  .dona-chiusura__btn { width: 100%; }
+  .dona-chiusura .dona-sicura { margin: 0; }
+}

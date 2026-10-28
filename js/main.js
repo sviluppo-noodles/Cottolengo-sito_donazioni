@@ -354,24 +354,5 @@ if (whereSection) {
   setTimeout(aggiorna, 1200);
 })();
 
-/* ---------- Barra "Dona ora" fissa su mobile ----------
-   Compare solo quando non si vedono né il modulo di donazione né la hero
-   campagne: sulla hero c'è già un pulsante largo e la barra lo coprirebbe. */
-(function initStickyDona() {
-  const stickyDona = document.getElementById('sticky-dona');
-  const donaCard = document.getElementById('dona');
-  const heroCampagne = document.getElementById('cpm-banner');
-  if (!stickyDona || !donaCard || !('IntersectionObserver' in window)) return;
-  const inVista = new Map();
-
-  const stickyObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => inVista.set(entry.target, entry.isIntersecting));
-    const visibile = ![...inVista.values()].some(Boolean);
-    stickyDona.classList.toggle('visible', visibile);
-    stickyDona.setAttribute('aria-hidden', String(!visibile));
-    stickyDona.inert = !visibile;   // nascosta: il suo pulsante non riceve il Tab
-  }, { threshold: 0.05 });
-
-  stickyObserver.observe(donaCard);
-  if (heroCampagne) stickyObserver.observe(heroCampagne);
-})();
+/* Barra "Dona ora" fissa su mobile: spostata in js/nav.js (decisione 131),
+   che è caricato da tutte le pagine. */
