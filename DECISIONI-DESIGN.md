@@ -1921,7 +1921,7 @@ Fulvio: nei progetti, almeno su telefono, il Dona deve esserci anche in fondo: u
 Fulvio: secondo lo studio NN/g la prima cosa che chi dona cerca è cosa fa l'ente (62%), quindi il testo iniziale va studiato bene. Valutazione: il titolo «Fare bene fa bene al cuore.» era uno slogan sul donatore, senza informazioni sul Cottolengo (requisito 7: niente formule vaghe); il testo diceva per chi ma non come, dove e «senza distinzioni». Scritte tre proposte sulla missione ufficiale (cottolengo.org/la-mission); Fulvio sceglie la B, nella posizione attuale sotto il carosello.
 - **Titolo:** «Una casa e una cura per chi è più fragile.»
 - **Testo:** «Il Cottolengo accoglie anziani, persone con disabilità, malati e bambini, senza distinzioni: a Torino, in Italia e nelle missioni. Il tuo dono va dove c'è più bisogno.» Cosa fa, per chi, dove e come si usa il dono (requisiti 1, 3, 7).
-- **Tolti:** lo slogan (può restare nelle campagne, es. slide di Natale) e «Bastano 35 € per offrire 7 pasti caldi» (dato da confermare). «Dal 1828» resta nella fascia dei numeri (data da confermare: altri documenti dicono 1832).
+- **Tolti:** lo slogan (può restare nelle campagne, es. slide di Natale) e «Bastano 35 € per offrire 7 pasti caldi» (dato da confermare). «Dal 1828» resta nella fascia dei numeri (data già decisa: 1828 in tutto il sito).
 - **Posizione, misurata:** il testo è ben leggibile, ma non è nel primo schermo. iPhone 13: si vede solo il titolo sul bordo in basso; iPhone SE: titolo tagliato; portatile 1366 × 768: titolo tagliato; schermo 1920 × 1080: titolo e testo visibili in fondo. Con il nuovo titolo, anche chi vede solo quello capisce cosa fa il Cottolengo. Resta aperto il punto della critica sulle due aperture in concorrenza (carosello che scorre da solo + apertura).
 
 ## 133. Telefono: l'apertura prima del carosello (28/10/2026)
@@ -1955,6 +1955,14 @@ Fulvio, guardando unicef.it su telefono (foto d'impatto a tutto schermo come pri
   - niente occhiello «Campagna»: non è una campagna e la skill vieta gli occhielli.
 - **Foto:** bambino portato sulla schiena dalla mamma, in un mercato di frutta. File `assets/img/hero/carosello-missione-cottolengo-mamma-bambino-960/1920` (.jpg e .webp) e, su telefono (fino a 800 px), un ritaglio dedicato `…-telefono-800` stretto sul bambino, con gli occhi sopra il titolo. Carica per prima (`fetchpriority="high"`); la slide del pasto ora è in differita.
 - **Durata:** la prima slide resta 10 secondi, le altre 6 (`data-durata="10000"`, letto da `js/main.js`; anche il riempimento del pallino dura 10 s).
-- **Origine della foto (Fulvio):** viene da una missione del Cottolengo. Resta da confermare la liberatoria per il bambino.
+- **Origine della foto (Fulvio):** viene da una missione del Cottolengo. Le foto del sito sono ancora da definire: la liberatoria si chiede solo per le foto scelte in via definitiva.
 - **«Scopri cosa facciamo»** porta alla sezione «Chi aiuti» della stessa pagina (`#chi-aiuti`): le quattro aree, con il link per donare a ciascuna.
 - CSS e JS passano a `?v=147`.
+
+## 136. Niente doppioni tra prima slide e apertura (28/10/2026)
+
+Fulvio: la prima slide dice «In Italia e nel mondo, accanto a chi è più fragile» e subito dopo l'apertura «Una casa e una cura per chi è più fragile.»: la frase sotto va variata. Trovato anche un secondo doppione su computer: il testo piccolo della slide ripeteva quasi uguale quello dell'apertura.
+- **Ruoli separati:** la slide dice dove siamo, l'apertura chi accogliamo e come si usa il dono.
+- **Apertura, titolo:** «Una casa e una cura per chi non ce la fa da solo.» (scelta di Fulvio tra tre proposte): parole semplici, comprende anziani, persone con disabilità e bambini.
+- **Apertura, testo:** «Il Cottolengo accoglie anziani, persone con disabilità, malati e bambini, senza distinzioni. Il tuo dono va dove c'è più bisogno.» Il «dove» è già nella slide.
+- **Slide 1, testo sotto il titolo (solo computer):** «Dal 1828 a Torino, oggi anche nelle missioni in Africa, America Latina e Asia.» (continenti come nella scheda Missioni internazionali).
