@@ -3673,34 +3673,20 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .fila-schede .proj-card .proj-card__title { text-wrap: balance; }
   .fila-schede .proj-card .proj-card__copy { -webkit-line-clamp: unset; display: block; }
 
-  /* link d'azione: testo azzurro con freccia disegnata (maschera SVG) */
+  /* Decisione 134: il link d'azione torna pulsante con il bordo (come su computer,
+     decisione 75), a tutta larghezza. Niente rimbalzo né ingrandimento sul telefono.
+     Il pulsante si allarga a coprire tutto il blocco: si tocca ovunque. */
   .fila-schede .proj-card .proj-card__cta,
   .fila-schede .proj-card .proj-card__cta:hover,
   .fila-schede .proj-card .proj-card__cta:active,
   .fila-schede .proj-card .proj-card__cta.is-rimbalzo { transform: none; animation: none; }
   .fila-schede .proj-card .proj-card__cta {
     position: static;
-    align-self: flex-start;
-    gap: 0.5rem;
-    min-height: 0;
-    margin-top: 0.2rem;
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    color: var(--azzurro-scuro);
-  }
-  .fila-schede .proj-card .proj-card__cta::before {
-    content: "";
-    order: 2;
-    width: 1.25em; height: 0.75em;
-    background: currentColor;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 12'%3E%3Cpath d='M1 6h17M13 1l5 5-5 5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 12'%3E%3Cpath d='M1 6h17M13 1l5 5-5 5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    align-self: stretch;
+    width: 100%;
+    margin-top: 0.4rem;
   }
   .fila-schede .proj-card .proj-card__cta::after { content: ""; position: absolute; inset: 0; }
-  .fila-schede .proj-card .proj-card__cta:hover { background: none; color: var(--blu-notte); box-shadow: none; }
-  .fila-schede .proj-card .proj-card__cta:focus-visible { outline: none; }
-  .fila-schede .proj-card .proj-card__cta:focus-visible::after { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 6px; }
   .fila-schede .proj-card__title a,
   .fila-schede .proj-card__nota { position: relative; z-index: 1; }
 
@@ -3716,9 +3702,17 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
     display: grid;
     grid-template-columns: 6.5rem 1fr;
     align-items: center;
-    gap: 1rem;
+    column-gap: 1rem;
+    row-gap: 0.45rem;
     padding-block: 1.25rem;
   }
+  /* il corpo «si apre»: titolo e testo a destra della foto, pulsante sotto a tutta riga */
+  .fila-schede:not(.fila-schede--quattro) .proj-card__body { display: contents; }
+  .fila-schede:not(.fila-schede--quattro) .proj-card__media { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+  .fila-schede:not(.fila-schede--quattro) .proj-card__title { grid-column: 2; grid-row: 1; align-self: end; }
+  .fila-schede:not(.fila-schede--quattro) .proj-card__copy { grid-column: 2; grid-row: 2; align-self: start; }
+  .fila-schede:not(.fila-schede--quattro) .proj-card__nota { grid-column: 2; }
+  .fila-schede:not(.fila-schede--quattro) .proj-card__cta { grid-column: 1 / -1; margin-top: 0.6rem; }
   .fila-schede:not(.fila-schede--quattro) .proj-card__media { aspect-ratio: 1 / 1; }
 }
 

@@ -1933,3 +1933,13 @@ Fulvio, dopo le misure della decisione 132: sul telefono l'apertura va prima del
 - Lo scorrimento automatico del carosello resta com'è (non richiesto).
 - **Da tenere presente col Cottolengo:** nei periodi di campagna forte (5×1000 in primavera) potrebbero volere la campagna per prima anche sul telefono; basta togliere la regola.
 - CSS e JS passano a `?v=145`.
+
+## 134. Telefono: sotto le schede pulsanti con il bordo, niente freccia (28/10/2026)
+
+Fulvio: sul telefono la freccia («Scopri e dona →») è una scelta grafica debole; meglio i pulsanti. Valutazione: d'accordo. Per un pubblico sopra i 50 anni un testo azzurro con una freccia sottile non si riconosce subito come azione; il pulsante sì, ed è lo stesso che si vede su computer (decisione 75: pulsante con bordo, secondario rispetto a «Dona ora» pieno).
+- **«Chi aiuti»:** sotto testo e foto grande, pulsante con bordo a tutta larghezza («Scopri e dona»).
+- **«Ci sono tanti modi»:** la colonna di testo accanto alla foto è troppo stretta per un pulsante (circa 200 px): foto a sinistra con titolo e testo a destra, e sotto il pulsante a tutta la larghezza della riga («Come aderire», «Come firmare», «Come fare», «Scopri di più», «Diventa volontario»). Le linee sottili tra le righe restano.
+- Tutto il blocco resta toccabile. Sul telefono il pulsante non si ingrandisce né rimbalza.
+- **Misure (iPhone 13):** aree circa 435-464 px l'una, righe dei modi circa 230 px (prima 195).
+- «← Torna al sito» nella pagina Dona tiene la freccia: lì indica «indietro», come nelle app.
+- CSS e JS passano a `?v=146`.
