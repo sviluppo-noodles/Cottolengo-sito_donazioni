@@ -3621,3 +3621,64 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .fascia-invito, .fascia-invito h2, .fascia-invito__testo { text-align: left; }
   .fascia-invito p.fascia-invito__testo { margin-inline: 0; text-wrap: pretty; }
 }
+
+/* ============ DECISIONE 127: su telefono le schede diventano righe ============
+   Fino a 720 px le file di schede («Chi aiuti», «Ci sono tanti modi», Chi siamo)
+   non scorrono più di lato: righe una sotto l'altra, foto quadrata a sinistra,
+   titolo, testo e link a destra. Tutte le opzioni si vedono scorrendo in verticale
+   (skill impeccable, adapt: una colonna, impilare invece di affiancare).
+   Tutta la riga è toccabile: il link in fondo si allarga a coprire la scheda. */
+@media (max-width: 45em) {
+  .fila-schede {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .fila-schede__item { flex: none; }
+  .fila-schede .proj-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    align-items: start;
+    gap: 0.9rem;
+    padding: 0.75rem;
+  }
+  .fila-schede .proj-card:hover { transform: none; }
+  .fila-schede .proj-card__media,
+  .fila-schede--quattro .proj-card__media {
+    aspect-ratio: 1 / 1;
+    border-radius: calc(var(--r-2) - 0.25rem);
+  }
+  .fila-schede .proj-card .proj-card__body { padding: 0.15rem 0.25rem 0.1rem 0; gap: 0.4rem; }
+  .fila-schede .proj-card .proj-card__title { text-wrap: balance; }
+  .fila-schede .proj-card .proj-card__copy { -webkit-line-clamp: unset; display: block; }
+  /* il pulsante diventa link di testo: la riga intera è il bersaglio */
+  .fila-schede .proj-card .proj-card__cta {
+    position: static;
+    align-self: flex-start;
+    min-height: 0;
+    margin-top: 0.15rem;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--azzurro-scuro);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 2px;
+  }
+  .fila-schede .proj-card .proj-card__cta::after { content: ""; position: absolute; inset: 0; border-radius: var(--r-2); }
+  .fila-schede .proj-card .proj-card__cta,
+  .fila-schede .proj-card .proj-card__cta:hover,
+  .fila-schede .proj-card .proj-card__cta:active,
+  .fila-schede .proj-card .proj-card__cta.is-rimbalzo { transform: none; animation: none; }
+  .fila-schede .proj-card .proj-card__cta:hover { background: none; color: var(--blu-notte); box-shadow: none; }
+  .fila-schede .proj-card:active { background: var(--azzurro-chiarissimo); }
+  .fila-schede .proj-card .proj-card__cta:focus-visible { outline: none; }
+  .fila-schede .proj-card .proj-card__cta:focus-visible::after { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .fila-schede .proj-card__title a { position: relative; z-index: 1; }
+  .fila-schede .proj-card__nota { position: relative; z-index: 1; }
+}

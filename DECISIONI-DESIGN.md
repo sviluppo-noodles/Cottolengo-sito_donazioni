@@ -1870,3 +1870,20 @@ Se il Cottolengo preferisce comunque l'azzurro del logo anche su titoli e pulsan
 - **Myosotis / NP Solutions:** verificare se il contratto comprende personal fundraising, API, webhook e pagine personalizzabili.
 - **Dominio definitivo:** serve per canonical, og:url e og:image (immagine di condivisione 1200 × 630 px da preparare).
 - **Modulo Myosotis senza header/footer** (o widget/API) da NP Solutions, per togliere il ritaglio provvisorio.
+
+## 127. Telefono: le file di schede diventano righe, niente più scorrimento laterale (28/10/2026)
+
+Domanda di Fulvio: sul telefono le schede che scorrono a sinistra sono il modo migliore? Valutazione con la skill impeccable (adapt: su telefono una colonna, impilare invece di affiancare, scorrimento laterale solo dove serve) e i requisiti NN/g: no.
+- **Problema:** della scheda successiva si vedeva solo un bordo di circa 20 px; chi non scorreva vedeva solo «Sostegno a distanza» e «Cura». Il 5×1000, gratuito per il donatore, restava nascosto. Un pubblico sopra i 50 anni scorre di lato poco.
+- **Soluzione (fino a 720 px):** in «Chi aiuti», «Ci sono tanti modi per esserci» e nelle aree di Chi siamo ogni scheda è una riga: foto quadrata di 104 px a sinistra, a destra titolo, testo intero (senza tagli) e il link d'azione sottolineato. Tutta la riga è toccabile (il link si allarga a coprire la scheda); al tocco la riga si colora appena di azzurro.
+- **Misure (iPhone 13):** righe da 182 a 265 px; le cinque opzioni stanno in circa due schermate. A 320 px righe fino a 323 px, nessuno scorrimento orizzontale.
+- **Tablet e computer:** invariati (fila che scorre con due schede e mezza su tablet, schede in fila da 1200 px).
+- **Foto:** l'attributo `sizes` delle foto delle aree chiede 110 px su telefono, così il telefono non scarica più la versione da 1200 px.
+- **Da tenere d'occhio:** in piccolo le foto con molte persone (bambini del sostegno a distanza, Educazione) si leggono meno; se servisse, ritagli dedicati più stretti sul soggetto.
+- CSS e JS passano a `?v=141`.
+
+## 128. Il menu dice «Dona vestiti e una doccia» (28/10/2026)
+
+Fulvio: mettere anche le docce. La descrizione della voce le citava già, ma si vede solo su computer al passaggio del mouse: scelto di cambiare il nome della voce, che si vede ovunque.
+- Voce del menu «Come aiutarci» in tutte le pagine: «Dona vestiti e una doccia».
+- Per coerenza (nome nel menu = titolo della pagina, come per Testamento solidale) cambiano anche titolo della pagina, `<title>` e anteprime social: «Dona vestiti e una doccia». L'indirizzo `dona-un-indumento.html` non cambia.
