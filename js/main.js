@@ -198,6 +198,8 @@ if (whereSection) {
   }
 
   const INTERVALLO = 6000; // ms — uguale a --cpm-durata in css/style.css
+  // una slide può restare di più con data-durata="ms" (decisione 135: la prima, 10 s)
+  const durata = i => Number(slides[i].dataset.durata) || INTERVALLO;
   const ridottoMov = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let indice = 0;
   let timer = null;
@@ -221,6 +223,7 @@ if (whereSection) {
     b.setAttribute('aria-controls', s.id);
     const titolo = s.querySelector('.cpm-slide__title');
     b.setAttribute('aria-label', `Campagna ${i + 1} di ${slides.length}` + (titolo ? `: ${titolo.textContent.trim()}` : ''));
+    if (s.dataset.durata) b.style.setProperty('--cpm-durata', `${durata(i)}ms`);   // riempimento del pallino
     b.addEventListener('click', () => { vaiA(i); avvia(); });
     dotsWrap.appendChild(b);
     return b;
@@ -252,7 +255,7 @@ if (whereSection) {
     banner.classList.remove('is-ferma');
     partitoAlle = performance.now();
     timer = setTimeout(() => { timer = null; vaiA(indice + 1); avvia(); },
-                       Math.max(300, INTERVALLO - trascorso));
+                       Math.max(300, durata(indice) - trascorso));
   }
   function sosta() {
     if (timer) {

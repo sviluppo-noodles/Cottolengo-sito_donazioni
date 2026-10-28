@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=146">
+  <link rel="stylesheet" href="css/style.css?v=147">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -155,13 +155,35 @@
   <!-- Decisione 121: foto vere del Cottolengo in tutte le slide (prima: immagini da campagna). -->
   <div class="cpm-track" id="cpm-track" aria-live="off">
 
-    <!-- Slide 1 · campagna Dona un pasto (prima dal 26/10/2026, decisione 75: il carosello apre con la donazione) -->
-    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="1 di 4: dona un pasto" style="--fuoco: 75% 40%; --fuoco-telefono: 70% 40%">
+    <!-- Slide 1 · chi è il Cottolengo (decisione 135). Prima slide, resta 10 secondi
+         (data-durata) perché è il messaggio da leggere per primo: cosa fa l'Opera.
+         Foto fornita da Fulvio (28/10/2026), da una missione del Cottolengo; liberatoria per il bambino DA CONFERMARE.
+         Su telefono un ritaglio dedicato (…-telefono-800), stretto sul bambino, con il volto sopra il titolo.
+         Niente occhiello: la skill lo vieta, il titolo basta. -->
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="1 di 5: chi è il Cottolengo" data-durata="10000" style="--fuoco: 62% 45%; --fuoco-telefono: 50% 30%">
+      <picture><source media="(max-width: 50em)" type="image/webp" srcset="assets/img/hero/carosello-missione-cottolengo-mamma-bambino-telefono-800.webp 800w" sizes="100vw"><source media="(max-width: 50em)" srcset="assets/img/hero/carosello-missione-cottolengo-mamma-bambino-telefono-800.jpg 800w" sizes="100vw"><source type="image/webp" srcset="assets/img/hero/carosello-missione-cottolengo-mamma-bambino-960.webp 960w, assets/img/hero/carosello-missione-cottolengo-mamma-bambino-1920.webp 1920w" sizes="100vw"><img class="cpm-slide__img"
+           src="assets/img/hero/carosello-missione-cottolengo-mamma-bambino-1920.jpg"
+           srcset="assets/img/hero/carosello-missione-cottolengo-mamma-bambino-960.jpg 960w, assets/img/hero/carosello-missione-cottolengo-mamma-bambino-1920.jpg 1920w"
+           sizes="100vw" width="1920" height="1008"
+           alt="Un bambino portato sulla schiena dalla mamma guarda verso di noi, tra i banchi di frutta di un mercato" fetchpriority="high"></picture>
+      <div class="container cpm-slide__inner">
+        <div class="cpm-slide__text">
+          <h2 class="cpm-slide__title">In Italia e nel mondo, accanto a chi è più fragile</h2>
+          <p class="cpm-slide__sub">Anziani, persone con disabilità, malati e bambini: il Cottolengo li accoglie e li cura, senza distinzioni.</p>
+          <div class="cpm-slide__azioni">
+            <a class="btn cpm-slide__cta" href="#chi-aiuti">Scopri cosa facciamo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 · campagna Dona un pasto (prima dal 26/10/2026, decisione 75: il carosello apre con la donazione) -->
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="2 di 5: dona un pasto" style="--fuoco: 75% 40%; --fuoco-telefono: 70% 40%">
       <picture><source type="image/webp" srcset="assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-960.webp 960w, assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-1536.webp 1536w" sizes="100vw"><img class="cpm-slide__img"
            src="assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-1536.jpg"
            srcset="assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-960.jpg 960w, assets/img/hero/carosello-pasto-cottolengo-suora-ospiti-tavola-1536.jpg 1536w"
            sizes="100vw" width="1536" height="1024"
-           alt="Una suora sorride a un ospite in carrozzina seduto a tavola in una casa del Cottolengo" fetchpriority="high"></picture>
+           alt="Una suora sorride a un ospite in carrozzina seduto a tavola in una casa del Cottolengo" loading="lazy"></picture>
       <div class="container cpm-slide__inner">
         <div class="cpm-slide__text">
           <p class="cpm-slide__tag">Campagna</p>
@@ -174,11 +196,11 @@
       </div>
     </div>
 
-    <!-- Slide 2 · campagna stagionale (Natale)
+    <!-- Slide 3 · campagna stagionale (Natale)
          Immagine su fondo azzurro (ritratto di san Giuseppe Benedetto Cottolengo):
          cpm-slide--azzurra usa una sfumatura più leggera e l'occhiello bianco,
          perché la pillola azzurra sparirebbe sul fondo dello stesso colore. -->
-    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="2 di 4: speciale Natale" style="--fuoco: 80% 30%; --fuoco-telefono: 75% 30%">
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="3 di 5: speciale Natale" style="--fuoco: 80% 30%; --fuoco-telefono: 75% 30%">
       <picture><source type="image/webp" srcset="assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-960.webp 960w, assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-1920.webp 1920w" sizes="100vw"><img class="cpm-slide__img"
            src="assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-1920.jpg"
            srcset="assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-960.jpg 960w, assets/img/hero/carosello-natale-cottolengo-ospite-operatrice-1920.jpg 1920w"
@@ -196,11 +218,11 @@
       </div>
     </div>
 
-    <!-- Slide 3 · 5×1000
+    <!-- Slide 4 · 5×1000
          Foto su fondo bianco con testo vero (non dentro l'immagine): leggibile a
          ogni misura, tradotto dai lettori di schermo e indicizzato da Google.
          cpm-slide--luce: velatura bianca e testo scuro. -->
-    <div class="cpm-slide" id="cinquepermille" role="group" aria-roledescription="slide" aria-label="3 di 4: 5 per mille" style="--fuoco: 60% 25%; --fuoco-telefono: 55% 25%">
+    <div class="cpm-slide" id="cinquepermille" role="group" aria-roledescription="slide" aria-label="4 di 5: 5 per mille" style="--fuoco: 60% 25%; --fuoco-telefono: 55% 25%">
       <picture><source type="image/webp" srcset="assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-960.webp 960w, assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-1600.webp 1600w" sizes="100vw"><img class="cpm-slide__img"
            src="assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-1600.jpg"
            srcset="assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-960.jpg 960w, assets/img/hero/carosello-5x1000-cottolengo-medico-ospite-1600.jpg 1600w"
@@ -221,10 +243,10 @@
       </div>
     </div>
 
-    <!-- Slide 4 · lasciti / testamento solidale
+    <!-- Slide 5 · lasciti / testamento solidale
          Foto su fondo bianco: cpm-slide--luce usa testo scuro e una velatura
          bianca al posto della sfumatura blu notte. -->
-    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="4 di 4: testamento solidale" style="--fuoco: 60% 35%; --fuoco-telefono: 60% 35%">
+    <div class="cpm-slide" role="group" aria-roledescription="slide" aria-label="5 di 5: testamento solidale" style="--fuoco: 60% 35%; --fuoco-telefono: 60% 35%">
       <picture><source type="image/webp" srcset="assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-960.webp 960w, assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-1920.webp 1920w" sizes="100vw"><img class="cpm-slide__img"
            src="assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-1920.jpg"
            srcset="assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-960.jpg 960w, assets/img/hero/carosello-lasciti-cottolengo-bambini-corridoio-1920.jpg 1920w"
@@ -763,7 +785,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=146"></script>
-<script src="js/nav.js?v=146"></script>
+<script src="js/main.js?v=147"></script>
+<script src="js/nav.js?v=147"></script>
 </body>
 </html>

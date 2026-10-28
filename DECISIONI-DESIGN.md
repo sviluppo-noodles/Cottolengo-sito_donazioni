@@ -1943,3 +1943,18 @@ Fulvio: sul telefono la freccia («Scopri e dona →») è una scelta grafica de
 - **Misure (iPhone 13):** aree circa 435-464 px l'una, righe dei modi circa 230 px (prima 195).
 - «← Torna al sito» nella pagina Dona tiene la freccia: lì indica «indietro», come nelle app.
 - CSS e JS passano a `?v=146`.
+
+## 135. Carosello: prima slide su chi è il Cottolengo, che dura di più; su telefono di nuovo carosello in cima (28/10/2026)
+
+Fulvio, guardando unicef.it su telefono (foto d'impatto a tutto schermo come prima cosa): rimettere il carosello per primo anche su telefono, ma con una prima slide che dica in generale cosa fa il Cottolengo, con un'immagine d'impatto, e che duri un po' di più. Foto fornita da Fulvio.
+- **Annullata la decisione 133:** su tutti i dispositivi l'ordine è di nuovo carosello, poi apertura «Una casa e una cura per chi è più fragile.».
+- **Nuova slide 1** (le campagne diventano 2-5):
+  - titolo «In Italia e nel mondo, accanto a chi è più fragile»; diverso dal titolo dell'apertura sotto, per non ripetere la stessa frase;
+  - sotto, solo su computer: «Anziani, persone con disabilità, malati e bambini: il Cottolengo li accoglie e li cura, senza distinzioni.»;
+  - pulsante «Scopri cosa facciamo» → sezione «Chi aiuti» della home (le quattro aree, dove si dona). Una slide, una destinazione (requisito 5);
+  - niente occhiello «Campagna»: non è una campagna e la skill vieta gli occhielli.
+- **Foto:** bambino portato sulla schiena dalla mamma, in un mercato di frutta. File `assets/img/hero/carosello-missione-cottolengo-mamma-bambino-960/1920` (.jpg e .webp) e, su telefono (fino a 800 px), un ritaglio dedicato `…-telefono-800` stretto sul bambino, con gli occhi sopra il titolo. Carica per prima (`fetchpriority="high"`); la slide del pasto ora è in differita.
+- **Durata:** la prima slide resta 10 secondi, le altre 6 (`data-durata="10000"`, letto da `js/main.js`; anche il riempimento del pallino dura 10 s).
+- **Origine della foto (Fulvio):** viene da una missione del Cottolengo. Resta da confermare la liberatoria per il bambino.
+- **«Scopri cosa facciamo»** porta alla sezione «Chi aiuti» della stessa pagina (`#chi-aiuti`): le quattro aree, con il link per donare a ciascuna.
+- CSS e JS passano a `?v=147`.
