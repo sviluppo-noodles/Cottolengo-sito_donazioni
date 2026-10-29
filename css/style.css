@@ -124,10 +124,10 @@
   --s-5: 1.5rem;   --s-6: 2rem;    --s-7: 3rem;     --s-8: 4rem;
   --s-sezione: clamp(4rem, 7vw, 7rem);   /* respiro verticale di ogni sezione */
 
-  /* ---------- Raggi: tre valori, non sette ---------- */
-  --r-1: 6px;                      /* input, tag, elementi piccoli */
-  --r-2: 14px;                     /* card, pannelli, moduli */
-  --r-pill: 999px;                 /* bottoni e pillole: identità del sito */
+  /* ---------- Raggi: variante squadrata approvata ---------- */
+  --r-1: 0;                        /* input, tag, elementi piccoli */
+  --r-2: 0;                        /* card, pannelli, moduli */
+  --r-pill: 0;                     /* pulsanti rettangolari, non a pillola */
   --raggio: var(--r-1);            /* alias storici, usati nelle sezioni */
   --raggio-grande: var(--r-2);
 
@@ -767,7 +767,7 @@ select:focus-visible, [tabindex]:focus-visible {
   top: 50%;
   height: 12px;
   margin-top: -6px;
-  border-radius: var(--r-pill);
+  border-radius: 999px; /* indicatore del carosello: resta un punto, non un pulsante */
 }
 .cpm-dot::before { background: rgba(255, 255, 255, 0.45); transition: background var(--transizione); }
 .cpm-dot:hover::before { background: rgba(255, 255, 255, 0.75); }
@@ -790,7 +790,7 @@ select:focus-visible, [tabindex]:focus-visible {
   display: grid;
   place-items: center;
   width: 44px; height: 44px;
-  border-radius: 50%;
+  border-radius: 0;
   border: 1.5px solid rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
@@ -2204,7 +2204,7 @@ fieldset { border: none; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.4rem 0.8rem;
-  border-radius: 999px;
+  border-radius: 0;
   box-shadow: var(--e-1);
   z-index: 2;
   pointer-events: none;
@@ -2281,7 +2281,7 @@ fieldset { border: none; }
   font-size: var(--t-micro);
   font-weight: 600;
   padding: 0.3rem 0.75rem;
-  border-radius: 999px;
+  border-radius: 0;
   line-height: 1.2;
 }
 .pill__icon { flex: none; }
@@ -2371,7 +2371,7 @@ fieldset { border: none; }
   font: inherit;
   font-family: var(--f-display);
   font-weight: 700;
-  border-radius: 999px;
+  border-radius: 0;
   padding: 0.7rem 1.3rem;
   min-height: 50px;
   cursor: pointer;
@@ -2390,7 +2390,7 @@ fieldset { border: none; }
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  border-radius: 999px;
+  border-radius: 0;
   background: #fff;
   color: var(--azzurro-scuro);
   font-size: 0.85rem;
@@ -2853,7 +2853,7 @@ fieldset { border: none; }
   --d-bordo: #C9D4DB;
   --d-bordo-forte: #8FA3AE;
   --d-fondo: #F4F7F9;
-  --d-raggio: 8px;
+  --d-raggio: 0;
   --d-errore: #B42318;
   background: var(--d-fondo);
   padding-block: var(--s-7) var(--s-8);
@@ -2887,7 +2887,7 @@ fieldset { border: none; }
 .dona-modulo {
   background: #fff;
   border: 1px solid var(--d-bordo);
-  border-radius: 10px;
+  border-radius: 0;
   padding: 2rem 2.25rem 2.25rem;
 }
 .dona-passo + .dona-passo { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--d-bordo); }
@@ -2926,7 +2926,7 @@ fieldset { border: none; }
   height: 54px;
   padding: 0 0.9rem;
   border: 1px solid var(--d-bordo-forte);
-  border-radius: 6px;
+  border-radius: 0;
   background: #fff;
   color: var(--ink);
   font: inherit;
@@ -2955,7 +2955,7 @@ fieldset { border: none; }
 .dona-fisso {
   margin: 0;
   padding: 0.8rem 0.9rem;
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--d-fondo);
   color: var(--ink);
   font-size: 1rem;
@@ -2980,7 +2980,7 @@ fieldset { border: none; }
   min-height: 54px;
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--d-bordo-forte);
-  border-radius: 6px;
+  border-radius: 0;
   background: #fff;
   color: var(--ink);
   font-size: 1.0625rem;
@@ -3005,7 +3005,7 @@ fieldset { border: none; }
   margin: 0 0 1.5rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--d-bordo);   /* decisione 75: riquadro intero, niente riga laterale */
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--d-fondo);
 }
 .dona-fiscale__riga { color: var(--ink); font-size: 1.0625rem; line-height: 1.5; }
@@ -3018,7 +3018,7 @@ fieldset { border: none; }
 .dona-spunta a { color: var(--azzurro-scuro); text-decoration: underline; }
 
 /* ----- metodi di pagamento ----- */
-.dona-metodi { display: grid; border: 1px solid var(--d-bordo-forte); border-radius: 6px; overflow: hidden; }
+.dona-metodi { display: grid; border: 1px solid var(--d-bordo-forte); border-radius: 0; overflow: hidden; }
 .dona-metodo { position: relative; display: block; cursor: pointer; }
 .dona-metodo + .dona-metodo { border-top: 1px solid var(--d-bordo); }
 .dona-metodo__nome {
@@ -3061,7 +3061,7 @@ fieldset { border: none; }
   gap: 0.55rem;
   min-height: 60px;
   padding: 0 2rem;
-  border-radius: 6px;
+  border-radius: 0;
   border: 1px solid transparent;
   font: inherit;
   font-size: 1.1875rem;
@@ -3082,7 +3082,7 @@ fieldset { border: none; }
   padding: 1rem 1.1rem;
   border: 1px solid var(--d-errore);
   border-left-width: 4px;
-  border-radius: 6px;
+  border-radius: 0;
   background: #FEF3F2;
   color: var(--ink);
   font-size: 1rem;
@@ -3094,7 +3094,7 @@ fieldset { border: none; }
 .dona-avviso-fine {
   margin-top: 1.25rem;
   padding: 1rem 1.1rem;
-  border-radius: 6px;
+  border-radius: 0;
   background: #E6EEF2;
   color: var(--blu-notte);
   font-size: 0.9375rem;
@@ -3102,7 +3102,7 @@ fieldset { border: none; }
 
 /* ----- riepilogo laterale ----- */
 .dona-lato { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1rem; }
-.dona-lato__scheda { background: #fff; border: 1px solid var(--d-bordo); border-radius: 10px; padding: 1.5rem; }
+.dona-lato__scheda { background: #fff; border: 1px solid var(--d-bordo); border-radius: 0; padding: 1.5rem; }
 .dona-lato__titolo { color: var(--grigio-testo); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
 .dona-lato__importo { margin-top: 0.4rem; color: var(--blu-notte); font-size: 2.25rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .dona-lato__frequenza { display: block; margin-top: 0.3rem; font-size: 1rem; font-weight: 400; color: var(--ink); }
@@ -3413,7 +3413,7 @@ fieldset { border: none; }
 }
 .faq__gruppo summary::-webkit-details-marker { display: none; }
 .faq__icona {
-  flex: none; width: 2.5rem; height: 2.5rem; padding: 0.6rem; border-radius: 50%;
+  flex: none; width: 2.5rem; height: 2.5rem; padding: 0.6rem; border-radius: 0;
   background: var(--azzurro-chiarissimo); color: var(--azzurro-scuro);
   /* stessa durata e curva dell'apertura: la freccia gira insieme alla voce */
   transition: transform var(--faq-durata) var(--faq-curva), background-color var(--transizione), color var(--transizione);
