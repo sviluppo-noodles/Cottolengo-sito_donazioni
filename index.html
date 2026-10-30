@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=151">
+  <link rel="stylesheet" href="css/style.css?v=152">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -413,49 +413,26 @@
 <!-- ============ ALTRI MODI PER ESSERCI ============ -->
 <section class="modi" id="come-donare" aria-labelledby="modi-title">
   <div class="container">
-    <header class="section-head">
-      <h2 id="modi-title">Altri modi per esserci</h2>
-      <p class="section-intro">Puoi sostenere il Cottolengo con una firma, un ricordo, il tuo tempo o una raccolta fondi.</p>
-    </header>
-
-    <ul class="modi__elenco">
-      <li id="modo-sostegno">
-        <a class="modi__voce" href="sostegno-a-distanza.html">
-          <span class="modi__testo"><strong>Sostegno a distanza</strong><span>Accompagna la crescita di un bambino con scuola, cibo e cure.</span></span>
-          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </li>
-      <li id="modo-5x1000">
-        <a class="modi__voce" href="cinque-per-mille.html">
-          <span class="modi__testo"><strong>5×1000</strong><span>La tua firma diventa cure e accoglienza, senza costi per te.</span></span>
-          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </li>
-      <li id="modo-memoria">
-        <a class="modi__voce" href="dona-in-memoria.html">
-          <span class="modi__testo"><strong>Dona in memoria</strong><span>Ricorda una persona cara con un gesto d’amore che continua.</span></span>
-          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </li>
-      <li id="modo-testamento">
-        <a class="modi__voce" href="testamento-solidale.html">
-          <span class="modi__testo"><strong>Testamento solidale</strong><span>Un lascito, anche piccolo, aiuta ad accogliere chi verrà domani.</span></span>
-          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </li>
-      <li id="modo-volontariato">
-        <a class="modi__voce" href="volontariato.html">
-          <span class="modi__testo"><strong>Volontariato</strong><span>Dona il tuo tempo e stai accanto agli ospiti della Piccola Casa.</span></span>
-          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </li>
-      <li id="raccolte-solidali">
-        <a class="modi__voce" href="crowdfunding.html">
-          <span class="modi__testo"><strong>Raccolta fondi</strong><span>Trasforma un compleanno o una sfida in un aiuto concreto.</span></span>
-          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </li>
-    </ul>
+    <div class="modi__composizione">
+      <picture class="modi__media">
+        <source srcset="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.webp" type="image/webp">
+        <img src="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.jpg" width="1600" height="1067" loading="lazy" alt="Una giovane volontaria incontra gli ospiti del Cottolengo">
+      </picture>
+      <div class="modi__pannello">
+        <header class="section-head">
+          <h2 id="modi-title">Altri modi per esserci</h2>
+          <p class="section-intro">Puoi sostenere il Cottolengo con una firma, un ricordo, il tuo tempo o una raccolta fondi.</p>
+        </header>
+        <ul class="modi__elenco">
+          <li id="modo-sostegno"><a class="modi__azione" href="sostegno-a-distanza.html">Sostegno a distanza</a></li>
+          <li id="modo-5x1000"><a class="modi__azione" href="cinque-per-mille.html">5×1000</a></li>
+          <li id="modo-memoria"><a class="modi__azione" href="dona-in-memoria.html">Dona in memoria</a></li>
+          <li id="modo-testamento"><a class="modi__azione" href="testamento-solidale.html">Testamento solidale</a></li>
+          <li id="modo-volontariato"><a class="modi__azione" href="volontariato.html">Volontariato</a></li>
+          <li id="raccolte-solidali"><a class="modi__azione" href="crowdfunding.html">Raccolta fondi</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -733,7 +710,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=151"></script>
-<script src="js/nav.js?v=151"></script>
+<script src="js/main.js?v=152"></script>
+<script src="js/nav.js?v=152"></script>
 </body>
 </html>
