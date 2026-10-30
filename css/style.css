@@ -1361,8 +1361,8 @@ fieldset { border: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--azzurro-chiaro);
-  color: var(--blu-notte);
+  background: var(--azzurro-scuro);
+  color: var(--bianco);
   font-size: var(--t-body);
   font-weight: 700;
   line-height: var(--lh-blocco);
