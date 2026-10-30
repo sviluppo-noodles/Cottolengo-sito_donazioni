@@ -3992,3 +3992,9 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   /* il menu si avvicina al «Dona ora» (prima ~50 px, ora ~34 px) e lascia più aria tra logo e voci */
   .header .btn--header { margin-left: 0; }
 }
+
+/* decisione 141: titolo di sezione attaccato al paragrafo sopra.
+   La micro-etichetta («Come funziona», «Cosa succede dopo»…) è nascosta, ma la regola
+   «.chi-occhiello + h2 { margin-top: 0 }» continuava ad azzerare lo spazio sopra il titolo.
+   Quando l'etichetta è nascosta, il titolo riprende il suo stacco normale. */
+.project-article-content > p:not(.chi-occhiello) + p.chi-occhiello:has(+ h2) + h2 { margin-top: 3rem; }

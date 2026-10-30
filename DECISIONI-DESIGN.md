@@ -2003,4 +2003,12 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Prima versione scartata:** solo 6 px di spazio sopra il testo con pulsante da 48 px centrato nella barra: il testo risultava troppo in basso nel pulsante (Fulvio: «non è centrato»).
 - **Menu vicino al pulsante:** il distacco tra l'ultima voce e il pulsante passa da circa 50 a circa 34 px dal testo (24 px dal bordo della voce), poco più di quello tra le voci (28 px). La decisione 112 chiedeva più stacco (gruppi stretti, separazioni generose); qui il fondo oro stacca già il pulsante, quindi lo spazio libero va tra logo e menu (100 px a 1280, 70 px a 1210).
 - **Solo dove il menu è in fila** (da 1201 px in su). Nel menu a tendina e sul telefono non cambia niente. Verificato a 1210, 1280, 1400 e 1100 px: nessun taglio né scorrimento orizzontale.
-- CSS e JS passano a `?v=163`.
+- CSS e JS passano a `?v=164`.
+
+## 141 – Titoli di sezione staccati dal paragrafo sopra (30 ottobre 2026)
+
+- **Problema (segnalato da Fulvio su «Raccolte solidali»):** nelle pagine dei progetti alcuni titoli di sezione («Bastano tre passaggi», «Feste, ricorrenze e sfide», «Dove arriva il tuo aiuto», «Vestiti e una doccia calda») erano attaccati al paragrafo precedente, senza spazio.
+- **Causa:** la micro-etichetta sopra il titolo è nascosta (decisione sulle etichette duplicate), ma la regola `.chi-occhiello + h2 { margin-top: 0 }` continuava ad azzerare lo spazio sopra il titolo.
+- **Ora:** quando l'etichetta è nascosta e il titolo segue un paragrafo, il titolo riprende i suoi 3 rem di spazio sopra.
+- **Controllo:** misurati gli spazi tra paragrafi, titoli ed elenchi in tutte le 20 pagine, a 390 e 1280 px: nessun altro blocco attaccato, tranne «Ufficio Raccolta Fondi» e il telefono in `dona.html`, che stanno volutamente insieme (etichetta e numero).
+- CSS e JS passano a `?v=164`.
