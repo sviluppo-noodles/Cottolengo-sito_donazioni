@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=152">
+  <link rel="stylesheet" href="css/style.css?v=153">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -415,22 +415,32 @@
   <div class="container">
     <div class="modi__composizione">
       <picture class="modi__media">
-        <source srcset="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.webp" type="image/webp">
-        <img src="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.jpg" width="1600" height="1067" loading="lazy" alt="Una giovane volontaria incontra gli ospiti del Cottolengo">
+        <source srcset="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-960.webp 960w, assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.webp 1600w" sizes="(max-width: 45em) calc(100vw - 2.5rem), (max-width: 63.75em) calc(100vw - 4rem), 50vw" type="image/webp">
+        <img src="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.jpg" srcset="assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-960.jpg 960w, assets/img/pagine/volontariato-cottolengo-ragazza-ospiti-1600.jpg 1600w" sizes="(max-width: 45em) calc(100vw - 2.5rem), (max-width: 63.75em) calc(100vw - 4rem), 50vw" width="1600" height="1067" loading="lazy" alt="Una giovane volontaria incontra gli ospiti del Cottolengo">
       </picture>
       <div class="modi__pannello">
         <header class="section-head">
           <h2 id="modi-title">Altri modi per esserci</h2>
           <p class="section-intro">Puoi sostenere il Cottolengo con una firma, un ricordo, il tuo tempo o una raccolta fondi.</p>
         </header>
-        <ul class="modi__elenco">
-          <li id="modo-sostegno"><a class="modi__azione" href="sostegno-a-distanza.html">Sostegno a distanza</a></li>
-          <li id="modo-5x1000"><a class="modi__azione" href="cinque-per-mille.html">5×1000</a></li>
-          <li id="modo-memoria"><a class="modi__azione" href="dona-in-memoria.html">Dona in memoria</a></li>
-          <li id="modo-testamento"><a class="modi__azione" href="testamento-solidale.html">Testamento solidale</a></li>
-          <li id="modo-volontariato"><a class="modi__azione" href="volontariato.html">Volontariato</a></li>
-          <li id="raccolte-solidali"><a class="modi__azione" href="crowdfunding.html">Raccolta fondi</a></li>
-        </ul>
+        <div class="modi__gruppi">
+          <section class="modi__gruppo" aria-labelledby="modi-dono-title">
+            <h3 class="modi__gruppo-titolo" id="modi-dono-title">Con un dono</h3>
+            <ul class="modi__elenco">
+              <li id="modo-sostegno"><a class="modi__azione" href="sostegno-a-distanza.html">Sostegno a distanza</a></li>
+              <li id="modo-5x1000"><a class="modi__azione" href="cinque-per-mille.html">5×1000</a></li>
+              <li id="modo-memoria"><a class="modi__azione" href="dona-in-memoria.html">Dona in memoria</a></li>
+              <li id="modo-testamento"><a class="modi__azione" href="testamento-solidale.html">Testamento solidale</a></li>
+            </ul>
+          </section>
+          <section class="modi__gruppo" aria-labelledby="modi-partecipa-title">
+            <h3 class="modi__gruppo-titolo" id="modi-partecipa-title">Con il tuo tempo e la tua rete</h3>
+            <ul class="modi__elenco">
+              <li id="modo-volontariato"><a class="modi__azione" href="volontariato.html">Volontariato</a></li>
+              <li id="raccolte-solidali"><a class="modi__azione" href="crowdfunding.html">Raccolta fondi</a></li>
+            </ul>
+          </section>
+        </div>
       </div>
     </div>
   </div>
@@ -710,7 +720,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=152"></script>
-<script src="js/nav.js?v=152"></script>
+<script src="js/main.js?v=153"></script>
+<script src="js/nav.js?v=153"></script>
 </body>
 </html>
