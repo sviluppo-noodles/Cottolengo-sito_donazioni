@@ -1314,20 +1314,63 @@ fieldset { border: none; }
 /* le schede di "Chi aiuti" sono .fila-schede + .proj-card (vedi Come fare del bene) */
 .who .section-head { margin-bottom: var(--s-6); }
 
-/* ============ MODI PER DONARE ============ */
-/* sezione su fondo bianco, cinque schede .proj-card in fila */
+/* ============ ALTRI MODI PER ESSERCI ============ */
+/* Elenco essenziale: le scelte secondarie restano facili da trovare senza
+   competere con la missione, le quattro aree e l'azione principale di dono. */
 .modi {
   background: #fff;
   padding-block: var(--s-sezione);
   scroll-margin-top: 90px;
 }
 
-/* ---- Cinque schede, stessa costruzione delle schede progetto (.proj-card) ----
-   Da 1200 px sono cinque in fila (circa 220 px l'una): per questo la variante
-   --modo ha spazi interni e titolo un po' più compatti. Sotto i 1200 px le schede
-   non ci starebbero: diventano una fila che scorre (vedi media query). */
 .modi .section-head { margin-bottom: var(--s-6); }
 .modi .section-intro, .who .section-intro, .recapiti .section-intro { max-width: none; text-wrap: balance; }   /* una riga su desktop; su telefono va a capo bilanciato, mai con due parole sole */
+.modi__elenco {
+  list-style: none;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3) var(--s-8);
+}
+.modi__voce {
+  min-height: 8rem;
+  padding-block: var(--s-4);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-5);
+  color: var(--blu-notte);
+  text-decoration: none;
+}
+.modi__testo strong {
+  display: block;
+  margin-bottom: var(--s-1);
+  color: var(--blu-notte);
+  font-size: var(--t-lead);
+  line-height: var(--lh-blocco);
+}
+.modi__testo > span {
+  display: block;
+  max-width: 42ch;
+  color: var(--grigio-testo);
+  font-size: var(--t-body);
+  line-height: var(--lh-testo);
+}
+.modi__freccia {
+  flex: none;
+  color: var(--azzurro-scuro);
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modi__voce:focus-visible { outline: 3px solid var(--focus); outline-offset: var(--s-1); }
+@media (hover: hover) and (pointer: fine) {
+  .modi__voce:hover .modi__freccia { transform: translateX(0.35rem); }
+}
+@media (max-width: 45em) {
+  .modi__elenco { grid-template-columns: 1fr; gap: 0; }
+  .modi__voce { min-height: 0; padding-block: var(--s-4); gap: var(--s-4); }
+}
 .section-intro .frase { display: inline-block; text-wrap: balance; }
 .who .section-intro { max-width: 46rem; margin-inline: auto; line-height: 1.45; }   /* testo del Cottolengo più lungo (decisione 67): righe da circa 75 caratteri, interlinea più compatta */
 .who .section-intro strong { color: var(--blu-notte); font-weight: 700; }   /* nomi delle quattro aree in evidenza */   /* se il testo va a capo, va a capo tra le due frasi (dopo i due punti) */
@@ -3415,6 +3458,34 @@ fieldset { border: none; }
   border-bottom: 1px solid var(--bordo);
 }
 .faq__gruppo + .faq__gruppo-titolo { border-top: 1px solid var(--bordo); }
+.faq__dopo { background: var(--bianco); }
+.faq__dopo-summary {
+  min-height: 5rem;
+  padding: var(--s-3) var(--s-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  list-style: none;
+  cursor: pointer;
+  background: var(--azzurro-chiarissimo);
+  color: var(--azzurro-scuro);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: var(--lh-blocco);
+}
+.faq__dopo-summary::-webkit-details-marker { display: none; }
+.faq__dopo-icona {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.6rem;
+  color: var(--azzurro-scuro);
+  transition: transform var(--faq-durata) var(--faq-curva);
+}
+.faq__dopo[open] .faq__dopo-icona { transform: rotate(180deg); }
+.faq__dopo-summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -5px; }
+.faq__dopo-corpo .faq__gruppo:first-child { border-top: 0; }
 .faq__lista {
   max-width: 56rem; margin: 0 auto;
   background: var(--bianco); border: 1px solid var(--bordo); border-radius: var(--r-2);
@@ -3494,11 +3565,12 @@ fieldset { border: none; }
   .faq__gruppo summary { font-size: 1.1875rem; padding-inline: var(--s-5) var(--s-4); gap: var(--s-4); }
   .faq__corpo { padding-inline: var(--s-5); }
   .faq__gruppo-titolo { padding-inline: var(--s-5); font-size: var(--t-h3); }
+  .faq__dopo-summary { padding-inline: var(--s-5) var(--s-4); font-size: var(--t-h3); }
   .faq__chiusura { grid-template-columns: 1fr; gap: var(--s-5); }
   .faq__btn { width: 100% !important; min-width: 0; }
   .faq__provvisorio { grid-column: auto; }
 }
-@media (prefers-reduced-motion: reduce) { .faq__icona, .faq__gruppo { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .faq__icona, .faq__gruppo, .faq__dopo-icona, .modi__freccia { transition: none; } }
 
 /* Selezione del testo nei colori del sito (non il blu di sistema) */
 ::selection { background: var(--azzurro-chiaro); color: var(--blu-notte); }

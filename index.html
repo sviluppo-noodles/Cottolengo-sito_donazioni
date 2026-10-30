@@ -27,7 +27,7 @@
        ballare il testo quando arrivano (crossorigin è obbligatorio sui font) -->
   <link rel="preload" href="assets/fonts/helvetica-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=150">
+  <link rel="stylesheet" href="css/style.css?v=151">
   <!-- Dati strutturati (schema.org): dicono a Google chi è l'ente e come contattarlo.
        Manca "url" finché il dominio definitivo non è deciso (decisione 54). -->
   <script type="application/ld+json">
@@ -410,111 +410,52 @@
   </div>
 </section>
 
-<!-- ============ COME FARE DEL BENE ============ -->
+<!-- ============ ALTRI MODI PER ESSERCI ============ -->
 <section class="modi" id="come-donare" aria-labelledby="modi-title">
   <div class="container">
-    <!-- Cinque modi per fare del bene, ognuno su una scheda costruita come le
-         schede progetto (.proj-card): foto, etichetta, titolo, testo, pulsante.
-         L'etichetta dice PRIMA cosa chiede al donatore (ogni mese, una firma,
-         una volta, per il futuro, il tuo tempo): è l'informazione per scegliere.
-         Desktop (da 1200 px): cinque in fila. Sotto: fila che scorre col dito.
-         In WordPress: un campo ripetitore (titolo, testo, immagine,
-         testo e link del pulsante, nota facoltativa). -->
     <header class="section-head">
-      <h2 id="modi-title">Ci sono tanti modi per esserci</h2>
-      <!-- Testo del Cottolengo (22/10/2026, decisione 69) -->
-      <p class="section-intro">Dal 5×1000 al volontariato, ogni forma di sostegno contribuisce a portare avanti la missione del Cottolengo.</p>
+      <h2 id="modi-title">Altri modi per esserci</h2>
+      <p class="section-intro">Puoi sostenere il Cottolengo con una firma, un ricordo, il tuo tempo o una raccolta fondi.</p>
     </header>
 
-    <ul class="fila-schede">
-      <li class="fila-schede__item" id="modo-sostegno">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="sostegno-a-distanza.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/sostegno-a-distanza-cottolengo-bambini-missione-scheda-800.jpg" width="800" height="500" alt="Bambini sorridenti in divisa scolastica in una missione del Cottolengo" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="sostegno-a-distanza.html">Sostegno a distanza</a></h3>
-            <p class="proj-card__copy">Accompagna la crescita di un bambino: scuola, cibo e cure, ogni mese.</p>
-            <!-- Decisione 114: il cellulare di Sr Mary resta nella pagina Sostegno a distanza, non in home. -->
-            <a class="btn proj-card__cta" href="sostegno-a-distanza.html">Come aderire</a>
-          </div>
-        </article>
+    <ul class="modi__elenco">
+      <li id="modo-sostegno">
+        <a class="modi__voce" href="sostegno-a-distanza.html">
+          <span class="modi__testo"><strong>Sostegno a distanza</strong><span>Accompagna la crescita di un bambino con scuola, cibo e cure.</span></span>
+          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </li>
-      <li class="fila-schede__item" id="modo-5x1000">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="cinque-per-mille.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/5-per-mille-cottolengo-mani-generazioni-scheda-800.jpg" width="800" height="500" alt="Le mani di un bambino, di un adulto e di un anziano una sopra l'altra" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="cinque-per-mille.html">5×1000</a></h3>
-            <p class="proj-card__copy">La tua firma diventa cure e accoglienza. A&nbsp;te non costa nulla.</p>
-            <a class="btn proj-card__cta" href="cinque-per-mille.html">Come firmare</a>
-          </div>
-        </article>
+      <li id="modo-5x1000">
+        <a class="modi__voce" href="cinque-per-mille.html">
+          <span class="modi__testo"><strong>5×1000</strong><span>La tua firma diventa cure e accoglienza, senza costi per te.</span></span>
+          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </li>
-      <li class="fila-schede__item" id="modo-memoria">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="dona-in-memoria.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/dona-in-memoria-cottolengo-ospite-volontaria-scheda-800.jpg" width="800" height="500" alt="Un ospite anziano e una volontaria sorridenti, abbracciati, sotto il ritratto del Cottolengo" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="dona-in-memoria.html">Dona in memoria</a></h3>
-            <p class="proj-card__copy">Ricorda una persona cara con un gesto d'amore che continua a vivere.</p>
-            <a class="btn proj-card__cta" href="dona-in-memoria.html">Come fare</a>
-          </div>
-        </article>
+      <li id="modo-memoria">
+        <a class="modi__voce" href="dona-in-memoria.html">
+          <span class="modi__testo"><strong>Dona in memoria</strong><span>Ricorda una persona cara con un gesto d’amore che continua.</span></span>
+          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </li>
-      <li class="fila-schede__item" id="modo-testamento">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="testamento-solidale.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/testamento-solidale-cottolengo-piccola-casa-scheda-800.jpg" width="800" height="500" alt="L'ingresso della Piccola Casa della Divina Provvidenza, in via Cottolengo 14 a Torino" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="testamento-solidale.html">Testamento solidale</a></h3>
-            <p class="proj-card__copy">Un lascito, anche piccolo, aiuta ad accogliere chi verrà domani.</p>
-            <a class="btn proj-card__cta" href="testamento-solidale.html">Scopri di più</a>
-          </div>
-        </article>
+      <li id="modo-testamento">
+        <a class="modi__voce" href="testamento-solidale.html">
+          <span class="modi__testo"><strong>Testamento solidale</strong><span>Un lascito, anche piccolo, aiuta ad accogliere chi verrà domani.</span></span>
+          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </li>
-      <li class="fila-schede__item" id="modo-volontariato">
-        <article class="proj-card proj-card--compatta">
-          <div class="proj-card__media">
-            <a class="proj-card__media-link" href="volontariato.html" tabindex="-1" aria-hidden="true">
-              <img src="assets/img/volontariato-cottolengo-abbraccio-ospite-scheda-800.jpg" width="800" height="500" alt="Una volontaria abbraccia un'ospite in carrozzina" loading="lazy">
-            </a>
-          </div>
-          <div class="proj-card__body">
-            <h3 class="proj-card__title"><a href="volontariato.html">Volontariato</a></h3>
-            <p class="proj-card__copy">Dona il tuo tempo: stai accanto agli ospiti della Piccola Casa.</p>
-            <a class="btn proj-card__cta" href="volontariato.html">Diventa volontario</a>
-          </div>
-        </article>
+      <li id="modo-volontariato">
+        <a class="modi__voce" href="volontariato.html">
+          <span class="modi__testo"><strong>Volontariato</strong><span>Dona il tuo tempo e stai accanto agli ospiti della Piccola Casa.</span></span>
+          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </li>
+      <li id="raccolte-solidali">
+        <a class="modi__voce" href="crowdfunding.html">
+          <span class="modi__testo"><strong>Raccolta fondi</strong><span>Trasforma un compleanno o una sfida in un aiuto concreto.</span></span>
+          <svg class="modi__freccia" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </li>
     </ul>
-  </div>
-</section>
-
-<!-- ============ RACCOLTE SOLIDALI (crowdfunding) ============
-     Fascia d'invito: il crowdfunding è uno strumento sempre attivo, non una
-     campagna a tempo, quindi sta in home e non nella hero. Porta alla pagina
-     crowdfunding.html; le raccolte sono gestite da Myosotis (decisione 56). TESTI PROVVISORI. -->
-<section class="fascia-invito" id="raccolte-solidali" aria-labelledby="raccolte-title">
-  <div class="container">
-    <!-- Decisione 79: cosa si guadagna nel titolo, "raccolta fondi" in chiaro, dove vanno i soldi,
-         pulsante prevedibile (porta alla pagina che spiega; diventerà "Crea la tua raccolta" quando
-         Myosotis attiverà le raccolte). -->
-    <h2 id="raccolte-title">Una festa o una sfida che fa del bene</h2>
-    <!-- Decisione 124: stessa regola delle introduzioni (max 140 caratteri, peso normale). -->
-    <p class="fascia-invito__testo">Per un compleanno o una corsa, apri la tua raccolta fondi: amici e parenti donano al posto dei regali e le donazioni vanno al Cottolengo.</p>
-    <a class="btn btn--dona fascia-invito__btn" href="crowdfunding.html">Scopri come funziona</a>
   </div>
 </section>
 
@@ -569,21 +510,25 @@
         <summary><span>Posso cambiare l’importo o smettere di donare?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
         <div class="faq__corpo"><p><span class="da-confermare">Sì, quando vuoi e senza costi.</span> Chiama lo <a href="tel:+390115225658">011&nbsp;522&nbsp;5658</a> o scrivi a <a href="mailto:infodonazioni@cottolengo.org">infodonazioni@cottolengo.org</a>.</p></div>
       </details>
-      <h3 class="faq__gruppo-titolo" id="faq-dopo">Dopo aver donato</h3>
-      <!-- Requisito 16: esito, ringraziamento, riepilogo, ricevuta. -->
-      <details class="faq__gruppo">
-        <summary><span>Cosa succede dopo che ho donato?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <div class="faq__corpo"><p>Ti arriva subito un’email di conferma con il riepilogo della donazione. <span class="da-confermare">Nei giorni seguenti ricevi anche il ringraziamento del Cottolengo.</span></p></div>
-      </details>
-      <!-- Requisito 7: ricevuta chiara. Testi della pagina Dona. -->
-      <details class="faq__gruppo">
-        <summary><span>Come ricevo la ricevuta per le tasse?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <div class="faq__corpo"><p>Quando doni, rispondi «Sì» alla domanda sulla ricevuta e inserisci indirizzo e codice fiscale: la ricevuta arriva per email. <span class="da-confermare">Se doni con regolarità, a inizio anno ricevi anche il riepilogo delle donazioni dell’anno precedente.</span></p></div>
-      </details>
-      <!-- Requisito 7: benefici fiscali. Articolo di legge dalla pagina Dona. -->
-      <details class="faq__gruppo">
-        <summary><span>Quanto posso detrarre?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <div class="faq__corpo"><p>La donazione può usufruire dei benefici fiscali previsti dall’art.&nbsp;83 del D.Lgs.&nbsp;117/2017. <span class="da-confermare">Puoi detrarre il 30% di quanto doni, fino a 30.000&nbsp;€ l’anno, oppure dedurlo dal reddito nel limite del 10%.</span></p></div>
+      <details class="faq__dopo">
+        <summary class="faq__dopo-summary" id="faq-dopo"><span>Dopo aver donato</span><svg class="faq__dopo-icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <div class="faq__dopo-corpo">
+          <!-- Requisito 16: esito, ringraziamento, riepilogo, ricevuta. -->
+          <details class="faq__gruppo">
+            <summary><span>Cosa succede dopo che ho donato?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq__corpo"><p>Ti arriva subito un’email di conferma con il riepilogo della donazione. <span class="da-confermare">Nei giorni seguenti ricevi anche il ringraziamento del Cottolengo.</span></p></div>
+          </details>
+          <!-- Requisito 7: ricevuta chiara. Testi della pagina Dona. -->
+          <details class="faq__gruppo">
+            <summary><span>Come ricevo la ricevuta per le tasse?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq__corpo"><p>Quando doni, rispondi «Sì» alla domanda sulla ricevuta e inserisci indirizzo e codice fiscale: la ricevuta arriva per email. <span class="da-confermare">Se doni con regolarità, a inizio anno ricevi anche il riepilogo delle donazioni dell’anno precedente.</span></p></div>
+          </details>
+          <!-- Requisito 7: benefici fiscali. Articolo di legge dalla pagina Dona. -->
+          <details class="faq__gruppo">
+            <summary><span>Quanto posso detrarre?</span><svg class="faq__icona" width="22" height="22" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq__corpo"><p>La donazione può usufruire dei benefici fiscali previsti dall’art.&nbsp;83 del D.Lgs.&nbsp;117/2017. <span class="da-confermare">Puoi detrarre il 30% di quanto doni, fino a 30.000&nbsp;€ l’anno, oppure dedurlo dal reddito nel limite del 10%.</span></p></div>
+          </details>
+        </div>
       </details>
     </div>
     <div class="faq__chiusura">
@@ -788,7 +733,7 @@
   </a>
 </aside>
 
-<script src="js/main.js?v=150"></script>
-<script src="js/nav.js?v=150"></script>
+<script src="js/main.js?v=151"></script>
+<script src="js/nav.js?v=151"></script>
 </body>
 </html>
