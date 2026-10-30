@@ -4012,12 +4012,11 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 .header .btn--header { text-transform: uppercase; letter-spacing: 0.04em; }
 
 /* decisione 146: tutti i pulsanti in maiuscolo (come «DONA ORA» del menu), con un po' di spaziatura tra le lettere */
-.btn, .dona-btn, .dona-rapido__btn { text-transform: uppercase; letter-spacing: 0.04em; }
+.btn--dona, .dona-btn, .header .btn--header, .sticky-dona .btn { text-transform: uppercase; letter-spacing: 0.04em; }   /* solo i «Dona»; gli altri pulsanti restano come prima (decisione 150) */
 /* il maiuscolo allarga le scritte lunghe: «Copia il codice da condividere» va a capo invece di uscire dal pulsante */
 .btn--copy { white-space: normal; text-align: center; }
 
 /* decisione 148: pulsanti in carattere normale (non grassetto): in maiuscolo il grassetto «urla» */
-.btn, .dona-btn, .dona-rapido__btn { font-weight: 400; }
 .header .btn--header, .btn--dona, .dona-btn, .sticky-dona .btn { font-weight: 700; }   /* grassetto solo per i «Dona»: menu, pulsanti nelle pagine, barra fissa e modulo. Gli altri pulsanti restano normali */
 
 /* decisione 149: nelle quattro schede «Chi aiuti» (Cura, Accoglienza, Educazione, Missioni), al passaggio del mouse
