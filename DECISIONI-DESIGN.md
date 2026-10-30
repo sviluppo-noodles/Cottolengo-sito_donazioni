@@ -1966,3 +1966,11 @@ Fulvio: la prima slide dice «In Italia e nel mondo, accanto a chi è più fragi
 - **Apertura, titolo:** «Una casa e una cura per chi non ce la fa da solo.» (scelta di Fulvio tra tre proposte): parole semplici, comprende anziani, persone con disabilità e bambini.
 - **Apertura, testo:** «Il Cottolengo accoglie anziani, persone con disabilità, malati e bambini, senza distinzioni. Il tuo dono va dove c'è più bisogno.» Il «dove» è già nella slide.
 - **Slide 1, testo sotto il titolo (solo computer):** «Dal 1828 a Torino, oggi anche nelle missioni in Africa, America Latina e Asia.» (continenti come nella scheda Missioni internazionali).
+
+## 137. Pulsanti: via il rimbalzo, restano colore e pressione (30/10/2026)
+
+Controllo dei pulsanti con le skill (impeccable, Emil): il rimbalzo al rilascio durava 0,6 s a ogni clic o tocco, troppo per un gesto che si ripete e che porta quasi sempre a un'altra pagina; in contrasto con gli angoli quadrati; e il +2 % al passaggio era annullato da `transform: none`, con un piccolo scatto a fine rimbalzo.
+- **Tolto:** animazione `btn-rimbalzo`, variabili `--btn-zoom` e `--btn-riposo`, regola del passaggio del mouse sulla scala, script `initRimbalzo` in `js/nav.js`.
+- **Resta:** cambio colore in 0,18 s e pressione a 0,98 in 0,12 s.
+- **Colori del passaggio: NON modificati** (Fulvio: «il colore lascialo così»). Restano da valutare nel riordino del CSS: limitarli ai dispositivi con mouse (sul telefono possono restare «appiccicati» dopo il tocco) e mantenere le dissolvenze di colore con «riduci movimento».
+- CSS e JS passano a `?v=155`.

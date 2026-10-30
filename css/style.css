@@ -273,13 +273,6 @@ select:focus-visible, [tabindex]:focus-visible {
   box-shadow: none;
   transition: transform 0.16s var(--ease-uscita),
               background var(--transizione), color var(--transizione), border-color var(--transizione);
-  --btn-zoom: 1;
-}
-/* Passaggio del mouse: il pulsante si gonfia appena (+4%) e si assesta con un
-   leggerissimo rimbalzo, come una superficie morbida. Solo dove esiste un
-   mouse: sui touch lo stato hover resterebbe "incollato" dopo il tocco. */
-@media (hover: hover) {
-  .btn:hover { transform: none; box-shadow: none; }
 }
 /* Pressione: si schiaccia un poco e torna su, risposta immediata al clic/tocco */
 .btn:active {
@@ -287,24 +280,8 @@ select:focus-visible, [tabindex]:focus-visible {
   box-shadow: none;
   transition-duration: 0.12s;
 }
-/* pulsanti larghi quanto il contenitore: stesso effetto, ingrandimento minore,
-   altrimenti su 500px di larghezza il +4% diventerebbe vistoso */
-.btn--dona, .proj-card__cta { --btn-zoom: 1.02; }
-
-/* Rilascio: dopo la pressione il pulsante "rimbalza" morbidamente, supera di
-   poco la misura di riposo, torna indietro e si assesta (≈0,6s). La classe
-   .is-rimbalzo la mette js/nav.js al rilascio del mouse/dito.
-   --btn-riposo: la misura su cui si assesta (ingrandito se il mouse è ancora
-   sopra, normale sui touch che non hanno lo stato hover). */
-.btn { --btn-riposo: 1; }
-@media (hover: hover) { .btn:hover { --btn-riposo: var(--btn-zoom); } }
-.btn.is-rimbalzo { animation: btn-rimbalzo 0.6s cubic-bezier(0.25, 0.8, 0.35, 1) both; }
-@keyframes btn-rimbalzo {
-  0%   { transform: scale(0.96); }
-  40%  { transform: scale(calc(var(--btn-riposo) + 0.035)); }
-  70%  { transform: scale(calc(var(--btn-riposo) - 0.012)); }
-  100% { transform: scale(var(--btn-riposo)); }
-}
+/* Nessun rimbalzo né ingrandimento al passaggio o al rilascio (decisione 137):
+   il pulsante cambia solo colore e, premuto, si riduce a 0,98 in 0,12 s. */
 
 /* primario: azzurro pieno */
 .btn--dona {
@@ -3820,12 +3797,11 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .fila-schede .proj-card .proj-card__copy { -webkit-line-clamp: unset; display: block; }
 
   /* Decisione 134: il link d'azione torna pulsante con il bordo (come su computer,
-     decisione 75), a tutta larghezza. Niente rimbalzo né ingrandimento sul telefono.
+     decisione 75), a tutta larghezza. Niente ingrandimento sul telefono.
      Il pulsante si allarga a coprire tutto il blocco: si tocca ovunque. */
   .fila-schede .proj-card .proj-card__cta,
   .fila-schede .proj-card .proj-card__cta:hover,
-  .fila-schede .proj-card .proj-card__cta:active,
-  .fila-schede .proj-card .proj-card__cta.is-rimbalzo { transform: none; animation: none; }
+  .fila-schede .proj-card .proj-card__cta:active { transform: none; }
   .fila-schede .proj-card .proj-card__cta {
     position: static;
     align-self: stretch;

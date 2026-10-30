@@ -2,7 +2,7 @@
    Navbar — script condiviso da TUTTE le pagine
    ----------------------------------------------------------
    Unico punto per: hamburger (menu mobile), tendine "Progetti" e
-   "Come aiutarci", descrizioni delle voci, rimbalzo dei pulsanti e
+   "Come aiutarci", descrizioni delle voci e
    copia del codice fiscale. Gli script delle singole pagine (main.js,
    progetti.js, project-detail.js, testamento-solidale.js) NON gestiscono
    più il menu: niente listener doppi.
@@ -76,22 +76,6 @@
       chiudiMenu();
       if (dentro && burger) burger.focus();
     }
-  });
-})();
-
-/* ---------- Pulsanti: rimbalzo morbido al rilascio ----------
-   Aggiunge .is-rimbalzo al rilascio (mouse o dito); l'animazione è in CSS.
-   Con "riduci movimento" attivo il CSS la annulla. */
-(function initRimbalzo() {
-  document.addEventListener('pointerup', e => {
-    const btn = e.target.closest('.btn');
-    if (!btn) return;
-    btn.classList.remove('is-rimbalzo');
-    void btn.offsetWidth;                 // riavvia l'animazione se già in corso
-    btn.classList.add('is-rimbalzo');
-  });
-  document.addEventListener('animationend', e => {
-    if (e.animationName === 'btn-rimbalzo') e.target.classList.remove('is-rimbalzo');
   });
 })();
 
