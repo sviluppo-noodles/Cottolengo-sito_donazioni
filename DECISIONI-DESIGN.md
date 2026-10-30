@@ -1974,3 +1974,16 @@ Controllo dei pulsanti con le skill (impeccable, Emil): il rimbalzo al rilascio 
 - **Resta:** cambio colore in 0,18 s e pressione a 0,98 in 0,12 s.
 - **Colori del passaggio: NON modificati** (Fulvio: «il colore lascialo così»). Restano da valutare nel riordino del CSS: limitarli ai dispositivi con mouse (sul telefono possono restare «appiccicati» dopo il tocco) e mantenere le dissolvenze di colore con «riduci movimento».
 - CSS e JS passano a `?v=155`.
+
+## 138. Regola dei pulsanti: «Dona» oro, gli altri azzurro scuro (30/10/2026)
+
+Fulvio: i «Dona ora» devono risaltare perché portano al dono, su fondi chiari e scuri; i pulsanti per entrare nelle sezioni devono esserci ma stare sotto; niente azzurrini né colori spenti; un tono caldo che dia calore al sito; massima leggibilità e serietà grafica.
+- **Livello 1 – «Dona» (menu, apertura, schede, barra fissa del telefono, fascia raccolte, domande frequenti, 404):** pieno, mai con contorno, **oro `#E3B23C` con testo e cuore blu quasi nero `#06182A` (9,1:1)**. Uguale su fondo chiaro, azzurro, blu notte e foto: l'oro regge su tutti (6,1:1 sul blu notte). Il testo non è blu notte `#003B57` per evitare il contrasto cromatico con l'oro (l'ambra `#F2A900` con testo blu notte «batteva»); non è nero puro per restare nella famiglia del sito.
+- **Passaggio del mouse e tastiera:** blu notte `#003B57`, testo bianco, **cuore oro**. Nel riquadro blu notte delle domande frequenti l'hover è azzurro scuro `#0075B0` (il blu notte sparirebbe nel riquadro). Premuto sul telefono: oro più scuro `#C99A1F`.
+- **Cuore:** nuovo disegno simmetrico, senza la punta in basso che a misura grande somigliava al nodo di un palloncino. 28 px nei pulsanti, 22 px nel menu (16 px sul telefono). Presente in tutti i «Dona» (aggiunto in 404 e nelle fasce raccolte di Chi siamo e 5×1000). Nessun cuore su «Copia codice fiscale», che non è una donazione e resta blu notte.
+- **Livello 2 – Entra/Scopri/Scarica:** pieno, misura M, senza cuore, **azzurro scuro `#0075B0` con testo bianco 5,0:1** (prima azzurro `#0097D8`, 3,3:1: a norma solo come «testo grande»). Hover blu notte, testo bianco.
+- **Eccezione:** nel carosello, sulle foto scure, i pulsanti restano azzurro `#0097D8` (5,3:1 sul fondo scuro).
+- **Scartati:** terracotta come hover (sull'azzurro del menu 1,1:1: il pulsante si confonde con la barra), cuore oro su pulsanti bianchi (Fulvio: «su fondo bianco non mi piace»), bordeaux, arancio.
+- **Punto debole noto:** l'oro sul bianco ha solo 2,0:1 sullo sfondo; il pulsante si legge per il testo (9,1:1) ma il bordo è morbido. Guardare in uso; eventuale rimedio: filo di 1 px, ma Fulvio non vuole contorni.
+- **DA FARE (non urgente):** i blocchi in fondo a `css/style.css` ridefiniscono i pulsanti con `!important`; ridurli a poche variabili nella sessione di riordino. Il cuore e l'oro sono variabili (`--oro`, `--marrone-testo`, `--dona-hover`).
+- Prima delle regole sul rimbalzo: vedi decisione 137. CSS e JS passano a `?v=157`.

@@ -3858,10 +3858,9 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 /* Decisione 133 (apertura prima del carosello su telefono) annullata dalla decisione 135. */
 
 /* ======================================================================
-   PROVA COLORI (29/10/2026) — SOLO PER VEDERLA IN LOCALE, NON PUBBLICARE
-   «Dona ora» blu notte, pulsanti secondari azzurro chiaro, forme squadrate,
-   pagina bianca con filetti tra le sezioni. Da togliere o da trasformare
-   in decisione dopo il parere del Cottolengo.
+   SUPERFICI E PULSANTI (29/10/2026) — forme squadrate, pagina bianca con filetti
+   tra le sezioni, pulsanti secondari. I «Dona» sono ridefiniti più sotto
+   (decisione 138). Da riordinare nella sessione di pulizia del CSS.
    ====================================================================== */
 .btn, .btn--header, .btn--dona, .cpm-slide__cta, .proj-card__cta, .dona-btn { border-radius: 0 !important; }
 .proj-card, .proj-card__media, .proj-card__media img { border-radius: 0 !important; }
@@ -3920,10 +3919,10 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 .cpm-slide__tag, .faq__gruppo-titolo, .dona-prototipo { border-radius: 0 !important; }
 /* schede su computer: grigio leggerissimo verso il blu istituzionale (#F8FAFC, scelto da Fulvio) al posto del bordo (gradino di tono, skill taste e impeccable) */
 @media (min-width: 45.0625em) { .proj-card { background: #F8FAFC !important; } }
-/* pulsanti secondari (schede e altre pagine): azzurro istituzionale, testo bianco;
-   al passaggio blu notte, testo bianco (Fulvio, 29/10). Bianco su azzurro 3,3:1: a norma solo
-   perché il testo è 19 px grassetto (testo grande). */
-.proj-card__cta, .fila-schede .proj-card .proj-card__cta, .btn--vedi-tutti { background: var(--azzurro) !important; color: #fff !important; }
+/* pulsanti secondari (schede e altre pagine), decisione 138: azzurro scuro del menu, testo bianco
+   5,0:1 (a norma per ogni misura); al passaggio blu notte, testo bianco (Fulvio, 29/10).
+   Nel carosello, sulle foto scure, resta l'azzurro (più visibile). */
+.proj-card__cta, .fila-schede .proj-card .proj-card__cta, .btn--vedi-tutti { background: var(--azzurro-scuro) !important; color: #fff !important; }
 .proj-card__cta:hover, .proj-card__cta:focus-visible, .fila-schede .proj-card .proj-card__cta:hover,
 .btn--vedi-tutti:hover, .btn--vedi-tutti:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
 /* «Hai un dubbio?» sotto il Dona: una riga sola, piccola, allineata al pulsante, link non in grassetto
@@ -3938,3 +3937,44 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 .impatti__voce, .project-stat, .nota-riquadro, .pagina-legale__contatto, .legacy-definitions > div, .dona-card { background: #F8FAFC !important; box-shadow: none !important; }
 .dona-card__head { background: var(--azzurro-scuro) !important; }   /* niente sfumatura, come il menu */
 .dona-sicura { border: 0 !important; background: #fff !important; }
+
+/* ==========================================================
+   DONA ORO (decisione 138, 30/10/2026)
+   Tutti i «Dona» (non «Copia codice») sono oro con testo e cuore blu quasi nero (#06182A): stesso aspetto su fondo
+   chiaro, azzurro, blu notte e foto. Al passaggio diventano blu notte con testo bianco e cuore oro
+   (blu notte con testo bianco e cuore oro; nelle domande frequenti, sul blu notte, bianco). Si cambia l'oro con --oro.
+   ========================================================== */
+:root { --oro: #E3B23C; --oro-premuto: #C99A1F; --marrone-testo: #06182A; --dona-hover: #003B57; }   /* hover: blu notte (alternativa provata: terracotta #B3471F) */
+.btn--dona:not(.btn--copy), .btn--header, .sticky-dona .btn, .dona-btn,
+.header .btn--header, .faq__chiusura .faq__btn, .fascia-invito .fascia-invito__btn {
+  background: var(--oro) !important; color: var(--marrone-testo) !important; box-shadow: none !important;
+}
+.btn--dona:not(.btn--copy) .icon-heart, .btn--header .icon-heart, .sticky-dona .btn .icon-heart, .dona-btn .icon-heart { color: var(--marrone-testo); }
+/* passaggio e tastiera: blu notte, testo bianco, cuore oro */
+.btn--dona:not(.btn--copy):hover, .btn--dona:not(.btn--copy):focus-visible,
+.sticky-dona .btn:hover, .sticky-dona .btn:focus-visible, .dona-btn:hover, .dona-btn:focus-visible,
+.header .btn--header:hover, .header .btn--header:focus-visible,
+.fascia-invito .fascia-invito__btn:hover, .fascia-invito .fascia-invito__btn:focus-visible {
+  background: var(--dona-hover) !important; color: #fff !important; box-shadow: none !important;
+}
+.btn--dona:not(.btn--copy):hover .icon-heart, .btn--dona:not(.btn--copy):focus-visible .icon-heart,
+.sticky-dona .btn:hover .icon-heart, .dona-btn:hover .icon-heart,
+.header .btn--header:hover .icon-heart, .header .btn--header:focus-visible .icon-heart,
+.fascia-invito .fascia-invito__btn:hover .icon-heart { color: var(--oro); }
+/* riquadro blu notte delle domande frequenti: l'hover non può essere blu notte (sparirebbe nel riquadro),
+   quindi azzurro scuro del menu, testo bianco, cuore oro: stessa regola degli altri «Dona» */
+.faq__chiusura .faq__btn:hover, .faq__chiusura .faq__btn:focus-visible { background: var(--azzurro-scuro) !important; color: #fff !important; }
+.faq__chiusura .faq__btn:hover .icon-heart, .faq__chiusura .faq__btn:focus-visible .icon-heart { color: var(--oro); }
+/* tocco sul telefono: mentre si preme, oro più scuro */
+.btn--dona:not(.btn--copy):active, .btn--header:active, .sticky-dona .btn:active, .dona-btn:active,
+.header .btn--header:active, .faq__chiusura .faq__btn:active, .fascia-invito .fascia-invito__btn:active {
+  background: var(--oro-premuto) !important; color: var(--marrone-testo) !important;
+}
+.btn--dona:not(.btn--copy):active .icon-heart, .btn--header:active .icon-heart, .sticky-dona .btn:active .icon-heart,
+.faq__chiusura .faq__btn:active .icon-heart { color: var(--marrone-testo); }
+/* cuore più grande nei «Dona» (30/10): 28 px nei pulsanti, 22 px nel menu (16 px sul telefono) */
+.btn--dona .icon-heart, .sticky-dona .btn .icon-heart, .dona-btn .icon-heart { width: 28px; height: 28px; }
+.btn--header .icon-heart { width: 22px; height: 22px; }
+@media (max-width: 45em) { .btn--header .icon-heart { width: 16px; height: 16px; } }
+/* menu: al passaggio blu notte (la terracotta sull'azzurro scuro del menu avrebbe 1,1:1 e il pulsante si confonderebbe con la barra) */
+.header .btn--header:hover, .header .btn--header:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
