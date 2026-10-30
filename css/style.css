@@ -4086,3 +4086,26 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
   .header.is-cambio .nav__item--dropdown.open .nav__mega__testo { animation: testo-cambio .22s ease both; }
 }
 @media (prefers-reduced-motion: reduce) { .header.is-cambio .nav__mega__voci, .header.is-cambio .nav__mega__testo { animation: none !important; } }
+
+/* decisione 153: la sottolineatura delle voci del menu sta sul bordo inferiore della barra (prima era sotto il testo
+   e «appesa» a mezz'aria). Le voci occupano tutta l'altezza della barra (76 px); il testo resta dov'era
+   (stessa linea di base del logo, decisione 140) e la linea da 4 px poggia sul pannello del sottomenu. Solo menu in fila. */
+@media (min-width: 75.0625em) {
+  .header .nav { display: flex; align-self: stretch; }
+  .header .nav__list, .header .nav__list > li { align-self: stretch; }
+  .header .nav__list { align-items: stretch; }
+  .header .nav__list > li { display: flex; }
+  .header .nav__link { top: 0; align-self: stretch; padding-top: 5.6px; padding-bottom: 0; }
+}
+
+/* decisione 154: la linea del menu non si allarga più dal centro: sale dal bordo della barra come il filetto delle schede
+   (si scopre dal basso verso l'alto in 0,28 s). Solo menu in fila; sul telefono resta come prima. */
+@media (min-width: 75.0625em) {
+  .header .nav__link::after { transform: none; clip-path: inset(100% 0 0 0); transition: clip-path 0.28s var(--ease-uscita); }
+  .header .nav__link:hover::after,
+  .header .nav__link:focus-visible::after,
+  .header .nav__link[aria-current="page"]::after,
+  .header .nav__item--dropdown.open .nav__link::after,
+  .header .nav__item--dropdown:has([aria-current="page"]) > .nav__link::after { transform: none; clip-path: inset(0); }
+}
+@media (min-width: 75.0625em) and (prefers-reduced-motion: reduce) { .header .nav__link::after { transition: none; } }
