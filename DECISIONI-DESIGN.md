@@ -1987,3 +1987,20 @@ Fulvio: i «Dona ora» devono risaltare perché portano al dono, su fondi chiari
 - **Punto debole noto:** l'oro sul bianco ha solo 2,0:1 sullo sfondo; il pulsante si legge per il testo (9,1:1) ma il bordo è morbido. Guardare in uso; eventuale rimedio: filo di 1 px, ma Fulvio non vuole contorni.
 - **DA FARE (non urgente):** i blocchi in fondo a `css/style.css` ridefiniscono i pulsanti con `!important`; ridurli a poche variabili nella sessione di riordino. Il cuore e l'oro sono variabili (`--oro`, `--marrone-testo`, `--dona-hover`).
 - Prima delle regole sul rimbalzo: vedi decisione 137. CSS e JS passano a `?v=157`.
+
+## 139. Menu: «Dona ora» della stessa misura delle voci (30/10/2026)
+
+Fulvio: nel menu una misura diversa sembra un errore; è il contesto interno (fondo oro, cuore) a dare visibilità. Prima: voci 16 px / 600, «Dona ora» 19 px / 700 sul computer.
+- **Ora:** «Dona ora» nel menu a 16 px (`--t-small`), grassetto; cuore 20 px sul computer. Sul telefono era già 16 px.
+- **Resto del sito invariato:** apertura, schede, barra fissa, domande frequenti, fascia raccolte restano a 19 px.
+- Contrasto del testo sull'oro 9,1:1: a norma anche sotto i 19 px. CSS e JS a `?v=158`.
+
+## 140. Menu: voci e «Dona ora» sulla linea di base del logo, menu più vicino al pulsante (30/10/2026)
+
+Fulvio: la base delle voci deve coincidere con la base della scritta «Cottolengo» del logo, altrimenti sembrano disallineati; il menu può avvicinarsi al «Dona ora» per lasciare più spazio.
+- **Misurato (computer, 4× di risoluzione):** la scritta del logo poggia a 45,25 px dall'alto; le voci a 41,0 px (4,25 px più su), il testo del «Dona ora» a 42,0 px.
+- **Ora:** voci spostate in basso di 4 px (`top: 4px`). Il «Dona ora» passa da 48 a **44 px di altezza** (Fulvio lo voleva più basso, 50 era troppo), con 16 px di spazio sopra e 16 sotto nella barra di 76 px (prima 17 e 15); un po' più largo (spazio ai lati del testo 28 px invece di 22): il testo poggia così a 45,0 px come le voci e, con 4 px di spazio sopra (le maiuscole partono basse nella riga), è al centro ottico del pulsante (19,5 px sopra le maiuscole, 19,0 sotto la linea di base). Misurato: logo 45,25, voci 45,0, «Dona ora» 45,0.
+- **Prima versione scartata:** solo 6 px di spazio sopra il testo con pulsante da 48 px centrato nella barra: il testo risultava troppo in basso nel pulsante (Fulvio: «non è centrato»).
+- **Menu vicino al pulsante:** il distacco tra l'ultima voce e il pulsante passa da circa 50 a circa 34 px dal testo (24 px dal bordo della voce), poco più di quello tra le voci (28 px). La decisione 112 chiedeva più stacco (gruppi stretti, separazioni generose); qui il fondo oro stacca già il pulsante, quindi lo spazio libero va tra logo e menu (100 px a 1280, 70 px a 1210).
+- **Solo dove il menu è in fila** (da 1201 px in su). Nel menu a tendina e sul telefono non cambia niente. Verificato a 1210, 1280, 1400 e 1100 px: nessun taglio né scorrimento orizzontale.
+- CSS e JS passano a `?v=163`.

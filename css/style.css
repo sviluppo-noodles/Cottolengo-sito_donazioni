@@ -3978,3 +3978,17 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 @media (max-width: 45em) { .btn--header .icon-heart { width: 16px; height: 16px; } }
 /* menu: al passaggio blu notte (la terracotta sull'azzurro scuro del menu avrebbe 1,1:1 e il pulsante si confonderebbe con la barra) */
 .header .btn--header:hover, .header .btn--header:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
+/* decisione 139: nel menu «Dona ora» ha la stessa misura delle voci (16 px, grassetto); la visibilità
+   la dà il fondo oro, non la grandezza. Altrove i pulsanti restano a 19 px. */
+.header .btn--header { font-size: var(--t-small); }
+@media (min-width: 45.0625em) { .header .btn--header .icon-heart { width: 20px; height: 20px; } }
+/* decisione 140: sul computer le voci del menu poggiano sulla stessa linea di base della scritta «Cottolengo»
+   del logo (misurato: la scritta sta 4,25 px più in basso). Solo dove il menu è in fila (non nel menu a tendina). */
+@media (min-width: 75.0625em) {
+  .header .nav__link { top: 4px; }
+  /* anche il testo del «Dona ora» poggia sulla stessa linea e resta centrato nel pulsante:
+     il pulsante è alto 44 px (era 48, poi 50: Fulvio lo vuole più basso) e centrato nella barra: bordo alto a 17 px */
+  .header .btn--header { align-self: flex-start; margin-top: 16px; min-height: 44px; padding-top: 5px; padding-bottom: 0; padding-inline: 1.75rem; }   /* larghezza: 28 px per lato (era 22). 4 px: il testo parte basso nella riga, così le maiuscole sono al centro ottico del pulsante */
+  /* il menu si avvicina al «Dona ora» (prima ~50 px, ora ~34 px) e lascia più aria tra logo e voci */
+  .header .btn--header { margin-left: 0; }
+}
