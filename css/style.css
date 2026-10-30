@@ -124,10 +124,10 @@
   --s-5: 1.5rem;   --s-6: 2rem;    --s-7: 3rem;     --s-8: 4rem;
   --s-sezione: clamp(4rem, 7vw, 7rem);   /* respiro verticale di ogni sezione */
 
-  /* ---------- Raggi: variante squadrata approvata ---------- */
-  --r-1: 0;                        /* input, tag, elementi piccoli */
-  --r-2: 0;                        /* card, pannelli, moduli */
-  --r-pill: 0;                     /* pulsanti rettangolari, non a pillola */
+  /* ---------- Raggi: tre valori, non sette ---------- */
+  --r-1: 6px;                      /* input, tag, elementi piccoli */
+  --r-2: 14px;                     /* card, pannelli, moduli */
+  --r-pill: 999px;                 /* bottoni e pillole: identità del sito */
   --raggio: var(--r-1);            /* alias storici, usati nelle sezioni */
   --raggio-grande: var(--r-2);
 
@@ -270,22 +270,21 @@ select:focus-visible, [tabindex]:focus-visible {
   border-radius: var(--r-pill);
   padding: 0 1.75rem;
   min-height: var(--btn-m);         /* misura M */
-  box-shadow: var(--e-1);
-  /* scale e ombra con la curva "gommosa"; colore con una dissolvenza piana */
-  transition: transform 0.45s var(--ease-gomma), box-shadow 0.45s var(--ease-gomma),
+  box-shadow: none;
+  transition: transform 0.16s var(--ease-uscita),
               background var(--transizione), color var(--transizione), border-color var(--transizione);
-  --btn-zoom: 1.04;                 /* ingrandimento al passaggio del mouse */
+  --btn-zoom: 1;
 }
 /* Passaggio del mouse: il pulsante si gonfia appena (+4%) e si assesta con un
    leggerissimo rimbalzo, come una superficie morbida. Solo dove esiste un
    mouse: sui touch lo stato hover resterebbe "incollato" dopo il tocco. */
 @media (hover: hover) {
-  .btn:hover { transform: scale(var(--btn-zoom)); box-shadow: var(--e-2); }
+  .btn:hover { transform: none; box-shadow: none; }
 }
 /* Pressione: si schiaccia un poco e torna su, risposta immediata al clic/tocco */
 .btn:active {
-  transform: scale(0.96);
-  box-shadow: var(--e-1);
+  transform: scale(0.98);
+  box-shadow: none;
   transition-duration: 0.12s;
 }
 /* pulsanti larghi quanto il contenitore: stesso effetto, ingrandimento minore,
@@ -767,7 +766,7 @@ select:focus-visible, [tabindex]:focus-visible {
   top: 50%;
   height: 12px;
   margin-top: -6px;
-  border-radius: 999px; /* indicatore del carosello: resta un punto, non un pulsante */
+  border-radius: var(--r-pill);
 }
 .cpm-dot::before { background: rgba(255, 255, 255, 0.45); transition: background var(--transizione); }
 .cpm-dot:hover::before { background: rgba(255, 255, 255, 0.75); }
@@ -790,7 +789,7 @@ select:focus-visible, [tabindex]:focus-visible {
   display: grid;
   place-items: center;
   width: 44px; height: 44px;
-  border-radius: 0;
+  border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
@@ -1780,8 +1779,8 @@ fieldset { border: none; }
   margin-top: var(--s-6);
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: var(--r-2);
-  box-shadow: var(--e-2);
+  border-radius: 0;
+  box-shadow: none;
   background: var(--azzurro-chiaro);
 }
 .project-hero__media img { width: 100%; height: 100%; object-fit: cover; }
@@ -1789,7 +1788,7 @@ fieldset { border: none; }
 .project-donation {
   position: sticky;
   top: 100px;
-  box-shadow: var(--e-3);
+  box-shadow: none;
 }
 .project-donation__eyebrow {
   margin-bottom: var(--s-1);
@@ -1854,10 +1853,10 @@ fieldset { border: none; }
 .project-services__grid li {
   min-height: 180px;
   padding: var(--s-5);
-  border: 1px solid var(--bordo);
-  border-radius: var(--r-2);
-  background: #fff;
-  box-shadow: var(--e-1);
+  border: 0;
+  border-radius: 0;
+  background: #F8FAFC;
+  box-shadow: none;
 }
 .project-services__grid span {
   display: block;
@@ -2040,7 +2039,7 @@ fieldset { border: none; }
 .project-sidebar .project-donation {
   position: sticky;
   top: 98px;
-  box-shadow: 0 22px 58px rgba(0, 42, 65, 0.22);
+  box-shadow: none;
 }
 .project-sidebar .amounts__custom { display: block; }
 .project-sidebar .amounts__custom > label { display: block; margin-bottom: var(--s-2); }
@@ -2101,11 +2100,11 @@ fieldset { border: none; }
   width: 100%;
   min-width: 0;
   padding: 1.6rem 1.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: var(--r-2);
+  border: 0;
+  border-radius: 0;
   background: var(--blu-notte);    /* contatti = informazione: blu notte, testo piccolo bianco a 11,9:1 (decisione 31) */
   color: #fff;
-  box-shadow: 0 18px 42px rgba(0, 59, 87, 0.28);
+  box-shadow: none;
 }
 .legacy-contact-card .project-donation__eyebrow { color: rgba(255, 255, 255, 0.88); }
 .legacy-contact-card h2 { color: #fff; font-size: 1.8rem; }
@@ -2125,7 +2124,8 @@ fieldset { border: none; }
 .legacy-definitions { display: grid; gap: var(--s-4); margin-top: var(--s-4); }
 .legacy-definitions > div {
   padding: var(--s-5);
-  border-left: 4px solid var(--azzurro);
+  border: 0;
+  border-top: 4px solid var(--azzurro);
   background: var(--azzurro-chiarissimo);
 }
 .legacy-definitions dt { color: var(--azzurro-scuro); font-size: 1.16rem; font-weight: 700; }
@@ -2133,10 +2133,10 @@ fieldset { border: none; }
 .legacy-examples { display: grid; gap: var(--s-4); margin-top: var(--s-4); }
 .legacy-examples section {
   padding: var(--s-5);
-  border: 1px solid var(--bordo);
-  border-radius: var(--r-1);
-  background: #fff;
-  box-shadow: var(--e-1);
+  border: 0;
+  border-radius: 0;
+  background: #F8FAFC;
+  box-shadow: none;
 }
 .legacy-examples h3 { color: var(--azzurro); font-size: 1.2rem; }
 .legacy-examples p { margin-top: var(--s-3); }
@@ -2160,10 +2160,10 @@ fieldset { border: none; }
   border: 1px solid rgba(0, 59, 87, 0.08);
   border-radius: var(--r-2);
   overflow: hidden;
-  box-shadow: var(--e-1);
-  transition: transform var(--transizione), box-shadow var(--transizione);
+  box-shadow: none;
+  transition: background-color var(--transizione);
 }
-.proj-card:hover { transform: translateY(-6px); box-shadow: var(--e-3); }
+.proj-card:hover { transform: none; box-shadow: none; }
 
 /* immagine con proporzione fissa: tutte le copertine sono coerenti tra loro */
 .proj-card__media {
@@ -2186,10 +2186,10 @@ fieldset { border: none; }
 .proj-card__media img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease;
+  transition: none;
 }
 .proj-card:hover .proj-card__media img,
-.proj-card__media-link:focus-visible img { transform: scale(1.05); }
+.proj-card__media-link:focus-visible img { transform: none; }
 
 /* etichetta "in evidenza": pillola gialla di accento */
 .proj-card__flag {
@@ -2204,8 +2204,8 @@ fieldset { border: none; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.4rem 0.8rem;
-  border-radius: 0;
-  box-shadow: var(--e-1);
+  border-radius: 999px;
+  box-shadow: none;
   z-index: 2;
   pointer-events: none;
 }
@@ -2281,7 +2281,7 @@ fieldset { border: none; }
   font-size: var(--t-micro);
   font-weight: 600;
   padding: 0.3rem 0.75rem;
-  border-radius: 0;
+  border-radius: 999px;
   line-height: 1.2;
 }
 .pill__icon { flex: none; }
@@ -2371,7 +2371,7 @@ fieldset { border: none; }
   font: inherit;
   font-family: var(--f-display);
   font-weight: 700;
-  border-radius: 0;
+  border-radius: 999px;
   padding: 0.7rem 1.3rem;
   min-height: 50px;
   cursor: pointer;
@@ -2390,7 +2390,7 @@ fieldset { border: none; }
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  border-radius: 0;
+  border-radius: 999px;
   background: #fff;
   color: var(--azzurro-scuro);
   font-size: 0.85rem;
@@ -2462,6 +2462,24 @@ fieldset { border: none; }
   text-transform: uppercase;
   margin-bottom: var(--s-2);
 }
+/* Le micro-etichette sopra titoli già espliciti duplicavano la gerarchia.
+   Restano solo quando sono un vero titolo o una didascalia autonoma. */
+.project-article-content > p.chi-occhiello:has(+ h2),
+.chi-colonna > p.chi-occhiello:has(+ h2),
+.project-donation__eyebrow { display: none; }
+.cpm-codice h2.chi-occhiello {
+  color: var(--azzurro) !important;
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: none;
+  margin-bottom: var(--s-4);
+}
+.chi-citazione > .container > p.chi-occhiello {
+  font-size: var(--t-body) !important;
+  letter-spacing: 0;
+  text-transform: none;
+}
 .chi-dato { margin-top: var(--s-5) !important; font-size: 1.25rem !important; color: var(--blu-notte) !important; }
 
 /* motto in evidenza: grande, centrato, su azzurro chiarissimo */
@@ -2484,10 +2502,10 @@ fieldset { border: none; }
 .documenti { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .documento {
   display: flex; flex-direction: column; gap: var(--s-3);
-  background: #fff;
-  border: 1px solid rgba(0, 59, 87, 0.08);
-  border-radius: var(--r-2);
-  box-shadow: var(--e-1);
+  background: #F8FAFC;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   padding: 1.5rem 1.4rem;
 }
 .documento__icona { color: var(--azzurro); flex: none; }
@@ -2519,10 +2537,11 @@ fieldset { border: none; }
 .recapiti .section-head { margin-bottom: var(--s-6); }
 .recapiti__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .recapito {
-  border: 1px solid rgba(0, 59, 87, 0.12);
-  border-radius: var(--r-2);
+  background: #F8FAFC;
+  border: 0;
+  border-radius: 0;
   padding: 1.5rem 1.4rem;
-  box-shadow: var(--e-1);
+  box-shadow: none;
 }
 .recapito h3 { color: var(--azzurro); font-size: 1.25rem; margin-bottom: 0.5rem; }
 .recapito p { color: var(--grigio-testo); }
@@ -2556,10 +2575,10 @@ fieldset { border: none; }
 
 .cpm-passi { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; counter-reset: none; }
 .cpm-passo {
-  background: #fff;
-  border: 1px solid rgba(0, 59, 87, 0.08);
-  border-radius: var(--r-2);
-  box-shadow: var(--e-1);
+  background: #F8FAFC;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   padding: 1.6rem 1.4rem;
 }
 .cpm-passo__num {
@@ -2622,8 +2641,8 @@ fieldset { border: none; }
 .modulo-incorporato__cornice {
   max-width: 820px; margin-inline: auto;
   background: #fff;
-  border-radius: var(--r-2);
-  box-shadow: var(--e-1);
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
 }
 .modulo-incorporato__cornice iframe { display: block; width: 100%; border: 0; }
@@ -2722,17 +2741,17 @@ fieldset { border: none; }
   gap: var(--s-2);
   height: 100%;
   padding: var(--s-5);
-  background: #fff;
-  border: 1px solid var(--bordo-forte);
-  border-left: 4px solid var(--azzurro);
-  border-radius: var(--r-2);
-  box-shadow: var(--e-1);
+  background: #F8FAFC;
+  border: 0;
+  border-top: 4px solid var(--azzurro);
+  border-radius: 0;
+  box-shadow: none;
   color: var(--grigio-testo);
   text-decoration: none;
-  transition: box-shadow var(--transizione), border-color var(--transizione), transform var(--transizione);
+  transition: background-color 0.16s var(--ease-uscita), border-color 0.16s var(--ease-uscita);
 }
 .project-article-content a.scelta { color: var(--grigio-testo); font-weight: 400; text-decoration: none; }
-.scelta:hover { box-shadow: var(--e-2); border-color: var(--azzurro); transform: translateY(-2px); }
+.scelta:hover { background: var(--azzurro-chiarissimo); box-shadow: none; border-color: var(--blu-notte); transform: none; }
 .scelta__titolo {
   font-family: var(--f-display);
   font-size: 1.3rem;
@@ -2853,7 +2872,7 @@ fieldset { border: none; }
   --d-bordo: #C9D4DB;
   --d-bordo-forte: #8FA3AE;
   --d-fondo: #F4F7F9;
-  --d-raggio: 0;
+  --d-raggio: 8px;
   --d-errore: #B42318;
   background: var(--d-fondo);
   padding-block: var(--s-7) var(--s-8);
@@ -2887,7 +2906,7 @@ fieldset { border: none; }
 .dona-modulo {
   background: #fff;
   border: 1px solid var(--d-bordo);
-  border-radius: 0;
+  border-radius: 10px;
   padding: 2rem 2.25rem 2.25rem;
 }
 .dona-passo + .dona-passo { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--d-bordo); }
@@ -2926,7 +2945,7 @@ fieldset { border: none; }
   height: 54px;
   padding: 0 0.9rem;
   border: 1px solid var(--d-bordo-forte);
-  border-radius: 0;
+  border-radius: 6px;
   background: #fff;
   color: var(--ink);
   font: inherit;
@@ -2955,7 +2974,7 @@ fieldset { border: none; }
 .dona-fisso {
   margin: 0;
   padding: 0.8rem 0.9rem;
-  border-radius: 0;
+  border-radius: 6px;
   background: var(--d-fondo);
   color: var(--ink);
   font-size: 1rem;
@@ -2980,7 +2999,7 @@ fieldset { border: none; }
   min-height: 54px;
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--d-bordo-forte);
-  border-radius: 0;
+  border-radius: 6px;
   background: #fff;
   color: var(--ink);
   font-size: 1.0625rem;
@@ -3005,7 +3024,7 @@ fieldset { border: none; }
   margin: 0 0 1.5rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--d-bordo);   /* decisione 75: riquadro intero, niente riga laterale */
-  border-radius: 0;
+  border-radius: 6px;
   background: var(--d-fondo);
 }
 .dona-fiscale__riga { color: var(--ink); font-size: 1.0625rem; line-height: 1.5; }
@@ -3018,7 +3037,7 @@ fieldset { border: none; }
 .dona-spunta a { color: var(--azzurro-scuro); text-decoration: underline; }
 
 /* ----- metodi di pagamento ----- */
-.dona-metodi { display: grid; border: 1px solid var(--d-bordo-forte); border-radius: 0; overflow: hidden; }
+.dona-metodi { display: grid; border: 1px solid var(--d-bordo-forte); border-radius: 6px; overflow: hidden; }
 .dona-metodo { position: relative; display: block; cursor: pointer; }
 .dona-metodo + .dona-metodo { border-top: 1px solid var(--d-bordo); }
 .dona-metodo__nome {
@@ -3061,7 +3080,7 @@ fieldset { border: none; }
   gap: 0.55rem;
   min-height: 60px;
   padding: 0 2rem;
-  border-radius: 0;
+  border-radius: 6px;
   border: 1px solid transparent;
   font: inherit;
   font-size: 1.1875rem;
@@ -3082,7 +3101,7 @@ fieldset { border: none; }
   padding: 1rem 1.1rem;
   border: 1px solid var(--d-errore);
   border-left-width: 4px;
-  border-radius: 0;
+  border-radius: 6px;
   background: #FEF3F2;
   color: var(--ink);
   font-size: 1rem;
@@ -3094,7 +3113,7 @@ fieldset { border: none; }
 .dona-avviso-fine {
   margin-top: 1.25rem;
   padding: 1rem 1.1rem;
-  border-radius: 0;
+  border-radius: 6px;
   background: #E6EEF2;
   color: var(--blu-notte);
   font-size: 0.9375rem;
@@ -3102,7 +3121,7 @@ fieldset { border: none; }
 
 /* ----- riepilogo laterale ----- */
 .dona-lato { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1rem; }
-.dona-lato__scheda { background: #fff; border: 1px solid var(--d-bordo); border-radius: 0; padding: 1.5rem; }
+.dona-lato__scheda { background: #fff; border: 1px solid var(--d-bordo); border-radius: 10px; padding: 1.5rem; }
 .dona-lato__titolo { color: var(--grigio-testo); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
 .dona-lato__importo { margin-top: 0.4rem; color: var(--blu-notte); font-size: 2.25rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .dona-lato__frequenza { display: block; margin-top: 0.3rem; font-size: 1rem; font-weight: 400; color: var(--ink); }
@@ -3413,7 +3432,7 @@ fieldset { border: none; }
 }
 .faq__gruppo summary::-webkit-details-marker { display: none; }
 .faq__icona {
-  flex: none; width: 2.5rem; height: 2.5rem; padding: 0.6rem; border-radius: 0;
+  flex: none; width: 2.5rem; height: 2.5rem; padding: 0.6rem; border-radius: 50%;
   background: var(--azzurro-chiarissimo); color: var(--azzurro-scuro);
   /* stessa durata e curva dell'apertura: la freccia gira insieme alla voce */
   transition: transform var(--faq-durata) var(--faq-curva), background-color var(--transizione), color var(--transizione);
@@ -3427,40 +3446,16 @@ fieldset { border: none; }
 .faq__gruppo summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -5px; border-radius: var(--r-2); }
 .faq__corpo { padding: 0 var(--s-6) var(--s-6); }
 .faq__corpo p { color: var(--grigio-testo); line-height: 1.6; max-width: 62ch; }
-.faq__corpo a { color: var(--azzurro-scuro); font-weight: 700; }
-/* Chiusura FAQ (decisione 130): il contatto non galleggia più nello spazio vuoto.
-   Un'unica fascia piena, larga come l'accordion, raggruppa domanda, recapiti e
-   azione. La nota provvisoria resta subito sotto le FAQ, ma fuori dalla fascia
-   d'azione perché riguarda la qualità delle risposte e non il contatto. */
-.faq__chiusura { max-width: 56rem; margin: var(--s-6) auto 0; text-align: left; }
-.faq__aiuto {
-  display: grid; grid-template-columns: minmax(13rem, 0.9fr) minmax(18rem, 1.35fr) auto;
-  align-items: center; gap: var(--s-6); padding: var(--s-6);
-  background: var(--blu-notte); color: var(--bianco); border-radius: var(--r-2);
-}
-.faq__aiuto-intro h3 { margin: 0 0 var(--s-2); color: var(--bianco); font-size: var(--t-h3); }
-.faq__aiuto-intro p { margin: 0; color: var(--azzurro-chiarissimo); font-size: var(--t-body); line-height: var(--lh-testo); }
-.faq__recapiti { display: grid; gap: var(--s-3); }
-.faq__recapito { display: grid; gap: 0.1rem; width: fit-content; color: var(--bianco); text-decoration: none; }
-.faq__recapito-label { color: var(--azzurro-chiaro); font-size: var(--t-small); line-height: var(--lh-blocco); }
-.faq__recapito strong { font-size: var(--t-body); line-height: var(--lh-blocco); overflow-wrap: anywhere; text-underline-offset: 0.18em; }
-.faq__recapito:hover strong { text-decoration: underline; }
-.faq__recapito:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; border-radius: 0.2rem; }
-.faq__btn { margin-top: 0; width: auto !important; display: inline-flex; min-width: 10rem; justify-content: center; }
-.faq__provvisorio { margin: var(--s-3) var(--s-2) 0; text-align: left; }
-@media (max-width: 52em) {
-  .faq__aiuto { grid-template-columns: minmax(0, 1fr) auto; }
-  .faq__aiuto-intro { grid-column: 1 / -1; }
-}
+.faq__corpo a, .faq__nota a { color: var(--azzurro-scuro); font-weight: 700; }
+/* chiusura: chi ha sciolto il dubbio può donare subito (requisito 3) */
+.faq__chiusura { text-align: center; margin-top: var(--s-7); }
+.faq__nota { font-size: var(--t-body); color: var(--grigio-testo); }
+.faq__btn { margin-top: var(--s-5); width: auto !important; display: inline-flex; min-width: 16rem; justify-content: center; }
+.faq__provvisorio { margin-top: var(--s-5); }
 @media (max-width: 40em) {
   .faq__gruppo summary { font-size: 1.1875rem; padding-inline: var(--s-5) var(--s-4); gap: var(--s-4); }
   .faq__corpo { padding-inline: var(--s-5); }
   .faq__gruppo-titolo { padding-inline: var(--s-5); font-size: var(--t-h3); }
-  .faq__chiusura { margin-top: var(--s-5); }
-  .faq__aiuto { grid-template-columns: 1fr; gap: var(--s-5); padding: var(--s-5); }
-  .faq__aiuto-intro { grid-column: auto; }
-  .faq__btn { width: 100% !important; min-width: 0; }
-  .faq__provvisorio { margin-inline: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .faq__icona, .faq__gruppo { transition: none; } }
 
@@ -3758,3 +3753,85 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 }
 
 /* Decisione 133 (apertura prima del carosello su telefono) annullata dalla decisione 135. */
+
+/* ======================================================================
+   PROVA COLORI (29/10/2026) — SOLO PER VEDERLA IN LOCALE, NON PUBBLICARE
+   «Dona ora» blu notte, pulsanti secondari azzurro chiaro, forme squadrate,
+   pagina bianca con filetti tra le sezioni. Da togliere o da trasformare
+   in decisione dopo il parere del Cottolengo.
+   ====================================================================== */
+.btn, .btn--header, .btn--dona, .cpm-slide__cta, .proj-card__cta, .dona-btn { border-radius: 0 !important; }
+.proj-card, .proj-card__media, .proj-card__media img { border-radius: 0 !important; }
+.btn--dona, .btn--header, .sticky-dona .btn, .dona-btn {
+  background: var(--blu-notte) !important; color: #fff !important; box-shadow: none !important;
+}
+/* passaggio del mouse e tastiera: Dona blu notte → azzurro come il menu, testo bianco, senza bordo */
+.btn--dona:hover, .sticky-dona .btn:hover, .dona-btn:hover,
+.btn--dona:focus-visible, .dona-btn:focus-visible {
+  background: var(--azzurro-scuro) !important; color: #fff !important; box-shadow: none !important;
+}
+/* nel menu: Dona bianco con testo blu notte; al passaggio i colori si invertono (blu notte, testo bianco) */
+.header .btn--header { background: #fff !important; color: var(--blu-notte) !important; }
+.header .btn--header:hover, .header .btn--header:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
+/* tocco sul telefono (non c'è il passaggio del mouse): un attimo più scuro mentre si preme */
+.btn--dona:active, .btn--header:active, .sticky-dona .btn:active, .dona-btn:active { background: #00263a !important; color: #fff !important; box-shadow: none !important; }
+.proj-card__cta, .fila-schede .proj-card .proj-card__cta {
+  background: var(--azzurro-chiaro) !important; color: var(--blu-notte) !important; box-shadow: none !important; border: 0 !important;
+}
+/* secondari: al passaggio i colori si invertono (fondo azzurro scuro come il menu, testo bianco 5,0:1) */
+.proj-card__cta:hover, .proj-card__cta:focus-visible, .fila-schede .proj-card .proj-card__cta:hover { background: var(--azzurro-scuro) !important; color: #fff !important; }
+.hero, .who, .modi, .faq, .where, .partners { background: #fff !important; }
+.who, .modi, .faq, .where, .partners { border-top: 1px solid #D5DEE4; }
+.proj-card { box-shadow: none !important; }
+/* domande frequenti squadrate come il resto (pannello, icone, contorno di selezione) */
+.faq__lista, .faq__icona, .faq__gruppo summary:focus-visible { border-radius: 0 !important; }
+/* carosello: pulsanti azzurri come prima (più visibili sulle foto scure), solo squadrati;
+   al passaggio blu notte come nel resto del sito */
+.cpm-slide__cta { background: var(--azzurro) !important; color: #fff !important; box-shadow: none !important; }
+.cpm-slide__cta:hover, .cpm-slide__cta:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
+/* pulsanti secondari delle altre pagine (Scarica PDF, Copia il codice, Diventa volontario…):
+   niente bordo, stesso fondo azzurro chiaro dei secondari; al passaggio azzurro con testo bianco */
+.btn--vedi-tutti { background: var(--azzurro-chiaro) !important; color: var(--blu-notte) !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+.btn--vedi-tutti:hover, .btn--vedi-tutti:focus-visible { background: var(--azzurro-scuro) !important; color: #fff !important; }
+/* analisi con le skill (29/10): superfici piatte, una sola linea (i filetti tra le sezioni) */
+/* 1. fascia raccolte: pulsante bianco sul fondo colorato, come il Dona nel menu */
+.fascia-invito .fascia-invito__btn { background: #fff !important; color: var(--blu-notte) !important; box-shadow: none !important; }
+.fascia-invito .fascia-invito__btn:hover, .fascia-invito .fascia-invito__btn:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
+/* 2. schede senza bordo: niente linee doppie con i filetti */
+.proj-card { border: 0 !important; }
+/* 3. domande frequenti: via ombra e bordo esterno, restano le linee tra le domande */
+.faq__lista { box-shadow: none !important; border: 0 !important; }
+/* 4. niente sfumature: menu e fascia a tinta unita, azzurro scuro (testo bianco 5,0:1, anche le voci del menu) */
+.header { background: var(--azzurro-scuro) !important; }
+.fascia-invito { background: var(--azzurro-scuro) !important; }
+/* 5. regola: dentro le foto (carosello) il pulsante resta azzurro; altrove il Dona è blu notte */
+/* forme squadrate in tutto il sito, pagine interne e modulo di donazione compresi
+   (restano tondi solo i pallini e il pulsante pausa del carosello, le icone circolari e i numeri dei passi) */
+:root { --r-1: 0px; --r-2: 0px; }
+.nav__mega__voce, .nav__mega, .impatti__voce, .partners__link, .project-hero__media, .project-services__grid li,
+.legacy-contact-card, .legacy-examples section, .proj-card__flag, .pill, .proj-filters__reset, .proj-filters__badge,
+.chi-figura img, .documento, .recapito, .cpm-passo, .memoria-field input, .modulo-incorporato__cornice, .scelta,
+.dona-modulo, .dona-input, .dona-fisso, .dona-scelta span, .dona-fiscale, .dona-metodi, .dona-btn, .dona-errori,
+.dona-avviso-fine, .dona-lato__scheda, .dona-rapido__btn, .dona-grazie__prototipo, .pagina-legale__contatto,
+.tabella-cookie tr, .galleria-foto img, .nota-riquadro, .dona-card, .dona-card__head, .project-cover__image,
+.cpm-slide__tag, .faq__gruppo-titolo, .dona-prototipo { border-radius: 0 !important; }
+/* schede su computer: grigio leggerissimo verso il blu istituzionale (#F8FAFC, scelto da Fulvio) al posto del bordo (gradino di tono, skill taste e impeccable) */
+@media (min-width: 45.0625em) { .proj-card { background: #F8FAFC !important; } }
+/* pulsanti secondari (schede e altre pagine): azzurro istituzionale, testo bianco;
+   al passaggio blu notte, testo bianco (Fulvio, 29/10). Bianco su azzurro 3,3:1: a norma solo
+   perché il testo è 19 px grassetto (testo grande). */
+.proj-card__cta, .fila-schede .proj-card .proj-card__cta, .btn--vedi-tutti { background: var(--azzurro) !important; color: #fff !important; }
+.proj-card__cta:hover, .proj-card__cta:focus-visible, .fila-schede .proj-card .proj-card__cta:hover,
+.btn--vedi-tutti:hover, .btn--vedi-tutti:focus-visible { background: var(--blu-notte) !important; color: #fff !important; }
+/* «Hai un dubbio?» sotto il Dona: una riga sola, piccola, allineata al pulsante, link non in grassetto
+   (rassicurazione discreta, non un secondo richiamo) */
+.hero__dubbio { font-size: var(--t-small) !important; margin-top: 0.85rem !important; text-align: left !important; }
+.hero__dubbio a { font-weight: 400 !important; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+@media (max-width: 45em) { .hero__azione { width: 100%; } .hero__azione .hero__btn { width: 100% !important; } }
+/* stesse regole in tutte le pagine: fondo bianco con filetto tra le sezioni,
+   riquadri interni con il grigio leggerissimo delle schede al posto dell'azzurro chiarissimo */
+.impact, .project-hero, .project-services, .proj-all, .chi-blocco--chiaro, .chi-citazione, .modulo-incorporato, .pagina-404 { background: #fff !important; }
+.project-services, .proj-all, .chi-blocco--chiaro, .chi-citazione, .modulo-incorporato { border-top: 1px solid #D5DEE4; }
+.impatti__voce, .project-stat, .nota-riquadro, .pagina-legale__contatto, .legacy-definitions > div, .dona-card { background: #F8FAFC !important; box-shadow: none !important; }
+.dona-card__head { background: var(--azzurro-scuro) !important; }   /* niente sfumatura, come il menu */
+.dona-sicura { border: 0 !important; background: #fff !important; }
