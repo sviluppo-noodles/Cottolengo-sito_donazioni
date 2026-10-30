@@ -4041,3 +4041,48 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 @media (prefers-reduced-motion: reduce) {
   .fila-schede--quattro .fila-schede__item::before { transition: none; }
 }
+
+/* decisione 151: il sottomenu (solo con il menu in fila, sopra i 1200 px) scende da sotto la barra, come una tendina:
+   il pannello si scopre dall'alto verso il basso (0,32 s) e i testi compaiono con una piccola dissolvenza, salendo
+   di 8 px, cioè in direzione opposta alla discesa del pannello. Il ritaglio lascia fuori l'ombra in basso e ai lati.
+   Con «riduci movimento»: nessuna animazione. Sul telefono il menu a tendina non cambia. */
+@media (min-width: 75.0625em) {
+  .nav__mega {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 -100vw 100% -100vw);
+    transition: clip-path 0.32s var(--ease-uscita), visibility 0s linear 0.32s;
+  }
+  .nav__item--dropdown.open .nav__mega {
+    clip-path: inset(0 -100vw -80px -100vw);
+    transition: clip-path 0.32s var(--ease-uscita), visibility 0s;
+  }
+  .nav__mega__voci, .nav__mega__testo {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+  }
+  .nav__item--dropdown.open .nav__mega__voci,
+  .nav__item--dropdown.open .nav__mega__testo {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.26s ease 0.12s, transform 0.3s var(--ease-uscita) 0.12s;
+  }
+}
+@media (min-width: 75.0625em) and (prefers-reduced-motion: reduce) {
+  .nav__mega, .nav__item--dropdown.open .nav__mega,
+  .nav__mega__voci, .nav__mega__testo,
+  .nav__item--dropdown.open .nav__mega__voci, .nav__item--dropdown.open .nav__mega__testo { transition: none; }
+}
+
+/* decisione 152: passando da «Progetti» a «Come aiutarci» (o al contrario) lo sfondo del sottomenu resta fermo:
+   cambiano solo i testi (dissolvenza breve e salita di 8 px). La classe .is-cambio la mette nav.js per 0,3 s. */
+@keyframes testo-cambio { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (min-width: 75.0625em) {
+  .header.is-cambio .nav__mega,
+  .header.is-cambio .nav__item--dropdown.open .nav__mega { transition: none !important; }
+  .header.is-cambio .nav__mega__voci, .header.is-cambio .nav__mega__testo { transition: none !important; }
+  .header.is-cambio .nav__item--dropdown.open .nav__mega__voci,
+  .header.is-cambio .nav__item--dropdown.open .nav__mega__testo { animation: testo-cambio .22s ease both; }
+}
+@media (prefers-reduced-motion: reduce) { .header.is-cambio .nav__mega__voci, .header.is-cambio .nav__mega__testo { animation: none !important; } }

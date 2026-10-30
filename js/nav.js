@@ -52,9 +52,15 @@
     toggle.addEventListener('click', e => {
       e.stopPropagation();
       const aperto = !item.classList.contains('open');
+      // passaggio da una voce con sottomenu all'altra: lo sfondo del pannello resta fermo,
+      // cambia solo il contenuto (niente chiusura e riapertura, che farebbe uno scatto)
+      const cambio = aperto && tendine.some(t => t !== item && t.classList.contains('open'));
+      const header = item.closest('.header');
+      if (cambio && header) header.classList.add('is-cambio');
       tendine.forEach(chiudiTendina);
       item.classList.toggle('open', aperto);
       toggle.setAttribute('aria-expanded', String(aperto));
+      if (cambio && header) { clearTimeout(header._cambio); header._cambio = setTimeout(() => header.classList.remove('is-cambio'), 300); }
     });
   });
 
