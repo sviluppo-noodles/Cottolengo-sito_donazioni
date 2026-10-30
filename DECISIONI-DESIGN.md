@@ -2003,7 +2003,7 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Prima versione scartata:** solo 6 px di spazio sopra il testo con pulsante da 48 px centrato nella barra: il testo risultava troppo in basso nel pulsante (Fulvio: «non è centrato»).
 - **Menu vicino al pulsante:** il distacco tra l'ultima voce e il pulsante passa da circa 50 a circa 34 px dal testo (24 px dal bordo della voce), poco più di quello tra le voci (28 px). La decisione 112 chiedeva più stacco (gruppi stretti, separazioni generose); qui il fondo oro stacca già il pulsante, quindi lo spazio libero va tra logo e menu (100 px a 1280, 70 px a 1210).
 - **Solo dove il menu è in fila** (da 1201 px in su). Nel menu a tendina e sul telefono non cambia niente. Verificato a 1210, 1280, 1400 e 1100 px: nessun taglio né scorrimento orizzontale.
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
 
 ## 141 – Titoli di sezione staccati dal paragrafo sopra (30 ottobre 2026)
 
@@ -2011,20 +2011,20 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Causa:** la micro-etichetta sopra il titolo è nascosta (decisione sulle etichette duplicate), ma la regola `.chi-occhiello + h2 { margin-top: 0 }` continuava ad azzerare lo spazio sopra il titolo.
 - **Ora:** quando l'etichetta è nascosta e il titolo segue un paragrafo, il titolo riprende i suoi 3 rem di spazio sopra.
 - **Controllo:** misurati gli spazi tra paragrafi, titoli ed elenchi in tutte le 20 pagine, a 390 e 1280 px: nessun altro blocco attaccato, tranne «Ufficio Raccolta Fondi» e il telefono in `dona.html`, che stanno volutamente insieme (etichetta e numero).
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
 
 ## 142 – Sottolineatura del menu a spigolo vivo e più sottile (30 ottobre 2026)
 
 - **Prima:** linea sotto la voce di menu spessa 5 px con estremi arrotondati (2,5 px nel menu a tendina).
 - **Ora:** 4 px a spigolo vivo su computer, 2 px nel menu a tendina. Più sobria e coerente con i pulsanti, che hanno gli angoli quasi squadrati. Resta ben visibile (bianco su azzurro scuro, oltre 5:1).
-- Animazione invariata (si apre dal centro). CSS e JS passano a `?v=174`.
+- Animazione invariata (si apre dal centro). CSS e JS passano a `?v=178`.
 
 ## 143 – Menu su computer senza frecce accanto alle voci con sottomenu (30 ottobre 2026) – DA VERIFICARE CON UTENTI
 
 - **Richiesta di Fulvio:** le frecce accanto a «Progetti» e «Come aiutarci» non piacciono; chi clicca scopre il sottomenu.
 - **Ora:** sopra i 1200 px le frecce non ci sono. Nel menu a tendina del telefono restano.
 - **Rischio segnalato:** le due voci sono pulsanti, non link: senza freccia sembrano pagine come «Chi siamo» e il sottomenu può non essere scoperto (soprattutto dagli over 50). Da segnare in to-do e da verificare con la prova sul sito (clic sulle voci, mappa di calore). Se i clic su «Progetti» e «Come aiutarci» risultano bassi, tornare a una freccia più sottile o rendere la voce un link con apertura al passaggio del mouse.
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
 
 ## 144 – «Dona» in miele scuro con testo bianco (30 ottobre 2026)
 
@@ -2034,7 +2034,7 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Limite noto:** sull'azzurro scuro del menu la luminosità è quasi uguale (1,0:1): il pulsante si distingue per tinta (marrone caldo contro azzurro), non per chiarezza. Da controllare con chi vede male i colori.
 - **Come si cambia:** variabili `--oro`, `--oro-premuto`, `--marrone-testo`, `--cuore-hover` in fondo al CSS. L'oro `#E3B23C` con testo `#06182A` resta l'alternativa pronta.
 - **Menu in grassetto:** le voci restano in grassetto.
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
 
 ## 145 – Menu in carattere normale e «DONA ORA» in maiuscolo (30 ottobre 2026)
 
@@ -2042,7 +2042,7 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Rischio segnalato:** in carattere normale il bianco su azzurro a 16 px è meno leggibile (soprattutto per gli over 50); da verificare con test di lettura e con lo zoom del browser. Il peso 400 resta solo per le voci in fila; il sottomenu a tendina non è cambiato.
 - **Ora:** voci di menu in carattere normale (`font-weight: 400`); «DONA ORA» maiuscolo in grassetto con un po' di spaziatura tra le lettere (4%), unica voce con peso e maiuscolo, così risalta ancora di più. Il pulsante è largo 176 px (era 152) e a 1210 px resta a 24 px dall'ultima voce: nessun taglio.
 - **Centratura:** con le maiuscole il testo è centrato sulle maiuscole nel pulsante (spazio sopra 3 px): la linea di base è a 44 px, 1 px sopra le voci (45), scarto non visibile.
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
 
 ## 146 – Tutti i pulsanti in maiuscolo (30 ottobre 2026)
 
@@ -2050,7 +2050,7 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Ora:** `.btn`, `.dona-btn` e i pulsanti di pagamento rapido (Google Pay, PayPal, Satispay) sono in maiuscolo con spaziatura 4% tra le lettere. Le scritte sono quasi tutte brevi (da 6 a 30 caratteri).
 - **Rischio segnalato:** il maiuscolo si legge più lentamente del minuscolo (NN/g) e occupa circa il 15% in più di larghezza; per questo le scritte lunghe, come «SCARICA PDF — BILANCIO D'ESERCIZIO» e «COPIA IL CODICE DA CONDIVIDERE», vanno tenute corte o a capo. Il pulsante «Copia il codice da condividere» ora va a capo su telefono invece di uscire dal bordo.
 - **Controllo:** nessun pulsante esce dal bordo e nessuna pagina scorre in orizzontale a 320, 360, 390, 768, 1024 e 1280 px.
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
 
 ## 147 – «Dona» di nuovo in ambra, con un po' più di rosso (30 ottobre 2026)
 
@@ -2058,4 +2058,19 @@ Fulvio: la base delle voci deve coincidere con la base della scritta «Cottoleng
 - **Ora:** ambra `#E5A634` con testo e cuore `#06182A` (8,4:1; bordo su bianco 2,1:1, come prima). Al passaggio o con la tastiera: blu notte, testo bianco, cuore miele `#D08C1F` (nel riquadro FAQ: azzurro scuro con cuore bianco). Premuto sul telefono: `#C98A1E`.
 - **Resta il rischio UNICEF** (tinta vicina al loro giallo): l'ambra è un po' più calda del giallo di prima, quindi un po' più lontana. Il miele con testo bianco `#A16207` (decisione 144) resta l'alternativa pronta.
 - Menu in carattere normale e pulsanti in maiuscolo restano (decisioni 145 e 146).
-- CSS e JS passano a `?v=174`.
+- CSS e JS passano a `?v=178`.
+
+## 148 – Pulsanti in carattere normale, non grassetto (30 ottobre 2026)
+
+- **Richiesta di Fulvio:** meno «urlato»: in maiuscolo il grassetto pesa troppo; il carattere normale è più leggibile.
+- **Ora:** tutti i pulsanti in carattere normale (`font-weight: 400`), maiuscolo con spaziatura 4%. Unica eccezione: tutti i «Dona» (menu, pulsanti nelle pagine, barra fissa sul telefono, modulo) restano in grassetto (Fulvio: il grassetto va solo sulle azioni di donazione). Altrove la visibilità la danno il colore e la forma, non il peso.
+- **Rischio segnalato:** testo bianco sottile su azzurro (pulsanti secondari) e testo scuro sottile su ambra sono meno robusti in condizioni di cattiva luce o con vista ridotta. Il contrasto resta alto (ambra 8,4:1, azzurro scuro 5,0:1). Da verificare nei test di lettura con persone over 60; in caso, tornare al grassetto solo per i «Dona».
+- CSS e JS passano a `?v=178`.
+
+## 149 – Filetto che sale da dietro la foto nelle quattro schede «Chi aiuti» (30 ottobre 2026)
+
+- **Richiesta di Fulvio:** nelle quattro schede sopra le foto (Cura, Accoglienza, Educazione, Missioni), al passaggio del mouse deve comparire un filetto solo nella parte superiore, che sale da dietro la foto.
+- **Ora:** filetto azzurro `#0097D8` alto 4 px, largo come la foto; sta dietro la scheda e al passaggio sale di 4 px sopra il bordo della foto (0,28 s). Compare anche con la tastiera (`:focus-within`). Nessuno spostamento del testo.
+- **Solo dove serve:** computer e tablet con mouse (sopra 720 px, dispositivi con `hover`). Sul telefono non c'è hover e le schede sono impilate: nessun cambiamento. Con «riduci movimento» compare senza scorrere.
+- **Scelta del colore:** azzurro e non ambra, perché l'ambra è riservata ai «Dona» (regola dei pulsanti, decisione 138).
+- CSS e JS passano a `?v=178`.

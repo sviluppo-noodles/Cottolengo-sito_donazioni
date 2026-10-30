@@ -4015,3 +4015,30 @@ p, .section-intro, .hero__sub, .cpm-slide__sub, .cpm-slide__cf, .proj-card__copy
 .btn, .dona-btn, .dona-rapido__btn { text-transform: uppercase; letter-spacing: 0.04em; }
 /* il maiuscolo allarga le scritte lunghe: «Copia il codice da condividere» va a capo invece di uscire dal pulsante */
 .btn--copy { white-space: normal; text-align: center; }
+
+/* decisione 148: pulsanti in carattere normale (non grassetto): in maiuscolo il grassetto «urla» */
+.btn, .dona-btn, .dona-rapido__btn { font-weight: 400; }
+.header .btn--header, .btn--dona, .dona-btn, .sticky-dona .btn { font-weight: 700; }   /* grassetto solo per i «Dona»: menu, pulsanti nelle pagine, barra fissa e modulo. Gli altri pulsanti restano normali */
+
+/* decisione 149: nelle quattro schede «Chi aiuti» (Cura, Accoglienza, Educazione, Missioni), al passaggio del mouse
+   (o con la tastiera) un filetto azzurro sale da dietro la foto e compare solo sopra. Dietro la scheda, quindi nessun
+   salto del testo; solo dove c'è il mouse e sopra i 720 px (sul telefono le schede sono impilate, senza hover).
+   Con «riduci movimento» compare senza scorrere. */
+@media (min-width: 45.0625em) and (hover: hover) and (pointer: fine) {
+  .fila-schede--quattro .fila-schede__item { position: relative; isolation: isolate; }
+  .fila-schede--quattro .fila-schede__item::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--azzurro);
+    transform: translateY(0);
+    transition: transform 0.28s var(--ease-uscita);
+    z-index: -1;
+  }
+  .fila-schede--quattro .fila-schede__item:hover::before,
+  .fila-schede--quattro .fila-schede__item:focus-within::before { transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fila-schede--quattro .fila-schede__item::before { transition: none; }
+}
